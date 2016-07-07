@@ -1,0 +1,841 @@
+/* LOAD FONTS */
+
+
+@import url(//fonts.googleapis.com/css?family=Lato:300,400,700,900,400italic,700italic);
+
+
+
+/* BODY */
+
+body {
+    background: #282828;
+}
+body, p {
+    color: #555;
+}
+
+
+/* LINKS & BUTTONS */
+
+a:link, a:visited, a:active{
+    color: #F94E54;
+}
+a:hover {
+    color: #333;
+}
+.btn,
+.btn:link,
+.btn:visited,
+.btn:active {
+    font-size: 11px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    background-color: #F94E54;
+}
+.btn:hover {
+    background-color: #222;
+}
+
+
+/* TITLES & HEADERS */
+
+h1 {
+    color: #CCC;
+    font-size: 200px;
+    font-weight: 100;
+    text-align: center;
+}
+h2 {
+    color: #313131;
+    font-size: 30px;
+    font-weight: 300;
+}
+h3 {
+    color: #000;
+    font-size: 17px;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+h4 {
+    color: #000;
+    font-size: 12px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+
+/* STANDARD TEXT STYLES */
+
+.pullout {
+    color: #777;
+    font-weight: 300;
+}
+
+
+/* ASSIGN FONTS */
+
+/* .primaryFont will be used for the site's typographical logo and some site headers. It must also be legible at small sizes.  */
+
+h1,
+h2,
+h3,
+h4,
+.fontPrimary,
+.fontPrimary p,
+.fontSecondary,
+.fontSecondary p,
+.fontBody,
+.fontBody p,
+.pullout,
+.btn,
+.moduleContainer h2 {
+    font-family: 'Lato', sans-serif;
+}
+
+
+/* BACKGROUNDS */
+
+/* This color is used for header bars and date boxes and must be dark enough to read reversed text in. */
+.backgroundAccentColor {
+    background-color: #F94E54;
+}
+
+
+/* SOCIAL MEDIA */
+
+.socialMedia a {
+    margin-right: 1px;
+}
+.socialMedia.reverse .googlePlus a {
+    background-color: #4A7D5A;
+}
+.socialMedia.reverse .facebook a {
+    background-color: #4A577D;
+}
+.socialMedia.reverse .twitter a {
+    background-color: #5F9CBE;
+}
+.socialMedia.reverse .linkedin a {
+    background-color: #468BDF;
+}
+.socialMedia.reverse .youtube a {
+    background-color: #F46743;
+}
+.socialMedia.reverse .vimeo a {
+    background-color: #C2B8B0;
+}
+.socialMedia.reverse .instagram a {
+    background-color: #776E5A;
+}
+.socialMedia.reverse .pinterest a {
+    background-color: #FE6A6A;
+}
+.socialMedia.reverse .yelp a {
+    background-color: #B03B3F;
+}
+.socialMedia.reverse a:hover {
+    background-color: #666;
+}
+
+
+
+
+/* HEADER */
+
+#headerBackground {
+    border-top: 6px solid #F94E54;
+}
+/* Header 1 is hidden on desktop because the site logo actually occurs in the sidebar when the design has two columns */
+#header1 {
+    overflow: hidden;
+    display: none;
+}
+#siteLogo {
+    float: none;
+    max-width: inherit;
+}
+
+
+
+/* Logo / Site Name */
+#logoArea {
+    padding: 60px 0;
+}
+#typeLogo {
+    display: table;
+    margin: 0 auto;
+    max-width: 84%;
+}
+#siteName {
+    margin: 0;
+    color: #FFF;
+    font-size: 32px;
+    font-weight: 400;
+    -webkit-font-smoothing: subpixel-antialiased;
+    text-transform: uppercase;
+    line-height: 1.1;
+}
+
+/* Top site navigation */
+#mainNavigationHeader {
+    float: none !important;
+    padding: 30px 0 40px 0;
+    max-width: inherit;
+}
+.siteNavLink a.navLevel1 {
+    padding-bottom: 4px;
+    color: #BABABA;
+    font-size: 14px;
+    text-transform: uppercase;
+}
+.siteNavLink a.navLevel1  .navExtra1 {
+    transition: all .12s ease-out;
+    -webkit-transition: all .12s ease-out;
+    transform: scaleX(0);
+    -webkit-transform: scaleX(0);
+    margin-top: 5px;
+    height: 2px;
+    background: #FFF;
+}
+.siteNavLink a.navLevel1:hover {
+    color: #FFF;
+}
+.siteNavLink a.navLevel1:hover  .navExtra1,
+.siteNavLink a.navLevel1.active  .navExtra1 {
+    transform: scaleX(1);
+    -webkit-transform: scaleX(1);
+}
+.siteNavLink a.navLevel1.active {
+    color: #FFF;
+    font-weight: 700;
+}
+
+@media (max-width:1200px) {
+    #siteName {
+        font-size: 26px;
+    }
+}
+@media (max-width:991px) {
+    #sidebarToggle {
+        top: 30px;
+        right: 110px;
+        left: inherit;
+    }
+    /* Reveal header when sidebar (which contains logo) disappears */
+    #header1 {
+        display: block;
+    }
+    #typeLogo {
+        display: block;
+        margin: 0;
+        padding-left: 8%;
+    }
+    #siteName {
+        font-size: 32px;
+    }
+}
+@media (max-width:768px) {
+    #sidebarToggle {
+        right: 100px;
+    }
+}
+
+
+
+/* RETRACTING HEADER */
+
+#headerContainer.retracting.offScreen.offScreenScrollUp #headerBackground {
+    background: rgba(33,33,33,.97);
+    border-bottom: 1px solid #333;
+}
+#headerContainer.retracting.offScreen.offScreenScrollUp #header1 {
+    display: block;
+    position: relative;
+    padding: 0;
+    background: none;
+}
+#headerContainer.retracting.offScreen.offScreenScrollUp #header1 #welcomeImage,
+#headerContainer.retracting.offScreen.offScreenScrollUp #mobileWelcomeText {
+    display: none;
+}
+#headerContainer.retracting.offScreen.offScreenScrollUp #header1 #logoArea {
+    display: block;
+    padding: 22px 0;
+    max-width: 35%;
+    background: none;
+}
+#headerContainer.retracting.offScreen.offScreenScrollUp #header1 #siteLogo,
+#headerContainer.retracting.offScreen.offScreenScrollUp #header1 #typeLogo,
+#headerContainer.retracting.offScreen.offScreenScrollUp #header1 #siteName {
+    display: block;
+    margin: 0;
+    max-width: 100%;
+}
+#headerContainer.retracting.offScreen.offScreenScrollUp #header1 #siteName {
+    font-size: 22px;
+}
+#headerContainer.retracting.offScreen.offScreenScrollUp #header1 #mainNavigationHeader {
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 24px 0 30px 0;
+    width: 60%;
+}
+#headerContainer.retracting.offScreen.offScreenScrollUp #header1 #mainNavigationHeader .list-inline {
+    float: right;
+}
+
+/* Main Nav links are replaced by menu symbol at this point */
+@media (max-width:991px) {
+    /* To make left padding change smooth when drawer is open and retracting header is down */
+    body[data-mobiledraweropen="sidebarToggle"] #headerContainer.retracting.offScreen.offScreenScrollUp #header.siteSidePadding {
+        transition: all .2s ease-out;
+        -webkit-transition: all .2s ease-out;
+    }
+    #headerContainer.retracting.offScreen.offScreenScrollUp #header #sidebarToggle {
+        top: 20px;
+        right: 90px;
+    }
+    body[data-mobiledraweropen] #headerContainer.retracting.offScreen.offScreenScrollUp #header #sidebarToggle {
+        right: 30px;
+    }
+    body[data-mobiledraweropen] #headerContainer.retracting.offScreen.offScreenScrollUp #header.siteSidePadding {
+        padding-left: 30px;
+    }
+    #headerContainer.retracting.offScreen.offScreenScrollUp #header1 {
+        background: none;
+    }
+    #headerContainer.retracting.offScreen.offScreenScrollUp #header1 #logoArea {
+        transform: none;
+        -webkit-transform: none;
+        position: relative;
+        top: inherit;
+        left: inherit;
+        max-width: 90%;
+        padding: 18px 0;
+        background: none;
+    }
+}
+
+
+
+/* SHELL STRUCTURE */
+
+#siteBackground {
+    background: #333;
+}
+.siteMaxWidth  {
+    max-width: 1250px;
+}
+.shellVerticalPadding {
+    padding-top: 0;
+}
+/* Need sidebar to be wider than 3 columns but not quite 4 */
+#shellSidebar {
+    margin-right: -8%;
+}
+/* This makes extra room for wide sidebar */
+.mainColumnGutter {
+    padding-left: 12%;
+}
+@media (max-width: 1200px) {
+    .mainColumnGutter {
+        padding-left: 9%;
+    }
+}
+@media (max-width: 991px) {
+    #shellSidebar {
+        margin-right: 0;
+    }
+    .mainColumnGutter {
+        padding-left: 0;
+    }
+}
+
+
+
+/* SIDEBAR */
+
+.sectionName,
+#siteNavigationSidebar {
+    background: rgba(255,255,255,.15);
+}
+.sectionName {
+    margin: 2px 0 0 0;
+    padding: 40px 12% 0 12%;
+    font-size: 15px;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: #D9D9D9;
+}
+
+/* Sidebar Navigation */
+#siteNavigationSidebar ul#listLevel1 {
+    padding-top: 0;
+}
+#siteNavigationSidebar ul#listLevel3 {
+    padding-left: 20px;
+}
+.siteNavLink[data-level="2"] {
+    padding: 0;
+}
+.siteNavLink a.navLevel2 {
+    padding: 8px 12%;
+    margin: -2px 0;
+    color: #989898;
+    font-size: 14px;
+    font-weight: bold;
+}
+.siteNavLink a.navLevel2.active {
+    color: #FFF;
+}
+.siteNavLink a.navLevel2:hover {
+    color: #F94E54;
+    background: rgba(51,51,51,.58);
+}
+.siteNavLink a.navLevel3 {
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+.siteNavLink a.navLevel3:hover {
+    color: #FFF;
+}
+.dark .siteNavLink a.navLevel4 {
+    color: #CCC;
+    font-size: 10px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+.dark .siteNavLink a.navLevel4:hover {
+    color: #FFF;
+}
+@media (max-width: 991px) {
+    body[data-mobiledraweropen] .siteSidePadding {
+        margin-right: -7%;
+        margin-left: 7%;
+    }
+    body[data-mobiledraweropen] .matchBootstrapGridPadding,
+    body[data-mobiledraweropen] .container-fluid {
+        padding: 0;
+    }
+    body[data-mobiledraweropen] #sidebarToggle {
+        right: 30px;
+    }
+    .mobileDrawer.mobileBackgroundDark .siteNavLink a {
+        background: none;
+    }
+    .mobileDrawer.mobileBackgroundDark .siteNavLink a.navLevel2 {
+        color: #F94E54;
+        padding-top: 4px;
+        padding-bottom: 4px;
+    }
+    .mobileDrawer.mobileBackgroundDark .siteNavLink a.navLevel2:hover {
+        color: #FFF;
+    }
+}
+
+
+/* Sidebar Extras */
+
+#shellSidebar .socialMedia {
+    margin-top: 30px;
+    padding-top: 30px;
+    background: url('/sitetheory/v/1/0/bundles/sitetheorytemplate/images/common/lineDottedSmallSpacedLight.png') repeat-x;
+    background-size: 7px;
+}
+#welcomeContact {
+    padding-bottom: 22px;
+    background: url('/sitetheory/v/1/0/bundles/sitetheorytemplate/images/common/lineDottedSmallSpacedLight.png') repeat-x left bottom;
+    background-size: 7px;
+}
+#welcomeContact a {
+    display: block;
+    margin-bottom: 8px;
+    font-size: 12px;
+    color: #666;
+    letter-spacing: 1px;
+    -webkit-font-smoothing: subpixel-antialiased;
+}
+#welcomeContact a:hover {
+    color: #F94E54;
+}
+@media (min-width: 992px) {
+    #shellSidebar .socialMedia {
+        margin-top: 30px;
+        padding-top: 30px;
+        background: url('/sitetheory/v/1/0/bundles/sitetheorytemplate/images/common/lineDottedSmallSpacedLight.png') repeat-x;
+        background-size: 7px;
+    }
+}
+@media (max-width: 991px) {
+    #siteNavigationSidebar {
+        margin-bottom: 40px;
+        background: url('/sitetheory/v/1/0/bundles/sitetheorytemplate/images/common/lineDottedSmallSpacedLight.png') repeat-x left bottom;
+        background-size: 7px;
+    }
+}
+
+/* Sidebar Modules */
+
+#sidebarModules.verticalModules .moduleContainer {
+    padding: 26px 0;
+    border: none;
+    background: url('/sitetheory/v/1/0/bundles/sitetheorytemplate/images/common/lineDottedSmallSpacedLight.png') repeat-x left bottom;
+    background-size: 7px;
+}
+#sidebarModules h2:first-of-type {
+    font-size: 15px;
+}
+
+
+
+/* MAIN COLUMN */
+
+/* Header Image and Page Title Overlay */
+
+.headerImage {
+    background: #222;
+}
+/* After page is loaded fade in header image */
+@keyframes fadeHeaderImage {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: .6;
+    }
+}
+.headerImage img {
+    opacity: 0;
+}
+.loaded .headerImage img {
+    animation: fadeHeaderImage .3s ease-out both;
+    -webkit-animation: fadeHeaderImage .3s ease-out both;
+}
+
+/* After page is loaded fade in page title */
+@keyframes growPageTitle {
+    0% {
+        transform: scale(.8) translateY(-50%);
+        -webkit-transform: scale(.8) translateY(-50%);
+        opacity: 0;
+    }
+    100% {
+        transform: scale(1) translateY(-50%);
+        -webkit-transform: scale(1) translateY(-50%);
+        opacity: 1;
+    }
+}
+.loaded .headerImageTrue .headerImageContainer h1#pageTitle {
+    animation: growPageTitle .2s ease-out .2s both;
+    -webkit-animation: growPageTitle .2s ease-out .2s both;
+}
+.headerImageTrue .headerImageContainer h1#pageTitle {
+    transform: translateY(-50%);
+    -webkit-transform: translateY(-50%);
+    position: absolute;
+    top: 50%;
+    right: 8%;
+    left: 8%;
+    z-index: 10;
+    margin: 0;
+    opacity: 0;
+    color: #FFF;
+    text-align: center;
+}
+@media (max-width:768px) {
+    .headerImageTrue .headerImageContainer h1#pageTitle {
+        font-size: 38px;
+    }
+}
+@media (max-width:600px) {
+    .headerImageTrue .headerImageContainer h1#pageTitle {
+        font-size: 32px;
+    }
+}
+
+/* Page title when there is no header image */
+h1#pageTitle {
+    margin: 20px 0 50px 0;
+}
+.headerImageTrue .standardPageTitle {
+    display: none;
+}
+
+/* Content background */
+#contentCustomBackground {
+    padding: 60px 8%;
+    min-height: 400px;
+    background: #EFEFEF;
+}
+.landingStream #contentCustomBackground {
+    padding: 0;
+    min-height: 400px;
+    background: none;
+}
+
+
+/* SITEMAP */
+
+.dark #siteMap .siteMapHeader {
+    border-bottom: 1px solid #333;
+}
+.dark #siteMap .siteMapColumn a {
+    color: #555;
+}
+.dark #siteMap .siteMapColumn a:hover {
+    color: #CCC;
+}
+.dark #siteMap .siteMapHeader a {
+    color: #888;
+}
+.dark #siteMap .siteMapHeader a:hover {
+    color: #CCC;
+}
+
+
+/* FOOTER */
+
+#footer {
+    padding-top: 0;
+}
+#footer .container-fluid {
+    padding-top: 40px;
+    border-top: 1px dotted #444;
+}
+.dark #footerSiteInfo,
+#footer {
+    color: #555;
+}
+.dark #footerSiteInfo a {
+    color: #666;
+}
+.dark #footerSiteInfo a:hover {
+    color: #CCC;
+}
+#footerCredit a .creditText {
+    font-size: 9px;
+}
+.dark #footerCredit a .creditText {
+    color: #555;
+}
+.dark #footerCredit a:hover .creditText {
+    color: #CCC;
+}
+
+
+
+
+/* LANDING PAGE STREAM */
+
+#welcomeImage img {
+    width: 100%;
+}
+#shellSidebar #welcomeImage {
+    margin-bottom: 30px;
+}
+#welcomeText {
+    margin: 30px 0;
+    color: #888;
+    font-size: 16px;
+    line-height: 1.5;
+}
+.landingStream #shellSidebar .socialMedia {
+    margin-top: 0;
+    padding-top: 0;
+    background: none;
+}
+@media (min-width:992px) {
+    .landingStream #siteNavigationSidebar {
+        display: none;
+    }
+}
+@media (max-width: 991px) {
+    /* Hide welcome elements in sidebar/mobile drawer */
+    .landingStream #shellSidebar #welcomeText,
+    .landingStream #shellSidebar #welcomeImage {
+        display: none;
+    }
+
+    /* Reveal welcome elements in header */
+    .landingStream #header1 {
+        position: relative;
+        display: block;
+        margin-bottom: 2px;
+    }
+    .landingStream #logoArea {
+        transform: translateY(-50%);
+        -webkit-transform: translateY(-50%);
+        position: absolute;
+        top: 50%;
+        left: 0;
+        width: 50%;
+        padding: 40px 0;
+    }
+    .landingStream #siteName {
+        font-size: 32px;
+    }
+    /* Darken photo behind menu hamburger icon */
+    .landingStream #welcomeImageDarken {
+        transform: translate(50%,-70%);
+        -webkit-transform: translate(50%,-70%);
+        position: absolute;
+        top: 0;
+        right: 0;
+        z-index: 2;
+        width: 400px;
+        height: 400px;
+        background: radial-gradient(rgba(0,0,0,.5), rgba(0,0,0,.2), rgba(0,0,0,0), rgba(0,0,0,0));
+        background: -webkit-radial-gradient(rgba(0,0,0,.5), rgba(0,0,0,.2), rgba(0,0,0,0), rgba(0,0,0,0));
+    }
+    .landingStream #header1 #welcomeImage {
+        float: right;
+        width: 50%;
+        background: #333;
+    }
+    .landingStream #header1 #welcomeImage img {
+        opacity: .9;
+    }
+    .landingStream #mobileWelcomeText {
+        margin-bottom: 2px;
+        padding: 40px 8%;
+        background: rgba(0,0,0,.1);
+    }
+}
+@media (max-width:700px) {
+    /* Make all elements display in a single column */
+    .landingStream #logoArea {
+        transform: none;
+        -webkit-transform: none;
+        position: relative;
+        top: inherit;
+        left: inherit;
+        width: 100%;
+    }
+    .landingStream #typeLogo {
+        display: block;
+        margin: 0;
+        padding-left: 8%;
+        width: 50%;
+    }
+    .landingStream #siteName {
+        font-size: 32px;
+    }
+    .landingStream #welcomeImageDarken {
+        display: none;
+    }
+    .landingStream #header1 #welcomeImage {
+        float: none;
+        width: 100%;
+    }
+    .landingStream #header1 #welcomeImage img {
+        opacity: 1;
+    }
+}
+
+
+
+/* Home Stream Module Styling */
+
+.homeVerticalPadding {
+    padding-top: 0;
+    padding-bottom: 40px;
+}
+#stream-layoutLanding .divTable {
+    margin-top: 2px;
+    width: 100%;
+}
+#stream-layoutLanding .divTableCell {
+    vertical-align: top;
+    width: 50%;
+    border: 1px solid #333;
+}
+#moduleRow1 .divTableCell:first-child {
+    border-left: none;
+    background: #EDEDED;
+}
+#moduleRow1 .divTableCell:last-child {
+    border-right: none;
+    background: #CCC;
+}
+#moduleRow2 .divTableCell:first-child {
+    border-left: none;
+    background: #444;
+}
+#moduleRow2 .divTableCell:last-child {
+    border-right: none;
+}
+.landingStream .divTableCell .moduleContainer {
+    padding: 30px;
+}
+.landingStream .divTableCell .moduleContainer.imageType {
+    padding: 0;
+}
+.streamBody .dark .verticalModules .moduleContainer {
+    padding: 40px 0;
+    border-width: 5px;
+}
+.streamBody .verticalModules .moduleContainer:first-child {
+    padding-top: 2px;
+    border: none;
+}
+.moduleContainer h2 {
+    font-size: 20px;
+    font-weight: bold;
+}
+.divTableCell.dark h2,
+.divTableCell.dark h2 a,
+.divTableCell.backgroundAccentColor h2,
+.divTableCell.backgroundAccentColor h2 a {
+    color: #FFF;
+}
+
+#content .modulesUseOverlay .moduleContainer .imageOverlayItems {
+    top: 30px;
+    right: 30px;
+    left: 30px;
+}
+
+/* Media List Type Module */
+.mediaListType ul {
+    background: url('/sitetheory/v/1/0/bundles/sitetheorytemplate/images/common/lineDottedSmallSpaced.png') repeat-x left bottom;
+    background-size: 7px;
+    border: none;
+}
+.mediaListType ul li {
+    background: url('/sitetheory/v/1/0/bundles/sitetheorytemplate/images/common/lineDottedSmallSpaced.png') repeat-x;
+    background-size: 7px;
+    border: none;
+}
+@media (min-width:992px) and (max-width: 1024px) {
+    /* Tighten home page modules at smaller browser sizes */
+    .landingStream .divTableCell .moduleContainer {
+        padding: 24px 20px;
+    }
+    .landingStream #content .divTableCell .moduleContainer .btnMore {
+        margin-top: 12px;
+    }
+    .landingStream #content .divTableCell .moduleContainer h2:first-of-type {
+        margin-bottom: 18px;
+    }
+    #content .modulesUseOverlay .moduleContainer .imageOverlayItems {
+        top: 20px;
+        right: 24px;
+        left: 24px;
+    }
+}
+@media (max-width: 768px) {
+    /* Display home page modules in single column */
+    #stream-layoutLanding .divTable,
+    #stream-layoutLanding .divTableRow {
+        display: block;
+    }
+    #stream-layoutLanding .divTableCell {
+        display: block;
+        margin-bottom: 2px;
+        width: 100%;
+        border: none;
+    }
+}

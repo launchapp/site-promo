@@ -1,0 +1,30 @@
+{% extends 'SitetheoryTemplateBundle::shell.html.twig' %}
+
+{# Load Site CSS #}
+
+{% block link %}
+
+    {{ parent() }}
+
+    {% stylesheets
+    '@SitetheoryTemplateGraylingBundle/Resources/public/css/site.css' filter='?uglifycss' filter='cssrewrite' %}
+    <link rel="stylesheet" href="{{ asset_url }}">
+    {% endstylesheets %}
+
+{% endblock link %}
+
+{# Remove standard header image #}
+{% block headerImageInsideHeader %}
+{% endblock headerImageInsideHeader %}
+
+
+{# Assign unique class to hide regular page title when header image exists and page title occurs inside headerImageContainer #}
+{% block pageTitle %}
+    <h1>It WORKS!</h1>
+{% endblock pageTitle %}
+
+
+
+{% block body %}
+    <h1>It WORKS!</h1>
+{% endblock body %}
