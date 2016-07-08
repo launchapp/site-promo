@@ -222,8 +222,8 @@ h4,
     top: 0;
     left: 0;
     bottom: 0;
-    width: 55%;
-    margin: -3px;
+    width: 52%;
+    margin: -2px;
 }
 .actionButton a:hover .actionButtonHoverMask.left {
     transform: translateX(0);
@@ -258,8 +258,8 @@ h4,
     top: 0;
     right: 0;
     bottom: 0;
-    width: 55%;
-    margin: -3px;
+    width: 52%;
+    margin: -2px;
 }
 .actionButton a:hover .actionButtonHoverMask.right {
     transform: translateX(0);
