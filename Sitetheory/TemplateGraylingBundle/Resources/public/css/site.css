@@ -311,46 +311,46 @@ h4,
 #starsTopLeft.stars {
     top: 50%;
     left: 50%;
+    width: 404px;
 }
 .loaded #starsTopLeft.stars {
     transform-origin: left top;
     -webkit-transform-origin: left top;
     top: 2.5%;
     left: 2.5%;
-    width: 404px;
 }
 #starsTopRight.stars {
     top: 50%;
     right: 50%;
+    width: 290px;
 }
 .loaded #starsTopRight.stars {
     transform-origin: right top;
     -webkit-transform-origin: right top;
     top: 2.5%;
     right: 2.5%;
-    width: 290px;
 }
 #starsBottomRight.stars {
     bottom: 50%;
     right: 50%;
+    width: 8px;
 }
 .loaded #starsBottomRight.stars {
     transform-origin: right bottom;
     -webkit-transform-origin: right bottom;
     bottom: 2.5%;
     right: 2.5%;
-    width: 8px;
 }
 #starsBottomLeft.stars {
     bottom: 50%;
     left: 50%;
+    width: 144px;
 }
 .loaded #starsBottomLeft.stars {
     transform-origin: left bottom;
     -webkit-transform-origin: left bottom;
     bottom: 2.5%;
     left: 2.5%;
-    width: 144px;
 }
 .stars svg g polygon {
     fill: #888;
@@ -415,6 +415,9 @@ h4,
     .hexBolt.four {
         bottom: 9px;
         left: 9px;
+    }
+    .intro {
+        font-size: 15px;
     }
     #logoMark img {
         width: 100px;
