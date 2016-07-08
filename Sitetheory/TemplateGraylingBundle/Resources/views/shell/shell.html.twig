@@ -3,14 +3,8 @@
 {# Load Site CSS #}
 
 {% block link %}
-
     {{ parent() }}
-
-    {% stylesheets
-    '@SitetheoryTemplateGraylingBundle/Resources/public/css/site.css' filter='?uglifycss' filter='cssrewrite' %}
-    <link rel="stylesheet" href="{{ asset_url }}">
-    {% endstylesheets %}
-
+    <link rel="stylesheet" href="{{ asset('bundles/sitetheorytemplategrayling/css/site.css') }}">
 {% endblock link %}
 
 {# Remove standard header image #}
@@ -26,5 +20,57 @@
 
 
 {% block body %}
-    <h1>It WORKS!</h1>
+        {# the appClass allows us to add a class to the whole page, from any extending template, to target CSS in creative ways #}
+<div id="app" class="{% block appClass %}{% endblock appClass %}{{ mobileDrawerDirection|default('') }} {{ streamClass|default('noStreamClass') }}{% if view.viewVersion.settings.disableImage is empty %} headerImageTrue{% endif %}">
+
+    <!-- Main -->
+    {% block main %}
+
+        <div id="siteBackground">
+            <div class="hexBolt one"></div>
+            <div class="hexBolt two"></div>
+            <div class="hexBolt three"></div>
+            <div class="hexBolt four"></div>
+
+            <div id="starsTopLeft">
+
+            </div>
+
+            <div id="landingContent">
+                <div id="logoMark">
+                    <img src="{{ asset('bundles/sitetheorytemplategrayling/images/launchLogoMark.png') }}" alt="">
+                </div>
+                <div id="logoText">
+                    <img src="{{ asset('bundles/sitetheorytemplategrayling/images/launchLogoText.png') }}" alt="">
+                </div>
+                <p class="intro fontPrimary">It's time for for friends to be involved in match-making. We're on it.</p>
+                <div class="actionButton fontPrimary">
+                    <a href="mailto:spacemenaresexy@launchapp.io">
+                        <div class="actionButtonHoverMask left">
+                            <div class="actionButtonHover left"></div>
+                        </div>
+                        <div class="actionButtonHoverMask right">
+                            <div class="actionButtonHover right"></div>
+                        </div>
+                        spacemenaresexy@launchapp.io
+                    </a>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- Content -->
+        {% block content %}
+            <div id="content">
+
+
+            </div>
+        {% endblock content %}
+        <!-- End Content -->
+
+
+    {% endblock main %}
+
+</div>
+
 {% endblock body %}
