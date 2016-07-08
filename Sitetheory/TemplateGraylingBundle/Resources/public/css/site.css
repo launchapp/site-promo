@@ -110,23 +110,25 @@ h4,
 #siteBackground {
     overflow: hidden;
     position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: #FFF;
+    border: 1px solid #000;
+    border-radius: 0;
+}
+.loaded #siteBackground {
+    transition: all .2s ease-out;
+    -webkit-transition: all .2s ease-out;
     top: 22px;
     right: 22px;
     bottom: 22px;
     left: 22px;
-    background: #FFF;
-    border: 1px solid #000;
     border-radius: 17px;
 }
-/* Header 1 is hidden on desktop because the site logo actually occurs in the sidebar when the design has two columns */
-#header1 {
-    overflow: hidden;
-    display: none;
-}
-#siteLogo {
-    float: none;
-    max-width: inherit;
-}
+
+
 .hexBolt {
     position: fixed;
     width: 11px;
@@ -162,8 +164,8 @@ h4,
     text-align: center;
 }
 .loaded #landingContent {
-    transition: .6s opacity ease-out;
-    -webkit-transition: .6s opacity ease-out;
+    transition: .6s opacity ease-out .3s;
+    -webkit-transition: .6s opacity ease-out .3s;
     opacity: 1;
 }
 #logoMark img {
@@ -176,7 +178,7 @@ h4,
 }
 .intro {
     margin: 50px auto 0 auto;
-    max-width: 350px;
+    max-width: 320px;
     font-size: 16px;
     color: #575757;
 }
@@ -184,7 +186,8 @@ h4,
     position: relative;
     display: inline-block;
     margin-top: 60px;
-    padding: 20px 30px;
+    /* 8px of bottom padding are added by the animated border below */
+    padding: 20px 30px 12px 30px;
     font-size: 14px;
     font-weight: bold;
     color: #575757;
@@ -192,20 +195,24 @@ h4,
     border-radius: 9px;
 }
 .actionButton a:hover {
-    color: #222;
+    color: #DFC400;
 }
-.actionButtonHover.left {
+
+.actionButtonHover,
+.actionButtonHoverMask {
     transition: transform .2s ease-out;
     -webkit-transition: transform .2s ease-out;
+    position: absolute;
+}
+.actionButtonHover.left {
     transform: translateX(200px);
     -webkit-transform: translateX(200px);
-    position: absolute;
     top: 0;
     right: 0;
     bottom: 0;
     left: 0;
     margin-right: -20px;
-    border: 2px solid #888;
+    border: 2px solid #FFF;
     border-radius: 9px;
 }
 .actionButton a:hover .actionButtonHover.left {
@@ -214,11 +221,8 @@ h4,
 }
 .actionButtonHoverMask.left {
     overflow: hidden;
-    transition: transform .2s ease-out;
-    -webkit-transition: transform .2s ease-out;
     transform: translateX(-200px);
     -webkit-transform: translateX(-200px);
-    position: absolute;
     top: 0;
     left: 0;
     bottom: 0;
@@ -231,17 +235,14 @@ h4,
 }
 
 .actionButtonHover.right {
-    transition: transform .3s ease-out;
-    -webkit-transition: transform .3s ease-out;
     transform: translateX(-200px);
     -webkit-transform: translateX(-200px);
-    position: absolute;
     top: 0;
     right: 0;
     bottom: 0;
     left: 0;
     margin-left: -20px;
-    border: 2px solid #888;
+    border: 2px solid #FFF;
     border-radius: 9px;
 }
 .actionButton a:hover .actionButtonHover.right {
@@ -250,11 +251,8 @@ h4,
 }
 .actionButtonHoverMask.right {
     overflow: hidden;
-    transition: transform .3s ease-out;
-    -webkit-transition: transform .3s ease-out;
     transform: translateX(200px);
     -webkit-transform: translateX(200px);
-    position: absolute;
     top: 0;
     right: 0;
     bottom: 0;
@@ -265,12 +263,79 @@ h4,
     transform: translateX(0);
     -webkit-transform: translateX(0);
 }
+.actionButtonBorder {
+    transform: scaleX(0);
+    -webkit-transform: scaleX(0);
+    transform-origin: center bottom;
+    -webkit-transform-origin: center bottom;
+    padding-bottom: 8px;
+    border-bottom: 2px solid #FBDC00;
+}
+.actionButton a:hover .actionButtonBorder {
+    transition: transform .2s ease-out;
+    -webkit-transition: transform .2s ease-out;
+    transform: scaleX(1);
+    -webkit-transform: scaleX(1);
+}
 
 
 
-#starsTopLeft {
+.stars {
     position: absolute;
-    top: 55px;
-    left: 55px;
-    width: 494px;
+    opacity: .4;
+    transform: scale(.5);
+    -webkit-transform: scale(.5);
+}
+.loaded .stars {
+    transition: top .4s ease-out, right .4s ease-out, bottom .4s ease-out, left .4s ease-out, transform .6s ease-out, opacity 1s ease-out;
+    -webkit-transition: top .4s ease-out, right .4s ease-out, bottom .4s ease-out, left .4s ease-out, transform .6s ease-out, opacity 1s ease-out;
+    transition-delay: .2s;
+    -webkit-transition-delay: .2s;
+    transform: scale(1);
+    -webkit-transform: scale(1);
+    opacity: 1;
+}
+#starsTopLeft.stars {
+    top: 50%;
+    left: 50%;
+}
+.loaded #starsTopLeft.stars {
+    transform-origin: left top;
+    -webkit-transform-origin: left top;
+    top: 2.5%;
+    left: 2.5%;
+    width: 404px;
+}
+#starsTopRight.stars {
+    top: 50%;
+    right: 50%;
+}
+.loaded #starsTopRight.stars {
+    transform-origin: right top;
+    -webkit-transform-origin: right top;
+    top: 2.5%;
+    right: 2.5%;
+    width: 290px;
+}
+#starsBottomRight.stars {
+    bottom: 50%;
+    right: 50%;
+}
+.loaded #starsBottomRight.stars {
+    transform-origin: right bottom;
+    -webkit-transform-origin: right bottom;
+    bottom: 2.5%;
+    right: 2.5%;
+    width: 8px;
+}
+#starsBottomLeft.stars {
+    bottom: 50%;
+    left: 50%;
+}
+.loaded #starsBottomLeft.stars {
+    transform-origin: left bottom;
+    -webkit-transform-origin: left bottom;
+    bottom: 2.5%;
+    left: 2.5%;
+    width: 144px;
 }
