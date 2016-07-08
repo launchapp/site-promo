@@ -10,7 +10,8 @@
 /* BODY */
 
 body {
-    background: #444;
+    background: linear-gradient(#F2F2F2,#DDD);
+    background: -webkit-linear-gradient(#F2F2F2,#DDD);
 }
 body, p {
     color: #555;
@@ -115,23 +116,24 @@ h4,
     bottom: 0;
     left: 0;
     background: #FFF;
-    border: 1px solid #000;
+    border: 1px solid #DDD;
     border-radius: 0;
 }
 .loaded #siteBackground {
     transition: all .2s ease-out;
     -webkit-transition: all .2s ease-out;
-    top: 22px;
-    right: 22px;
-    bottom: 22px;
-    left: 22px;
-    border-radius: 17px;
+    top: 18px;
+    right: 18px;
+    bottom: 18px;
+    left: 18px;
+    border-radius: 8px;
 }
 
 
 /* OUTER BORDER BOLTS */
 
 .hexBolt {
+    display: none;
     position: fixed;
     width: 11px;
     height: 12px;
@@ -203,7 +205,7 @@ h4,
     font-weight: bold;
     color: #575757;
     border: 2px solid #FBDC00;
-    border-radius: 9px;
+    border-radius: 6px;
 }
 .actionButton a:hover {
     color: #DFC100;
@@ -224,7 +226,7 @@ h4,
     left: 0;
     margin-right: -16px;
     border: 2px solid #FFF;
-    border-radius: 9px;
+    border-radius: 6px;
 }
 .actionButton a:hover .actionButtonHover.left {
     transform: translateX(0);
@@ -254,7 +256,7 @@ h4,
     left: 0;
     margin-left: -16px;
     border: 2px solid #FFF;
-    border-radius: 9px;
+    border-radius: 6px;
 }
 .actionButton a:hover .actionButtonHover.right {
     transform: translateX(0);
@@ -302,8 +304,8 @@ h4,
 .loaded .stars {
     transition: top .4s ease-out, right .4s ease-out, bottom .4s ease-out, left .4s ease-out, transform .6s ease-out, opacity 1s ease-out;
     -webkit-transition: top .4s ease-out, right .4s ease-out, bottom .4s ease-out, left .4s ease-out, transform .6s ease-out, opacity 1s ease-out;
-    transition-delay: .5s;
-    -webkit-transition-delay: .5s;
+    transition-delay: .2s;
+    -webkit-transition-delay: .2s;
     transform: scale(1);
     -webkit-transform: scale(1);
     opacity: 1;
@@ -353,7 +355,7 @@ h4,
     left: 2.5%;
 }
 .stars svg g polygon {
-    fill: #888;
+    fill: #999;
 }
 
 @keyframes starTwinkle {
