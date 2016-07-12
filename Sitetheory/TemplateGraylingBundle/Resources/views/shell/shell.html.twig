@@ -103,26 +103,22 @@
                     </div>
                     <p class="intro fontPrimary">It's time for a dating app that involves friends. We're on it.</p>
 
-                    <div class="btnLoud">
-                        <div class="borderAnimated"></div>
-                        <div class="fontPrimary bold btn btnRelative action" data-plugin="AddClass Dim" data-class="active" data-target="#betaSignup" data-event="click">
-                            <span class="btnGradient"></span>
-                            <span class="btnText">Join Beta</span>
+
+                    <div class="actionButton fontPrimary"  data-plugin="AddClass Dim" data-class="active" data-target="#betaSignup" data-event="click">
+                        <div class="actionButtonHoverMask left">
+                        <div class="actionButtonHover left"></div>
                         </div>
+                        <div class="actionButtonHoverMask right">
+                            <div class="actionButtonHover right"></div>
+                        </div>
+                        Reserve a Spot
+                        <div class="actionButtonBorder"></div>
                     </div>
 
-                    <div class="actionButton fontPrimary">
-                        <a href="mailto:spacemenaresexy@launchapp.io">
-                            <div class="actionButtonHoverMask left">
-                                <div class="actionButtonHover left"></div>
-                            </div>
-                            <div class="actionButtonHoverMask right">
-                                <div class="actionButtonHover right"></div>
-                            </div>
-                            hello@launchapp.io
-                            <div class="actionButtonBorder"></div>
-                        </a>
+                    <div class="contactEmail fontSecondary">
+                        <a href="mailto:hello@launchapp.io">hello@launchapp.io</a>
                     </div>
+
                 </div>
             </div>
 
@@ -152,9 +148,11 @@
                     <div class="note fontSecondary">You rock! We'll let you know when the app is ready.</div>
                 </div>
                 <form data-id="embedded_signup:form" class="form" name="embedded_signup" method="POST" action="https://visitor2.constantcontact.com/api/signup">
-                    <div class="logo">{% embed '@SitetheoryTemplateAdminBundle/Resources/public/images/siteTheoryLogo.svg'%}{%  block id  %}betaLogoVector{% endblock %}{% endembed %}</div>
+                    <div class="logo">
+                        <img src="{{ asset('bundles/sitetheorytemplategrayling/images/launchLogoMark.png') }}" alt="">
+                    </div>
                     <h2 class="betaTitle">Beta Signup</h2>
-                    <p class="note fontSecondary">Be among the first to join and help us create an awesome dating community.</p>
+                    <p class="note fontBody">Be among the first to join and help us create an awesome dating community.</p>
                     <!-- The following code must be included to ensure your sign-up form works properly. -->
                     <input data-id="ca:input" type="hidden" name="ca" value="a84d2d17-dca3-4f96-b76c-459018f0b788">
                     <input data-id="list:input" type="hidden" name="list" value="1924932799">
@@ -165,7 +163,7 @@
                         <input class="form-control smallLabel fontPrimary" data-id="Email Address:input" type="text" name="email" value="" maxlength="80" placeholder="Email Address">
                     </div>
                     <div class="signupAction">
-                        <button type="submit" class="fontPrimary bold btn btnRelative" data-enabled="enabled">
+                        <button type="submit" class="fontPrimary bold btn positionAnchor" data-enabled="enabled">
                             <span class="btnGradient"></span>
                             <span class="btnText">Sign Up</span>
                         </button>

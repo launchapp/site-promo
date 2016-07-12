@@ -3,15 +3,14 @@
 /* LOAD FONTS */
 
 
-@import url(//fonts.googleapis.com/css?family=Glegoo:400,700);
+@import 'https://fonts.googleapis.com/css?family=Glegoo|Roboto+Condensed:400,700|Roboto+Slab:300,400';
 
 
 
 /* BODY */
 
 body {
-    background: linear-gradient(#F2F2F2,#DDD);
-    background: -webkit-linear-gradient(#F2F2F2,#DDD);
+    background: #F2F2F2;
 }
 body, p {
     color: #555;
@@ -21,24 +20,34 @@ body, p {
 /* LINKS & BUTTONS */
 
 a:link, a:visited, a:active{
-    color: #F94E54;
+    color: #222;
 }
 a:hover {
-    color: #333;
+    color: #888;
 }
+
 .btn,
 .btn:link,
 .btn:visited,
 .btn:active {
-    font-size: 11px;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    background-color: #F94E54;
+    font-size: 16px;
+    background-color: #FBDC00;
+    border-radius: 6px;
 }
 .btn:hover {
     background-color: #222;
 }
-
+.btnGradient{
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    border-radius: 4px;
+    background: -webkit-linear-gradient(rgba(255,255,255, .3), rgba(255, 255, 255, 0));
+    background: -moz-linear-gradient(rgba(255,255,255, .3), rgba(255, 255, 255, 0));
+    background: linear-gradient(rgba(255,255,255, .3), rgba(255, 255, 255, 0));
+}
 
 /* TITLES & HEADERS */
 
@@ -97,6 +106,14 @@ h4,
 }
 
 
+.fontBody,
+.fontBody p {
+    font-family: 'Roboto Slab', sans-serif;
+    font-weight: 300;
+}
+
+
+
 /* BACKGROUNDS */
 
 /* This color is used for header bars and date boxes and must be dark enough to read reversed text in. */
@@ -116,7 +133,6 @@ h4,
     bottom: 0;
     left: 0;
     background: #FFF;
-    border: 1px solid #DDD;
     border-radius: 0;
 }
 .loaded #siteBackground {
@@ -127,35 +143,6 @@ h4,
     bottom: 18px;
     left: 18px;
     border-radius: 8px;
-}
-
-
-/* OUTER BORDER BOLTS */
-
-.hexBolt {
-    display: none;
-    position: fixed;
-    width: 11px;
-    height: 12px;
-    opacity: .4;
-    background: url('../images/hexBolt.png') no-repeat;
-    background-size: 11px;
-}
-.hexBolt.one {
-    top: 11px;
-    left: 11px;
-}
-.hexBolt.two {
-    top: 11px;
-    right: 11px;
-}
-.hexBolt.three {
-    right: 11px;
-    bottom: 11px;
-}
-.hexBolt.four {
-    bottom: 11px;
-    left: 11px;
 }
 
 
@@ -195,19 +182,20 @@ h4,
 
 /* ACTION BUTTON */
 
-.actionButton a {
+.actionButton {
     position: relative;
     display: inline-block;
+    cursor: pointer;
     margin-top: 50px;
     /* 8px of bottom padding are added by the animated border below */
-    padding: 20px 30px 12px 30px;
-    font-size: 14px;
+    padding: 16px 30px 8px 30px;
+    font-size: 15px;
     font-weight: bold;
     color: #575757;
     border: 2px solid #FBDC00;
     border-radius: 6px;
 }
-.actionButton a:hover {
+.actionButton:hover {
     color: #DFC100;
 }
 
@@ -225,10 +213,10 @@ h4,
     bottom: 0;
     left: 0;
     margin-right: -16px;
-    border: 2px solid #FFF;
+    border: 4px solid #FFF;
     border-radius: 6px;
 }
-.actionButton a:hover .actionButtonHover.left {
+.actionButton:hover .actionButtonHover.left {
     transform: translateX(0);
     -webkit-transform: translateX(0);
 }
@@ -242,7 +230,7 @@ h4,
     width: 55%;
     margin: -2px;
 }
-.actionButton a:hover .actionButtonHoverMask.left {
+.actionButton:hover .actionButtonHoverMask.left {
     transform: translateX(0);
     -webkit-transform: translateX(0);
 }
@@ -255,10 +243,10 @@ h4,
     bottom: 0;
     left: 0;
     margin-left: -16px;
-    border: 2px solid #FFF;
+    border: 4px solid #FFF;
     border-radius: 6px;
 }
-.actionButton a:hover .actionButtonHover.right {
+.actionButton:hover .actionButtonHover.right {
     transform: translateX(0);
     -webkit-transform: translateX(0);
 }
@@ -272,7 +260,7 @@ h4,
     width: 55%;
     margin: -2px;
 }
-.actionButton a:hover .actionButtonHoverMask.right {
+.actionButton:hover .actionButtonHoverMask.right {
     transform: translateX(0);
     -webkit-transform: translateX(0);
 }
@@ -284,7 +272,7 @@ h4,
     padding-bottom: 8px;
     border-bottom: 2px solid #FBDC00;
 }
-.actionButton a:hover .actionButtonBorder {
+.actionButton:hover .actionButtonBorder {
     transition: transform .2s ease-out;
     -webkit-transition: transform .2s ease-out;
     transform: scaleX(1);
@@ -396,28 +384,6 @@ h4,
         bottom: 16px;
         left: 16px;
     }
-    .hexBolt {
-        width: 8px;
-        height: 10px;
-        opacity: .7;
-        background-size: 8px;
-    }
-    .hexBolt.one {
-        top: 9px;
-        left: 9px;
-    }
-    .hexBolt.two {
-        top: 9px;
-        right: 9px;
-    }
-    .hexBolt.three {
-        right: 9px;
-        bottom: 9px;
-    }
-    .hexBolt.four {
-        bottom: 9px;
-        left: 9px;
-    }
     .intro {
         font-size: 15px;
     }
@@ -440,4 +406,172 @@ h4,
     .loaded #starsBottomLeft.stars {
         width: 100px;
     }
+}
+
+
+
+/* BETA SIGNUP FORM */
+
+/* TODO: remove betaSignup when complete */
+
+
+#betaSignup {
+    transition: transform .2s ease-out;
+    -webkit-transition: transform .2s ease-out;
+    transform: scale(.4);
+    -webkit-transform: scale(.4);
+    position: fixed;
+    z-index: 1001;
+    top: 0px;
+    left: 0px;
+    opacity: 0;
+    width: 100%;
+    text-align: center;
+}
+#betaSignup.active {
+    transform: scale(1);
+    -webkit-transform: scale(1);
+    opacity: 1;
+}
+#betaSignupContent {
+    display: none;
+    position: relative;
+    width: 400px;
+    margin: 40px auto 80px auto;
+    padding: 40px;
+    background-color: rgba(255,255,255,.8);
+    border: 1px solid rgba(255,255,255,.15);
+    -webkit-box-shadow: 0 0 3px rgba(0,0,0,.1);
+    box-shadow: 0 0 3px rgba(0,0,0,.1);
+}
+/* Internet Explorer adjustment */
+.msie #betaSignupContent {
+    background-color: #FFF;
+}
+#betaSignup.active #betaSignupContent {
+    display: block;
+}
+#betaSignup .btnClose {
+    position: absolute;
+    top: 18px;
+    right: 16px;
+    float: none;
+}
+#betaSignup .btnClose svg g,
+#betaSignup .btnClose svg .oval {
+    stroke: rgba(0,0,0,.2);
+}
+#betaSignup .btnClose:hover svg g,
+#betaSignup .btnClose:hover svg .oval {
+    stroke: #000;
+}
+#betaSignup .logo img {
+    margin: 0 auto;
+    width: 80px;
+}
+#betaSignupContent h2 {
+    margin-bottom: 26px;
+    font-family: 'Roboto Condensed', sans-serif;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 24px;
+}
+#betaSignup .note {
+    margin-bottom: 26px;
+}
+#betaSignup .form-control {
+    height: 50px;
+    text-align: center;
+    font-size: 15px;
+    letter-spacing: .02em;
+    color: #333;
+}
+#betaSignup .disclaimer {
+    transform: translateY(80px);
+    -webkit-transform: translateY(80px);
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    color: #999;
+    font-size: 10px;
+}
+#betaSignup #success_message {
+    transition: opacity .2s ease-out;
+    -webkit-transition: opacity .2s ease-out;
+    position: absolute;
+    top: 55%;
+    left: 20%;
+    width: 60%;
+}
+.msie #betaSignup  #success_message {
+    position: relative;
+    top: inherit;
+    left: inherit;
+}
+#betaSignup #success_message h2 {
+    margin-bottom: 10px;
+}
+#betaSignup .btn {
+    transition: all .2s ease-out;
+    -webkit-transition: all .2s ease-out;
+    margin: 16px auto 0 auto;
+    padding: 14px 35px;
+    color: #222;
+    font-size: 15px;
+    background: #FBDC00;
+    border: 2px solid #FFF;
+}
+#betaSignup .btn .btnGradient {
+    opacity: 1;
+}
+#betaSignup .btn:hover {
+    background: #FFF;
+    border: 2px solid #FBDC00;
+}
+
+/* On success */
+/* Hide Form after Success (display:none is removed) */
+#betaSignup #success_message[style=""] + form .logo {
+    transition: all .2s ease-out;
+    -webkit-transition: all .2s ease-out;
+    transform: translateY(80px);
+    -webkit-transform: translateY(80px);
+}
+#betaSignup #success_message[style=""] + form .btnClose,
+#betaSignup #success_message[style=""] + form .form-control,
+#betaSignup #success_message[style=""] + form .signupAction,
+#betaSignup #success_message[style=""] + form .betaTitle,
+#betaSignup #success_message[style=""] + form p {
+    transition: all .2s ease-out;
+    -webkit-transition: all .2s ease-out;
+    transform: scale(0);
+    -webkit-transform: scale(0);
+    opacity: 0;
+}
+@media (max-width: 600px) {
+    #betaSignupContent {
+        width: 300px;
+        padding: 30px;
+    }
+}
+
+
+/**
+ Screen Dim
+ **/
+
+body.dim {
+    background-color: #F2F2F2;
+}
+body.dim #app {
+    filter: blur(10px);
+    -webkit-filter: blur(10px);
+    opacity: .5;
+}
+
+
+.contactEmail {
+    margin-top: 30px;
+    font-size: 13px;
 }
