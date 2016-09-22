@@ -1,0 +1,226 @@
+{% extends 'SitetheoryTemplateBundle::shell.html.twig' %}
+
+{# Load Site CSS #}
+
+{% block link %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('bundles/sitetheorytemplatecustom/css/site.css') }}">
+{% endblock link %}
+
+{# Remove standard header image #}
+{% block headerImageInsideHeader %}
+{% endblock headerImageInsideHeader %}
+
+
+{# Assign unique class to hide regular page title when header image exists and page title occurs inside headerImageContainer #}
+{% block pageTitle %}
+    <h1 id="pageTitle" class="standardPageTitle" {{ block('editableView') }} data-type="text" data-property="viewVersion.title" data-render="click">{{ view.viewVersion.title }}</h1>
+{% endblock pageTitle %}
+
+
+{# Place header image in content main column #}
+{% block headerImageMainColumn %}
+    <div class="headerImageContainer positionAnchor">
+        {# TODO: wrap the editable in a check to see if this is edit mode #}
+        <h1 id="pageTitle" {{ block('editableView') }} data-type="text" data-property="viewVersion.title" data-render="click">{{ view.viewVersion.title }}</h1>
+        {# TODO: make this image dynamic #}
+        {#
+        <div class="headerImage">
+            <img src="{{ asset('bundles/'~environment.site.designVersion.template.shortcut|lower~'/images/emphasis/general/headerImage.jpg') }}" alt="Header Image">
+        </div>
+        #}
+    </div>
+{% endblock headerImageMainColumn %}
+
+
+
+{# Shell Settings #}
+
+{% set socialStyle = 'reverse' %}
+{% set mobileDrawerDirection = 'mobileDrawerRight' %}
+{% set headerBrightness = 'light' %}
+{% set sidebarBrightness = 'light' %}
+{% set siteMapBrightness = 'light' %}
+{% set footerBrightness = 'light' %}
+
+
+{# Header elements for retracting header and mobile devices #}
+{% block header1 %}
+    {# Background color in #header1 is hidden on desktop #}
+    <div class="matchBootstrapGridPadding">
+        <div id="header1" class="clearfix">
+            <div id="logoArea">
+                {{ block('siteLogo') }}
+            </div>
+            <div class="actionButton fontPrimary"  data-plugin="AddClass Dim" data-class="active" data-target="#betaSignup" data-event="click">
+                <div class="actionButtonHoverMask left">
+                    <div class="actionButtonHover left"></div>
+                </div>
+                <div class="actionButtonHoverMask right">
+                    <div class="actionButtonHover right"></div>
+                </div>
+                Reserve a Spot
+                <div class="actionButtonBorder"></div>
+            </div>
+
+            {{ block('navMainContainer') }}
+        </div>
+    </div>
+{% endblock header1 %}
+
+
+
+
+
+{% block siteLogo %}
+    <!-- Site Logo -->
+    <div id="siteLogo">
+        {% block siteLogoImage %}
+            <div id="imageLogo">
+                <a id="logoMark" href="/">
+                    <img src="{{ asset('bundles/sitetheorytemplatecustom/images/launchLogoMark.png') }}" alt="{{ environment.site.name }} Logo">
+                </a>
+            </div>
+        {% endblock siteLogoImage %}
+        {% block siteLogoText %}
+            <div id="logoText">
+                <img src="{{ asset('bundles/sitetheorytemplatecustom/images/launchLogoText.png') }}" alt="{{ environment.site.name }}">
+            </div>
+        {% endblock siteLogoText %}
+    </div>
+    <!-- End Site Logo -->
+{% endblock siteLogo %}
+
+
+
+{# Add elements to top of sidebar. Hide logo when sidebar becomes mobile drawer #}
+{% block sidebarExtrasTop %}
+    <div id="logoArea" class="backgroundAccentColor hidden-xs hidden-sm">
+        {{ block('siteLogo') }}
+    </div>
+{% endblock sidebarExtrasTop %}
+
+{% block sidebarExtrasBottom %}
+    {{ block('socialMedia') }}
+{% endblock sidebarExtrasBottom %}
+
+
+{# Move main navigation into main column #}
+{% block mainColumnExtras %}
+    {{ block('navMainContainer') }}
+{% endblock mainColumnExtras %}
+
+
+{% block memberLogin %}
+{% endblock memberLogin %}
+
+
+{% block siteContact %}
+    <div class="{% block siteContactLabel %}siteContact{% endblock siteContactLabel %}">
+        {% block sitePhone %}
+            <span class="phone">
+                <a href="tel://925-330-9447">925-330-9447</a>
+            </span>
+        {% endblock sitePhone %}
+        {% block siteEmail %}
+            <span class="email">
+                <a href="mailto:hello@launchapp.io">hello@launchapp.io</a>
+            </span>
+        {% endblock siteEmail %}
+        {% block siteStreet %}
+            <span class="address">
+                1330 N. Broadway 200H
+            </span>
+        {% endblock siteStreet %}
+        {% block siteCityStateZip %}
+            <span class="city">
+                Walnut Creek, CA 94596
+            </span>
+        {% endblock siteCityStateZip %}
+        {% block siteCountry %}
+            <span class="country">
+                United States
+            </span>
+        {% endblock siteCountry %}
+    </div>
+{% endblock siteContact %}
+
+
+{% block socialMedia %}
+    <div class="socialMedia {{ socialStyle|default('basicStyle') }}">
+        <ul class="list-inline">
+            <li class="facebook">
+                <a href="https://www.facebook.com/launchdating" target="_blank">
+                    {% embed '@SitetheoryCoreBundle/Resources/public/images/icons/social/facebook.svg' %}{% block id %}footerFacebookIcon{% endblock %}{% endembed %}
+                </a>
+            </li>
+            <li class="twitter">
+                <a href="https://twitter.com/launchdating" target="_blank">
+                    {% embed '@SitetheoryCoreBundle/Resources/public/images/icons/social/twitter.svg' %}{% block id %}footerTwitterIcon{% endblock %}{% endembed %}
+                </a></li>
+            <li class="instagram">
+                <a href="https://www.instagram.com/launchdating" target="_blank">
+                    {% embed '@SitetheoryCoreBundle/Resources/public/images/icons/social/instagram.svg' %}{% block id %}footerInstagramIcon{% endblock %}{% endembed %}
+                </a>
+            </li>
+        </ul>
+    </div>
+{% endblock socialMedia %}
+
+
+
+{% block footerSiteMap %}
+{% endblock footerSiteMap %}
+
+
+
+{% block betaSignup %}
+    <div id="betaSignup">
+        <div id="betaSignupContent" class="springIn borderRadiusDefault">
+            <div id="betaSignupClose" class="btnClose" data-plugin="AddClass Dim" data-class="active" data-target="#betaSignup" data-event="click">
+                <span class="sr-only">Close</span>
+                {% embed '@SitetheoryTemplatePromoBundle/Resources/public/images/icons/close.svg'%}{%  block id  %}iconClose{% endblock %}{% endembed %}
+            </div>
+
+            <div id="success_message" style="display:none;">
+                <h2>Thanks</h2>
+                <div class="note fontSecondary">You rock! We'll let you know when the app is ready.</div>
+            </div>
+            <form data-id="embedded_signup:form" class="form" name="embedded_signup" method="POST" action="https://visitor2.constantcontact.com/api/signup">
+                <div class="logo">
+                    <img src="{{ asset('bundles/sitetheorytemplatecustom/images/launchLogoMark.png') }}" alt="">
+                </div>
+                <h2 class="betaTitle">Beta Signup</h2>
+                <p class="note fontBody">Be among the first to join and help us create an awesome dating community.</p>
+                <!-- The following code must be included to ensure your sign-up form works properly. -->
+                <input data-id="ca:input" type="hidden" name="ca" value="a84d2d17-dca3-4f96-b76c-459018f0b788">
+                <input data-id="list:input" type="hidden" name="list" value="1924932799">
+                <input data-id="source:input" type="hidden" name="source" value="EFD">
+                <input data-id="required:input" type="hidden" name="required" value="list,email">
+                <input data-id="url:input" type="hidden" name="url" value="">
+                <div class="form-group" data-id="Email Address:p">
+                    <input class="form-control smallLabel fontPrimary" data-id="Email Address:input" type="text" name="email" value="" maxlength="80" placeholder="Email Address">
+                </div>
+                <div class="signupAction">
+                    <button type="submit" class="fontPrimary bold btn positionAnchor" data-enabled="enabled">
+                        <span class="btnGradient"></span>
+                        <span class="btnText">Sign Up</span>
+                    </button>
+                </div>
+
+                <p class="disclaimer">By submitting this form, you are granting: Launch Social Inc., 1330 N Broadway, Ste 200H, Walnut Creek, California, 94596, United States, permission to email you. You may unsubscribe via the link found at the bottom of every email.</p>
+            </form>
+        </div>
+        <script type='text/javascript'>
+            var localizedErrMap = {};
+            localizedErrMap['required'] = 		'This field is required.';
+            localizedErrMap['ca'] = 			'An unexpected error occurred while attempting to send email.';
+            localizedErrMap['email'] = 			'Please enter your email address in name@email.com format.';
+            localizedErrMap['generic'] = 		'This field is invalid.';
+            localizedErrMap['shared'] = 		'Sorry, we could not complete your sign-up. Please contact us to resolve this.';
+            var postURL = 'https://visitor2.constantcontact.com/api/signup';
+        </script>
+        <script type='text/javascript' src='https://static.ctctcdn.com/h/contacts-embedded-signup-assets/1.0.2/js/signup-form.js'></script>
+    </div>
+    </div>
+{% endblock betaSignup %}

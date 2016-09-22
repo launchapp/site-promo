@@ -1,0 +1,562 @@
+/* It Works */
+
+/* LOAD FONTS */
+
+
+@import 'https://fonts.googleapis.com/css?family=Glegoo|Roboto+Condensed:400,700|Roboto+Slab:300,400';
+
+
+
+/* BODY */
+
+body {
+    background: #F2F2F2;
+}
+body, p {
+    color: #555;
+}
+
+
+/* LINKS & BUTTONS */
+
+a:link, a:visited, a:active{
+    color: #222;
+}
+a:hover {
+    color: #888;
+}
+
+.btn,
+.btn:link,
+.btn:visited,
+.btn:active {
+    font-size: 16px;
+    background-color: #FBDC00;
+    border-radius: 6px;
+}
+.btn:hover {
+    background-color: #222;
+}
+.btnGradient{
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    border-radius: 4px;
+    background: -webkit-linear-gradient(rgba(255,255,255, .3), rgba(255, 255, 255, 0));
+    background: -moz-linear-gradient(rgba(255,255,255, .3), rgba(255, 255, 255, 0));
+    background: linear-gradient(rgba(255,255,255, .3), rgba(255, 255, 255, 0));
+}
+
+/* TITLES & HEADERS */
+
+h1 {
+    color: #CCC;
+    font-size: 200px;
+    font-weight: 100;
+    text-align: center;
+}
+h2 {
+    color: #313131;
+    font-size: 30px;
+    font-weight: 300;
+}
+h3 {
+    color: #000;
+    font-size: 17px;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+h4 {
+    color: #000;
+    font-size: 12px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+
+/* STANDARD TEXT STYLES */
+
+.pullout {
+    color: #777;
+    font-weight: 300;
+}
+
+
+/* ASSIGN FONTS */
+
+/* .primaryFont will be used for the site's typographical logo and some site headers. It must also be legible at small sizes.  */
+
+h1,
+h2,
+h3,
+h4,
+.fontPrimary,
+.fontPrimary p,
+.fontSecondary,
+.fontSecondary p,
+.fontBody,
+.fontBody p,
+.pullout,
+.btn,
+.moduleContainer h2 {
+    font-family: 'Glegoo', sans-serif;
+}
+
+
+.fontBody,
+.fontBody p {
+    font-family: 'Roboto Slab', sans-serif;
+    font-weight: 300;
+}
+
+
+
+/* BACKGROUNDS */
+
+/* This color is used for header bars and date boxes and must be dark enough to read reversed text in. */
+.backgroundAccentColor {
+    background-color: #F94E54;
+}
+
+
+
+/* SITE BACKGROUND */
+
+#siteBackground {
+    padding: 20px;
+    background: #FFF;
+}
+
+
+/* LANDING CONTENT */
+
+#landingContent {
+    transform: translateY(-50%);
+    -webkit-transform: translateY(-50%);
+    position: absolute;
+    top: 50%;
+    left: 22px;
+    right: 22px;
+    opacity: 0;
+    text-align: center;
+}
+.loaded #landingContent {
+    transition: .6s opacity ease-out 1s;
+    -webkit-transition: .6s opacity ease-out 1s;
+    opacity: 1;
+}
+#logoMark img {
+    margin: 0 auto;
+    width: 116px;
+    max-height: none !important;
+}
+#logoText img {
+    margin: 60px auto 0 auto;
+    width: 180px;
+}
+.intro {
+    margin: 50px auto 0 auto;
+    max-width: 320px;
+    font-size: 16px;
+    color: #575757;
+}
+
+
+/* ACTION BUTTON */
+
+.actionButton {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+    margin-top: 50px;
+    /* 8px of bottom padding are added by the animated border below */
+    padding: 16px 30px 8px 30px;
+    font-size: 15px;
+    font-weight: bold;
+    color: #575757;
+    border: 2px solid #FBDC00;
+    border-radius: 6px;
+}
+.actionButton:hover {
+    color: #DFC100;
+}
+
+.actionButtonHover,
+.actionButtonHoverMask {
+    transition: transform .2s ease-out;
+    -webkit-transition: transform .2s ease-out;
+    position: absolute;
+}
+.actionButtonHover.left {
+    transform: translateX(160px);
+    -webkit-transform: translateX(160px);
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    margin-right: -16px;
+    border: 4px solid #FFF;
+    border-radius: 6px;
+}
+.actionButton:hover .actionButtonHover.left {
+    transform: translateX(0);
+    -webkit-transform: translateX(0);
+}
+.actionButtonHoverMask.left {
+    overflow: hidden;
+    transform: translateX(-160px);
+    -webkit-transform: translateX(-160px);
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 55%;
+    margin: -2px;
+}
+.actionButton:hover .actionButtonHoverMask.left {
+    transform: translateX(0);
+    -webkit-transform: translateX(0);
+}
+
+.actionButtonHover.right {
+    transform: translateX(-160px);
+    -webkit-transform: translateX(-160px);
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    margin-left: -16px;
+    border: 4px solid #FFF;
+    border-radius: 6px;
+}
+.actionButton:hover .actionButtonHover.right {
+    transform: translateX(0);
+    -webkit-transform: translateX(0);
+}
+.actionButtonHoverMask.right {
+    overflow: hidden;
+    transform: translateX(160px);
+    -webkit-transform: translateX(160px);
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 55%;
+    margin: -2px;
+}
+.actionButton:hover .actionButtonHoverMask.right {
+    transform: translateX(0);
+    -webkit-transform: translateX(0);
+}
+.actionButtonBorder {
+    transform: scaleX(0);
+    -webkit-transform: scaleX(0);
+    transform-origin: center bottom;
+    -webkit-transform-origin: center bottom;
+    padding-bottom: 8px;
+    border-bottom: 2px solid #FBDC00;
+}
+.actionButton:hover .actionButtonBorder {
+    transition: transform .2s ease-out;
+    -webkit-transition: transform .2s ease-out;
+    transform: scaleX(1);
+    -webkit-transform: scaleX(1);
+}
+
+
+
+/* STARS */
+
+.stars {
+    position: absolute;
+    opacity: .4;
+    transform: scale(.5);
+    -webkit-transform: scale(.5);
+}
+.loaded .stars {
+    transition: top .4s ease-out, right .4s ease-out, bottom .4s ease-out, left .4s ease-out, transform .6s ease-out, opacity 1s ease-out;
+    -webkit-transition: top .4s ease-out, right .4s ease-out, bottom .4s ease-out, left .4s ease-out, transform .6s ease-out, opacity 1s ease-out;
+    transition-delay: .2s;
+    -webkit-transition-delay: .2s;
+    transform: scale(1);
+    -webkit-transform: scale(1);
+    opacity: 1;
+}
+#starsTopLeft.stars {
+    top: 50%;
+    left: 50%;
+    width: 404px;
+}
+.loaded #starsTopLeft.stars {
+    transform-origin: left top;
+    -webkit-transform-origin: left top;
+    top: 2.5%;
+    left: 2.5%;
+}
+#starsTopRight.stars {
+    top: 50%;
+    right: 50%;
+    width: 290px;
+}
+.loaded #starsTopRight.stars {
+    transform-origin: right top;
+    -webkit-transform-origin: right top;
+    top: 2.5%;
+    right: 2.5%;
+}
+#starsBottomRight.stars {
+    bottom: 50%;
+    right: 50%;
+    width: 8px;
+}
+.loaded #starsBottomRight.stars {
+    transform-origin: right bottom;
+    -webkit-transform-origin: right bottom;
+    bottom: 2.5%;
+    right: 2.5%;
+}
+#starsBottomLeft.stars {
+    bottom: 50%;
+    left: 50%;
+    width: 144px;
+}
+.loaded #starsBottomLeft.stars {
+    transform-origin: left bottom;
+    -webkit-transform-origin: left bottom;
+    bottom: 2.5%;
+    left: 2.5%;
+}
+.stars svg g polygon {
+    fill: #999;
+}
+
+@keyframes starTwinkle {
+    0% { opacity: 1; }
+    50% { opacity: .4; }
+    100% { opacity: 1; }
+}
+.loaded .star {
+    animation: starTwinkle 3s ease-out infinite;
+    -webkit-animation: starTwinkle 3s ease-out infinite;
+}
+.star.two {
+    animation-delay: .3s;
+    -webkit-animation-delay: .3s;
+}
+.star.three {
+    animation-delay: 1.1s;
+    -webkit-animation-delay: 1.1s;
+}
+.star.four {
+    animation-delay: .5s;
+    -webkit-animation-delay: .5s;
+}
+.star.five {
+    animation-delay: .8s;
+    -webkit-animation-delay: .8s;
+}
+
+
+
+/* SMALL MEDIA ADJUSTMENTS */
+
+
+@media (max-width:600px) {
+    .loaded #siteBackground {
+        top: 16px;
+        right: 16px;
+        bottom: 16px;
+        left: 16px;
+    }
+    .intro {
+        font-size: 15px;
+    }
+    #logoMark img {
+        width: 100px;
+    }
+    #logoText img {
+        margin-top: 40px;
+        width: 160px;
+    }
+    .loaded #starsTopLeft.stars {
+        width: 304px;
+    }
+    .loaded #starsTopRight.stars {
+        width: 200px;
+    }
+    .loaded #starsBottomRight.stars {
+        width: 8px;
+    }
+    .loaded #starsBottomLeft.stars {
+        width: 100px;
+    }
+}
+
+
+
+/* BETA SIGNUP FORM */
+
+/* TODO: remove betaSignup when complete */
+
+
+#betaSignup {
+    transition: transform .2s ease-out;
+    -webkit-transition: transform .2s ease-out;
+    transform: scale(.4);
+    -webkit-transform: scale(.4);
+    position: fixed;
+    z-index: 1001;
+    top: 0px;
+    left: 0px;
+    opacity: 0;
+    width: 100%;
+    text-align: center;
+}
+#betaSignup.active {
+    transform: scale(1);
+    -webkit-transform: scale(1);
+    opacity: 1;
+}
+#betaSignupContent {
+    display: none;
+    position: relative;
+    width: 400px;
+    margin: 40px auto 80px auto;
+    padding: 40px;
+    background-color: rgba(255,255,255,.8);
+    border: 1px solid rgba(255,255,255,.15);
+    -webkit-box-shadow: 0 0 3px rgba(0,0,0,.1);
+    box-shadow: 0 0 3px rgba(0,0,0,.1);
+}
+/* Internet Explorer adjustment */
+.msie #betaSignupContent {
+    background-color: #FFF;
+}
+#betaSignup.active #betaSignupContent {
+    display: block;
+}
+#betaSignup .btnClose {
+    position: absolute;
+    top: 18px;
+    right: 16px;
+    float: none;
+}
+#betaSignup .btnClose svg g,
+#betaSignup .btnClose svg .oval {
+    stroke: rgba(0,0,0,.2);
+}
+#betaSignup .btnClose:hover svg g,
+#betaSignup .btnClose:hover svg .oval {
+    stroke: #000;
+}
+#betaSignup .logo img {
+    margin: 0 auto;
+    width: 80px;
+}
+#betaSignupContent h2 {
+    margin-bottom: 26px;
+    font-family: 'Roboto Condensed', sans-serif;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 24px;
+}
+#betaSignup .note {
+    margin-bottom: 26px;
+}
+#betaSignup .form-control {
+    height: 50px;
+    text-align: center;
+    font-size: 15px;
+    letter-spacing: .02em;
+    color: #333;
+}
+#betaSignup .disclaimer {
+    transform: translateY(80px);
+    -webkit-transform: translateY(80px);
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    color: #999;
+    font-size: 10px;
+}
+#betaSignup #success_message {
+    transition: opacity .2s ease-out;
+    -webkit-transition: opacity .2s ease-out;
+    position: absolute;
+    top: 55%;
+    left: 20%;
+    width: 60%;
+}
+.msie #betaSignup  #success_message {
+    position: relative;
+    top: inherit;
+    left: inherit;
+}
+#betaSignup #success_message h2 {
+    margin-bottom: 10px;
+}
+#betaSignup .btn {
+    transition: all .2s ease-out;
+    -webkit-transition: all .2s ease-out;
+    margin: 16px auto 0 auto;
+    padding: 14px 35px;
+    color: #222;
+    font-size: 15px;
+    background: #FBDC00;
+    border: 2px solid #FFF;
+}
+#betaSignup .btn .btnGradient {
+    opacity: 1;
+}
+#betaSignup .btn:hover {
+    background: #FFF;
+    border: 2px solid #FBDC00;
+}
+
+/* On success */
+/* Hide Form after Success (display:none is removed) */
+#betaSignup #success_message[style=""] + form .logo {
+    transition: all .2s ease-out;
+    -webkit-transition: all .2s ease-out;
+    transform: translateY(80px);
+    -webkit-transform: translateY(80px);
+}
+#betaSignup #success_message[style=""] + form .btnClose,
+#betaSignup #success_message[style=""] + form .form-control,
+#betaSignup #success_message[style=""] + form .signupAction,
+#betaSignup #success_message[style=""] + form .betaTitle,
+#betaSignup #success_message[style=""] + form p {
+    transition: all .2s ease-out;
+    -webkit-transition: all .2s ease-out;
+    transform: scale(0);
+    -webkit-transform: scale(0);
+    opacity: 0;
+}
+@media (max-width: 600px) {
+    #betaSignupContent {
+        width: 300px;
+        padding: 30px;
+    }
+}
+
+
+/**
+ Screen Dim
+ **/
+
+body.dim {
+    background-color: #F2F2F2;
+}
+body.dim #app {
+    filter: blur(10px);
+    -webkit-filter: blur(10px);
+    opacity: .5;
+}
+
+
+.contactEmail {
+    margin-top: 30px;
+    font-size: 13px;
+}

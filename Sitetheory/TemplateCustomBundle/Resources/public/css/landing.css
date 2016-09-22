@@ -167,6 +167,7 @@ h4,
 #logoMark img {
     margin: 0 auto;
     width: 116px;
+    max-height: none !important;
 }
 #logoText img {
     margin: 60px auto 0 auto;
