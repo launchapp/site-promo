@@ -20,7 +20,7 @@ body, p {
 /* LINKS & BUTTONS */
 
 a:link, a:visited, a:active{
-    color: #222;
+    color: #F94E54;
 }
 a:hover {
     color: #888;
@@ -182,7 +182,7 @@ h4,
 }
 
 #pageTitle {
-    margin: 30px 0 0 0;
+    margin: 30px 0;
 }
 
 

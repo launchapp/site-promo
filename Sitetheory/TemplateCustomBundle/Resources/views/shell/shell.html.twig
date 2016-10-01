@@ -57,7 +57,7 @@ hide the main page title and this needs to happen before the page title is calle
         {% endblock siteLogoImage %}
         {% block siteLogoText %}
             <div id="logoText">
-                <img src="{{ asset('bundles/sitetheorytemplatecustom/images/launchLogoText.png') }}" alt="{{ environment.site.name }}">
+                <a href="/"><img src="{{ asset('bundles/sitetheorytemplatecustom/images/launchLogoText.png') }}" alt="{{ environment.site.name }}"></a>
             </div>
         {% endblock siteLogoText %}
     </div>
@@ -209,9 +209,11 @@ hide the main page title and this needs to happen before the page title is calle
                     <li>
                         <a  href="/Blog">Blog</a>
                     </li>
+                    {#
                     <li>
                         <a  href="/Team">Team</a>
                     </li>
+                    #}
                 </ul>
             </li>
             <li class="siteMapColumn" style="width:19%;">
