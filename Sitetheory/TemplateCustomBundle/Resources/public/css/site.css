@@ -3,14 +3,14 @@
 /* LOAD FONTS */
 
 
-@import 'https://fonts.googleapis.com/css?family=Glegoo|Roboto+Condensed:400,700|Roboto+Slab:300,400';
+@import '//fonts.googleapis.com/css?family=Fjalla+One|Roboto|Roboto+Slab:300,400,700';
 
 
 
 /* BODY */
 
 body {
-    background: #F2F2F2;
+    background: #FFF;
 }
 body, p {
     color: #555;
@@ -20,7 +20,7 @@ body, p {
 /* LINKS & BUTTONS */
 
 a:link, a:visited, a:active{
-    color: #F94E54;
+    color: #C5BB3E;
 }
 a:hover {
     color: #888;
@@ -52,9 +52,11 @@ a:hover {
 /* TITLES & HEADERS */
 
 h1 {
-    color: #CCC;
-    font-size: 40px;
-    font-weight: 100;
+    color: #474747;
+    font-size: 65px;
+    font-weight: 400;
+    text-transform: uppercase;
+    letter-spacing: -1px;
 }
 h2 {
     color: #313131;
@@ -88,7 +90,9 @@ h4 {
 
 /* .primaryFont will be used for the site's typographical logo and some site headers. It must also be legible at small sizes.  */
 
-h1,
+h1 {
+    font-family: 'Fjalla One', serif;
+}
 h2,
 h3,
 h4,
@@ -101,7 +105,7 @@ h4,
 .pullout,
 .btn,
 .moduleContainer h2 {
-    font-family: 'Glegoo', sans-serif;
+    font-family: 'Roboto Slab', serif;
 }
 
 
@@ -124,13 +128,17 @@ h4,
 
 /* SITE BACKGROUND */
 
-#siteBackground {
-    padding: 20px;
-    background: #FFF;
+.loaded .landingFull #siteBackground {
+    margin: 0;
 }
 
-
 /* HEADER */
+
+#headerContainer {
+    padding: 0 40px 10px 40px;
+    border-bottom: 1px solid #DDD;
+    box-shadow: 0 0 4px #DDD;
+}
 #logoArea {
     max-width: 450px
 }
@@ -315,6 +323,46 @@ h4,
     }
 }
 
+
+/* FULL LANDING PAGE */
+
+#header1 {
+    margin-top: 20px;
+}
+#logoHeader {
+    padding-right: 40px;
+    max-width: 240px;
+}
+#mainNavigationHeader {
+    margin: 30px 0 0 0;
+    max-width: 100%;
+}
+#mainNavigationHeader ul li {
+    padding-left: 35px;
+}
+.siteNavigation a {
+    color: #333;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+.siteNavigation a:hover {
+    color: #999;
+}
+
+
+/* TIER 1 */
+
+#tier1Left {
+    padding-right: 6%;
+    width: 34%;
+}
+#tier1Left p {
+    font-size: 16px;
+    line-height: 1.6;
+}
+#tier1Right {
+    width: 66%;
+}
 
 
 /* BETA SIGNUP FORM */
