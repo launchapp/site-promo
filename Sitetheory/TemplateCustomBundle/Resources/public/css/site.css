@@ -30,7 +30,11 @@ a:hover {
 .btn:link,
 .btn:visited,
 .btn:active {
-    font-size: 16px;
+    padding: 16px 28px;
+    font-size: 15px;
+    font-weight: 400;
+    color: #575757;
+    text-transform: uppercase;
     background-color: #FBDC00;
     border-radius: 6px;
 }
@@ -43,7 +47,7 @@ a:hover {
     right: 0;
     bottom: 0;
     left: 0;
-    border-radius: 4px;
+    border-radius: 6px;
     background: -webkit-linear-gradient(rgba(255,255,255, .3), rgba(255, 255, 255, 0));
     background: -moz-linear-gradient(rgba(255,255,255, .3), rgba(255, 255, 255, 0));
     background: linear-gradient(rgba(255,255,255, .3), rgba(255, 255, 255, 0));
@@ -64,8 +68,8 @@ h2 {
     font-weight: 300;
 }
 h3 {
-    color: #000;
-    font-size: 17px;
+    color: #333;
+    font-size: 15px;
     font-weight: 700;
     text-transform: uppercase;
 }
@@ -84,7 +88,9 @@ h4 {
     color: #777;
     font-weight: 300;
 }
-
+.bodyLarge {
+    font-size: 26px;
+}
 
 /* ASSIGN FONTS */
 
@@ -123,7 +129,9 @@ h4,
 .backgroundAccentColor {
     background-color: #F94E54;
 }
-
+.backgroundDark {
+    background: #282828;
+}
 
 
 /* SITE BACKGROUND */
@@ -139,6 +147,33 @@ h4,
     border-bottom: 1px solid #DDD;
     box-shadow: 0 0 4px #DDD;
 }
+
+
+.borderDashed {
+    margin-top: 20px;
+    padding-top: 20px;
+    background: url('/sitetheory/v/1/0/bundles/sitetheorytemplatecustom/images/borderDashed.png') repeat-x;
+    background-size: 6px;
+}
+.borderDashedLight {
+    margin-top: 20px;
+    padding-top: 20px;
+    background: url('/sitetheory/v/1/0/bundles/sitetheorytemplatecustom/images/borderDashedLight.png') repeat-x;
+    background-size: 6px;
+}
+
+
+
+
+
+
+
+
+
+
+/* ORIGINAL BASIC LANDING */
+
+
 #logoArea {
     max-width: 450px
 }
@@ -341,7 +376,7 @@ h4,
     padding-left: 35px;
 }
 .siteNavigation a {
-    color: #333;
+    color: #494949;
     font-weight: bold;
     text-transform: uppercase;
 }
@@ -360,8 +395,155 @@ h4,
     font-size: 16px;
     line-height: 1.6;
 }
+#tier1Left .borderDashed {
+    margin-top: 35px;
+    padding-top: 35px;
+}
 #tier1Right {
     width: 66%;
+}
+#tier1Right p {
+    padding-top: 10px;
+    font-size: 26px;
+    font-weight: 300;
+}
+
+/* TIER 2 */
+
+#tier2 {
+    position: relative;
+    text-align: center;
+    min-height: 600px;
+    background: url('/sitetheory/v/1/0/bundles/sitetheorytemplatecustom/images/tier2Background.jpg') no-repeat;
+    background-size: cover;
+}
+#tier2 .centerText {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    transform: translateY(-50%);
+}
+#tier2 .siteMaxWidth {
+    max-width: 1040px;
+}
+#tier2 .borderDashedLight {
+    margin-top: 45px;
+    padding-top: 45px;
+}
+#tier2 h1,
+#tier2 p {
+    color: #FFF;
+}
+
+
+/* TIER 3 */
+
+#tier3 .siteMaxWidth {
+    max-width: 1040px;
+}
+#tier3 h1 {
+    margin-bottom: 50px;
+    color: #C5BB3E;
+    text-align: center;
+}
+#tier3 h3 {
+    margin-bottom: 20px;
+    color: #7B7B7B;
+    text-align: center;
+}
+#tier3 p {
+    padding-top: 30px;
+    max-width: 180px;
+    color: #FFF;
+    font-size: 18px;
+}
+#tier3 .rightCol p {
+    text-align: right;
+}
+#tier3 .badAppImage {
+    padding-right: 22px;
+    width: 144px;
+}
+#tier3 .rightCol .badAppImage {
+    padding-left: 22px;
+}
+
+/* TIER 4 */
+
+#tier4 {
+    text-align: center;
+}
+#tier4 h1 {
+    margin-bottom: 50px;
+}
+#tier4 h3 {
+    margin-bottom: 20px;
+}
+#tier4 .bodyLarge {
+    margin: 0 auto;
+    max-width: 940px;
+    font-weight: 300;
+}
+#tier4 #formula {
+    display: table;
+    margin: 40px auto 20px auto;
+    padding: 24px 40px;
+    font-size: 18px;
+    letter-spacing: 1px;
+    border: 1px solid #979797;
+}
+#tier4chart {
+    position: relative;
+    background: url('/sitetheory/v/1/0/bundles/sitetheorytemplatecustom/images/tier4Background.jpg') no-repeat;
+    background-size: cover;
+}
+#tier4chart h3 {
+    color: #FFF;
+    text-transform: none;
+    font-size: 22px;
+}
+#tier4chart p {
+    margin-bottom: 40px;
+    color: #FFF;
+    font-size: 15px;
+}
+#tier4logo {
+    width: 160px;
+    margin: -120px auto 0 auto;
+}
+#tier4 .chartCol {
+    float: left;
+    width: 50%;
+}
+#tier4chart .midline {
+    position: absolute;
+    top: 175px;
+    bottom: 140px;
+    left: 50%;
+    width: 1px;
+    border-right: 1px solid #979797;
+}
+#tier4 .chartIcon {
+    margin: 0 auto 10px auto;
+    width: 137px;
+    text-align: center;
+}
+#tier4 .chartContent {
+    position: relative;
+    z-index: 100;
+    margin-right: -6px;
+    padding-right: 215px;
+    min-height: 220px;
+    background: url('/sitetheory/v/1/0/bundles/sitetheorytemplatecustom/images/tier4connectLeft.png') no-repeat right 70px;
+    background-size: 215px;
+}
+#tier4  .chartCol.right .chartContent {
+    float: right;
+    margin: 0 0 0 -4px;
+    padding: 26px 0 0 191px;
+    background: url('/sitetheory/v/1/0/bundles/sitetheorytemplatecustom/images/tier4connectRight.png') no-repeat left 96px;
+    background-size: 191px;
 }
 
 
