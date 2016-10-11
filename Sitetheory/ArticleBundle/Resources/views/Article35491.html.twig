@@ -1,5 +1,195 @@
-{% extends view.templates.shell %}
+{% extends 'SitetheoryTemplateBundle::shell.html.twig' %}
+
+{# TEMPORARY COMING SOON PAGE #}
+
+{# Load Site CSS #}
+
+{% block link %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('bundles/sitetheorytemplatecustom/css/site.css') }}">
+    <link rel="stylesheet" href="{{ asset('bundles/sitetheorytemplatecustom/css/landing.css') }}">
+{% endblock link %}
+
+{# Remove standard header image #}
+{% block headerImageInsideHeader %}
+{% endblock headerImageInsideHeader %}
+
+
+{# Assign unique class to hide regular page title when header image exists and page title occurs inside headerImageContainer #}
+{% block pageTitle %}
+{% endblock pageTitle %}
+
+
+{% block body %}
+    {# the appClass allows us to add a class to the whole page, from any extending template, to target CSS in creative ways #}
+    <div id="app" class="{% block appClass %}{% endblock appClass %}{{ mobileDrawerDirection|default('') }} {{ streamClass|default('noStreamClass') }}{% if view.viewVersion.settings.disableImage is empty %} headerImageTrue{% endif %}">
+
+        <!-- Main -->
+        {% block main %}
+
+            <div id="siteBackground">
+
+
+                <!-- Start Star SVGs -->
+                {# TODO When we are able to use an embed path to access these SVGs, we can replace the following 4 divs with embed tags rather than all this SVG code #}
+                <div id="starsTopLeft" class="stars">
+                    <svg viewBox="0 0 494 247" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                        <defs></defs>
+                        <g id="starsTopLeftVector" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                            <polygon id="Star-1-Copy-21" class="star one" points="486.905891 8.73753882 483.873884 10.3315595 484.452946 6.95536954 482 4.56433855 485.389887 4.07175908 486.905891 1 488.421895 4.07175908 491.811782 4.56433855 489.358837 6.95536954 489.937899 10.3315595"></polygon>
+                            <polygon id="star1.10" class="star two" points="349 134.885967 345.90983 136.510565 346.5 133.06961 344 130.632713 347.454915 130.130684 349 127 350.545085 130.130684 354 130.632713 351.5 133.06961 352.09017 136.510565"></polygon>
+                            <polygon id="star1.9" class="star three" points="46.3286978 244.25 44.2714494 245.331559 44.6643489 243.04078 43 241.418441 45.3000736 241.08422 46.3286978 239 47.357322 241.08422 49.6573956 241.418441 47.9930467 243.04078 48.3859462 245.331559"></polygon>
+                            <polygon id="star1.8" class="star four" points="77.3179386 214.810224 74.6493058 216.213207 75.1589693 213.241641 73 211.137166 75.9836222 210.70362 77.3179386 208 78.652255 210.70362 81.6358771 211.137166 79.4769078 213.241641 79.9865713 216.213207"></polygon>
+                            <polygon id="star1.7" class="star five" points="56.3286978 183.25 54.2714494 184.331559 54.6643489 182.04078 53 180.418441 55.3000736 180.08422 56.3286978 178 57.357322 180.08422 59.6573956 180.418441 57.9930467 182.04078 58.3859462 184.331559"></polygon>
+                            <polygon id="star1.6" class="star one" points="210.328698 28.25 208.271449 29.3315595 208.664349 27.0407797 207 25.4184405 209.300074 25.0842203 210.328698 23 211.357322 25.0842203 213.657396 25.4184405 211.993047 27.0407797 212.385946 29.3315595"></polygon>
+                            <polygon id="star1.5" class="star two" points="128.328698 68.25 126.271449 69.3315595 126.664349 67.0407797 125 65.4184405 127.300074 65.0842203 128.328698 63 129.357322 65.0842203 131.657396 65.4184405 129.993047 67.0407797 130.385946 69.3315595"></polygon>
+                            <polygon id="star1.4" class="star three" points="112.905891 47.7375388 109.873884 49.3315595 110.452946 45.9553695 108 43.5643386 111.389887 43.0717591 112.905891 40 114.421895 43.0717591 117.811782 43.5643386 115.358837 45.9553695 115.937899 49.3315595"></polygon>
+                            <polygon id="star1.3" class="star four" points="87 82.8859667 83.9098301 84.5105652 84.5 81.0696104 82 78.6327126 85.454915 78.1306841 87 75 88.545085 78.1306841 92 78.6327126 89.5 81.0696104 90.0901699 84.5105652"></polygon>
+                            <polygon id="star1.2" class="star five" points="3.32869781 36.25 1.27144942 37.3315595 1.6643489 35.0407797 0 33.4184405 2.30007362 33.0842203 3.32869781 31 4.357322 33.0842203 6.65739561 33.4184405 4.99304671 35.0407797 5.38594619 37.3315595"></polygon>
+                            <polygon id="star1.1" class="star one" points="25.4316223 16.5667184 22.0746951 18.3315595 22.7158111 14.5935661 20 11.9463046 23.7531587 11.4009387 25.4316223 8 27.1100858 11.4009387 30.8632445 11.9463046 28.1474334 14.5935661 28.7885494 18.3315595"></polygon>
+                        </g>
+                    </svg>
+                </div>
+
+                <div id="starsTopRight" class="stars">
+                    <svg viewBox="0 0 325 241" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                        <defs></defs>
+                        <g id="starsTopRightVector" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                            <polygon id="star2.11" class="star one" points="206 237.885967 202.90983 239.510565 203.5 236.06961 201 233.632713 204.454915 233.130684 206 230 207.545085 233.130684 211 233.632713 208.5 236.06961 209.09017 239.510565"></polygon>
+                            <polygon id="star2.10" class="star two" points="293.051462 200.812746 291.165555 201.804226 291.525731 199.704237 290 198.217017 292.108509 197.910633 293.051462 196 293.994416 197.910633 296.102924 198.217017 294.577193 199.704237 294.93737 201.804226"></polygon>
+                            <polygon id="star2.9" class="star three" points="302.328698 151.25 300.271449 152.331559 300.664349 150.04078 299 148.418441 301.300074 148.08422 302.328698 146 303.357322 148.08422 305.657396 148.418441 303.993047 150.04078 304.385946 152.331559"></polygon>
+                            <polygon id="star2.8" class="star four" points="215.328698 129.25 213.271449 130.331559 213.664349 128.04078 212 126.418441 214.300074 126.08422 215.328698 124 216.357322 126.08422 218.657396 126.418441 216.993047 128.04078 217.385946 130.331559"></polygon>
+                            <polygon id="star2.7" class="star five" points="321.328698 6.25 319.271449 7.33155948 319.664349 5.04077974 318 3.41844052 320.300074 3.08422026 321.328698 1 322.357322 3.08422026 324.657396 3.41844052 322.993047 5.04077974 323.385946 7.33155948"></polygon>
+                            <polygon id="star2.6" class="star one" points="309 50.8859667 305.90983 52.5105652 306.5 49.0696104 304 46.6327126 307.454915 46.1306841 309 43 310.545085 46.1306841 314 46.6327126 311.5 49.0696104 312.09017 52.5105652"></polygon>
+                            <polygon id="star2.5" class="star two" points="286 33.3087733 283.527864 34.6084521 284 31.8556883 282 29.9061701 284.763932 29.5045473 286 27 287.236068 29.5045473 290 29.9061701 288 31.8556883 288.472136 34.6084521"></polygon>
+                            <polygon id="star2.4" class="star three" points="266.52497 35.0636707 263.856337 36.466654 264.366001 33.4950877 262.207031 31.3906128 265.190653 30.9570671 266.52497 28.2534468 267.859286 30.9570671 270.842908 31.3906128 268.683939 33.4950877 269.193603 36.466654"></polygon>
+                            <polygon id="star2.3" class="star four" points="271.175057 20.6974661 268.916984 21.8846058 269.348237 19.3702035 267.521417 17.589494 270.046021 17.2226476 271.175057 14.9349689 272.304094 17.2226476 274.828698 17.589494 273.001878 19.3702035 273.433131 21.8846058"></polygon>
+                            <polygon id="star2.2" class="star five" points="180.051462 48.8127459 178.165555 49.8042261 178.525731 47.7042373 177 46.2170171 179.108509 45.9106329 180.051462 44 180.994416 45.9106329 183.102924 46.2170171 181.577193 47.7042373 181.93737 49.8042261"></polygon>
+                            <polygon id="star2.1" class="star one" points="5.90589114 31.7375388 2.87388367 33.3315595 3.45294557 29.9553695 1 27.5643386 4.38988741 27.0717591 5.90589114 24 7.42189488 27.0717591 10.8117823 27.5643386 8.35883672 29.9553695 8.93789862 33.3315595"></polygon>
+                        </g>
+                    </svg>
+                </div>
+
+                <div id="starsBottomRight" class="stars">
+                    <svg viewBox="0 0 10 10" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                        <defs></defs>
+                        <g id="starsBottomRightVector" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                            <polygon id="star4.1" class="star one" points="5 7.88596668 1.90983006 9.51056516 2.5 6.06961036 1.84796622e-13 3.63271264 3.45491503 3.1306841 5 0 6.54508497 3.1306841 10 3.63271264 7.5 6.06961036 8.09016994 9.51056516"></polygon>
+                        </g>
+                    </svg>
+                </div>
+
+                <div id="starsBottomLeft" class="stars">
+                    <svg viewBox="0 0 174 116" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                        <defs></defs>
+                        <g id="starsBottomLeftVector" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                            <polygon id="star3.7" class="star one" points="170.328698 95.25 168.271449 96.3315595 168.664349 94.0407797 167 92.4184405 169.300074 92.0842203 170.328698 90 171.357322 92.0842203 173.657396 92.4184405 171.993047 94.0407797 172.385946 96.3315595"></polygon>
+                            <polygon id="star3.6"  class="star two" points="84.3286978 105.25 82.2714494 106.331559 82.6643489 104.04078 81 102.418441 83.3000736 102.08422 84.3286978 100 85.357322 102.08422 87.6573956 102.418441 85.9930467 104.04078 86.3859462 106.331559"></polygon>
+                            <polygon id="star3.5"  class="star three" points="50 111.885967 46.9098301 113.510565 47.5 110.06961 45 107.632713 48.454915 107.130684 50 104 51.545085 107.130684 55 107.632713 52.5 110.06961 53.0901699 113.510565"></polygon>
+                            <polygon id="star3.4"  class="star four" points="44.3179386 81.8102239 41.6493058 83.2132072 42.1589693 80.2416409 40 78.137166 42.9836222 77.7036203 44.3179386 75 45.652255 77.7036203 48.6358771 78.137166 46.4769078 80.2416409 46.9865713 83.2132072"></polygon>
+                            <polygon id="star3.3"  class="star five" points="22 82.8859667 18.9098301 84.5105652 19.5 81.0696104 17 78.6327126 20.454915 78.1306841 22 75 23.545085 78.1306841 27 78.6327126 24.5 81.0696104 25.0901699 84.5105652"></polygon>
+                            <polygon id="star3.2"  class="star one" points="4.32869781 22.25 2.27144942 23.3315595 2.6643489 21.0407797 1 19.4184405 3.30007362 19.0842203 4.32869781 17 5.357322 19.0842203 7.65739561 19.4184405 5.99304671 21.0407797 6.38594619 23.3315595"></polygon>
+                            <polygon id="star3.1"  class="star two" points="54.3286978 6.25 52.2714494 7.33155948 52.6643489 5.04077974 51 3.41844052 53.3000736 3.08422026 54.3286978 1 55.357322 3.08422026 57.6573956 3.41844052 55.9930467 5.04077974 56.3859462 7.33155948"></polygon>
+                        </g>
+                    </svg>
+                </div>
+                <!-- End Star SVGs -->
+
+                <div id="landingContent">
+                    <div id="logoMark">
+                        <img src="{{ asset('bundles/sitetheorytemplatecustom/images/launchLogoMark.png') }}" alt="">
+                    </div>
+                    <div id="logoText">
+                        <img src="{{ asset('bundles/sitetheorytemplatecustom/images/launchLogoText.png') }}" alt="">
+                    </div>
+                    <p class="intro fontPrimary">Anonymity brings out the worst in people. It's time for a dating app that involves friends. We're on it.</p>
+
+
+                    <div class="actionButton fontPrimary"  data-plugin="AddClass Dim" data-class="active" data-target="#betaSignup" data-event="click">
+                        <div class="actionButtonHoverMask left">
+                            <div class="actionButtonHover left"></div>
+                        </div>
+                        <div class="actionButtonHoverMask right">
+                            <div class="actionButtonHover right"></div>
+                        </div>
+                        Reserve a Spot
+                        <div class="actionButtonBorder"></div>
+                    </div>
+
+                    <div class="contactEmail fontSecondary">
+                        <a href="mailto:hello@launchapp.io">hello@launchapp.io</a>
+                    </div>
+
+
+                </div>
+            </div>
+
+            <!-- Content -->
+            {% block content %}
+                <div id="content">
+
+                </div>
+            {% endblock content %}
+            <!-- End Content -->
+
+
+        {% endblock main %}
+
+    </div>
+
+    {% block betaSignup %}
+        <div id="betaSignup">
+            <div id="betaSignupContent" class="springIn borderRadiusDefault">
+                <div id="betaSignupClose" class="btnClose" data-plugin="AddClass Dim" data-class="active" data-target="#betaSignup" data-event="click">
+                    <span class="sr-only">Close</span>
+                    {% embed '@SitetheoryTemplatePromoBundle/Resources/public/images/icons/close.svg'%}{%  block id  %}iconClose{% endblock %}{% endembed %}
+                </div>
+
+                <div id="success_message" style="display:none;">
+                    <h2>Thanks</h2>
+                    <div class="note fontSecondary">You rock! We'll let you know when the app is ready.</div>
+                </div>
+                <form data-id="embedded_signup:form" class="form" name="embedded_signup" method="POST" action="https://visitor2.constantcontact.com/api/signup">
+                    <div class="logo">
+                        <img src="{{ asset('bundles/sitetheorytemplatecustom/images/launchLogoMark.png') }}" alt="">
+                    </div>
+                    <h2 class="betaTitle">Beta Signup</h2>
+                    <p class="note fontBody">Be among the first to join and help us create an awesome community.</p>
+                    <!-- The following code must be included to ensure your sign-up form works properly. -->
+                    <input data-id="ca:input" type="hidden" name="ca" value="a84d2d17-dca3-4f96-b76c-459018f0b788">
+                    <input data-id="list:input" type="hidden" name="list" value="1924932799">
+                    <input data-id="source:input" type="hidden" name="source" value="EFD">
+                    <input data-id="required:input" type="hidden" name="required" value="list,email">
+                    <input data-id="url:input" type="hidden" name="url" value="">
+                    <div class="form-group" data-id="Email Address:p">
+                        <input class="form-control smallLabel fontPrimary" data-id="Email Address:input" type="text" name="email" value="" maxlength="80" placeholder="Email Address">
+                    </div>
+                    <div class="signupAction">
+                        <button type="submit" class="fontPrimary bold btn positionAnchor" data-enabled="enabled">
+                            <span class="btnGradient"></span>
+                            <span class="btnText">Sign Up</span>
+                        </button>
+                    </div>
+
+                    <p class="disclaimer">By submitting this form, you are granting: Launch Social Inc., 1330 N Broadway, Ste 200H, Walnut Creek, California, 94596, United States, permission to email you. You may unsubscribe via the link found at the bottom of every email.</p>
+                </form>
+            </div>
+            <script type='text/javascript'>
+                var localizedErrMap = {};
+                localizedErrMap['required'] = 		'This field is required.';
+                localizedErrMap['ca'] = 			'An unexpected error occurred while attempting to send email.';
+                localizedErrMap['email'] = 			'Please enter your email address in name@email.com format.';
+                localizedErrMap['generic'] = 		'This field is invalid.';
+                localizedErrMap['shared'] = 		'Sorry, we could not complete your sign-up. Please contact us to resolve this.';
+                var postURL = 'https://visitor2.constantcontact.com/api/signup';
+            </script>
+            <script type='text/javascript' src='https://static.ctctcdn.com/h/contacts-embedded-signup-assets/1.0.2/js/signup-form.js'></script>
+        </div>
+        </div>
+    {% endblock betaSignup %}
+
+{% endblock body %}
+
 
 {% block contentType %}
-Coming Soon
 {% endblock contentType %}
