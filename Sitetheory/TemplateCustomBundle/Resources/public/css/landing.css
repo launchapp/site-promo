@@ -15,7 +15,7 @@
 
 
 
-/* LANDING CONTENT */
+/* TEMPORARY LANDING CONTENT */
 
 #landingContent {
     opacity: 0;
@@ -192,4 +192,309 @@
 .contactEmail {
     margin-top: 30px;
     font-size: 13px;
+}
+
+
+
+/* FULL LANDING PAGE */
+
+
+.landingFull .shellVerticalPadding {
+    padding-top: 85px;
+    padding-bottom: 85px;
+}
+.landingTier {
+    text-align: center;
+}
+.landingTier h3 {
+    margin-bottom: 20px;
+}
+
+
+/* TIER 1 VIDEO */
+
+#tier1Left {
+    padding-right: 6%;
+    width: 34%;
+}
+#tier1Left p {
+    font-size: 18px;
+    line-height: 1.6;
+}
+#tier1Left .borderDashed {
+    margin-top: 42px;
+    padding-top: 42px;
+}
+#tier1Right {
+    width: 66%;
+}
+#tier1Right .bodyLarge {
+    padding-top: 10px;
+    text-align: left;
+    font-weight: 300;
+}
+#tier1Right .note {
+    padding-left: 20px;
+    font-size: 12px;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: #222;
+}
+
+
+/* TIER 2 BROKEN STATUS QUO */
+
+#tier2 {
+    position: relative;
+    min-height: 600px;
+    background: url('/sitetheory/v/1/0/bundles/sitetheorytemplatecustom/images/tier2Background.jpg') no-repeat;
+    background-size: cover;
+}
+#tier2 .centerText {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    transform: translateY(-50%);
+}
+#tier2 .siteMaxWidth {
+    max-width: 1040px;
+}
+#tier2 .borderDashedLight {
+    margin-top: 45px;
+    padding-top: 45px;
+}
+#tier2 h1,
+#tier2 p {
+    color: #FFF;
+}
+#tier2 .bodyLarge {
+    font-size: 22px;
+}
+
+
+/* TIER 3 BS */
+
+#tier3 .siteMaxWidth {
+    max-width: 1040px;
+}
+#tier3 h1 {
+    margin-bottom: 50px;
+    color: #C5BB3E;
+}
+#tier3 h3 {
+    color: #7B7B7B;
+}
+#tier3 p {
+    padding-top: 30px;
+    max-width: 200px;
+    color: #FFF;
+    font-size: 18px;
+    text-align: left;
+}
+#tier3 .rightCol p {
+    text-align: right;
+}
+#tier3 .badAppImage {
+    padding-right: 22px;
+    width: 144px;
+}
+#tier3 .rightCol .badAppImage {
+    padding-left: 24px;
+}
+
+
+/* TIER 4 COMPLETELY DIFFERENT */
+
+
+#tier4 h1 {
+    margin-bottom: 50px;
+}
+#tier4 .bodyLarge {
+    margin: 0 auto;
+    max-width: 940px;
+    font-weight: 300;
+}
+#tier4 #formula {
+    display: table;
+    margin: 40px auto 20px auto;
+    padding: 24px 40px;
+    font-size: 18px;
+    letter-spacing: 1px;
+    border: 1px solid #979797;
+}
+#tier4chart {
+    position: relative;
+    background: url('/sitetheory/v/1/0/bundles/sitetheorytemplatecustom/images/tier4Background.jpg') no-repeat;
+    background-size: cover;
+}
+#tier4chart h3 {
+    color: #FFF;
+    text-transform: none;
+    font-size: 22px;
+}
+#tier4chart p {
+    margin-bottom: 40px;
+    color: #FFF;
+    font-size: 15px;
+}
+#tier4logo {
+    width: 160px;
+    margin: -120px auto 0 auto;
+}
+#tier4 .chartCol {
+    float: left;
+    width: 50%;
+}
+#tier4chart .midline {
+    position: absolute;
+    top: 175px;
+    bottom: 140px;
+    left: 50%;
+    width: 1px;
+    border-right: 1px solid #979797;
+}
+#tier4 .chartIcon {
+    margin: 0 auto 10px auto;
+    width: 137px;
+    text-align: center;
+}
+#tier4 .chartContent {
+    position: relative;
+    z-index: 100;
+    margin-right: -6px;
+    padding-right: 215px;
+    min-height: 220px;
+    background: url('/sitetheory/v/1/0/bundles/sitetheorytemplatecustom/images/tier4connectLeft.png') no-repeat right 70px;
+    background-size: 215px;
+}
+#tier4  .chartCol.right .chartContent {
+    float: right;
+    margin: 0 0 0 -4px;
+    padding: 26px 0 0 191px;
+    background: url('/sitetheory/v/1/0/bundles/sitetheorytemplatecustom/images/tier4connectRight.png') no-repeat left 96px;
+    background-size: 191px;
+}
+
+
+/* TIER 5 APP SNEAK PEEK*/
+
+
+#tier5background {
+    background: #FAFAFA;
+}
+#tier5 img {
+    max-width: 268px;
+}
+
+
+/* TIER 6 BENEFITS */
+
+#tier6 {
+    min-height: 600px;
+    background: url('/sitetheory/v/1/0/bundles/sitetheorytemplatecustom/images/tier6Background.jpg') no-repeat;
+    background-size: cover;
+}
+#tier6 h1 {
+    margin-bottom: 60px;
+    color: #FCEE27;
+}
+#tier6 h3 {
+    font-size: 18px;
+    text-transform: none;
+}
+#tier6content {
+    text-align: left;
+}
+#tier6 h3 {
+    padding-top: 10px;
+    color: #FFF;
+}
+#tier6 p {
+    color: #DBDBDB;
+}
+#tier6 .benefitItem {
+    margin-bottom: 50px;
+    padding-left: 60px;
+    background-repeat: no-repeat;
+    background-size: 40px;
+}
+#tier6 #benefitOne {
+    background-image: url('/sitetheory/v/1/0/bundles/sitetheorytemplatecustom/images/tier6iconProfile.png');
+}
+#tier6 #benefitTwo {
+    background-image: url('/sitetheory/v/1/0/bundles/sitetheorytemplatecustom/images/tier6iconMatches.png');;
+}
+#tier6 #benefitThree {
+    background-image: url('/sitetheory/v/1/0/bundles/sitetheorytemplatecustom/images/tier6iconReveals.png');
+}
+#tier6 #benefitFour {
+    background-image: url('/sitetheory/v/1/0/bundles/sitetheorytemplatecustom/images/tier6iconMembers.png');
+}
+#tier6 #benefitFive {
+    background-image: url('/sitetheory/v/1/0/bundles/sitetheorytemplatecustom/images/tier6iconMessage.png');
+}
+#tier6 #benefitSix {
+    background-image: url('/sitetheory/v/1/0/bundles/sitetheorytemplatecustom/images/tier6iconMeetup.png');
+}
+
+
+/* TIER 7 CTA */
+
+
+#tier7 .bodyLarge {
+    font-size: 26px;
+    font-weight: 300;
+}
+#tier7content {
+    position: relative;
+    margin-top: 120px;
+}
+#tier7 .borderDashedVertical {
+    position: absolute;
+    top: 60px;
+    bottom: 0;
+    left: 50%;
+    width: 1px;
+}
+#tier7 .helpItem {
+    margin-top: -80px;
+}
+#iconKickstarter {
+    width: 125px;
+}
+#iconBeta {
+    width: 119px;
+}
+#tier7 h2 {
+    margin-top: 40px;
+    font-family: 'Fjalla One', sans-serif;
+    font-size: 28px;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+#tier7 p {
+    margin-top: 35px;
+}
+#tier7 #helpTwo p{
+    margin-top: 60px;
+}
+#tier7 .btn {
+    margin-top: 26px;
+}
+
+
+/* TIER 7 CONTACT */
+
+#tier8background {
+    padding: 120px 160px 200px 160px;
+    background: url('/sitetheory/v/1/0/bundles/sitetheorytemplatecustom/images/tier8background.png') no-repeat right bottom;
+}
+#tier8 .bodyLarge {
+    font-size: 20px;
+    font-weight: 300;
+    color: #888;
+}
+#tier8 .bodyLarge a {
+    font-weight: bold;
 }

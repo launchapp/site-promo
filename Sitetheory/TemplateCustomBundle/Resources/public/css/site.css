@@ -31,15 +31,18 @@ a:hover {
 .btn:visited,
 .btn:active {
     padding: 16px 28px;
-    font-size: 15px;
+    font-size: 17px;
     font-weight: 400;
     color: #575757;
+    letter-spacing: .01em;
     text-transform: uppercase;
     background-color: #FBDC00;
+    border: 2px solid #FBDC00;
     border-radius: 6px;
 }
 .btn:hover {
-    background-color: #222;
+    color: #222;
+    background-color: #FFF;
 }
 .btnGradient{
     position: absolute;
@@ -63,7 +66,7 @@ h1 {
     letter-spacing: -1px;
 }
 h2 {
-    color: #313131;
+    color: #444;
     font-size: 30px;
     font-weight: 300;
 }
@@ -114,10 +117,8 @@ h4,
     font-family: 'Roboto Slab', serif;
 }
 
-
 .fontBody,
 .fontBody p {
-    font-family: 'Roboto Slab', sans-serif;
     font-weight: 300;
 }
 
@@ -131,6 +132,9 @@ h4,
 }
 .backgroundDark {
     background: #282828;
+}
+.backgroundDark a:hover {
+    color: #FFF;
 }
 
 
@@ -149,6 +153,8 @@ h4,
 }
 
 
+/* BORDERS */
+
 .borderDashed {
     margin-top: 20px;
     padding-top: 20px;
@@ -161,72 +167,11 @@ h4,
     background: url('/sitetheory/v/1/0/bundles/sitetheorytemplatecustom/images/borderDashedLight.png') repeat-x;
     background-size: 6px;
 }
-
-
-
-
-
-
-
-
-
-
-/* ORIGINAL BASIC LANDING */
-
-
-#logoArea {
-    max-width: 450px
-}
-#siteLogo {
-    width: 450px;
-    max-width: none;
-}
-#logoMark {
-    float: left;
-}
-#logoMark img {
-    height: 100px;
-}
-#logoText {
-    float: left;
-    margin-left: 25px;
-}
-#logoText img {
-    height: 100px;
+.borderDashedVertical {
+    background: url('/sitetheory/v/1/0/bundles/sitetheorytemplatecustom/images/borderDashedVertical.png') repeat-y;
+    background-size: 1px;
 }
 
-#betaSignupBtn {
-    float: right;
-}
-
-#headerContainer.retracting.offScreen.offScreenScrollUp #headerBackground {
-    height: 80px;
-    padding: 10px 0;
-    background-color: #FFF;
-}
-
-#headerContainer.retracting.offScreen.offScreenScrollUp #siteLogo {
-    width: 300px;
-}
-#headerContainer.retracting.offScreen.offScreenScrollUp #siteLogo #logoMark img {
-    height: 60px;
-}
-#headerContainer.retracting.offScreen.offScreenScrollUp #siteLogo #logoText {
-    margin-left: 20px;
-}
-#headerContainer.retracting.offScreen.offScreenScrollUp #siteLogo #logoText img {
-    height: 60px;
-    margin: 0;
-}
-
-
-#content {
-    margin: 30px 0;
-}
-
-#pageTitle {
-    margin: 30px 0;
-}
 
 
 
@@ -333,34 +278,6 @@ h4,
 
 
 
-/* SMALL MEDIA ADJUSTMENTS */
-
-
-@media (max-width:600px) {
-    .loaded #siteBackground {
-        top: 16px;
-        right: 16px;
-        bottom: 16px;
-        left: 16px;
-    }
-    .intro {
-        font-size: 15px;
-    }
-    #siteLogo {
-        width: 100px;
-    }
-    #logoMark img {
-        width: 100%;
-    }
-    #logoText img {
-        margin-top: 40px;
-        width: 100%;
-    }
-}
-
-
-/* FULL LANDING PAGE */
-
 #header1 {
     margin-top: 20px;
 }
@@ -385,165 +302,15 @@ h4,
 }
 
 
-/* TIER 1 */
-
-#tier1Left {
-    padding-right: 6%;
-    width: 34%;
+#footer {
+    margin: 0 0 40px 0;
+    font-size: 11px;
 }
-#tier1Left p {
-    font-size: 16px;
-    line-height: 1.6;
+#footer a {
+    color: #222;
 }
-#tier1Left .borderDashed {
-    margin-top: 35px;
-    padding-top: 35px;
-}
-#tier1Right {
-    width: 66%;
-}
-#tier1Right p {
-    padding-top: 10px;
-    font-size: 26px;
-    font-weight: 300;
-}
-
-/* TIER 2 */
-
-#tier2 {
-    position: relative;
-    text-align: center;
-    min-height: 600px;
-    background: url('/sitetheory/v/1/0/bundles/sitetheorytemplatecustom/images/tier2Background.jpg') no-repeat;
-    background-size: cover;
-}
-#tier2 .centerText {
-    position: absolute;
-    top: 50%;
-    left: 0;
-    right: 0;
-    transform: translateY(-50%);
-}
-#tier2 .siteMaxWidth {
-    max-width: 1040px;
-}
-#tier2 .borderDashedLight {
-    margin-top: 45px;
-    padding-top: 45px;
-}
-#tier2 h1,
-#tier2 p {
-    color: #FFF;
-}
-
-
-/* TIER 3 */
-
-#tier3 .siteMaxWidth {
-    max-width: 1040px;
-}
-#tier3 h1 {
-    margin-bottom: 50px;
+#footer a:hover {
     color: #C5BB3E;
-    text-align: center;
-}
-#tier3 h3 {
-    margin-bottom: 20px;
-    color: #7B7B7B;
-    text-align: center;
-}
-#tier3 p {
-    padding-top: 30px;
-    max-width: 180px;
-    color: #FFF;
-    font-size: 18px;
-}
-#tier3 .rightCol p {
-    text-align: right;
-}
-#tier3 .badAppImage {
-    padding-right: 22px;
-    width: 144px;
-}
-#tier3 .rightCol .badAppImage {
-    padding-left: 22px;
-}
-
-/* TIER 4 */
-
-#tier4 {
-    text-align: center;
-}
-#tier4 h1 {
-    margin-bottom: 50px;
-}
-#tier4 h3 {
-    margin-bottom: 20px;
-}
-#tier4 .bodyLarge {
-    margin: 0 auto;
-    max-width: 940px;
-    font-weight: 300;
-}
-#tier4 #formula {
-    display: table;
-    margin: 40px auto 20px auto;
-    padding: 24px 40px;
-    font-size: 18px;
-    letter-spacing: 1px;
-    border: 1px solid #979797;
-}
-#tier4chart {
-    position: relative;
-    background: url('/sitetheory/v/1/0/bundles/sitetheorytemplatecustom/images/tier4Background.jpg') no-repeat;
-    background-size: cover;
-}
-#tier4chart h3 {
-    color: #FFF;
-    text-transform: none;
-    font-size: 22px;
-}
-#tier4chart p {
-    margin-bottom: 40px;
-    color: #FFF;
-    font-size: 15px;
-}
-#tier4logo {
-    width: 160px;
-    margin: -120px auto 0 auto;
-}
-#tier4 .chartCol {
-    float: left;
-    width: 50%;
-}
-#tier4chart .midline {
-    position: absolute;
-    top: 175px;
-    bottom: 140px;
-    left: 50%;
-    width: 1px;
-    border-right: 1px solid #979797;
-}
-#tier4 .chartIcon {
-    margin: 0 auto 10px auto;
-    width: 137px;
-    text-align: center;
-}
-#tier4 .chartContent {
-    position: relative;
-    z-index: 100;
-    margin-right: -6px;
-    padding-right: 215px;
-    min-height: 220px;
-    background: url('/sitetheory/v/1/0/bundles/sitetheorytemplatecustom/images/tier4connectLeft.png') no-repeat right 70px;
-    background-size: 215px;
-}
-#tier4  .chartCol.right .chartContent {
-    float: right;
-    margin: 0 0 0 -4px;
-    padding: 26px 0 0 191px;
-    background: url('/sitetheory/v/1/0/bundles/sitetheorytemplatecustom/images/tier4connectRight.png') no-repeat left 96px;
-    background-size: 191px;
 }
 
 

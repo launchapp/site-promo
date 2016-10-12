@@ -51,11 +51,11 @@ landingFull
             </div>
             <div id="mainNavigationHeader" class="siteNavigation">
                 <ul class="list-inline fontPrimary">
-                    <li><a class="mainNavLink" href="">Other Apps</a></li>
-                    <li><a class="mainNavLink" href="">The Difference</a></li>
+                    <li><a class="mainNavLink" href="">Status Quo</a></li>
+                    <li><a class="mainNavLink" href="">Something Different</a></li>
                     <li><a class="mainNavLink" href="">App</a></li>
                     <li><a class="mainNavLink" href="">Benefits</a></li>
-                    <li><a class="mainNavLink" href="">You</a></li>
+                    <li><a class="mainNavLink" href="">Help Us!</a></li>
                 </ul>
             </div>
         </div>
@@ -64,12 +64,13 @@ landingFull
 
 {% block content %}
 
-    <div id="tier1" class="siteMaxWidth siteSidePadding shellVerticalPadding">
+    {# TIER 1 VIDEO #}
+    <div id="tier1" class="landingTier siteMaxWidth siteSidePadding shellVerticalPadding">
         <div class="clearfix">
                 <div id="tier1Left" class="pull-left">
                     <h1>The Cure for Dating Apps</h1>
                     <div class="borderDashed">
-                        <p class="fontPrimary">Launch is an app for all of us who hate the current dating experience. Launch combines the best of new technology, psychometrics and gamification with old-fashioned intuition and the social accountability of friendships. When you play along with your closest friends, magical things happen!</p>
+                        <p class="fontPrimary">Launch is an app for everyone disappointed with the current dating experience (personally or on behalf of friends). We’ve been on a listening mission, using people’s stories to build something entirely new.</p>
                     </div>
                 </div>
                 <div id="tier1Right" class="pull-left">
@@ -78,35 +79,39 @@ landingFull
                     </div>
                     <div class="borderDashed clearfix">
                         <div class="pull-right">
-                            <a class="btn" href="">Go to Kickstarter Campaign</a>
+                            <a class="btn" href="">Kickstarter Campaign</a>
                         </div>
-                        <p class="fontPrimary">We need your help!</p>
+                        <p class="fontPrimary bodyLarge">Help us build it!<span class="note">(one-click signup)</span></p>
                     </div>
                 </div>
         </div>
     </div>
 
-    <div id="tier2">
+    {# TIER 2 BROKEN STATUS QUO #}
+    <div id="tier2" class="landingTier">
         <div class="centerText">
             <div class="siteMaxWidth siteSidePadding shellVerticalPadding">
-                <h1>We Feel Ya</h1>
+                <h1>A Broken Status Quo</h1>
                 <div class="borderDashedLight">
-                    <p class="fontPrimary bodyLarge">80% of single Americans won’t go on even one app-matched date this year, despite thousands of online dating services. Because current apps are only aimed at making the experience better for power players who already like online dating.</p>
+                    <p class="fontPrimary bodyLarge">There are thousands of online dating services. Yet 80% of single Americans won’t get even one date through them … over an entire year!<br><br>
+
+                        Those apps were built to make life easier for people who already like online dating. We’re building something for everyone else. </p>
                 </div>
             </div>
         </div>
     </div>
 
-    <div id="tier3" class="backgroundDark fontPrimary">
+    {# TIER 3 BS #}
+    <div id="tier3" class="landingTier backgroundDark fontPrimary">
         <div class="siteMaxWidth siteSidePadding shellVerticalPadding">
-            <h3>So if we agree that</h3>
-            <h1>DATING APPS SUCK</h1>
+            <h3>Most of us are done with</h3>
+            <h1>THE BS</h1>
             <div class="row">
                 <div class="col-xs-5 clearfix">
                     <div class="badAppImage pull-left">
                         <img style="width:100%;" src="{{ asset('bundles/sitetheorytemplatecustom/images/badMatch1.png') }}" alt="">
                     </div>
-                    <p class="pull-left">Dishonest &amp; Shallow Profiles</p>
+                    <p class="pull-left">Dishonest Profiles</p>
                 </div>
                 <div class="col-xs-5 col-xs-offset-2 rightCol clearfix">
                     <div class="badAppImage pull-right">
@@ -126,7 +131,7 @@ landingFull
                     <div class="badAppImage pull-right">
                         <img style="width:100%;" src="{{ asset('bundles/sitetheorytemplatecustom/images/badMatch5.png') }}" alt="">
                     </div>
-                    <p class="pull-right">Bots</p>
+                    <p class="pull-right">Bots/Fake Users</p>
                 </div>
             </div>
             <div class="row">
@@ -134,7 +139,7 @@ landingFull
                     <div class="badAppImage pull-left">
                         <img style="width:100%;" src="{{ asset('bundles/sitetheorytemplatecustom/images/badMatch3.png') }}" alt="">
                     </div>
-                    <p class="pull-left">Superficial Matches</p>
+                    <p class="pull-left">Shallow Matches</p>
                 </div>
                 <div class="col-xs-5 col-xs-offset-2 borderDashed rightCol clearfix">
                     <div class="badAppImage pull-right">
@@ -146,11 +151,12 @@ landingFull
         </div>
     </div>
 
-    <div id="tier4" class="fontPrimary">
+    {# TIER 4 COMPLETELY DIFFERENT #}
+    <div id="tier4" class="landingTier fontPrimary">
         <div class="siteMaxWidth siteSidePadding shellVerticalPadding">
-            <h3>Then Let's Build Something</h3>
+            <h3>Let's Build Something</h3>
             <h1>COMPLETELY DIFFERENT</h1>
-            <p class="bodyLarge">Online dating made it easier for relationship-seekers to connect, but only from an isolated, anonymous space—which fosters really bad behavior.<br><br>
+            <p id="tier4intro" class="bodyLarge">Online dating made it easier for relationship-seekers to connect, but only from a lonely, anonymous space &mdash; which encourages really bad behavior.<br><br>
 
                 We have a simple formula to change that:
             </p>
@@ -170,7 +176,7 @@ landingFull
                             <div class="chartIcon">
                                 <img style="width:100%;" src="{{ asset('bundles/sitetheorytemplatecustom/images/tier4spacemen1.png') }}" alt="">
                             </div>
-                            <h3>Friend Validation"</h3>
+                            <h3>Friend Verification"</h3>
                             <p>Friends vouch for you, adding fun and interesting insights to your profile.</p>
                         </div>
                     </div>
@@ -180,7 +186,7 @@ landingFull
                                 <img style="width:100%;" src="{{ asset('bundles/sitetheorytemplatecustom/images/tier4spacemen3.png') }}" alt="">
                             </div>
                             <h3>Crowdsourced Intuition"</h3>
-                            <p>Your friends use their intuition and experience to suggest great matches for you to review. The perspective of non-single matchmakers is especially encouraged!</p>
+                            <p>Your friends (including non-singles) use their intuition and experience to suggest great matches for your review.</p>
                         </div>
                     </div>
                 </div>
@@ -191,7 +197,7 @@ landingFull
                                 <img style="width:100%;" src="{{ asset('bundles/sitetheorytemplatecustom/images/tier4spacemen2.png') }}" alt="">
                             </div>
                             <h3>Fun &amp; R.E.S.P.E.C.T.</h3>
-                            <p>We create a fun and respectful community by making sure that all the people you match with, are approved by and accountable to their friends for online and offline behavior.</p>
+                            <p>By making sure all your matches are legit and accountable to their friends for their online and offline behavior, we’re creating a community you’ll actually enjoy.</p>
                         </div>
                     </div>
                     <div class="chartCol right">
@@ -199,7 +205,7 @@ landingFull
                             <div class="chartIcon">
                                 <img style="width:100%;" src="{{ asset('bundles/sitetheorytemplatecustom/images/tier4spacemen4.png') }}" alt="">
                             </div>
-                            <h3>Socialness<br>(no that’s not a word)></h3>
+                            <h3>Socialness<br>(no that’s not a word)</h3>
                             <p>We let you share your experience with your friends to get advice, laugh it off, or dance with excitement.
                             </p>
                         </div>
@@ -207,7 +213,114 @@ landingFull
                 </div>
             </div>
         </div>
+        <div class="siteMaxWidth siteSidePadding shellVerticalPadding">
+            <p id="tier4summary" class="bodyLarge">If you love the hit-and-run hookup culture, you won’t find it here. Only good people, lowkey meetups, playful interactions, and sparks flying everywhere. </p>
+        </div>
     </div>
 
+    {# TIER 5 APP SNEAK PEEK #}
+
+    <div id="tier5" class="landingTier">
+        <div class="siteMaxWidth siteSidePadding">
+            <h1>App Sneak Peek</h1>
+        </div>
+        <div id="tier5background">
+            <div class="siteMaxWidth siteSidePadding shellVerticalPadding">
+                <img style="width:100%;" src="{{ asset('bundles/sitetheorytemplatecustom/images/tempApp.jpg') }}" alt="">
+            </div>
+        </div>
+    </div>
+
+    {# TIER 6 BENEFITS #}
+    <div id="tier6" class="landingTier">
+        <div id="tier6background">
+            <div class="siteMaxWidth siteSidePadding shellVerticalPadding">
+                <h1>Benefits</h1>
+                <div id="tier6content" class="fontPrimary">
+                    <div class="row">
+                        <div class="col-xs-5 leftCol">
+                            <div id="benefitOne" class="benefitItem">
+                                <h3>Honest &amp; Interesting Profiles </h3>
+                                <p>Every profile is verified by friends, and improved as you and your friends respond to fun micro-questions that collect over time. Fewer lies. Less stress. More originality.</p>
+                            </div>
+                            <div id="benefitTwo" class="benefitItem">
+                                <h3>Quality Matches</h3>
+                                <p>The best technology can’t create love. But it can help. We use our special AI to learn who you really are and what you really want. We then turn the matches over to you and your friends to apply human intuition.</p>
+                            </div>
+                            <div id="benefitThree" class="benefitItem">
+                                <h3>Gradual Reveals</h3>
+                                <p>Many great relationships would never have passed the two-second swipe test. Chemistry is important, but can’t be confirmed by a picture alone. To encourage slower judgment, we blur every match photo at first. To reveal it, you’ll have to go through a few quick ice-breakers.</p>
+                            </div>
+                        </div>
+                        <div class="col-xs-5 col-xs-offset-2 rightCol">
+                            <div id="benefitFour" class="benefitItem">
+                                <h3>Better Members</h3>
+                                <p>Players, creeps, and cheaters won’t be as attracted to a community that requires close friends to vouch for them. </p>
+                            </div>
+                            <div id="benefitFive" class="benefitItem">
+                                <h3>Enjoyable Messaging</h3>
+                                <p>Choose from great chat prompts to unlock creativity and discover hidden gems of personality. We make it painless to block (and educate) anyone who isn’t being respectful. </p>
+                            </div>
+                            <div id="benefitSix" class="benefitItem">
+                                <h3>Natural Low-Key Encounters</h3>
+                                <p>We encourage users to treat the first meetup like a “pre-date”. No more than 45 minutes. Just one coffee or drink. No fancy preparation. First impressions like we make them in day-to-day life, free from anxiety and expectations. </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {# TIER 7 CTA #}
+    <div id="tier7" class="landingTier">
+        <div class="siteMaxWidth siteSidePadding shellVerticalPadding">
+            <h1>Help Create the Future</h1>
+            <p class="fontPrimary bodyLarge">We can't do this without you.</p>
+            <div id="tier7content">
+                <div class="borderDashedVertical"></div>
+                <div class="row borderDashed">
+                    <div class="col-xs-5 leftCol">
+                        <div id="helpOne" class="helpItem">
+                            <img id="iconKickstarter" src="{{ asset('bundles/sitetheorytemplatecustom/images/tier7iconKickstarter.png') }}" alt="">
+                            <h2>Kickstarter!</h2>
+                            <h4>(One-click signup)</h4>
+                            <p class="fontPrimary">Love the idea? Give feedback and as little as $1. We’re a small team trying to create something thoughtful and beautiful. But we can only succeed with a strong community behind us. Become a founding member and get amazing forever-rewards!  </p>
+                            <a class="btn" href="">I Want to Help</a>
+                        </div>
+                    </div>
+                    <div class="col-xs-5 col-xs-offset-2 rightCol">
+                        <div id="helpTwo" class="helpItem">
+                            <img id="iconBeta" src="{{ asset('bundles/sitetheorytemplatecustom/images/tier7iconBeta.png') }}" alt="">
+                            <h2>Sign up for Beta</h2>
+                            <p class="fontPrimary">Not interested in shaping the service? No problem! We’ll let you know when the app is ready. All we need is your email and zip code (5 seconds, 100% privacy).</p>
+                            <a class="btn" href="">Sign Me Up</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {# TIER 8 CONTACT #}
+    <div id="tier8" class="backgroundDark landingTier">
+        <div id="tier8background">
+            <div class="siteMaxWidth siteSidePadding shellVerticalPadding">
+
+                <p class="fontPrimary bodyLarge">Have questions? Please use the ‘contact’ form on our Kickstarter page. For press inquiries, <a href="mailto:jeremy@launchapp.io">jeremy@launchapp.io</a>. To discuss investing, <a href="mailto:chad@launchapp.io">chad@launchapp.io</a>.</p>
+            </div>
+        </div>
+    </div>
+
+    <div id="footer" class="clearfix fontPrimary">
+        <div class="siteMaxWidth siteSidePadding">
+            <div class="footerPhone pull-right">
+                {{ block('sitePhone') }}
+            </div>
+            <div class="footerEmail">
+                {{ block('siteEmail') }}
+            </div>
+        </div>
+    </div>
 
 {% endblock content %}
