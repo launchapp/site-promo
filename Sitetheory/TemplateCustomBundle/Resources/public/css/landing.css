@@ -199,7 +199,7 @@
 /* FULL LANDING PAGE */
 
 
-.landingFull .shellVerticalPadding {
+.shellVerticalPadding {
     padding-top: 85px;
     padding-bottom: 85px;
 }
@@ -208,6 +208,16 @@
 }
 .landingTier h3 {
     margin-bottom: 20px;
+}
+@media (max-width: 600px) {
+    .shellVerticalPadding {
+        padding-top: 65px;
+        padding-bottom: 65px;
+    }
+    .siteSidePadding {
+        padding-right: 10%;
+        padding-left: 10%;
+    }
 }
 
 
@@ -239,6 +249,31 @@
     font-weight: bold;
     text-transform: uppercase;
     color: #222;
+}
+@media (max-width:768px) {
+    #tier1Left,
+    #tier1Right {
+        float: none !important;
+        padding: 0;
+        width: 100%;
+    }
+    #tier1Left p {
+        margin-bottom: 35px;
+        line-height: 1.4;
+    }
+    #tier1Left .borderDashed {
+        margin-top: 42px;
+        padding-top: 42px;
+    }
+    #tier1action {
+        float: none !important;
+    }
+    #tier1Right .note {
+        display: block;
+        padding: 0;
+        text-align: center;
+    }
+
 }
 
 
@@ -297,10 +332,29 @@
 }
 #tier3 .badAppImage {
     padding-right: 22px;
-    width: 144px;
+    max-width: 144px;
 }
 #tier3 .rightCol .badAppImage {
     padding-left: 24px;
+}
+@media (max-width:991px) {
+    #tier3 p,
+    #tier3 .rightCol p {
+        float: none !important;
+        max-width: 100%;
+        padding-top: 10px;
+        font-size: 16px;
+        text-align: center;
+    }
+    #tier3 .badAppImage {
+        float: none !important;
+        margin: 0 auto;
+        padding-right: 0;
+        height: 100px;
+    }
+    #tier3 .badAppImage img {
+        height: 100px;
+    }
 }
 
 
@@ -329,7 +383,7 @@
 }
 #tier4chart {
     position: relative;
-    background: url('/sitetheory/v/1/0/bundles/sitetheorytemplatecustom/images/tier4Background.jpg') no-repeat;
+    background: url('/sitetheory/v/1/0/bundles/sitetheorytemplatecustom/images/tier4Background.jpg') no-repeat center center;
     background-size: cover;
 }
 #tier4chart h3 {
@@ -379,7 +433,34 @@
     background: url('/sitetheory/v/1/0/bundles/sitetheorytemplatecustom/images/tier4connectRight.png') no-repeat left 96px;
     background-size: 191px;
 }
-
+@media (max-width: 800px) {
+    #tier4logo {
+        width: 120px;
+        margin: -100px auto 50px auto;
+    }
+    #tier4chart .midline {
+        display: none;
+    }
+    #tier4 .chartCol {
+        float: none;
+        width: 100%;
+    }
+    #tier4 .chartContent,
+    #tier4  .chartCol.right .chartContent {
+        position: relative;
+        z-index: 100;
+        margin: 0;
+        padding: 40px 0;
+        min-height: inherit;
+        background: none;
+    }
+    #tier4 .chartContent {
+        border-top: 1px dashed rgba(255,255,255,.3);
+    }
+    #tier4 #chartItemOne.chartContent {
+        border-top: none;
+    }
+}
 
 /* TIER 5 APP SNEAK PEEK*/
 
@@ -491,8 +572,30 @@
     margin-top: 26px;
 }
 
+@media (max-width: 768px) {
+    #tier7 .borderDashedVertical {
+        display: none;
+    }
+    #tier7content {
+        margin-top: 50px;
+    }
+    #tier7 .helpItem {
+        margin: 50px 0;
+    }
+    #tier7 #helpTwo.helpItem {
+        margin: 30px 0 0 0;
+    }
+    #tier7 #helpTwo p{
+        margin-top: 0;
+    }
+    #iconKickstarter,
+    #iconBeta {
+        width: 80px;
+    }
+}
 
-/* TIER 7 CONTACT */
+
+/* TIER 8 CONTACT */
 
 #tier8background {
     padding: 120px 160px 200px 160px;
@@ -505,4 +608,19 @@
 }
 #tier8 .bodyLarge a {
     font-weight: bold;
+}
+@media (max-width: 768px) {
+    #tier8background {
+        padding: 80px 100px 120px 100px;
+        background-size: 100%;
+    }
+}
+@media (max-width: 600px) {
+    #tier8background {
+        padding: 50px 30px 70px 30px;
+        background-size: 100%;
+    }
+    #tier8 .bodyLarge {
+        font-size: 18px;
+    }
 }

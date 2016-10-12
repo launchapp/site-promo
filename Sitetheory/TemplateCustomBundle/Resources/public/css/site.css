@@ -83,7 +83,11 @@ h4 {
     text-transform: uppercase;
     letter-spacing: 1px;
 }
-
+@media (max-width:768px) {
+    h1 {
+        font-size: 50px;
+    }
+}
 
 /* STANDARD TEXT STYLES */
 
@@ -418,7 +422,12 @@ h4,
 #footer a:hover {
     color: #C5BB3E;
 }
-
+@media (max-width: 767px) {
+    .footerPhone.pull-right {
+        float: none !important;
+        padding-bottom: 10px;
+    }
+}
 
 /* BETA SIGNUP FORM */
 
