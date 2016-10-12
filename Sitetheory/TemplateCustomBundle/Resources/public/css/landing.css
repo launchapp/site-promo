@@ -15,7 +15,7 @@
 
 
 
-/* LANDING CONTENT */
+/* TEMPORARY LANDING CONTENT */
 
 #landingContent {
     opacity: 0;
@@ -192,4 +192,450 @@
 .contactEmail {
     margin-top: 30px;
     font-size: 13px;
+}
+
+
+
+/* FULL LANDING PAGE */
+
+
+.shellVerticalPadding {
+    padding-top: 85px;
+    padding-bottom: 85px;
+}
+.landingTier {
+    text-align: center;
+}
+.landingTier h3 {
+    margin-bottom: 20px;
+}
+@media (max-width: 600px) {
+    .shellVerticalPadding {
+        padding-top: 65px;
+        padding-bottom: 65px;
+    }
+    .siteSidePadding {
+        padding-right: 10%;
+        padding-left: 10%;
+    }
+}
+
+
+/* TIER 1 VIDEO */
+
+#tier1Left {
+    padding-right: 6%;
+    width: 34%;
+}
+#tier1Right {
+    width: 66%;
+}
+#tier1Right .bodyLarge {
+    padding-top: 10px;
+    text-align: left;
+    font-weight: 300;
+}
+#tier1Right .note {
+    padding-left: 20px;
+    font-size: 12px;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: #222;
+}
+
+/* Temp classes dependent on length of tagline */
+
+#tier1Left p {
+    margin-bottom: 0;
+    font-size: 18px;
+    line-height: 1.6;
+}
+#tier1Left .borderDashed {
+    margin-top: 42px;
+    padding-top: 42px;
+}
+
+@media (max-width: 1200px) {
+    #tier1Left .borderDashed,
+    #tier1Right .borderDashed {
+        margin-top: 22px;
+        padding-top: 22px;
+    }
+    #tier1Left p {
+        font-size: 16px;
+    }
+}
+/* End temp classes */
+
+@media (max-width:1050px) {
+    #tier1 .optionalText {
+        display: none;
+    }
+    #tier1Left,
+    #tier1Right {
+        float: none !important;
+        padding: 0;
+        width: 100%;
+    }
+    #tier1Left .borderDashed,
+    #tier1Right .borderDashed {
+        margin-top: 32px;
+        padding-top: 32px;
+    }
+    #tier1Left p {
+        margin-bottom: 35px;
+        line-height: 1.4;
+    }
+    #tier1action {
+        float: none !important;
+    }
+    #tier1Right .note {
+        display: block;
+        padding: 0;
+        text-align: center;
+    }
+
+}
+
+
+/* TIER 2 BROKEN STATUS QUO */
+
+#tier2 {
+    background: url('/sitetheory/v/1/0/bundles/sitetheorytemplatecustom/images/tier2Background.jpg') no-repeat center center;
+    background-size: cover;
+}
+#tier2 .siteMaxWidth {
+    max-width: 1040px;
+}
+#tier2 .borderDashedLight {
+    margin-top: 45px;
+    padding-top: 45px;
+}
+#tier2 h1,
+#tier2 p {
+    color: #FFF;
+}
+#tier2 .bodyLarge {
+    font-size: 22px;
+}
+
+
+/* TIER 3 BS */
+
+#tier3 .siteMaxWidth {
+    max-width: 1040px;
+}
+#tier3 h1 {
+    margin-bottom: 50px;
+    color: #C5BB3E;
+}
+#tier3 .borderDashed {
+    margin-right: 20px;
+    margin-left: 20px;
+}
+#tier3 h3 {
+    color: #7B7B7B;
+}
+#tier3 p {
+    padding-top: 30px;
+    max-width: 200px;
+    color: #FFF;
+    font-size: 18px;
+    text-align: left;
+}
+#tier3 .rightCol p {
+    text-align: right;
+}
+#tier3 .badAppImage {
+    padding-right: 22px;
+    width: 144px;
+}
+#tier3 .rightCol .badAppImage {
+    padding-left: 24px;
+}
+@media (max-width:991px) {
+    #tier3 p,
+    #tier3 .rightCol p {
+        float: none !important;
+        max-width: 100%;
+        padding-top: 10px;
+        font-size: 16px;
+        text-align: center;
+    }
+    #tier3 .badAppImage,
+    #tier3 .rightCol .badAppImage {
+        float: none !important;
+        margin: 0 auto;
+        padding: 0;
+    }
+}
+
+
+/* TIER 4 COMPLETELY DIFFERENT */
+
+
+#tier4 h1 {
+    margin-bottom: 50px;
+}
+#tier4 .bodyLarge {
+    margin: 0 auto;
+    max-width: 940px;
+    font-weight: 300;
+}
+#tier4 #formula {
+    display: table;
+    margin: 40px auto 0 auto;
+    padding: 0;
+    font-size: 20px;
+    letter-spacing: 1px;
+}
+#tier4 #formula .borderDashed.bottom {
+    margin: 0;
+    padding: 30px 30px;
+    background-position: bottom left;
+}
+#tier4chart {
+    position: relative;
+    background: url('/sitetheory/v/1/0/bundles/sitetheorytemplatecustom/images/tier4Background.jpg') no-repeat center center;
+    background-size: cover;
+}
+#tier4chart h3 {
+    color: #FFF;
+    text-transform: none;
+    font-size: 22px;
+}
+#tier4chart p {
+    margin-bottom: 40px;
+    color: #DDD;
+}
+#tier4logo {
+    width: 160px;
+    margin: -120px auto 0 auto;
+}
+#tier4 .chartCol {
+    float: left;
+    width: 50%;
+}
+#tier4chart .midline {
+    position: absolute;
+    top: 175px;
+    bottom: 140px;
+    left: 50%;
+    width: 1px;
+    border-right: 1px solid #979797;
+}
+#tier4 .chartIcon {
+    margin: 0 auto 10px auto;
+    width: 137px;
+    text-align: center;
+}
+#tier4 .chartContent {
+    position: relative;
+    z-index: 100;
+    margin-right: -6px;
+    padding-right: 215px;
+    min-height: 220px;
+    background: url('/sitetheory/v/1/0/bundles/sitetheorytemplatecustom/images/tier4connectLeft.png') no-repeat right 70px;
+    background-size: 215px;
+}
+#tier4  .chartCol.right .chartContent {
+    float: right;
+    margin: 0 0 0 -4px;
+    padding: 26px 0 0 191px;
+    background: url('/sitetheory/v/1/0/bundles/sitetheorytemplatecustom/images/tier4connectRight.png') no-repeat left 96px;
+    background-size: 191px;
+}
+@media (max-width: 800px) {
+    #tier4logo {
+        width: 120px;
+        margin: -100px auto 50px auto;
+    }
+    #tier4chart .midline {
+        display: none;
+    }
+    #tier4 .chartCol {
+        float: none;
+        width: 100%;
+    }
+    #tier4 .chartContent,
+    #tier4  .chartCol.right .chartContent {
+        position: relative;
+        z-index: 100;
+        margin: 0;
+        padding: 40px 0;
+        min-height: inherit;
+        background: none;
+    }
+    #tier4 .chartContent {
+        border-top: 1px dashed rgba(255,255,255,.3);
+    }
+    #tier4 #chartItemOne.chartContent {
+        border-top: none;
+    }
+}
+
+/* TIER 5 APP SNEAK PEEK*/
+
+
+#tier5background {
+    background: #FAFAFA;
+}
+#tier5background p {
+    margin-bottom: 28px;
+}
+#tier5 img {
+    max-width: 268px;
+}
+
+
+/* TIER 6 BENEFITS */
+
+#tier6 {
+    min-height: 600px;
+    background: url('/sitetheory/v/1/0/bundles/sitetheorytemplatecustom/images/tier6Background.jpg') no-repeat;
+    background-size: cover;
+}
+#tier6 h1 {
+    margin-bottom: 60px;
+    color: #FCEE27;
+}
+#tier6 h3 {
+    font-size: 18px;
+    text-transform: none;
+}
+#tier6content {
+    text-align: left;
+}
+#tier6 h3 {
+    padding-top: 10px;
+    color: #FFF;
+}
+#tier6 p {
+    color: #DBDBDB;
+}
+#tier6 .benefitItem {
+    margin-bottom: 50px;
+    padding-left: 60px;
+    background-repeat: no-repeat;
+    background-size: 40px;
+}
+#tier6 #benefitOne {
+    background-image: url('/sitetheory/v/1/0/bundles/sitetheorytemplatecustom/images/tier6iconProfile.png');
+}
+#tier6 #benefitTwo {
+    background-image: url('/sitetheory/v/1/0/bundles/sitetheorytemplatecustom/images/tier6iconMatches.png');;
+}
+#tier6 #benefitThree {
+    background-image: url('/sitetheory/v/1/0/bundles/sitetheorytemplatecustom/images/tier6iconReveals.png');
+}
+#tier6 #benefitFour {
+    background-image: url('/sitetheory/v/1/0/bundles/sitetheorytemplatecustom/images/tier6iconMembers.png');
+}
+#tier6 #benefitFive {
+    background-image: url('/sitetheory/v/1/0/bundles/sitetheorytemplatecustom/images/tier6iconMessage.png');
+}
+#tier6 #benefitSix {
+    background-image: url('/sitetheory/v/1/0/bundles/sitetheorytemplatecustom/images/tier6iconMeetup.png');
+}
+
+
+/* TIER 7 CTA */
+
+
+#tier7 .bodyLarge {
+    font-size: 26px;
+    font-weight: 300;
+}
+#tier7content {
+    position: relative;
+    margin-top: 120px;
+}
+#tier7 .borderDashedVertical {
+    position: absolute;
+    top: 60px;
+    bottom: 0;
+    left: 50%;
+    width: 1px;
+}
+#tier7 .helpItem {
+    margin-top: -80px;
+}
+#iconKickstarter {
+    width: 125px;
+}
+#iconBeta {
+    width: 119px;
+}
+#tier7 h2 {
+    margin-top: 40px;
+    font-family: 'Fjalla One', sans-serif;
+    font-size: 28px;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+#tier7 h4 {
+    color: #888;
+}
+#tier7 p {
+    margin-top: 35px;
+    font-size: 15px;
+}
+#tier7 #helpTwo p{
+    margin-top: 60px;
+}
+#tier7 .btn {
+    margin-top: 26px;
+}
+
+@media (max-width: 768px) {
+    #tier7 .borderDashedVertical {
+        display: none;
+    }
+    #tier7content {
+        margin-top: 50px;
+    }
+    #tier7 .helpItem {
+        margin: 50px 0;
+    }
+    #tier7 #helpTwo.helpItem {
+        margin: 30px 0 0 0;
+    }
+    #tier7 #helpTwo p{
+        margin-top: 0;
+    }
+    #iconKickstarter,
+    #iconBeta {
+        width: 80px;
+    }
+}
+
+
+/* TIER 8 CONTACT */
+
+#tier8background {
+    padding: 120px 160px 200px 160px;
+    background: url('/sitetheory/v/1/0/bundles/sitetheorytemplatecustom/images/tier8background.png') no-repeat right bottom;
+    background-size: 100%;
+}
+#tier8 .bodyLarge {
+    font-size: 20px;
+    font-weight: 300;
+    color: #888;
+}
+#tier8 .bodyLarge a {
+    font-weight: bold;
+}
+@media (max-width: 768px) {
+    #tier8background {
+        padding: 80px 100px 120px 100px;
+        background-size: 100%;
+    }
+}
+@media (max-width: 600px) {
+    #tier8background {
+        padding: 50px 30px 70px 30px;
+    }
+    #tier8 .bodyLarge {
+        font-size: 18px;
+    }
 }
