@@ -232,6 +232,8 @@ h4,
     background: #222;
 }
 
+
+
 @media (max-width:1200px) {
     #logoHeader {
         margin-bottom: -18px;
@@ -289,7 +291,21 @@ h4,
         display: block;
         padding: 0 0 12px 0;
     }
+    #shellSidebar .mainNavigationLink a .linkOrnament {
+        display: none;
+    }
+    #shellSidebar .mainNavigationLink a .linkUnderline {
+        transform-origin: left center;
+        -webkit-transform-origin: left center;
+        left: 0;
+        right: 0;
+        background: #222;
+    }
+    #shellSidebar .mainNavigationLink a:hover .linkUnderline {
+        background: #666;
+    }
     .mainNavigationLink a {
+        padding: 0 0 6px 0;
         font-weight: 400;
         font-size: 13px;
         color: #999;
