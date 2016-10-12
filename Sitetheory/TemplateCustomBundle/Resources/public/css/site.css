@@ -168,7 +168,8 @@ h4,
     margin-top: 22px;
     padding: 10px 20px;
     color: #FFF;
-    font-size: 14px;
+    font-size: 13px;
+    font-weight: bold;
     background: #FE7C57;
     border: 2px solid #FE7C57;
 }
@@ -178,31 +179,64 @@ h4,
 }
 #logoHeader {
     margin-bottom: -18px;
-    padding-right: 40px;
-    max-width: 280px;
+    padding-right: 30px;
+    max-width: 270px;
 }
 #mainNavigationHeader {
     margin-top: 37px;
     max-width: 100%;
 }
 #mainNavigationHeader ul li {
-    padding-left: 35px;
+    padding: 0;
 }
-.siteNavigation a {
+.mainNavigationLink a {
+    position: relative;
+    padding: 0 17px 6px 17px;
     color: #494949;
     font-weight: bold;
     text-transform: uppercase;
 }
-.siteNavigation a:hover {
-    color: #999;
+.mainNavigationLink a:hover {
+    color: #222;
 }
-
+.mainNavigationLink a .linkOrnament {
+    position: absolute;
+    top: 7px;
+    left: 0;
+    width: 7px;
+    height: 7px;
+    background: #FCEE27;
+}
+.mainNavigationLink a:hover .linkOrnament {
+    transition: all .2s ease-out;
+    -webkit-transition: all .2s ease-out;
+    transform: scale(0);
+    -webkit-transform: scale(0);
+}
+.mainNavigationLink a .linkUnderline {
+    transform: scaleX(.2);
+    -webkit-transform: scaleX(.2);
+    position: absolute;
+    right: 17px;
+    left: 17px;
+    bottom: 4px;
+    height: 2px;
+    background: #FFF;
+}
+.mainNavigationLink a:hover .linkUnderline {
+    transition: all .2s ease-out;
+    -webkit-transition: all .2s ease-out;
+    transform: scaleX(1);
+    -webkit-transform: scaleX(1);
+    bottom: 0;
+    background: #222;
+}
 
 @media (max-width:1200px) {
     #logoHeader {
         margin-bottom: -18px;
-        padding-right: 32px;
-        max-width: 220px;
+        padding-right: 22px;
+        max-width: 210px;
     }
     #betaSignupBtn {
         margin-top: 12px;
@@ -210,12 +244,18 @@ h4,
     #mainNavigationHeader {
         margin-top: 26px;
     }
-    #mainNavigationHeader ul li {
-        padding-left: 28px;
+    .mainNavigationLink a {
+        padding-left: 14px;
+        padding-right: 14px;
     }
 }
 @media (max-width:1050px) {
-    .siteNavigation a {
+    .mainNavigationLink a .linkOrnament {
+        position: absolute;
+        top: 5px;
+        left: 0;
+    }
+    .mainNavigationLink a {
         font-size: 12px;
     }
 }
@@ -249,12 +289,12 @@ h4,
         display: block;
         padding: 0 0 12px 0;
     }
-    .siteNavigation a {
+    .mainNavigationLink a {
         font-weight: 400;
         font-size: 13px;
         color: #999;
     }
-    .siteNavigation a:hover {
+    .mainNavigationLink a:hover {
         color: #FFF;
     }
 }
@@ -274,7 +314,7 @@ h4,
 #headerContainer.retracting.offScreen.offScreenScrollUp #mainNavigationHeader {
     margin-top: 12px;
 }
-#headerContainer.retracting.offScreen.offScreenScrollUp .siteNavigation a {
+#headerContainer.retracting.offScreen.offScreenScrollUp .mainNavigationLink a {
     font-size: 13px;
 }
 #headerContainer.retracting.offScreen.offScreenScrollUp #betaSignupBtn {

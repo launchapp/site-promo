@@ -227,14 +227,6 @@
     padding-right: 6%;
     width: 34%;
 }
-#tier1Left p {
-    font-size: 18px;
-    line-height: 1.6;
-}
-#tier1Left .borderDashed {
-    margin-top: 42px;
-    padding-top: 42px;
-}
 #tier1Right {
     width: 66%;
 }
@@ -250,20 +242,49 @@
     text-transform: uppercase;
     color: #222;
 }
-@media (max-width:768px) {
+
+/* Temp classes dependent on length of tagline */
+
+#tier1Left p {
+    margin-bottom: 0;
+    font-size: 18px;
+    line-height: 1.6;
+}
+#tier1Left .borderDashed {
+    margin-top: 42px;
+    padding-top: 42px;
+}
+
+@media (max-width: 1200px) {
+    #tier1Left .borderDashed,
+    #tier1Right .borderDashed {
+        margin-top: 22px;
+        padding-top: 22px;
+    }
+    #tier1Left p {
+        font-size: 16px;
+    }
+}
+/* End temp classes */
+
+@media (max-width:1050px) {
+    #tier1 .optionalText {
+        display: none;
+    }
     #tier1Left,
     #tier1Right {
         float: none !important;
         padding: 0;
         width: 100%;
     }
+    #tier1Left .borderDashed,
+    #tier1Right .borderDashed {
+        margin-top: 32px;
+        padding-top: 32px;
+    }
     #tier1Left p {
         margin-bottom: 35px;
         line-height: 1.4;
-    }
-    #tier1Left .borderDashed {
-        margin-top: 42px;
-        padding-top: 42px;
     }
     #tier1action {
         float: none !important;
@@ -280,17 +301,8 @@
 /* TIER 2 BROKEN STATUS QUO */
 
 #tier2 {
-    position: relative;
-    min-height: 600px;
     background: url('/sitetheory/v/1/0/bundles/sitetheorytemplatecustom/images/tier2Background.jpg') no-repeat center center;
     background-size: cover;
-}
-#tier2 .centerText {
-    position: absolute;
-    top: 50%;
-    left: 0;
-    right: 0;
-    transform: translateY(-50%);
 }
 #tier2 .siteMaxWidth {
     max-width: 1040px;
@@ -317,6 +329,10 @@
     margin-bottom: 50px;
     color: #C5BB3E;
 }
+#tier3 .borderDashed {
+    margin-right: 20px;
+    margin-left: 20px;
+}
 #tier3 h3 {
     color: #7B7B7B;
 }
@@ -332,7 +348,7 @@
 }
 #tier3 .badAppImage {
     padding-right: 22px;
-    max-width: 144px;
+    width: 144px;
 }
 #tier3 .rightCol .badAppImage {
     padding-left: 24px;
@@ -346,14 +362,11 @@
         font-size: 16px;
         text-align: center;
     }
-    #tier3 .badAppImage {
+    #tier3 .badAppImage,
+    #tier3 .rightCol .badAppImage {
         float: none !important;
         margin: 0 auto;
-        padding-right: 0;
-        height: 100px;
-    }
-    #tier3 .badAppImage img {
-        height: 100px;
+        padding: 0;
     }
 }
 
@@ -393,8 +406,7 @@
 }
 #tier4chart p {
     margin-bottom: 40px;
-    color: #FFF;
-    font-size: 15px;
+    color: #DDD;
 }
 #tier4logo {
     width: 160px;
@@ -467,6 +479,9 @@
 
 #tier5background {
     background: #FAFAFA;
+}
+#tier5background p {
+    margin-bottom: 28px;
 }
 #tier5 img {
     max-width: 268px;
@@ -600,6 +615,7 @@
 #tier8background {
     padding: 120px 160px 200px 160px;
     background: url('/sitetheory/v/1/0/bundles/sitetheorytemplatecustom/images/tier8background.png') no-repeat right bottom;
+    background-size: 100%;
 }
 #tier8 .bodyLarge {
     font-size: 20px;
@@ -618,7 +634,6 @@
 @media (max-width: 600px) {
     #tier8background {
         padding: 50px 30px 70px 30px;
-        background-size: 100%;
     }
     #tier8 .bodyLarge {
         font-size: 18px;

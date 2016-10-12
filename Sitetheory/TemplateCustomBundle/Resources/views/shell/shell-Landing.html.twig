@@ -50,11 +50,41 @@ landingFull
     {% block mainNavigation %}
         <div id="mainNavigationHeader" class="siteNavigation">
             <ul class="list-inline fontPrimary">
-                <li><a class="mainNavLink" href="">Status Quo</a></li>
-                <li><a class="mainNavLink" href="">Something Different</a></li>
-                <li><a class="mainNavLink" href="">App</a></li>
-                <li><a class="mainNavLink" href="">Benefits</a></li>
-                <li><a class="mainNavLink" href="">Help Us!</a></li>
+                <li class="mainNavigationLink">
+                    <a href="#tier2">
+                        <div class="linkOrnament"></div>
+                        <div class="linkUnderline"></div>
+                        Status Quo
+                    </a>
+                </li>
+                <li class="mainNavigationLink">
+                    <a href="#tier3">
+                        <div class="linkOrnament"></div>
+                        <div class="linkUnderline"></div>
+                        Something Different
+                    </a>
+                </li>
+                <li class="mainNavigationLink">
+                    <a href=#tier5"">
+                        <div class="linkOrnament"></div>
+                        <div class="linkUnderline"></div>
+                        App
+                    </a>
+                </li>
+                <li class="mainNavigationLink">
+                    <a href="#tier6">
+                        <div class="linkOrnament"></div>
+                        <div class="linkUnderline"></div>
+                        Benefits
+                    </a>
+                </li>
+                <li class="mainNavigationLink">
+                    <a href="#tier7">
+                        <div class="linkOrnament"></div>
+                        <div class="linkUnderline"></div>
+                        Help Us!
+                    </a>
+                </li>
             </ul>
         </div>
     {% endblock mainNavigation %}
@@ -82,11 +112,10 @@ landingFull
     <div id="header1" class="clearfix">
         <div class="clearfix">
             {{ block('betaButton') }}
-            {{ block('mainNavigation') }}
             <div id="logoHeader" class="pull-left">
                 <img src="{{ asset('bundles/sitetheorytemplatecustom/images/launchLogoHeader.png') }}" alt="">
             </div>
-
+            {{ block('mainNavigation') }}
         </div>
     </div>
 {% endblock header1 %}
@@ -110,7 +139,7 @@ landingFull
                         <div id="tier1action" class="pull-right">
                             <a class="btn" href="">Kickstarter Campaign</a>
                         </div>
-                        <p class="fontPrimary bodyLarge"><span class="hidden-xs hidden-sm">Help us build it!</span><span class="note">(one-click signup)</span></p>
+                        <p class="fontPrimary bodyLarge"><span class="optionalText">Help us build it!</span><span class="note">(one-click signup)</span></p>
                     </div>
                 </div>
         </div>
@@ -118,14 +147,12 @@ landingFull
 
     {# TIER 2 BROKEN STATUS QUO #}
     <div id="tier2" class="landingTier">
-        <div class="centerText">
-            <div class="siteMaxWidth siteSidePadding shellVerticalPadding">
-                <h1>A Broken <br class="visible-xs">Status Quo</h1>
-                <div class="borderDashedLight">
-                    <p class="fontPrimary bodyLarge">There are thousands of online dating services. Yet 80% of single Americans won’t get a date through any of them … over an entire year!<br><br>
+        <div class="siteMaxWidth siteSidePadding shellVerticalPadding">
+            <h1>A Broken <br class="visible-xs">Status Quo</h1>
+            <div class="borderDashedLight">
+                <p class="fontPrimary bodyLarge">There are thousands of online dating services. Yet 80% of single Americans won’t get a date through any of them … over an entire year!<br><br>
 
-                        Those apps were built to make life easier for people who already like online dating. We’re building something for everyone else. </p>
-                </div>
+                    Those apps were built to make life easier for people who already like online dating. We’re building something for everyone else. </p>
             </div>
         </div>
     </div>
@@ -136,45 +163,53 @@ landingFull
             <h3>Most of us are done with</h3>
             <h1>THE BS</h1>
             <div class="row">
-                <div class="col-xs-5 clearfix">
+                <div class="col-xs-6 clearfix">
                     <div class="badAppImage pull-left">
-                        <img style="width:100%;" src="{{ asset('bundles/sitetheorytemplatecustom/images/badMatch1.png') }}" alt="">
+                        <img src="{{ asset('bundles/sitetheorytemplatecustom/images/badMatch1.png') }}" alt="">
                     </div>
                     <p class="pull-left">Dishonest Profiles</p>
                 </div>
-                <div class="col-xs-5 col-xs-offset-2 rightCol clearfix">
+                <div class="col-xs-6 rightCol clearfix">
                     <div class="badAppImage pull-right">
-                        <img style="width:100%;" src="{{ asset('bundles/sitetheorytemplatecustom/images/badMatch4.png') }}" alt="">
+                        <img src="{{ asset('bundles/sitetheorytemplatecustom/images/badMatch4.png') }}" alt="">
                     </div>
                     <p class="pull-right">Lazy &amp; Aggressive Messaging</p>
                 </div>
             </div>
             <div class="row">
-                <div class="col-xs-5 borderDashed clearfix">
-                    <div class="badAppImage pull-left">
-                        <img style="width:100%;" src="{{ asset('bundles/sitetheorytemplatecustom/images/badMatch2.png') }}" alt="">
+                <div class="col-xs-6 clearfix">
+                    <div class="borderDashed">
+                        <div class="badAppImage pull-left">
+                            <img src="{{ asset('bundles/sitetheorytemplatecustom/images/badMatch2.png') }}" alt="">
+                        </div>
+                        <p class="pull-left">Creeps &amp; Players</p>
                     </div>
-                    <p class="pull-left">Creeps &amp; Players</p>
                 </div>
-                <div class="col-xs-5 col-xs-offset-2 borderDashed rightCol clearfix">
-                    <div class="badAppImage pull-right">
-                        <img style="width:100%;" src="{{ asset('bundles/sitetheorytemplatecustom/images/badMatch5.png') }}" alt="">
+                <div class="col-xs-6 rightCol clearfix">
+                    <div class="borderDashed">
+                        <div class="badAppImage pull-right">
+                            <img src="{{ asset('bundles/sitetheorytemplatecustom/images/badMatch5.png') }}" alt="">
+                        </div>
+                        <p class="pull-right">Bots/Fake Users</p>
                     </div>
-                    <p class="pull-right">Bots/Fake Users</p>
                 </div>
             </div>
             <div class="row">
-                <div class="col-xs-5 borderDashed clearfix">
-                    <div class="badAppImage pull-left">
-                        <img style="width:100%;" src="{{ asset('bundles/sitetheorytemplatecustom/images/badMatch3.png') }}" alt="">
+                <div class="col-xs-6 clearfix">
+                    <div class="borderDashed">
+                        <div class="badAppImage pull-left">
+                            <img src="{{ asset('bundles/sitetheorytemplatecustom/images/badMatch3.png') }}" alt="">
+                        </div>
+                        <p class="pull-left">Shallow Matches</p>
                     </div>
-                    <p class="pull-left">Shallow Matches</p>
                 </div>
-                <div class="col-xs-5 col-xs-offset-2 borderDashed rightCol clearfix">
-                    <div class="badAppImage pull-right">
-                        <img style="width:100%;" src="{{ asset('bundles/sitetheorytemplatecustom/images/badMatch6.png') }}" alt="">
+                <div class="col-xs-6 rightCol clearfix">
+                    <div class="borderDashed">
+                        <div class="badAppImage pull-right">
+                            <img src="{{ asset('bundles/sitetheorytemplatecustom/images/badMatch6.png') }}" alt="">
+                        </div>
+                        <p class="pull-right">Interaction Anxiety</p>
                     </div>
-                    <p class="pull-right">Interaction Anxiety</p>
                 </div>
             </div>
         </div>
@@ -198,14 +233,14 @@ landingFull
             <div class="midline"></div>
             <div class="siteMaxWidth siteSidePadding shellVerticalPadding">
                 <div id="tier4logo">
-                    <img style="width:100%;" src="{{ asset('bundles/sitetheorytemplatecustom/images/tier4logo.png') }}" alt="">
+                    <img src="{{ asset('bundles/sitetheorytemplatecustom/images/tier4logo.png') }}" alt="">
                 </div>
 
                 <div class="clearfix">
                     <div class="chartCol left">
                         <div id="chartItemOne" class="chartContent">
                             <div class="chartIcon">
-                                <img style="width:100%;" src="{{ asset('bundles/sitetheorytemplatecustom/images/tier4spacemen1.png') }}" alt="">
+                                <img src="{{ asset('bundles/sitetheorytemplatecustom/images/tier4spacemen1.png') }}" alt="">
                             </div>
                             <h3>Friend Verification"</h3>
                             <p>Friends vouch for you, adding fun and interesting insights to your profile.</p>
@@ -214,7 +249,7 @@ landingFull
                     <div class="chartCol right">
                         <div class="chartContent">
                             <div class="chartIcon">
-                                <img style="width:100%;" src="{{ asset('bundles/sitetheorytemplatecustom/images/tier4spacemen2.png') }}" alt="">
+                                <img src="{{ asset('bundles/sitetheorytemplatecustom/images/tier4spacemen2.png') }}" alt="">
                             </div>
                             <h3>Fun &amp; R.E.S.P.E.C.T.</h3>
                             <p>By making sure all your matches are legit and accountable to their friends for their online and offline behavior, we’re creating a community you’ll actually enjoy.</p>
@@ -225,7 +260,7 @@ landingFull
                     <div class="chartCol left">
                         <div class="chartContent">
                             <div class="chartIcon">
-                                <img style="width:100%;" src="{{ asset('bundles/sitetheorytemplatecustom/images/tier4spacemen3.png') }}" alt="">
+                                <img src="{{ asset('bundles/sitetheorytemplatecustom/images/tier4spacemen3.png') }}" alt="">
                             </div>
                             <h3>Crowdsourced Intuition"</h3>
                             <p>Your friends (including non-singles) use their intuition and experience to suggest great matches for your review.</p>
@@ -234,7 +269,7 @@ landingFull
                     <div class="chartCol right">
                         <div class="chartContent">
                             <div class="chartIcon">
-                                <img style="width:100%;" src="{{ asset('bundles/sitetheorytemplatecustom/images/tier4spacemen4.png') }}" alt="">
+                                <img src="{{ asset('bundles/sitetheorytemplatecustom/images/tier4spacemen4.png') }}" alt="">
                             </div>
                             <h3>Socialness<br>(no that’s not a word)</h3>
                             <p>We let you share your experience with your friends to get advice, laugh it off, or dance with excitement.
@@ -257,6 +292,7 @@ landingFull
         </div>
         <div id="tier5background">
             <div class="siteMaxWidth siteSidePadding shellVerticalPadding">
+                <p>Instructions here for using embedded Invision screenshots</p>
                 <img style="width:100%;" src="{{ asset('bundles/sitetheorytemplatecustom/images/tempApp.jpg') }}" alt="">
             </div>
         </div>
