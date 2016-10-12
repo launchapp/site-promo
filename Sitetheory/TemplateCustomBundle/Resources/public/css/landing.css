@@ -247,7 +247,7 @@
 #tier2 {
     position: relative;
     min-height: 600px;
-    background: url('/sitetheory/v/1/0/bundles/sitetheorytemplatecustom/images/tier2Background.jpg') no-repeat;
+    background: url('/sitetheory/v/1/0/bundles/sitetheorytemplatecustom/images/tier2Background.jpg') no-repeat center center;
     background-size: cover;
 }
 #tier2 .centerText {
@@ -317,11 +317,15 @@
 }
 #tier4 #formula {
     display: table;
-    margin: 40px auto 20px auto;
-    padding: 24px 40px;
-    font-size: 18px;
+    margin: 40px auto 0 auto;
+    padding: 0;
+    font-size: 20px;
     letter-spacing: 1px;
-    border: 1px solid #979797;
+}
+#tier4 #formula .borderDashed.bottom {
+    margin: 0;
+    padding: 30px 30px;
+    background-position: bottom left;
 }
 #tier4chart {
     position: relative;
@@ -473,8 +477,12 @@
     font-weight: bold;
     text-transform: uppercase;
 }
+#tier7 h4 {
+    color: #888;
+}
 #tier7 p {
     margin-top: 35px;
+    font-size: 15px;
 }
 #tier7 #helpTwo p{
     margin-top: 60px;

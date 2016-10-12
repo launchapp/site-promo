@@ -30,6 +30,39 @@ landingFull
 {% block mainColumnGutter %}
 {% endblock mainColumnGutter %}
 
+{# Hide Sidebar Navigation until it's dynamic and necessary #}
+{% block navSection %}
+{% endblock navSection %}
+
+{# Hide Sidebar Login until it's dynamic and necessary #}
+{% block sidebarLogin %}
+{% endblock sidebarLogin %}
+
+{# Put Beta Signup in Sidebar #}
+{% block sidebarExtrasTop %}
+    {% block betaButton %}
+        <div id="betaSignupBtn" class="btn"  data-plugin="AddClass Dim" data-class="active" data-target="#betaSignup" data-event="click">
+            Beta Signup
+        </div>
+    {% endblock betaButton %}
+
+    <div class="borderDashed">
+    {% block mainNavigation %}
+        <div id="mainNavigationHeader" class="siteNavigation">
+            <ul class="list-inline fontPrimary">
+                <li><a class="mainNavLink" href="">Status Quo</a></li>
+                <li><a class="mainNavLink" href="">Something Different</a></li>
+                <li><a class="mainNavLink" href="">App</a></li>
+                <li><a class="mainNavLink" href="">Benefits</a></li>
+                <li><a class="mainNavLink" href="">Help Us!</a></li>
+            </ul>
+        </div>
+    {% endblock mainNavigation %}
+    </div>
+
+{% endblock sidebarExtrasTop %}
+
+
 {# Hide footer site map #}
 {% block footerSiteMap %}
 {% endblock footerSiteMap %}
@@ -43,21 +76,17 @@ landingFull
 {% set shellContentStructure = 'emptyAll' %}
 
 
+
+
 {% block header1 %}
     <div id="header1" class="clearfix">
         <div class="clearfix">
+            {{ block('betaButton') }}
+            {{ block('mainNavigation') }}
             <div id="logoHeader" class="pull-left">
                 <img src="{{ asset('bundles/sitetheorytemplatecustom/images/launchLogoHeader.png') }}" alt="">
             </div>
-            <div id="mainNavigationHeader" class="siteNavigation">
-                <ul class="list-inline fontPrimary">
-                    <li><a class="mainNavLink" href="">Status Quo</a></li>
-                    <li><a class="mainNavLink" href="">Something Different</a></li>
-                    <li><a class="mainNavLink" href="">App</a></li>
-                    <li><a class="mainNavLink" href="">Benefits</a></li>
-                    <li><a class="mainNavLink" href="">Help Us!</a></li>
-                </ul>
-            </div>
+
         </div>
     </div>
 {% endblock header1 %}
@@ -93,7 +122,7 @@ landingFull
             <div class="siteMaxWidth siteSidePadding shellVerticalPadding">
                 <h1>A Broken Status Quo</h1>
                 <div class="borderDashedLight">
-                    <p class="fontPrimary bodyLarge">There are thousands of online dating services. Yet 80% of single Americans won’t get even one date through them … over an entire year!<br><br>
+                    <p class="fontPrimary bodyLarge">There are thousands of online dating services. Yet 80% of single Americans won’t get a date through any of them … over an entire year!<br><br>
 
                         Those apps were built to make life easier for people who already like online dating. We’re building something for everyone else. </p>
                 </div>
@@ -160,7 +189,9 @@ landingFull
 
                 We have a simple formula to change that:
             </p>
-            <h3 id="formula">Make dating social again</h3>
+            <h3 id="formula" class="borderDashed">
+                <div class="borderDashed bottom">Make dating social again</div>
+            </h3>
         </div>
 
         <div id="tier4chart">
@@ -307,7 +338,7 @@ landingFull
         <div id="tier8background">
             <div class="siteMaxWidth siteSidePadding shellVerticalPadding">
 
-                <p class="fontPrimary bodyLarge">Have questions? Please use the ‘contact’ form on our Kickstarter page. For press inquiries, <a href="mailto:jeremy@launchapp.io">jeremy@launchapp.io</a>. To discuss investing, <a href="mailto:chad@launchapp.io">chad@launchapp.io</a>.</p>
+                <p class="fontPrimary bodyLarge">Have questions? Please use the <a href="">contact form</a> on our Kickstarter page. For press inquiries, <a href="mailto:jeremy@launchapp.io">jeremy@launchapp.io</a>. To discuss investing, <a href="mailto:chad@launchapp.io">chad@launchapp.io</a>.</p>
             </div>
         </div>
     </div>
@@ -324,3 +355,61 @@ landingFull
     </div>
 
 {% endblock content %}
+
+
+
+
+
+{% block popup %}
+    {% block betaSignup %}
+        <div id="betaSignup">
+            <div id="betaSignupContent" class="springIn borderRadiusDefault">
+                <div id="betaSignupClose" class="btnClose" data-plugin="AddClass Dim" data-class="active" data-target="#betaSignup" data-event="click">
+                    <span class="sr-only">Close</span>
+                        {% embed '@SitetheoryTemplatePromoBundle/Resources/public/images/icons/close.svg'%}{%  block id  %}iconClose{% endblock %}{% endembed %}
+
+                </div>
+
+                <div id="success_message" style="display:none;">
+                    <h2>Thanks</h2>
+                    <div class="note fontSecondary">You rock! We'll let you know when the app is ready.</div>
+                </div>
+                <form data-id="embedded_signup:form" class="form" name="embedded_signup" method="POST" action="https://visitor2.constantcontact.com/api/signup">
+                    <div class="logo">
+                        <img src="{{ asset('bundles/sitetheorytemplatecustom/images/launchLogoMark.png') }}" alt="">
+                    </div>
+                    <h2 class="betaTitle">Beta Signup</h2>
+                    <p class="note fontBody">Be among the first to join and help us create an awesome community.</p>
+                    <!-- The following code must be included to ensure your sign-up form works properly. -->
+                    <input data-id="ca:input" type="hidden" name="ca" value="a84d2d17-dca3-4f96-b76c-459018f0b788">
+                    <input data-id="list:input" type="hidden" name="list" value="1924932799">
+                    <input data-id="source:input" type="hidden" name="source" value="EFD">
+                    <input data-id="required:input" type="hidden" name="required" value="list,email">
+                    <input data-id="url:input" type="hidden" name="url" value="">
+                    <div class="form-group" data-id="Email Address:p">
+                        <input class="form-control smallLabel fontPrimary" data-id="Email Address:input" type="text" name="email" value="" maxlength="80" placeholder="Email Address">
+                    </div>
+                    <div class="signupAction">
+                        <button type="submit" class="fontPrimary bold btn positionAnchor" data-enabled="enabled">
+                            <span class="btnGradient"></span>
+                            <span class="btnText">Sign Up</span>
+                        </button>
+                    </div>
+
+                    <p class="disclaimer">By submitting this form, you are granting: Launch Social Inc., 1330 N Broadway, Ste 200H, Walnut Creek, California, 94596, United States, permission to email you. You may unsubscribe via the link found at the bottom of every email.</p>
+                </form>
+            </div>
+            <script type='text/javascript'>
+                var localizedErrMap = {};
+                localizedErrMap['required'] = 		'This field is required.';
+                localizedErrMap['ca'] = 			'An unexpected error occurred while attempting to send email.';
+                localizedErrMap['email'] = 			'Please enter your email address in name@email.com format.';
+                localizedErrMap['generic'] = 		'This field is invalid.';
+                localizedErrMap['shared'] = 		'Sorry, we could not complete your sign-up. Please contact us to resolve this.';
+                var postURL = 'https://visitor2.constantcontact.com/api/signup';
+            </script>
+            <script type='text/javascript' src='https://static.ctctcdn.com/h/contacts-embedded-signup-assets/1.0.2/js/signup-form.js'></script>
+        </div>
+
+    {% endblock betaSignup %}
+{% endblock popup %}

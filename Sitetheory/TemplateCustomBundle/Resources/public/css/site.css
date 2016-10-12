@@ -136,6 +136,9 @@ h4,
 .backgroundDark a:hover {
     color: #FFF;
 }
+.backgroundPriority {
+    background: #FE7C57;
+}
 
 
 /* SITE BACKGROUND */
@@ -146,11 +149,137 @@ h4,
 
 /* HEADER */
 
+#headerBackground {
+    background: rgba(255,255,255,.96);
+}
 #headerContainer {
-    padding: 0 40px 10px 40px;
     border-bottom: 1px solid #DDD;
     box-shadow: 0 0 4px #DDD;
 }
+#header{
+    padding: 10px 40px;
+}
+#betaSignupBtn {
+    float: right;
+    margin-top: 22px;
+    padding: 10px 20px;
+    color: #FFF;
+    font-size: 14px;
+    background: #FE7C57;
+    border: 2px solid #FE7C57;
+}
+#betaSignupBtn:hover {
+    color: #222;
+    background: #FFF;
+}
+#logoHeader {
+    margin-bottom: -18px;
+    padding-right: 40px;
+    max-width: 280px;
+}
+#mainNavigationHeader {
+    margin-top: 37px;
+    max-width: 100%;
+}
+#mainNavigationHeader ul li {
+    padding-left: 35px;
+}
+.siteNavigation a {
+    color: #494949;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+.siteNavigation a:hover {
+    color: #999;
+}
+
+
+@media (max-width:1200px) {
+    #logoHeader {
+        margin-bottom: -18px;
+        padding-right: 32px;
+        max-width: 220px;
+    }
+    #betaSignupBtn {
+        margin-top: 12px;
+    }
+    #mainNavigationHeader {
+        margin-top: 26px;
+    }
+    #mainNavigationHeader ul li {
+        padding-left: 28px;
+    }
+}
+@media (max-width:1050px) {
+    .siteNavigation a {
+        font-size: 12px;
+    }
+}
+@media (max-width:991px) {
+    #sidebarToggle {
+        top: 32px;
+        right: 40px;
+    }
+    #headerContainer.retracting.offScreen.offScreenScrollUp #sidebarToggle {
+        top: 20px;
+    }
+    #header {
+        height: 62px;
+    }
+    #logoHeader {
+        margin-bottom: -8px;
+    }
+    #header #betaSignupBtn {
+        display: none;
+    }
+    #betaSignupBtn {
+        float: none;
+        margin-bottom: 20px;
+    }
+    #shellSidebar .borderDashed {
+        margin-top: 20px;
+        padding-top: 20px;
+    }
+    #shellSidebar #mainNavigationHeader,
+    #mainNavigationHeader .list-inline > li {
+        display: block;
+        padding: 0 0 12px 0;
+    }
+    .siteNavigation a {
+        font-weight: 400;
+        font-size: 13px;
+        color: #999;
+    }
+    .siteNavigation a:hover {
+        color: #FFF;
+    }
+}
+
+
+
+
+/* RETRACTING HEADER */
+
+#headerContainer.retracting.offScreen.offScreenScrollUp #headerBackground {
+    box-shadow: 0 1px 6px rgba(33,33,33,.1);
+    border-bottom: 1px solid #DDD;
+}
+#headerContainer.retracting.offScreen.offScreenScrollUp #logoHeader {
+    max-width: 150px;
+}
+#headerContainer.retracting.offScreen.offScreenScrollUp #mainNavigationHeader {
+    margin-top: 12px;
+}
+#headerContainer.retracting.offScreen.offScreenScrollUp .siteNavigation a {
+    font-size: 13px;
+}
+#headerContainer.retracting.offScreen.offScreenScrollUp #betaSignupBtn {
+    margin-top: 1px;
+    font-size: 13px;
+    font-weight: bold;
+}
+
+
 
 
 /* BORDERS */
@@ -277,30 +406,7 @@ h4,
 
 
 
-
-#header1 {
-    margin-top: 20px;
-}
-#logoHeader {
-    padding-right: 40px;
-    max-width: 240px;
-}
-#mainNavigationHeader {
-    margin: 30px 0 0 0;
-    max-width: 100%;
-}
-#mainNavigationHeader ul li {
-    padding-left: 35px;
-}
-.siteNavigation a {
-    color: #494949;
-    font-weight: bold;
-    text-transform: uppercase;
-}
-.siteNavigation a:hover {
-    color: #999;
-}
-
+/* FOOTER */
 
 #footer {
     margin: 0 0 40px 0;
@@ -381,6 +487,7 @@ h4,
     font-size: 24px;
 }
 #betaSignup .note {
+    color: #888;
     margin-bottom: 26px;
 }
 #betaSignup .form-control {
@@ -397,7 +504,7 @@ h4,
     bottom: 0;
     left: 0;
     width: 100%;
-    color: #999;
+    color: #666;
     font-size: 10px;
 }
 #betaSignup #success_message {
