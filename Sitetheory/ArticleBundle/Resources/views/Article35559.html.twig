@@ -1,10 +1,14 @@
 {% extends view.templates.shell %}
 
 {% block contentType %}
-    <div data-entity="User" data-manifest="true">
+    <div data-entity="User" data-manifest="true" data-pipeline="message" data-messageSuccess="You rock! We'll let you know when the app is ready.">
         <div data-type="text" data-property="email" data-label="Email"></div>
-        <div data-type="text" data-property="username" data-label="Username"></div>
-        <div data-type="select" data-property="settings.gender" data-label="Gender" data-ui="menu" data-placeholder="---" data-choices='[{"value":1, "label":"Female"}, {"value":2, "label":"Male"}, {"value":4, "label":"Transgender Female"}, {"value":5, "label":"Transgender Male"}, {"value":3, "label":"Gender Variant"}]'></div>
-        <div id="formSubmit" class="action btn btnSave" data-type="save" data-status="load" data-textOff="Join" data-classOff="" data-classOn=""></div>
+        {#<div data-type="text" data-property="username" data-label="Username"></div>#}
+        <div data-type="select" data-property="settings.gender" data-label="Gender"
+             data-ui="menu"
+             data-placeholder="---"
+             data-choices='{{ environment.site.optionMap.gender|json_encode }}'
+        ></div>
+        <div id="formSubmit" class="action btn btnSave" data-type="save" data-redirect="" data-status="load" data-iconPath="">Join</div>
     </div>
 {% endblock contentType %}
