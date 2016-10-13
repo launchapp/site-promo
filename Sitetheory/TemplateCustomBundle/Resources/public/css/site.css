@@ -187,18 +187,21 @@ h4,
     max-width: 100%;
 }
 #navMainContainer ul li {
+    display: inline-block;
     padding: 0;
-    display: table;
 }
-.navMainLink a {
+/* must include the .nav parent to override scrollspy */
+.nav .navMainLink a {
     position: relative;
     padding: 0 17px 6px 17px;
     color: #494949;
     font-weight: bold;
     text-transform: uppercase;
 }
-.navMainLink a:hover {
+.nav .navMainLink a:hover {
     color: #222;
+    /* to overried scrollspy which adds background */
+    background: none;
 }
 .navMainLink a .linkOrnament {
     position: absolute;
