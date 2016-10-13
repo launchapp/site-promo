@@ -175,7 +175,7 @@ h4,
 }
 #betaSignupBtn:hover {
     color: #222;
-    background: #FFF;
+    background: none;
 }
 #logoHeader {
     margin-bottom: -18px;
@@ -250,7 +250,7 @@ h4,
     #navMainContainer {
         margin-top: 26px;
     }
-    .navMainLink a {
+    .nav .navMainLink a {
         padding-left: 14px;
         padding-right: 14px;
     }
@@ -261,7 +261,7 @@ h4,
         top: 5px;
         left: 0;
     }
-    .navMainLink a {
+    .nav .navMainLink a {
         font-size: 12px;
     }
 }
@@ -286,9 +286,15 @@ h4,
         float: none;
         margin-bottom: 20px;
     }
+    #betaSignupBtn:hover {
+        color: #FE7C57;
+    }
     #shellSidebar .borderDashed {
         margin-top: 20px;
         padding-top: 20px;
+    }
+    #header #navMainContainer {
+        display: none;
     }
     #shellSidebar #navMainContainer,
     #navMainContainer .list-inline > li {
@@ -308,13 +314,13 @@ h4,
     #shellSidebar .navMainLink a:hover .linkUnderline {
         background: #666;
     }
-    .navMainLink a {
+    .nav .navMainLink a {
         padding: 0 0 6px 0;
         font-weight: 400;
         font-size: 13px;
         color: #999;
     }
-    .navMainLink a:hover {
+    .nav .navMainLink a:hover {
         color: #FFF;
     }
 }
