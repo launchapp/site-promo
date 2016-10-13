@@ -8,9 +8,12 @@
     <link rel="stylesheet" href="{{ asset('bundles/sitetheorytemplatecustom/css/landing.css') }}">
 {% endblock link %}
 
-{% block appClass %}
-landingFull
-{% endblock appClass %}
+{% block appClass %}landingFull{% endblock appClass %}
+
+{% block bodyAttributes %}
+    {{ parent() }}
+    data-spy="scroll" data-target="#navMainContainer" data-offset="100"
+{% endblock bodyAttributes %}
 
 
 {# Remove standard header image #}
@@ -48,37 +51,37 @@ landingFull
 
     <div class="borderDashed">
     {% block mainNavigation %}
-        <div id="mainNavigationHeader" class="siteNavigation">
-            <ul class="list-inline fontPrimary">
-                <li class="mainNavigationLink">
+        <div id="navMainContainer" class="navMainContainer">
+            <ul class="nav list-inline fontPrimary">
+                <li class="navMainLink">
                     <a href="#tier2">
                         <div class="linkOrnament"></div>
                         <div class="linkUnderline"></div>
                         Status Quo
                     </a>
                 </li>
-                <li class="mainNavigationLink">
+                <li class="navMainLink">
                     <a href="#tier3">
                         <div class="linkOrnament"></div>
                         <div class="linkUnderline"></div>
                         Something Different
                     </a>
                 </li>
-                <li class="mainNavigationLink">
-                    <a href=#tier5"">
+                <li class="navMainLink">
+                    <a href="#tier5">
                         <div class="linkOrnament"></div>
                         <div class="linkUnderline"></div>
                         App
                     </a>
                 </li>
-                <li class="mainNavigationLink">
+                <li class="navMainLink">
                     <a href="#tier6">
                         <div class="linkOrnament"></div>
                         <div class="linkUnderline"></div>
                         Benefits
                     </a>
                 </li>
-                <li class="mainNavigationLink">
+                <li class="navMainLink">
                     <a href="#tier7">
                         <div class="linkOrnament"></div>
                         <div class="linkUnderline"></div>
@@ -133,7 +136,7 @@ landingFull
                 </div>
                 <div id="tier1Right" class="pull-left">
                     <div id="tier1video">
-                        <img style="width:100%;" src="{{ asset('bundles/sitetheorytemplatecustom/images/tempVideo.jpg') }}" alt="">
+                        <iframe width="700" height="394" src="https://www.youtube.com/embed/R7lmJvOFEIM" frameborder="0" allowfullscreen></iframe>
                     </div>
                     <div class="borderDashed clearfix">
                         <div id="tier1action" class="pull-right">

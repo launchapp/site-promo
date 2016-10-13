@@ -1,13 +1,28 @@
 {% extends view.templates.shell %}
 
+{% block script %}
+    {{ parent() }}
+    <script type="text/javascript" src="/sitetheory/v/1/0/bundles/sitetheorytemplatecustom/js/registration.js"></script>
+{% endblock script %}
+
+
 {% block contentType %}
+
+
     <div data-entity="User" data-manifest="true" data-pipeline="message" data-messageSuccess="You rock! We'll let you know when the app is ready.">
         <div data-type="text" data-property="email" data-label="Email"></div>
-        {#<div data-type="text" data-property="username" data-label="Username"></div>#}
+        {# If we capture the Zip through the javascript don't ask #}
+        <div id="registerZip" data-type="text" data-property="profile.zip" data-label="Postal Code" data-zip="{{ environment.request.server.get('HTTP_X_REAL_IP') }}"></div>
+
         <div data-type="select" data-property="settings.gender" data-label="Gender"
              data-ui="menu"
              data-placeholder="---"
              data-choices='{{ environment.site.optionMap.gender|json_encode }}'
+        ></div>
+        <div data-type="select" data-property="settings.relationshipStatus" data-label="Relationship Status"
+             data-ui="menu"
+             data-placeholder="---"
+             data-choices='{{ environment.site.optionMap.relationshipStatus|json_encode }}'
         ></div>
         <div id="formSubmit" class="action btn btnSave" data-type="save" data-redirect="" data-status="load" data-iconPath="">Join</div>
     </div>

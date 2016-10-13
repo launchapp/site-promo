@@ -182,24 +182,25 @@ h4,
     padding-right: 30px;
     max-width: 270px;
 }
-#mainNavigationHeader {
+#navMainContainer {
     margin-top: 37px;
     max-width: 100%;
 }
-#mainNavigationHeader ul li {
+#navMainContainer ul li {
     padding: 0;
+    display: table;
 }
-.mainNavigationLink a {
+.navMainLink a {
     position: relative;
     padding: 0 17px 6px 17px;
     color: #494949;
     font-weight: bold;
     text-transform: uppercase;
 }
-.mainNavigationLink a:hover {
+.navMainLink a:hover {
     color: #222;
 }
-.mainNavigationLink a .linkOrnament {
+.navMainLink a .linkOrnament {
     position: absolute;
     top: 7px;
     left: 0;
@@ -207,13 +208,13 @@ h4,
     height: 7px;
     background: #FCEE27;
 }
-.mainNavigationLink a:hover .linkOrnament {
+.navMainLink a:hover .linkOrnament {
     transition: all .2s ease-out;
     -webkit-transition: all .2s ease-out;
     transform: scale(0);
     -webkit-transform: scale(0);
 }
-.mainNavigationLink a .linkUnderline {
+.navMainLink a .linkUnderline {
     transform: scaleX(.2);
     -webkit-transform: scaleX(.2);
     position: absolute;
@@ -223,7 +224,7 @@ h4,
     height: 2px;
     background: #FFF;
 }
-.mainNavigationLink a:hover .linkUnderline {
+.navMainLink a:hover .linkUnderline {
     transition: all .2s ease-out;
     -webkit-transition: all .2s ease-out;
     transform: scaleX(1);
@@ -243,21 +244,21 @@ h4,
     #betaSignupBtn {
         margin-top: 12px;
     }
-    #mainNavigationHeader {
+    #navMainContainer {
         margin-top: 26px;
     }
-    .mainNavigationLink a {
+    .navMainLink a {
         padding-left: 14px;
         padding-right: 14px;
     }
 }
 @media (max-width:1050px) {
-    .mainNavigationLink a .linkOrnament {
+    .navMainLink a .linkOrnament {
         position: absolute;
         top: 5px;
         left: 0;
     }
-    .mainNavigationLink a {
+    .navMainLink a {
         font-size: 12px;
     }
 }
@@ -286,31 +287,31 @@ h4,
         margin-top: 20px;
         padding-top: 20px;
     }
-    #shellSidebar #mainNavigationHeader,
-    #mainNavigationHeader .list-inline > li {
+    #shellSidebar #navMainContainer,
+    #navMainContainer .list-inline > li {
         display: block;
         padding: 0 0 12px 0;
     }
-    #shellSidebar .mainNavigationLink a .linkOrnament {
+    #shellSidebar .navMainLink a .linkOrnament {
         display: none;
     }
-    #shellSidebar .mainNavigationLink a .linkUnderline {
+    #shellSidebar .navMainLink a .linkUnderline {
         transform-origin: left center;
         -webkit-transform-origin: left center;
         left: 0;
         right: 0;
         background: #222;
     }
-    #shellSidebar .mainNavigationLink a:hover .linkUnderline {
+    #shellSidebar .navMainLink a:hover .linkUnderline {
         background: #666;
     }
-    .mainNavigationLink a {
+    .navMainLink a {
         padding: 0 0 6px 0;
         font-weight: 400;
         font-size: 13px;
         color: #999;
     }
-    .mainNavigationLink a:hover {
+    .navMainLink a:hover {
         color: #FFF;
     }
 }
@@ -327,10 +328,10 @@ h4,
 #headerContainer.retracting.offScreen.offScreenScrollUp #logoHeader {
     max-width: 150px;
 }
-#headerContainer.retracting.offScreen.offScreenScrollUp #mainNavigationHeader {
+#headerContainer.retracting.offScreen.offScreenScrollUp #navMainContainer {
     margin-top: 12px;
 }
-#headerContainer.retracting.offScreen.offScreenScrollUp .mainNavigationLink a {
+#headerContainer.retracting.offScreen.offScreenScrollUp .navMainLink a {
     font-size: 13px;
 }
 #headerContainer.retracting.offScreen.offScreenScrollUp #betaSignupBtn {
