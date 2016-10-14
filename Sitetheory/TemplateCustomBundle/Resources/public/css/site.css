@@ -498,10 +498,12 @@ h4,
 
 /* BETA SIGNUP FORM */
 
-/* TODO: remove betaSignup when complete */
+/*
+TODO: remove betaSignup when complete
+TODO: remove kickstarter reference once we link out.
+*/
 
-
-#betaSignup {
+.signupPopup {
     transition: transform .2s ease-out;
     -webkit-transition: transform .2s ease-out;
     transform: scale(.4);
@@ -514,12 +516,12 @@ h4,
     width: 100%;
     text-align: center;
 }
-#betaSignup.active {
+.signupPopup.active {
     transform: scale(1);
     -webkit-transform: scale(1);
     opacity: 1;
 }
-#betaSignupContent {
+.signupPopupContent {
     display: none;
     position: relative;
     width: 400px;
@@ -531,49 +533,49 @@ h4,
     box-shadow: 0 0 3px rgba(0,0,0,.1);
 }
 /* Internet Explorer adjustment */
-.msie #betaSignupContent {
+.msie .signupPopupContent {
     background-color: #FFF;
 }
-#betaSignup.active #betaSignupContent {
+.signupPopup.active .signupPopupContent {
     display: block;
 }
-#betaSignup .btnClose {
+.signupPopup .btnClose {
     position: absolute;
     top: 18px;
     right: 16px;
     float: none;
 }
-#betaSignup .btnClose svg g,
-#betaSignup .btnClose svg .oval {
+.signupPopup .btnClose svg g,
+.signupPopup .btnClose svg .oval {
     stroke: rgba(0,0,0,.2);
 }
-#betaSignup .btnClose:hover svg g,
-#betaSignup .btnClose:hover svg .oval {
+.signupPopup .btnClose:hover svg g,
+.signupPopup .btnClose:hover svg .oval {
     stroke: #000;
 }
-#betaSignup .logo img {
+.signupPopup .logo img {
     margin: 0 auto;
     width: 80px;
 }
-#betaSignupContent h2 {
+.signupPopupContent h2 {
     margin-bottom: 26px;
     font-family: 'Roboto Condensed', sans-serif;
     text-transform: uppercase;
     font-weight: bold;
     font-size: 24px;
 }
-#betaSignup .note {
+.signupPopup .note {
     color: #888;
     margin-bottom: 26px;
 }
-#betaSignup .form-control {
+.signupPopup .form-control {
     height: 50px;
     text-align: center;
     font-size: 15px;
     letter-spacing: .02em;
     color: #333;
 }
-#betaSignup .disclaimer {
+.signupPopup .disclaimer {
     transform: translateY(80px);
     -webkit-transform: translateY(80px);
     position: absolute;
@@ -583,7 +585,7 @@ h4,
     color: #666;
     font-size: 10px;
 }
-#betaSignup #success_message {
+.signupPopup #success_message {
     transition: opacity .2s ease-out;
     -webkit-transition: opacity .2s ease-out;
     position: absolute;
@@ -591,15 +593,15 @@ h4,
     left: 20%;
     width: 60%;
 }
-.msie #betaSignup  #success_message {
+.msie .signupPopup  #success_message {
     position: relative;
     top: inherit;
     left: inherit;
 }
-#betaSignup #success_message h2 {
+.signupPopup #success_message h2 {
     margin-bottom: 10px;
 }
-#betaSignup .btn {
+.signupPopup .btn {
     transition: all .2s ease-out;
     -webkit-transition: all .2s ease-out;
     margin: 16px auto 0 auto;
@@ -609,27 +611,44 @@ h4,
     background: #FBDC00;
     border: 2px solid #FFF;
 }
-#betaSignup .btn .btnGradient {
+.signupPopup .btn .btnGradient {
     opacity: 1;
 }
-#betaSignup .btn:hover {
+.signupPopup .btn:hover {
     background: #FFF;
     border: 2px solid #FBDC00;
 }
 
+.signupPopup .form-group label {
+    float:left
+}
+
 /* On success */
-/* Hide Form after Success (display:none is removed) */
-#betaSignup #success_message[style=""] + form .logo {
+/*
+Hide Form after Success (form has display:none added to it so we display the success message after)
+Note: ConstantContact does some weird stuff by randomly adding display:none on the #success_message
+so we use a different id.
+*/
+#success_message_custom {
+    display: none;
+}
+.signupPopup form[style="display: none;"] + #success_message_custom {
+    display: block !important;
+}
+
+
+.signupPopup form[style="display: none;"] .logo {
     transition: all .2s ease-out;
     -webkit-transition: all .2s ease-out;
     transform: translateY(80px);
     -webkit-transform: translateY(80px);
 }
-#betaSignup #success_message[style=""] + form .btnClose,
-#betaSignup #success_message[style=""] + form .form-control,
-#betaSignup #success_message[style=""] + form .signupAction,
-#betaSignup #success_message[style=""] + form .betaTitle,
-#betaSignup #success_message[style=""] + form p {
+
+.signupPopup form[style="display: none;"] .btnClose,
+.signupPopup form[style="display: none;"] .form-control,
+.signupPopup form[style="display: none;"] .signupAction,
+.signupPopup form[style="display: none;"] .betaTitle,
+.signupPopup form[style="display: none;"] p {
     transition: all .2s ease-out;
     -webkit-transition: all .2s ease-out;
     transform: scale(0);
@@ -637,7 +656,7 @@ h4,
     opacity: 0;
 }
 @media (max-width: 600px) {
-    #betaSignupContent {
+    .signupPopupContent {
         width: 300px;
         padding: 30px;
     }
