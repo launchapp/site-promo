@@ -1,5 +1,13 @@
 {% extends 'SitetheoryTemplateBundle::shell.html.twig' %}
 
+
+{#
+TODO:
+1. After Kickstarter is done, remove all references.
+2. Customize A/B Wording Tests
+
+#}
+
 {# Load Site CSS #}
 
 {% block link %}
@@ -11,7 +19,17 @@
 {% block script %}
     {{ parent() }}
     <script type="text/javascript" src="{{ asset('bundles/sitetheorytemplatecustom/js/landing.js') }}"></script>
+    <script type='text/javascript' src=''></script>
+
 {% endblock script %}
+
+
+{% block meta %}
+    {{ parent() }}
+    {# TODO: This is just here temporarily until the base.html.twig give the ability to select the preferred image in the admin #}
+    {# we may need to reload the page here in order to get the new image https://developers.facebook.com/tools/debug/ #}
+    <meta property="og:image" content="//www.launchapp.io/sitetheory/v/1/0/bundles/sitetheorytemplatecustom/images/tempVideo.jpg">
+{% endblock meta %}
 
 
 {% block appClass %}landingFull{% endblock appClass %}
@@ -137,11 +155,11 @@
                 <div id="tier1Left" class="pull-left">
                     <h1>The Cure for Dating Apps</h1>
                     <div class="borderDashed">
-                        <p class="fontPrimary">Launch is an app for everyone disappointed with the current dating experience (personally or on behalf of friends). We’ve been on a listening mission, using people’s stories to build something entirely new.</p>
+                        <p class="fontPrimary">Launch is an app for everyone disappointed with the current dating experience (personally or on behalf of friends). We&rsquo;ve been on a listening mission, using people&rsquo;s stories to build something entirely new.</p>
                     </div>
                 </div>
                 <div id="tier1Right" class="pull-left">
-                    <div id="tier1video">
+                    <div id="tier1video" class="responsiveObject">
                         <iframe width="700" height="394" src="https://www.youtube.com/embed/R7lmJvOFEIM?rel=0&amp;showinfo=0&amp;modestbranding=1" frameborder="0" allowfullscreen></iframe>
                     </div>
                     <div class="borderDashed clearfix">
@@ -149,7 +167,7 @@
                             {#<a class="btn" href="">Kickstarter Campaign</a>#}
                             <div class="btn" data-plugin="AddClass Dim" data-class="active" data-target="#kickstarterSignup" data-event="click" data-trackCategory="CTA" data-trackLabel="kickstarter" data-trackValue="top">Kickstarter Campaign</div>
                         </div>
-                        <p class="fontPrimary bodyLarge"><span class="optionalText">Help us build it!</span><span class="note">(one-click signup)</span></p>
+                        <p class="fontPrimary bodyLarge"><span class="optionalText">Help us build it!</span></p>
                     </div>
                 </div>
         </div>
@@ -160,9 +178,10 @@
         <div class="siteMaxWidth siteSidePadding shellVerticalPadding">
             <h1>A Broken <br class="visible-xs">Status Quo</h1>
             <div class="borderDashedLight">
-                <p class="fontPrimary bodyLarge">There are thousands of online dating services. Yet 80% of single Americans won’t get a date through any of them … over an entire year!<br><br>
-
-                    Those apps were built to make life easier for people who already like online dating. We’re building something for everyone else. </p>
+                <p class="fontPrimary bodyLarge">80% of singles won't get even one online date this year &mdash; because existing apps were built to make life easier for people who already like online dating.
+                    <br>
+                    <br>
+                    We&rsquo;re building something for everyone else.</p>
             </div>
         </div>
     </div>
@@ -252,7 +271,7 @@
                             <div class="chartIcon">
                                 <img src="{{ asset('bundles/sitetheorytemplatecustom/images/tier4spacemen1.png') }}" alt="">
                             </div>
-                            <h3>Friend Verification"</h3>
+                            <h3>Friend Verification</h3>
                             <p>Friends vouch for you, adding fun and interesting insights to your profile.</p>
                         </div>
                     </div>
@@ -262,7 +281,7 @@
                                 <img src="{{ asset('bundles/sitetheorytemplatecustom/images/tier4spacemen2.png') }}" alt="">
                             </div>
                             <h3>Fun &amp; R.E.S.P.E.C.T.</h3>
-                            <p>By making sure all your matches are legit and accountable to their friends for their online and offline behavior, we’re creating a community you’ll actually enjoy.</p>
+                            <p>By making sure all your matches are legit and accountable to their friends for their online and offline behavior, we&rsquo;re creating a community you&rsquo;ll actually enjoy.</p>
                         </div>
                     </div>
                 </div>
@@ -272,7 +291,7 @@
                             <div class="chartIcon">
                                 <img src="{{ asset('bundles/sitetheorytemplatecustom/images/tier4spacemen3.png') }}" alt="">
                             </div>
-                            <h3>Crowdsourced Intuition"</h3>
+                            <h3>Crowdsourced Intuition</h3>
                             <p>Your friends (including non-singles) use their intuition and experience to suggest great matches for your review.</p>
                         </div>
                     </div>
@@ -281,7 +300,7 @@
                             <div class="chartIcon">
                                 <img src="{{ asset('bundles/sitetheorytemplatecustom/images/tier4spacemen4.png') }}" alt="">
                             </div>
-                            <h3>Socialness<br>(no that’s not a word)</h3>
+                            <h3>Squad Support</h3>
                             <p>We let you share your experience with your friends to get advice, laugh it off, or dance with excitement.
                             </p>
                         </div>
@@ -290,7 +309,7 @@
             </div>
         </div>
         <div class="siteMaxWidth siteSidePadding shellVerticalPadding">
-            <p id="tier4summary" class="bodyLarge">If you love the hit-and-run hookup culture, you won’t find it here. Only good people, lowkey meetups, playful interactions, and sparks flying everywhere. </p>
+            <p id="tier4summary" class="bodyLarge">If you love the hit-and-run hookup culture, you won&rsquo;t find it here. Only good people, lowkey meetups, playful interactions, and sparks flying everywhere. </p>
         </div>
     </div>
 
@@ -302,8 +321,54 @@
         </div>
         <div id="tier5background">
             <div class="siteMaxWidth siteSidePadding shellVerticalPadding">
-                <p>Instructions here for using embedded Invision screenshots</p>
-                <img style="width:100%;" src="{{ asset('bundles/sitetheorytemplatecustom/images/tempApp.jpg') }}" alt="">
+                <div id="appDemoBtn" class="btn"  data-plugin="AddClass Dim" data-class="active" data-target="#appDemoPopup" data-event="click" data-trackCategory="interest" data-trackLabel="appDemo">
+                    See Demo
+                </div>
+                <div id="appPreview" class="carousel slide" data-plugin="carousel" data-colminsize="sm" data-group="1" data-groupmobile="1" data-interval="4000">
+
+                    <!-- Optional: Progress Indicators -->
+                    <ol class="carousel-indicators">
+                        <li data-target="#appPreview" data-slide-to="0" class="active"></li>
+                        <li data-target="#appPreview" data-slide-to="1"></li>
+                    </ol>
+
+                    <!-- Wrapper for Slides -->
+                    <div class="carousel-inner" role="listbox">
+                        <div class="item clearfix active">
+                            <div class="slideImage">
+                                <img data-spy="#appPreview" data-lazysrc="{{ asset('bundles/sitetheorytemplatecustom/images/app/tempApp-xs.jpg') }}" src="{{ asset('bundles/sitetheorytemplatecustom/images/placeholder.png') }}" alt="Tenn Template">
+                            </div>
+                            <div class="slideText">
+                                <h2 class="hoverElement smallLabel fontPrimary">Sign Up</h2>
+                                <div class="smallLabel fontPrimary bold">Sign up with your facebook account.</div>
+                            </div>
+                        </div>
+                        <div class="item clearfix">
+                            <div class="slideImage">
+                                <img data-spy="#appPreview" data-lazysrc="{{ asset('bundles/sitetheorytemplatecustom/images/app/tempApp-xs.jpg') }}" src="{{ asset('bundles/sitetheorytemplatecustom/images/placeholder.png') }}" alt="Bild Template">
+                            </div>
+                            <div class="slideText">
+                                <h2 class="hoverElement smallLabel fontPrimary">Recruit Launch Crew</h2>
+                                <div class="smallLabel fontPrimary bold">Invite 2 or more of your closest friends to verify &amp; describe you to increase your trust score. And then play along to suggest matches for each other.</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Controls -->
+                    <div class="carouselControls">
+                        <a class="left carousel-control" href="#appPreview" role="button" data-slide="prev" data-scroll="false">
+                            <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                            {# TO USE A SVG You can embed like this: #}
+                            {# {% embed '@SitetheoryTemplateCustomBundle/Resources/public/images/arrow.svg'%}{%  block id  %}arrowButtonVector{% endblock %}{% endembed %} #}
+                            <span class="sr-only">Previous</span>
+                        </a>
+                        <a class="right carousel-control" href="#appPreview" role="button" data-slide="next" data-scroll="false">
+                            <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                            <span class="sr-only">Next</span>
+                        </a>
+                    </div>
+
+                </div>
             </div>
         </div>
     </div>
@@ -322,25 +387,25 @@
                             </div>
                             <div id="benefitTwo" class="benefitItem">
                                 <h3>Quality Matches</h3>
-                                <p>The best technology can’t create love. But it can help. We use our special AI to learn who you really are and what you really want. We then turn the matches over to you and your friends to apply human intuition.</p>
+                                <p>The best technology can&rsquo;t create love. But it can help. We use our special AI to learn who you really are and what you really want. We then turn the matches over to you and your friends to apply human intuition.</p>
                             </div>
                             <div id="benefitThree" class="benefitItem">
                                 <h3>Gradual Reveals</h3>
-                                <p>Many great relationships would never have passed the two-second swipe test. Chemistry is important, but can’t be confirmed by a picture alone. To encourage slower judgment, we blur every match photo at first. To reveal it, you’ll have to go through a few quick ice-breakers.</p>
+                                <p>Many great relationships would never have passed the two-second swipe test. To encourage slower judgment, every match photo starts blurred. But don&rsquo;t worry, you can bring their picture into focus by exchanging a few playful ice-breakers.</p>
                             </div>
                         </div>
                         <div class="col-sm-5 col-sm-offset-2 rightCol">
                             <div id="benefitFour" class="benefitItem">
                                 <h3>Better Members</h3>
-                                <p>Players, creeps, and cheaters won’t be as attracted to a community that requires close friends to vouch for them. </p>
+                                <p>Players, creeps, and cheaters won&rsquo;t be as attracted to a community that requires close friends to vouch for them. </p>
                             </div>
                             <div id="benefitFive" class="benefitItem">
                                 <h3>Enjoyable Messaging</h3>
-                                <p>Choose from great chat prompts to unlock creativity and discover hidden gems of personality. We make it painless to block (and educate) anyone who isn’t being respectful. </p>
+                                <p>Use our optional &ldquo;amazing questions" feature to unlock creativity and personality. We also make it painless to block (and educate) anyone who isn&rsquo;t being respectful.</p>
                             </div>
                             <div id="benefitSix" class="benefitItem">
                                 <h3>Natural Low-Key Encounters</h3>
-                                <p>We encourage users to treat the first meetup like a “pre-date”. No more than 45 minutes. Just one coffee or drink. No fancy preparation. First impressions like we make them in day-to-day life, free from anxiety and expectations. </p>
+                                <p>We encourage users to treat the first meetup like a &ldquo;pre-date&rdquo;. No more than 45 minutes. Just one coffee or drink. No fancy preparation. First impressions like we make them in day-to-day life, free from anxiety and expectations. </p>
                             </div>
                         </div>
                     </div>
@@ -361,8 +426,8 @@
                         <div id="helpOne" class="helpItem">
                             <img id="iconKickstarter" src="{{ asset('bundles/sitetheorytemplatecustom/images/tier7iconKickstarter.png') }}" alt="">
                             <h2>Kickstarter!</h2>
-                            <h4>(One-click signup)</h4>
-                            <p class="fontPrimary">Love the idea? Give feedback and as little as $1. We’re a small team trying to create something thoughtful and beautiful. But we can only succeed with a strong community behind us. Become a founding member and get amazing forever-rewards!  </p>
+                            {# TODO: re-enable when kickstarter is live #}{#<h4>(One-click signup)</h4>#}
+                            <p class="fontPrimary">Love the idea? Give feedback and as little as $1. We&rsquo;re a small team. We need a strong community behind us. Become a founding member and get amazing rewards!  </p>
                             {# <a class="btn" href="">I Want to Help</a> #}
                             <div class="btn" data-plugin="AddClass Dim" data-class="active" data-target="#kickstarterSignup" data-event="click" data-trackCategory="CTA" data-trackLabel="kickstarter" data-trackValue="footer">I Want to Help</div>
                             <br class="visible-xs">
@@ -374,7 +439,7 @@
                         <div id="helpTwo" class="helpItem">
                             <img id="iconBeta" src="{{ asset('bundles/sitetheorytemplatecustom/images/tier7iconBeta.png') }}" alt="">
                             <h2>Sign up for Beta</h2>
-                            <p class="fontPrimary">Not interested in shaping the service? No problem! We’ll let you know when the app is ready. All we need is your email, gender and age group (5 seconds, 100% privacy).</p>
+                            <p class="fontPrimary">Not interested in shaping the service? No problem! We&rsquo;ll let you know when the app is ready. Signup takes just 10 seconds (We&rsquo;ll never share or sell your data).</p>
                             <div class="btn" data-plugin="AddClass Dim" data-class="active" data-target="#betaSignup" data-event="click" data-trackCategory="CTA" data-trackLabel="beta" data-trackValue="footer">Sign Me Up</div>
                         </div>
                     </div>
@@ -388,7 +453,7 @@
         <div id="tier8background">
             <div class="siteMaxWidth siteSidePadding shellVerticalPadding">
 
-                <p class="fontPrimary bodyLarge">Have questions? Please use the <a href="">contact form</a> on our Kickstarter page. For press inquiries, <a href="mailto:jeremy@launchapp.io">jeremy@launchapp.io</a>. To discuss investing, <a href="mailto:chad@launchapp.io">chad@launchapp.io</a>.</p>
+                <p class="fontPrimary bodyLarge">{# TODO: uncomment when kickstarter is live, and remove when kickstarter is good #}{# Have questions? Please use the <a href="">contact form</a> on our Kickstarter page.For press inquiries, <a href="mailto:jeremy@launchapp.io">jeremy@launchapp.io</a>. #} For general questions or press inquiries contact <a href="mailto:jeremy@launchapp.io">jeremy@launchapp.io</a>.  To discuss investing, <a href="mailto:chad@launchapp.io">chad@launchapp.io</a>.</p>
             </div>
         </div>
     </div>
@@ -412,113 +477,26 @@
 
 {% block popup %}
     {% block betaSignup %}
-        <div id="betaSignup" class="signupPopup">
-            <div id="betaSignupContent" class="signupPopupContent springIn borderRadiusDefault">
-                <div id="betaSignupClose" class="signupPopupClose btnClose" data-plugin="AddClass Dim" data-class="active" data-target="#betaSignup" data-event="click">
-                    <span class="sr-only">Close</span>
-                        {% embed '@SitetheoryTemplatePromoBundle/Resources/public/images/icons/close.svg'%}{%  block id  %}iconClose{% endblock %}{% endembed %}
 
-                </div>
-
-                <div id="success_message" style="display:none;">
-                    <h2>Thanks</h2>
-                    <div class="note fontSecondary">You rock! We'll let you know when the app is ready.</div>
-                </div>
-                <form data-id="embedded_signup:form" class="form" name="embedded_signup" method="POST" action="https://visitor2.constantcontact.com/api/signup">
-                    <div class="logo">
-                        <img src="{{ asset('bundles/sitetheorytemplatecustom/images/launchLogoMark.png') }}" alt="">
-                    </div>
-                    <h2 class="betaTitle">Beta Signup</h2>
-                    <p class="note fontBody">Be among the first to join and help us create an awesome community.</p>
-                    <!-- The following code must be included to ensure your sign-up form works properly. -->
-                    <input data-id="ca:input" type="hidden" name="ca" value="a84d2d17-dca3-4f96-b76c-459018f0b788">
-                    <input data-id="list:input" type="hidden" name="list" value="1924932799">
-                    <input data-id="source:input" type="hidden" name="source" value="EFD">
-                    <input data-id="required:input" type="hidden" name="required" value="list,email">
-                    <input data-id="url:input" type="hidden" name="url" value="">
-                    <div class="form-group" data-id="Email Address:p">
-                        <input class="form-control smallLabel fontPrimary" data-id="Email Address:input" type="text" name="email" value="" maxlength="80" placeholder="Email Address">
-                    </div>
-                    <div class="signupAction">
-                        <button type="submit" class="fontPrimary bold btn positionAnchor" data-enabled="enabled">
-                            <span class="btnGradient"></span>
-                            <span class="btnText">Sign Up</span>
-                        </button>
-                    </div>
-
-                    <p class="disclaimer">By submitting this form, you are granting: Launch Social Inc., 1330 N Broadway, Ste 200H, Walnut Creek, California, 94596, United States, permission to email you. You may unsubscribe via the link found at the bottom of every email.</p>
-                </form>
-            </div>
-            <script type='text/javascript'>
-                var localizedErrMap = {};
-                localizedErrMap['required'] = 		'This field is required.';
-                localizedErrMap['ca'] = 			'An unexpected error occurred while attempting to send email.';
-                localizedErrMap['email'] = 			'Please enter your email address in name@email.com format.';
-                localizedErrMap['generic'] = 		'This field is invalid.';
-                localizedErrMap['shared'] = 		'Sorry, we could not complete your sign-up. Please contact us to resolve this.';
-                var postURL = 'https://visitor2.constantcontact.com/api/signup';
-            </script>
-            <script type='text/javascript' src='https://static.ctctcdn.com/h/contacts-embedded-signup-assets/1.0.2/js/signup-form.js'></script>
-        </div>
-
-    {% endblock betaSignup %}
-
-    {% block kickstarterSignup %}
-        <div id="kickstarterSignup" class="signupPopup">
-            <div id="betaSignupContent" class="signupPopupContent springIn borderRadiusDefault ctct-embed-signup">
-                <div id="betaSignupClose" class="signupPopupClose btnClose" data-plugin="AddClass Dim" data-class="active" data-target="#kickstarterSignup" data-event="click">
+        {% set signupId = 'beta' %}
+        {% set signupFormId = 'd0d690e0-feb2-4923-9f8c-661ca4e37707' %}
+        {% set signupListId = '1924932799' %}
+        <div id="{{ signupId }}Signup" class="popup">
+            <div id="{{ signupId }}SignupContent" class="popupContent springIn borderRadiusDefault ctct-embed-signup">
+                <div id="{{ signupId }}SignupClose" class="popupClose btnClose" data-plugin="AddClass Dim" data-class="active" data-target="#{{ signupId }}Signup" data-event="click">
                     <span class="sr-only">Close</span>
                     {% embed '@SitetheoryTemplatePromoBundle/Resources/public/images/icons/close.svg'%}{%  block id  %}iconClose{% endblock %}{% endembed %}
                 </div>
-{#
-                <form data-id="embedded_signup:form" class="ctct-custom-form Form" name="embedded_signup" method="POST" action="https://visitor2.constantcontact.com/api/signup">
-                    <h2 style="margin:0;">Sign up to stay in touch!</h2>
-                    <p>Sign up to get interesting news and updates delivered to your inbox.</p>
-                    <!-- The following code must be included to ensure your sign-up form works properly. -->
-                    <input data-id="ca:input" type="hidden" name="ca" value="75e365d6-bf57-46fa-9ecd-654aa7c55c36">
-                    <input data-id="list:input" type="hidden" name="list" value="1387719498">
-                    <input data-id="source:input" type="hidden" name="source" value="EFD">
-                    <input data-id="required:input" type="hidden" name="required" value="list,cf_text--0,cf_text--1,cf_text--2,cf_text--3,email">
-                    <input data-id="url:input" type="hidden" name="url" value="">
-                    <p data-id="Email Address:p" ><label data-id="Email Address:label" data-name="email" class="ctct-form-required">Email Address</label> <input data-id="Email Address:input" type="text" name="email" value="" maxlength="80"></p>
-                    <p data-id="Age Group:p"><label data-id="Age Group:label" data-name="cf_text_value--0" class="ctct-form-required">Age Group</label><input data-id="Age Group_value:input" type="text" name="cf_text_value--0" value=""></p><input data-id="Age Group_name:input" type="hidden" name="cf_text_name--0" value="age_group"><input data-id="Age Group_label:input" type="hidden" name="cf_text_label--0" value="Age Group"><p data-id="Gender:p"><label data-id="Gender:label" data-name="cf_text_value--1" class="ctct-form-required">Gender</label><input data-id="Gender_value:input" type="text" name="cf_text_value--1" value=""></p><input data-id="Gender_name:input" type="hidden" name="cf_text_name--1" value="gender"><input data-id="Gender_label:input" type="hidden" name="cf_text_label--1" value="Gender"><p data-id="Relationship Status:p"><label data-id="Relationship Status:label" data-name="cf_text_value--2" class="ctct-form-required">Relationship Status</label><input data-id="Relationship Status_value:input" type="text" name="cf_text_value--2" value=""></p><input data-id="Relationship Status_name:input" type="hidden" name="cf_text_name--2" value="relationship_status"><input data-id="Relationship Status_label:input" type="hidden" name="cf_text_label--2" value="Relationship Status"><p data-id="Zip:p"><label data-id="Zip:label" data-name="cf_text_value--3" class="ctct-form-required">Zip</label><input data-id="Zip_value:input" type="text" name="cf_text_value--3" value=""></p><input data-id="Zip_name:input" type="hidden" name="cf_text_name--3" value="zip"><input data-id="Zip_label:input" type="hidden" name="cf_text_label--3" value="Zip">
-                    <button type="submit" class="Button ctct-button Button--block Button-secondary" data-enabled="enabled">Sign Up</button>
-                    <div><p class="ctct-form-footer">By submitting this form, you are granting: Gutensite, 1330 N Broadway, Ste 200H, Walnut Creek, California, 94596, United States, http://www.gutensite.com permission to email you. You may unsubscribe via the link found at the bottom of every email.  (See our <a href="http://www.constantcontact.com/legal/privacy-statement" target="_blank">Email Privacy Policy</a> for details.) Emails are serviced by Constant Contact.</p></div>
-                </form>
-                <div id="success_message_custom">
-                    <div class="success_message_thanks">Thanks</div>
-                    <div class="success_message_details note fontSecondary">You rock! We'll let you know when the app is ready.</div>
-                </div>
-                <script type='text/javascript'>
-                    var localizedErrMap = {};
-                    localizedErrMap['required'] = 		'This field is required.';
-                    localizedErrMap['ca'] = 			'An unexpected error occurred while attempting to send email.';
-                    localizedErrMap['email'] = 			'Please enter your email address in name@email.com format.';
-                    localizedErrMap['birthday'] = 		'Please enter birthday in MM/DD format.';
-                    localizedErrMap['anniversary'] = 	'Please enter anniversary in MM/DD/YYYY format.';
-                    localizedErrMap['custom_date'] = 	'Please enter this date in MM/DD/YYYY format.';
-                    localizedErrMap['list'] = 			'Please select at least one email list.';
-                    localizedErrMap['generic'] = 		'This field is invalid.';
-                    localizedErrMap['shared'] = 		'Sorry, we could not complete your sign-up. Please contact us to resolve this.';
-                    localizedErrMap['state_mismatch'] = 'Mismatched State/Province and Country.';
-                    localizedErrMap['state_province'] = 'Select a state/province';
-                    localizedErrMap['selectcountry'] = 	'Select a country';
-                    var postURL = 'https://visitor2.constantcontact.com/api/signup';
-                </script>
-                <script type='text/javascript' src='https://static.ctctcdn.com/h/contacts-embedded-signup-assets/1.0.2/js/signup-form.js'></script>
-                <!--End CTCT Sign-Up Form-->
-#}
-
 
                 <form data-id="embedded_signup:form" class="ctct-custom-form Form" name="embedded_signup" method="POST" action="https://visitor2.constantcontact.com/api/signup">
                     <div class="logo">
                         <img src="{{ asset('bundles/sitetheorytemplatecustom/images/launchLogoMark.png') }}" alt="">
                     </div>
-                    <h2 class="betaTitle">Kickstarter Notify</h2>
-                    <p class="note fontBody">Our Kickstarter campaign isn't quite ready yet. But we really need your support when it is. Please enter your info, and we'll notify you ASAP!</p>
+                    <h2 class="signupTitle">Beta Signup</h2>
+                    <p class="note fontBody">Be among the first to join and help us create an awesome community.</p>
                     <!-- The following code must be included to ensure your sign-up form works properly. -->
-                    <input data-id="ca:input" type="hidden" name="ca" value="75e365d6-bf57-46fa-9ecd-654aa7c55c36">
-                    <input data-id="list:input" type="hidden" name="list" value="1387719498">
+                    <input data-id="ca:input" type="hidden" name="ca" value="{{ signupFormId }}">
+                    <input data-id="list:input" type="hidden" name="list" value="{{ signupListId }}">
                     <input data-id="source:input" type="hidden" name="source" value="EFD">
                     <input data-id="required:input" type="hidden" name="required" value="list,email">
                     <input data-id="required:input" type="hidden" name="required" value="list,email,cf_text--3,cf_text--1,cf_text--2">
@@ -531,15 +509,27 @@
 
                     <div class="form-group" data-id="Zip:p">
                         <label data-id="Zip:label" data-name="cf_text_value--3" class="ctct-form-required"></label>
-                        <input id="registerZip" class="form-control smallLabel fontPrimary required" data-id="Zip_value:input" type="text" name="cf_text_value--3" value="" maxlength="10" placeholder="Postal Code" data-ip="{{ environment.request.server.get('HTTP_X_REAL_IP') }}">
+                        <input id="{{ signupId }}RegisterZip" class="registerZip form-control smallLabel fontPrimary required" data-id="Zip_value:input" type="text" name="cf_text_value--3" value="" maxlength="10" placeholder="Postal Code" data-ip="{{ environment.request.server.get('HTTP_X_REAL_IP') }}">
                         <input data-id="Zip_name:input" type="hidden" name="cf_text_name--3" value="zip">
                         <input data-id="Zip_label:input" type="hidden" name="cf_text_label--3" value="Zip">
                     </div>
 
+                    <div class="form-group" data-id="Relationship Status:p">
+                        <label data-id="Relationship Status:label" data-name="cf_text_value--2" class="ctct-form-required"></label>
+                        <input id="{{ signupId }}_custom_status_value" class="hide form-control smallLabel fontPrimary required" data-id="Relationship Status_value:input" name="cf_text_value--2" type="text" value="" maxlength="10" placeholder="Relationship Status">
+                        <select  id="{{ signupId }}_custom_status" class="form-control smallLabel fontPrimary required registerCustom">
+                            <option>Status</option>
+                            <option value="1">Single</option>
+                            <option value="2">Taken (matchmaker)</option>
+                        </select>
+                        <input data-id="Relationship Status_name:input" type="hidden" name="cf_text_name--2" value="relationship_status">
+                        <input data-id="Relationship Status_label:input" type="hidden" name="cf_text_label--2" value="Relationship Status">
+                    </div>
+
                     <div class="form-group" data-id="Gender:p">
-                        <label data-id="Gender:label" data-name="cf_text_value--1" class="ctct-form-required"></label>
+                        <label data-id="Gender:label" data-name="cf_text_value--1"></label>
                         <input id="custom_gender_value" class="hide form-control smallLabel fontPrimary required" data-id="Gender_value:input" name="cf_text_value--1" type="text" value="" maxlength="10" placeholder="Gender">
-                        <select id="custom_gender" class="form-control smallLabel fontPrimary required registerCustom">
+                        <select id="custom_gender" class="form-control smallLabel fontPrimary registerCustom">
                             <option>Gender</option>
                             <option value="1">Female</option>
                             <option value="2">Male</option>
@@ -549,29 +539,18 @@
                         <input data-id="Gender_label:input" type="hidden" name="cf_text_label--1" value="Gender">
                     </div>
 
-                    <div class="form-group" data-id="Relationship Status:p">
-                        <label data-id="Relationship Status:label" data-name="cf_text_value--2" class="ctct-form-required"></label>
-                        <input id="custom_status_value" class="hide form-control smallLabel fontPrimary required" data-id="Relationship Status_value:input" name="cf_text_value--2" type="text" value="" maxlength="10" placeholder="Relationship Status">
-                        <select  id="custom_status" class="form-control smallLabel fontPrimary required registerCustom">
-                            <option>Status</option>
-                            <option value="1">Single</option>
-                            <option value="2">Taken (matchmaker)</option>
-                            <option value="3">Married (matchmaker)</option>
-                        </select>
-                        <input data-id="Relationship Status_name:input" type="hidden" name="cf_text_name--2" value="relationship_status">
-                        <input data-id="Relationship Status_label:input" type="hidden" name="cf_text_label--2" value="Relationship Status">
-                    </div>
-
                     <div class="form-group" data-id="Age Group:p">
                         <label data-id="Age Group:label" data-name="cf_text_value--0" class="ctct-form-required"></label>
-                        <input id="custom_age_value" class="hide form-control smallLabel fontPrimary" data-id="Age Group_value:input" name="cf_text_value--0" type="text" value="" maxlength="10" placeholder="Age Group">
-                        <select id="custom_age" class="form-control smallLabel fontPrimary registerCustom">
+                        <input id="{{ signupId }}_custom_age_value" class="hide form-control smallLabel fontPrimary" data-id="Age Group_value:input" name="cf_text_value--0" type="text" value="" maxlength="10" placeholder="Age Group">
+                        <select id="{{ signupId }}_custom_age" class="form-control smallLabel fontPrimary registerCustom">
                             <option>Age Group</option>
-                            <option value="1">18-30</option>
-                            <option value="2">30-40</option>
-                            <option value="3">40-50</option>
-                            <option value="4">50-60</option>
-                            <option value="5">60+</option>
+                            <option value="1">High School</option>
+                            <option value="2">College</option>
+                            <option value="3">Under 30</option>
+                            <option value="4">30-40</option>
+                            <option value="5">40-50</option>
+                            <option value="6">50-60</option>
+                            <option value="7">60+</option>
                         </select>
                         <input data-id="Age Group_name:input" type="hidden" name="cf_text_name--0" value="age_group">
                         <input data-id="Age Group_label:input" type="hidden" name="cf_text_label--0" value="Age Group">
@@ -586,108 +565,129 @@
 
                     <p class="disclaimer">By submitting this form, you are granting: Launch Social Inc., 1330 N Broadway, Ste 200H, Walnut Creek, California, 94596, United States, permission to email you. You may unsubscribe via the link found at the bottom of every email.</p>
                 </form>
-                <div id="success_message_custom">
-                    <div class="success_message_thanks">Thanks</div>
+                <div id="{{ signupId }}success_message" class="success_message hide">
+                    <h2 class="success_message_thanks">Thanks</h2>
                     <div class="success_message_details note fontSecondary">You rock! We'll let you know when the app is ready.</div>
                 </div>
-                <script type='text/javascript'>
-                    var localizedErrMap = {};
-                    localizedErrMap['required'] = 		'This field is required.';
-                    localizedErrMap['ca'] = 			'An unexpected error occurred while attempting to send email.';
-                    localizedErrMap['email'] = 			'Please enter your email address in name@email.com format.';
-                    //localizedErrMap['cf_text--0'] = 			'Please enter your age group.';
-                    localizedErrMap['cf_text--1'] = 	'Please enter the gender you identify as.';
-                    localizedErrMap['cf_text--2'] = 			'Please enter your relationship status as: single, taken, or married';
-                    localizedErrMap['cf_text--3'] = 	'Please enter your postal code.';
+            </div>
+        </div>
 
-                    localizedErrMap['generic'] = 		'This field is invalid.';
-                    localizedErrMap['shared'] = 		'Sorry, we could not complete your sign-up. Please contact us to resolve this.';
-                    var postURL = 'https://visitor2.constantcontact.com/api/signup';
-                </script>
-                <script type='text/javascript' src='https://static.ctctcdn.com/h/contacts-embedded-signup-assets/1.0.2/js/signup-form.js'></script>
+    {% endblock betaSignup %}
 
 
+    {% block kickstarterSignup %}
+        {% set signupId = 'kickstarter' %}
+        {% set signupFormId = '75e365d6-bf57-46fa-9ecd-654aa7c55c36' %}
+        {% set signupListId = '1387719498' %}
+        <div id="{{ signupId }}Signup" class="popup">
+            <div id="{{ signupId }}SignupContent" class="popupContent springIn borderRadiusDefault ctct-embed-signup">
+                <div id="{{ signupId }}SignupClose" class="popupClose btnClose" data-plugin="AddClass Dim" data-class="active" data-target="#{{ signupId }}Signup" data-event="click">
+                    <span class="sr-only">Close</span>
+                    {% embed '@SitetheoryTemplatePromoBundle/Resources/public/images/icons/close.svg'%}{%  block id  %}iconClose{% endblock %}{% endembed %}
+                </div>
 
+                <form data-id="embedded_signup:form" class="ctct-custom-form Form" name="embedded_signup" method="POST" action="https://visitor2.constantcontact.com/api/signup">
+                    <div class="logo">
+                        <img src="{{ asset('bundles/sitetheorytemplatecustom/images/launchLogoMark.png') }}" alt="">
+                    </div>
+                    <h2 class="signupTitle">Kickstarter Notify</h2>
+                    <p class="note fontBody">Our campaign isn't quite ready yet (October-ish), but we really need your support. We'll update you when it's ready!</p>
+                    <!-- The following code must be included to ensure your sign-up form works properly. -->
+                    <input data-id="ca:input" type="hidden" name="ca" value="{{ signupFormId }}">
+                    <input data-id="list:input" type="hidden" name="list" value="{{ signupListId }}">
+                    <input data-id="source:input" type="hidden" name="source" value="EFD">
+                    <input data-id="required:input" type="hidden" name="required" value="list,email">
+                    <input data-id="required:input" type="hidden" name="required" value="list,email,cf_text--3,cf_text--2">
+                    <input data-id="url:input" type="hidden" name="url" value="">
 
+                    <div class="form-group" data-id="Email Address:p">
+                        <label data-id="Email Address:label" data-name="email" class="ctct-form-required"></label>
+                        <input class="form-control smallLabel fontPrimary required" data-id="Email Address:input" type="text" name="email" value="" maxlength="80" placeholder="Email Address">
+                    </div>
 
+                    <div class="form-group" data-id="Zip:p">
+                        <label data-id="Zip:label" data-name="cf_text_value--3" class="ctct-form-required"></label>
+                        <input id="{{ signupId }}RegisterZip" class="registerZip form-control smallLabel fontPrimary required" data-id="Zip_value:input" type="text" name="cf_text_value--3" value="" maxlength="10" placeholder="Postal Code" data-ip="{{ environment.request.server.get('HTTP_X_REAL_IP') }}">
+                        <input data-id="Zip_name:input" type="hidden" name="cf_text_name--3" value="zip">
+                        <input data-id="Zip_label:input" type="hidden" name="cf_text_label--3" value="Zip">
+                    </div>
+
+                    <div class="form-group" data-id="Relationship Status:p">
+                        <label data-id="Relationship Status:label" data-name="cf_text_value--2" class="ctct-form-required"></label>
+                        <input id="{{ signupId }}_custom_status_value" class="hide form-control smallLabel fontPrimary required" data-id="Relationship Status_value:input" name="cf_text_value--2" type="text" value="" maxlength="10" placeholder="Relationship Status">
+                        <select  id="{{ signupId }}_custom_status" class="form-control smallLabel fontPrimary required registerCustom">
+                            <option>Status</option>
+                            <option value="1">Single</option>
+                            <option value="2">Taken (matchmaker)</option>
+                        </select>
+                        <input data-id="Relationship Status_name:input" type="hidden" name="cf_text_name--2" value="relationship_status">
+                        <input data-id="Relationship Status_label:input" type="hidden" name="cf_text_label--2" value="Relationship Status">
+                    </div>
+
+                    <div class="form-group" data-id="Gender:p">
+                        <label data-id="Gender:label" data-name="cf_text_value--1"></label>
+                        <input id="{{ signupId }}_custom_gender_value" class="hide form-control smallLabel fontPrimary required" data-id="Gender_value:input" name="cf_text_value--1" type="text" value="" maxlength="10" placeholder="Gender">
+                        <select id="{{ signupId }}_custom_gender" class="form-control smallLabel fontPrimary registerCustom">
+                            <option>Gender</option>
+                            <option value="1">Female</option>
+                            <option value="2">Male</option>
+                            <option value="0">Unlisted</option>
+                        </select>
+                        <input data-id="Gender_name:input" type="hidden" name="cf_text_name--1" value="gender">
+                        <input data-id="Gender_label:input" type="hidden" name="cf_text_label--1" value="Gender">
+                    </div>
+
+                    <div class="form-group" data-id="Age Group:p">
+                        <label data-id="Age Group:label" data-name="cf_text_value--0" class="ctct-form-required"></label>
+                        <input id="{{ signupId }}_custom_age_value" class="hide form-control smallLabel fontPrimary" data-id="Age Group_value:input" name="cf_text_value--0" type="text" value="" maxlength="10" placeholder="Age Group">
+                        <select id="{{ signupId }}_custom_age" class="form-control smallLabel fontPrimary registerCustom">
+                            <option>Age Group</option>
+                            <option value="1">High School</option>
+                            <option value="2">College</option>
+                            <option value="3">Under 30</option>
+                            <option value="4">30-40</option>
+                            <option value="5">40-50</option>
+                            <option value="6">50-60</option>
+                            <option value="7">60+</option>
+                        </select>
+                        <input data-id="Age Group_name:input" type="hidden" name="cf_text_name--0" value="age_group">
+                        <input data-id="Age Group_label:input" type="hidden" name="cf_text_label--0" value="Age Group">
+                    </div>
+
+                    <div class="signupAction">
+                        <button type="submit" class="fontPrimary bold btn positionAnchor" data-enabled="enabled">
+                            <span class="btnGradient"></span>
+                            <span class="btnText">Sign Up</span>
+                        </button>
+                    </div>
+
+                    <p class="disclaimer">By submitting this form, you are granting: Launch Social Inc., 1330 N Broadway, Ste 200H, Walnut Creek, California, 94596, United States, permission to email you. You may unsubscribe via the link found at the bottom of every email.</p>
+                </form>
+                <div id="{{ signupId }}success_message" class="success_message hide">
+                    <h2 class="success_message_thanks">Thanks</h2>
+                    <div class="success_message_details note fontSecondary">You rock! We'll let you know when the Kickstarter campaign is live.</div>
+                </div>
             </div>
         </div>
 
     {% endblock kickstarterSignup %}
+
+    {% block appDemoPopup %}
+        <div id="appDemoPopup" class="popup">
+            <div id="appDemoPopupContent" class="popupContent springIn borderRadiusDefault ctct-embed-signup">
+                <div id="appDemoPopupClose" class="popupClose btnClose" data-plugin="AddClass Dim" data-class="active" data-target="#appDemoPopup" data-event="click">
+                    <span class="sr-only">Close</span>
+                    {% embed '@SitetheoryTemplatePromoBundle/Resources/public/images/icons/close.svg'%}{%  block id  %}iconClose{% endblock %}{% endembed %}
+                </div>
+
+                <div class="responsiveDemo">
+                    <iframe width="438" height="930" src="//invis.io/Z28YPP1U7" frameborder="0" allowfullscreen></iframe>
+                </div>
+
+            </div>
+        </div>
+
+    {% endblock appDemoPopup %}
+
+
 {% endblock popup %}
-
-{#
-<!--Begin CTCT Sign-Up Form-->
-<!-- EFD 1.0.0 [Thu Oct 13 18:50:44 EDT 2016] -->
-<link rel='stylesheet' type='text/css' href='https://static.ctctcdn.com/h/contacts-embedded-signup-assets/1.0.2/css/signup-form.css'>
-<div class="ctct-embed-signup" style="font: 16px Helvetica Neue, Arial, sans-serif; font: 1rem Helvetica Neue, Arial, sans-serif; line-height: 1.5; -webkit-font-smoothing: antialiased;">
-    <div style="color:#5b5b5b; background-color:#e8e8e8; border-radius:5px;">
-       <span id="success_message" style="display:none;">
-           <div style="text-align:center;">Thanks for signing up!</div>
-       </span>
-        <form data-id="embedded_signup:form" class="ctct-custom-form Form" name="embedded_signup" method="POST" action="https://visitor2.constantcontact.com/api/signup">
-            <h2 style="margin:0;">Sign up to stay in touch!</h2>
-            <p>Sign up to get interesting news and updates delivered to your inbox.</p>
-            <!-- The following code must be included to ensure your sign-up form works properly. -->
-            <input data-id="ca:input" type="hidden" name="ca" value="75e365d6-bf57-46fa-9ecd-654aa7c55c36">
-            <input data-id="list:input" type="hidden" name="list" value="1387719498">
-            <input data-id="source:input" type="hidden" name="source" value="EFD">
-            <input data-id="required:input" type="hidden" name="required" value="list,cf_text--0,cf_text--1,cf_text--2,cf_text--3,email">
-            <input data-id="url:input" type="hidden" name="url" value="">
-
-            <p data-id="Email Address:p" ><label data-id="Email Address:label" data-name="email" class="ctct-form-required">Email Address</label> <input data-id="Email Address:input" type="text" name="email" value="" maxlength="80"></p>
-
-            <p data-id="First Name:p" ><label data-id="First Name:label" data-name="first_name">First Name</label> <input data-id="First Name:input" type="text" name="first_name" value="" maxlength="50"></p>
-
-            <p data-id="Age Group:p">
-                <label data-id="Age Group:label" data-name="cf_text_value--0" class="ctct-form-required">Age Group</label>
-                <input data-id="Age Group_value:input" type="text" name="cf_text_value--0" value="">
-            </p>
-            <input data-id="Age Group_name:input" type="hidden" name="cf_text_name--0" value="age_group">
-            <input data-id="Age Group_label:input" type="hidden" name="cf_text_label--0" value="Age Group">
-
-            <p data-id="Gender:p">
-                <label data-id="Gender:label" data-name="cf_text_value--1" class="ctct-form-required">Gender</label>
-                <input data-id="Gender_value:input" type="text" name="cf_text_value--1" value="">
-            </p>
-            <input data-id="Gender_name:input" type="hidden" name="cf_text_name--1" value="gender">
-            <input data-id="Gender_label:input" type="hidden" name="cf_text_label--1" value="Gender">
-
-            <p data-id="Relationship Status:p">
-                <label data-id="Relationship Status:label" data-name="cf_text_value--2" class="ctct-form-required">Relationship Status</label>
-                <input data-id="Relationship Status_value:input" type="text" name="cf_text_value--2" value="">
-            </p>
-            <input data-id="Relationship Status_name:input" type="hidden" name="cf_text_name--2" value="relationship_status">
-            <input data-id="Relationship Status_label:input" type="hidden" name="cf_text_label--2" value="Relationship Status">
-
-            <p data-id="Zip:p">
-                <label data-id="Zip:label" data-name="cf_text_value--3" class="ctct-form-required">Zip</label>
-                <input data-id="Zip_value:input" type="text" name="cf_text_value--3" value="">
-            </p>
-            <input data-id="Zip_name:input" type="hidden" name="cf_text_name--3" value="zip">
-            <input data-id="Zip_label:input" type="hidden" name="cf_text_label--3" value="Zip">
-
-            <button type="submit" class="Button ctct-button Button--block Button-secondary" data-enabled="enabled">Sign Up</button>
-            <div><p class="ctct-form-footer">By submitting this form, you are granting: Gutensite, 1330 N Broadway, Ste 200H, Walnut Creek, California, 94596, United States, http://www.gutensite.com permission to email you. You may unsubscribe via the link found at the bottom of every email.  (See our <a href="http://www.constantcontact.com/legal/privacy-statement" target="_blank">Email Privacy Policy</a> for details.) Emails are serviced by Constant Contact.</p></div>
-        </form>
-    </div>
-</div>
-<script type='text/javascript'>
-    var localizedErrMap = {};
-    localizedErrMap['required'] = 		'This field is required.';
-    localizedErrMap['ca'] = 			'An unexpected error occurred while attempting to send email.';
-    localizedErrMap['email'] = 			'Please enter your email address in name@email.com format.';
-    localizedErrMap['birthday'] = 		'Please enter birthday in MM/DD format.';
-    localizedErrMap['anniversary'] = 	'Please enter anniversary in MM/DD/YYYY format.';
-    localizedErrMap['custom_date'] = 	'Please enter this date in MM/DD/YYYY format.';
-    localizedErrMap['list'] = 			'Please select at least one email list.';
-    localizedErrMap['generic'] = 		'This field is invalid.';
-    localizedErrMap['shared'] = 		'Sorry, we could not complete your sign-up. Please contact us to resolve this.';
-    localizedErrMap['state_mismatch'] = 'Mismatched State/Province and Country.';
-    localizedErrMap['state_province'] = 'Select a state/province';
-    localizedErrMap['selectcountry'] = 	'Select a country';
-    var postURL = 'https://visitor2.constantcontact.com/api/signup';
-</script>
-<script type='text/javascript' src='https://static.ctctcdn.com/h/contacts-embedded-signup-assets/1.0.2/js/signup-form.js'></script>
-<!--End CTCT Sign-Up Form-->
-#}

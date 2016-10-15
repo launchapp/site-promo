@@ -1,10 +1,10 @@
-/* It Works */
-
 /* LOAD FONTS */
-
-
 @import '//fonts.googleapis.com/css?family=Fjalla+One|Roboto|Roboto+Slab:300,400,700';
 
+/*
+TODO: remove betaSignup when complete
+TODO: remove kickstarter referenceS once we link out.
+*/
 
 
 /* BODY */
@@ -496,14 +496,8 @@ h4,
     }
 }
 
-/* BETA SIGNUP FORM */
-
-/*
-TODO: remove betaSignup when complete
-TODO: remove kickstarter reference once we link out.
-*/
-
-.signupPopup {
+/* POPUP SIGNUP FORMS */
+.popup {
     transition: transform .2s ease-out;
     -webkit-transition: transform .2s ease-out;
     transform: scale(.4);
@@ -516,12 +510,12 @@ TODO: remove kickstarter reference once we link out.
     width: 100%;
     text-align: center;
 }
-.signupPopup.active {
+.popup.active {
     transform: scale(1);
     -webkit-transform: scale(1);
     opacity: 1;
 }
-.signupPopupContent {
+.popupContent {
     display: none;
     position: relative;
     width: 400px;
@@ -533,49 +527,49 @@ TODO: remove kickstarter reference once we link out.
     box-shadow: 0 0 3px rgba(0,0,0,.1);
 }
 /* Internet Explorer adjustment */
-.msie .signupPopupContent {
+.msie .popupContent {
     background-color: #FFF;
 }
-.signupPopup.active .signupPopupContent {
+.popup.active .popupContent {
     display: block;
 }
-.signupPopup .btnClose {
+.popup .btnClose {
     position: absolute;
     top: 18px;
     right: 16px;
     float: none;
 }
-.signupPopup .btnClose svg g,
-.signupPopup .btnClose svg .oval {
+.popup .btnClose svg g,
+.popup .btnClose svg .oval {
     stroke: rgba(0,0,0,.2);
 }
-.signupPopup .btnClose:hover svg g,
-.signupPopup .btnClose:hover svg .oval {
+.popup .btnClose:hover svg g,
+.popup .btnClose:hover svg .oval {
     stroke: #000;
 }
-.signupPopup .logo img {
+.popup .logo img {
     margin: 0 auto;
     width: 80px;
 }
-.signupPopupContent h2 {
+.popupContent h2 {
     margin-bottom: 26px;
     font-family: 'Roboto Condensed', sans-serif;
     text-transform: uppercase;
     font-weight: bold;
     font-size: 24px;
 }
-.signupPopup .note {
+.popup .note {
     color: #888;
     margin-bottom: 26px;
 }
-.signupPopup .form-control {
+.popup .form-control {
     height: 50px;
     text-align: center;
     font-size: 15px;
     letter-spacing: .02em;
     color: #333;
 }
-.signupPopup .disclaimer {
+.popup .disclaimer {
     transform: translateY(80px);
     -webkit-transform: translateY(80px);
     position: absolute;
@@ -585,7 +579,7 @@ TODO: remove kickstarter reference once we link out.
     color: #666;
     font-size: 10px;
 }
-.signupPopup #success_message {
+.popup #success_details {
     transition: opacity .2s ease-out;
     -webkit-transition: opacity .2s ease-out;
     position: absolute;
@@ -593,15 +587,15 @@ TODO: remove kickstarter reference once we link out.
     left: 20%;
     width: 60%;
 }
-.msie .signupPopup  #success_message {
+.msie .popup  #success_details {
     position: relative;
     top: inherit;
     left: inherit;
 }
-.signupPopup #success_message h2 {
+.popup #success_details h2 {
     margin-bottom: 10px;
 }
-.signupPopup .btn {
+.popup .btn {
     transition: all .2s ease-out;
     -webkit-transition: all .2s ease-out;
     margin: 16px auto 0 auto;
@@ -611,44 +605,58 @@ TODO: remove kickstarter reference once we link out.
     background: #FBDC00;
     border: 2px solid #FFF;
 }
-.signupPopup .btn .btnGradient {
+.popup .btn .btnGradient {
     opacity: 1;
 }
-.signupPopup .btn:hover {
+.popup .btn:hover {
     background: #FFF;
     border: 2px solid #FBDC00;
 }
 
-.signupPopup .form-group label {
+.popup .form-group label {
     float:left
 }
 
-/* On success */
+
+/**
+CONSTANT CONTACT FORM OVERWRITE
+*/
+.popup .ctct-form-errorMessage {
+    color: #f47c5b;
+}
+.popup .is-error {
+    border: 1px solid #f47c5b;
+}
+.popup .form-control.required {
+    border: 1px solid #f4df02;
+}
+
+/* On Form Success */
 /*
-Hide Form after Success (form has display:none added to it so we display the success message after)
-Note: ConstantContact does some weird stuff by randomly adding display:none on the #success_message
-so we use a different id.
+The <form> element gets a style="display: none;" added to it by the CC javascript. So we use that as
+a trigger for transitions and styling on the success message. Note: ConstantContact does some weird stuff
+by randomly adding style="display: none;" on the #success_message so we use a different id to avoid this.
 */
 #success_message_custom {
     display: none;
 }
-.signupPopup form[style="display: none;"] + #success_message_custom {
+.popup form[style="display: none;"] + #success_message_custom {
     display: block !important;
 }
 
 
-.signupPopup form[style="display: none;"] .logo {
+.popup form[style="display: none;"] .logo {
     transition: all .2s ease-out;
     -webkit-transition: all .2s ease-out;
     transform: translateY(80px);
     -webkit-transform: translateY(80px);
 }
 
-.signupPopup form[style="display: none;"] .btnClose,
-.signupPopup form[style="display: none;"] .form-control,
-.signupPopup form[style="display: none;"] .signupAction,
-.signupPopup form[style="display: none;"] .betaTitle,
-.signupPopup form[style="display: none;"] p {
+.popup form[style="display: none;"] .btnClose,
+.popup form[style="display: none;"] .form-control,
+.popup form[style="display: none;"] .signupAction,
+.popup form[style="display: none;"] .signupTitle,
+.popup form[style="display: none;"] p {
     transition: all .2s ease-out;
     -webkit-transition: all .2s ease-out;
     transform: scale(0);
@@ -656,7 +664,7 @@ so we use a different id.
     opacity: 0;
 }
 @media (max-width: 600px) {
-    .signupPopupContent {
+    .popupContent {
         width: 300px;
         padding: 30px;
     }
@@ -675,3 +683,4 @@ body.dim #app {
     -webkit-filter: blur(10px);
     opacity: .5;
 }
+
