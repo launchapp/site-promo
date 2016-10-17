@@ -3,10 +3,36 @@
 
 {#
 TODO:
-1. After Kickstarter is done, remove all references.
-2. Customize A/B Wording Tests
-
+1. After Beta is done, Remove references.
+2. After Kickstarter is done, remove all references.
+3. Customize A/B Wording Tests
 #}
+
+
+
+{#
+A/B Testing: Options
+#}
+{%
+set contentVersionOptions = {
+    'a': {
+        'title': 'The Cure for Dating Apps',
+        'description': 'Launch is an app for everyone disappointed with the current dating experience (personally or on behalf of friends). We&rsquo;ve been on a listening mission, using people&rsquo;s stories to build something entirely new.'
+        },
+    'b': {
+        'title': 'Dating Apps Suck',
+        'description': 'Launch is an app for everyone disappointed with the current dating experience (personally or on behalf of friends). We&rsquo;ve been on a listening mission, using people&rsquo;s stories to build something entirely new.'
+        }
+    }
+%}
+{% set contentVersionRequest = 'a' %}
+{% if environment.request.query.get('t') is not empty and contentVersionOptions[environment.request.query.get('t')] is defined %}
+    {% set contentVersionRequest = environment.request.query.get('t') %}
+{% endif %}
+{% set contentVersion = contentVersionOptions[contentVersionRequest] %}
+
+
+
 
 {# Load Site CSS #}
 
@@ -36,7 +62,7 @@ TODO:
 
 {% block bodyAttributes %}
     {{ parent() }}
-    data-spy="scroll" data-target="#navMainContainer" data-offset="100"
+    data-spy="scroll" data-target="#navMainContainer" data-offset="100" data-contentVersion="{{ contentVersionRequest }}"
 {% endblock bodyAttributes %}
 
 
@@ -153,9 +179,9 @@ TODO:
     <div id="tier1" class="landingTier siteMaxWidth siteSidePadding shellVerticalPadding">
         <div class="clearfix">
                 <div id="tier1Left" class="pull-left">
-                    <h1>The Cure for Dating Apps</h1>
+                    <h1>{{ contentVersion.title }}</h1>
                     <div class="borderDashed">
-                        <p class="fontPrimary">Launch is an app for everyone disappointed with the current dating experience (personally or on behalf of friends). We&rsquo;ve been on a listening mission, using people&rsquo;s stories to build something entirely new.</p>
+                        <p class="fontPrimary">{{ contentVersion.description }}</p>
                     </div>
                 </div>
                 <div id="tier1Right" class="pull-left">
@@ -316,58 +342,104 @@ TODO:
     {# TIER 5 APP SNEAK PEEK #}
 
     <div id="tier5" class="landingTier">
-        <div class="siteMaxWidth siteSidePadding">
+        <div class="siteMaxWidth siteSidePadding shellVerticalPadding">
             <h1>App Sneak Peek</h1>
-        </div>
-        <div id="tier5background">
-            <div class="siteMaxWidth siteSidePadding shellVerticalPadding">
-                <div id="appDemoBtn" class="btn"  data-plugin="AddClass Dim" data-class="active" data-target="#appDemoPopup" data-event="click" data-trackCategory="interest" data-trackLabel="appDemo">
-                    See Demo
-                </div>
-                <div id="appPreview" class="carousel slide" data-plugin="carousel" data-colminsize="sm" data-group="1" data-groupmobile="1" data-interval="4000">
 
-                    <!-- Optional: Progress Indicators -->
-                    <ol class="carousel-indicators">
-                        <li data-target="#appPreview" data-slide-to="0" class="active"></li>
-                        <li data-target="#appPreview" data-slide-to="1"></li>
-                    </ol>
+            <div id="tier5background">
+                <div class="siteMaxWidth siteSidePadding">
+                    {#
+                    <div id="appDemoBtn" class="btn"  data-plugin="AddClass Dim" data-class="active" data-target="#appDemoPopup" data-event="click" data-trackCategory="interest" data-trackLabel="appDemo">
+                        See Demo
+                    </div>
+                    #}
+                    {# TODO: remove when kickstarter is complete #}
+                    <p id="appDemoNote" class="fontPrimary bodyLarge">An interactive demo will be available to Kickstarter backers.</p>
 
-                    <!-- Wrapper for Slides -->
-                    <div class="carousel-inner" role="listbox">
-                        <div class="item clearfix active">
-                            <div class="slideImage">
-                                <img data-spy="#appPreview" data-lazysrc="{{ asset('bundles/sitetheorytemplatecustom/images/app/tempApp-xs.jpg') }}" src="{{ asset('bundles/sitetheorytemplatecustom/images/placeholder.png') }}" alt="Tenn Template">
+                    <div id="appPreview" class="carousel slide" data-plugin="carousel" data-colminsize="sm" data-group="1" data-groupmobile="1" data-interval="4000">
+
+                        <!-- Optional: Progress Indicators -->
+                        <ol class="carousel-indicators">
+                            <li data-target="#appPreview" data-slide-to="0" class="active"></li>
+                            <li data-target="#appPreview" data-slide-to="1"></li>
+                            <li data-target="#appPreview" data-slide-to="2"></li>
+                            <li data-target="#appPreview" data-slide-to="3"></li>
+                            <li data-target="#appPreview" data-slide-to="4"></li>
+                            <li data-target="#appPreview" data-slide-to="5"></li>
+                        </ol>
+
+                        <!-- Wrapper for Slides -->
+                        <div class="carousel-inner" role="listbox">
+                            <div class="item clearfix active">
+                                <div class="slideImage">
+                                    <img data-spy="#appPreview" data-lazysrc="{{ asset('bundles/sitetheorytemplatecustom/images/app/tempApp-xs.jpg') }}" src="{{ asset('bundles/sitetheorytemplatecustom/images/placeholder.png') }}" alt="Tenn Template">
+                                </div>
+                                <div class="slideText">
+                                    <h2 class="hoverElement smallLabel fontPrimary">#1 Sign Up</h2>
+                                    <div class="smallLabel fontPrimary bold">Sign up with your facebook account.</div>
+                                </div>
                             </div>
-                            <div class="slideText">
-                                <h2 class="hoverElement smallLabel fontPrimary">Sign Up</h2>
-                                <div class="smallLabel fontPrimary bold">Sign up with your facebook account.</div>
+                            <div class="item clearfix">
+                                <div class="slideImage">
+                                    <img data-spy="#appPreview" data-lazysrc="{{ asset('bundles/sitetheorytemplatecustom/images/app/tempApp-xs.jpg') }}" src="{{ asset('bundles/sitetheorytemplatecustom/images/placeholder.png') }}" alt="Bild Template">
+                                </div>
+                                <div class="slideText">
+                                    <h2 class="hoverElement smallLabel fontPrimary">#2 Recruit Launch Crew</h2>
+                                    <div class="smallLabel fontPrimary bold">Invite 2 or more of your closest friends (especially non-single matchmakers) to verify &amp; describe you to increase your trust score.</div>
+                                </div>
+                            </div>
+                            <div class="item clearfix">
+                                <div class="slideImage">
+                                    <img data-spy="#appPreview" data-lazysrc="{{ asset('bundles/sitetheorytemplatecustom/images/app/tempApp-xs.jpg') }}" src="{{ asset('bundles/sitetheorytemplatecustom/images/placeholder.png') }}" alt="Bild Template">
+                                </div>
+                                <div class="slideText">
+                                    <h2 class="hoverElement smallLabel fontPrimary">#3 Play and Match</h2>
+                                    <div class="smallLabel fontPrimary bold">Have fun suggesting matches with friends and give helpful insight. Matches suggested by friends have a higher chance of success.</div>
+                                </div>
+                            </div>
+                            <div class="item clearfix">
+                                <div class="slideImage">
+                                    <img data-spy="#appPreview" data-lazysrc="{{ asset('bundles/sitetheorytemplatecustom/images/app/tempApp-xs.jpg') }}" src="{{ asset('bundles/sitetheorytemplatecustom/images/placeholder.png') }}" alt="Bild Template">
+                                </div>
+                                <div class="slideText">
+                                    <h2 class="hoverElement smallLabel fontPrimary">#4 Review Matches</h2>
+                                    <div class="smallLabel fontPrimary bold">A blurred photo and dynamic profile lets you get to know each other before failing a shallow swipe test. Answer a few playful icebreakers to bring the photo into focus and unlock full chat.</div>
+                                </div>
+                            </div>
+                            <div class="item clearfix">
+                                <div class="slideImage">
+                                    <img data-spy="#appPreview" data-lazysrc="{{ asset('bundles/sitetheorytemplatecustom/images/app/tempApp-xs.jpg') }}" src="{{ asset('bundles/sitetheorytemplatecustom/images/placeholder.png') }}" alt="Bild Template">
+                                </div>
+                                <div class="slideText">
+                                    <h2 class="hoverElement smallLabel fontPrimary">#5 Pre-Date Discovery</h2>
+                                    <div class="smallLabel fontPrimary bold">Each match expires in 48 hours. If you are intrigued you schedule a pre-date meetup with the click of a button. These are a natural part of the discovery process, zero expectation, just 30 minutes drink coffee coffee and chat with an interesting local.</div>
+                                </div>
+                            </div>
+                            <div class="item clearfix">
+                                <div class="slideImage">
+                                    <img data-spy="#appPreview" data-lazysrc="{{ asset('bundles/sitetheorytemplatecustom/images/app/tempApp-xs.jpg') }}" src="{{ asset('bundles/sitetheorytemplatecustom/images/placeholder.png') }}" alt="Bild Template">
+                                </div>
+                                <div class="slideText">
+                                    <h2 class="hoverElement smallLabel fontPrimary">#6 Follow-Up Response</h2>
+                                    <div class="smallLabel fontPrimary bold">A quick follow-up survey lets you choose to connect as friends or report negative behavior (or profile inaccuracies) in a constructive way that also makes everyone accountable to their friends.</div>
+                                </div>
                             </div>
                         </div>
-                        <div class="item clearfix">
-                            <div class="slideImage">
-                                <img data-spy="#appPreview" data-lazysrc="{{ asset('bundles/sitetheorytemplatecustom/images/app/tempApp-xs.jpg') }}" src="{{ asset('bundles/sitetheorytemplatecustom/images/placeholder.png') }}" alt="Bild Template">
-                            </div>
-                            <div class="slideText">
-                                <h2 class="hoverElement smallLabel fontPrimary">Recruit Launch Crew</h2>
-                                <div class="smallLabel fontPrimary bold">Invite 2 or more of your closest friends to verify &amp; describe you to increase your trust score. And then play along to suggest matches for each other.</div>
-                            </div>
+
+                        <!-- Controls -->
+                        <div class="carouselControls">
+                            <a class="left carousel-control" href="#appPreview" role="button" data-slide="prev" data-scroll="false">
+                                <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                                {# TO USE A SVG You can embed like this: #}
+                                {# {% embed '@SitetheoryTemplateCustomBundle/Resources/public/images/arrow.svg'%}{%  block id  %}arrowButtonVector{% endblock %}{% endembed %} #}
+                                <span class="sr-only">Previous</span>
+                            </a>
+                            <a class="right carousel-control" href="#appPreview" role="button" data-slide="next" data-scroll="false">
+                                <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                                <span class="sr-only">Next</span>
+                            </a>
                         </div>
-                    </div>
 
-                    <!-- Controls -->
-                    <div class="carouselControls">
-                        <a class="left carousel-control" href="#appPreview" role="button" data-slide="prev" data-scroll="false">
-                            <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-                            {# TO USE A SVG You can embed like this: #}
-                            {# {% embed '@SitetheoryTemplateCustomBundle/Resources/public/images/arrow.svg'%}{%  block id  %}arrowButtonVector{% endblock %}{% endembed %} #}
-                            <span class="sr-only">Previous</span>
-                        </a>
-                        <a class="right carousel-control" href="#appPreview" role="button" data-slide="next" data-scroll="false">
-                            <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-                            <span class="sr-only">Next</span>
-                        </a>
                     </div>
-
                 </div>
             </div>
         </div>
@@ -672,6 +744,7 @@ TODO:
 
     {% endblock kickstarterSignup %}
 
+    {#
     {% block appDemoPopup %}
         <div id="appDemoPopup" class="popup">
             <div id="appDemoPopupContent" class="popupContent springIn borderRadiusDefault ctct-embed-signup">
@@ -686,8 +759,7 @@ TODO:
 
             </div>
         </div>
-
     {% endblock appDemoPopup %}
-
+    #}
 
 {% endblock popup %}

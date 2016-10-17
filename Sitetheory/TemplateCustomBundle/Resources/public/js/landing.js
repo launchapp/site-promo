@@ -13,9 +13,13 @@
             var trackLabel = el.dataAttr('trackLabel') || null;
             var trackValue = el.dataAttr('trackValue') || null;
             ga('send', 'event', trackCategory, trackLabel, trackValue);
+            console.log('track', trackCategory, trackLabel, trackValue);
         }
 
-        // Track video watches
+        // Track Version of Page
+        if($('body').dataAttr('contentVersion')) {
+            ga('send', 'event', 'content', $('body').dataAttr('contentVersion'));
+        }
 
         // Track all registered elements
         $.each($('[data-trackCategory]'), function(i, el) {
