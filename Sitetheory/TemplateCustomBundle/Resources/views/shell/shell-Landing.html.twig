@@ -179,9 +179,9 @@ set contentVersionOptions = {
     <div id="tier1" class="landingTier siteMaxWidth siteSidePadding shellVerticalPadding">
         <div class="clearfix">
                 <div id="tier1Left" class="pull-left">
-                    <h1>{{ contentVersion.title }}</h1>
+                    <h1>{{ contentVersion.title|raw }}</h1>
                     <div class="borderDashed">
-                        <p class="fontPrimary">{{ contentVersion.description }}</p>
+                        <p class="fontPrimary">{{ contentVersion.description|raw }}</p>
                     </div>
                 </div>
                 <div id="tier1Right" class="pull-left">

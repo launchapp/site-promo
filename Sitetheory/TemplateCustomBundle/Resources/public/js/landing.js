@@ -13,7 +13,6 @@
             var trackLabel = el.dataAttr('trackLabel') || null;
             var trackValue = el.dataAttr('trackValue') || null;
             ga('send', 'event', trackCategory, trackLabel, trackValue);
-            console.log('track', trackCategory, trackLabel, trackValue);
         }
 
         // Track Version of Page
