@@ -17,7 +17,7 @@
 
         // Track Version of Page
         if($('body').dataAttr('contentVersion')) {
-            ga('send', 'event', 'content', $('body').dataAttr('contentVersion'));
+            ga('send', 'event', 'content', 'version', $('body').dataAttr('contentVersion'));
         }
 
         // Track all registered elements
