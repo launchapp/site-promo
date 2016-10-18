@@ -509,9 +509,10 @@
     padding-bottom: 40px;
     font-size: 15px;
 }
-#tier5 img {
+#tier5 .item img {
     margin: 0 auto;
-    max-width: 268px;
+    padding-right: 180px;
+    max-width: 448px;
 }
 #appPreview.carousel {
     padding-bottom: 50px;
@@ -524,18 +525,16 @@
     -webkit-transition: all .2s ease-out;
     position: absolute;
     top: 55%;
-    left: 67%;
+    left: 58%;
     transform: translateY(-50%);
     -webkit-transform: translateY(-50%);
+    text-align: left;
+    max-width: 180px;
 }
 #appPreview h2 {
     margin-bottom: 26px;
-    font-size: 24px;
+    font-size: 22px;
     font-weight: bold;
-}
-#appPreview p {
-    max-width: 180px;
-    text-align: left;
 }
 #appPreview .carousel-inner {
     position: relative;
@@ -584,32 +583,30 @@
     background-color: #FCEE27;
 }
 
-@media (max-width:1050px) {
-    #appPreview .centerText {
-        left: 69%;
-    }
-    #appPreview p {
-        max-width: 130px;
-    }
-}
 @media (max-width:950px) {
     #appPreview .centerText {
-        left: 71%;
+        left: 60%;
     }
 }
 @media (max-width:800px) {
     #appPreview.carousel {
         padding-bottom: 0;
     }
+    #tier5 .item img {
+        padding-right: 0;
+        max-width: 248px;
+    }
     #appPreview .centerText {
         position: relative;
         top: inherit;
         left: inherit;
-        margin-top: 30px;
-    }
-    #appPreview p {
         max-width: 100%;
+        height: 100px;
         text-align: center;
+    }
+    #appPreview h2 {
+        margin: 76px 0 10px 0;
+        font-size: 18px;
     }
     .left.carousel-control ,
     .right.carousel-control,
