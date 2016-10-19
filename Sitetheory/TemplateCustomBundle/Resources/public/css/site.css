@@ -709,3 +709,9 @@ body.dim #app {
     opacity: .5;
 }
 
+/* Temporary shell classes */
+
+#contentArticle-35558 {
+    margin: 60px 0;
+    text-align: center;
+}

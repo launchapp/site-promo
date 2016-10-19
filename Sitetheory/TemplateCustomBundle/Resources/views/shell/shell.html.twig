@@ -1,133 +1,184 @@
 {% extends 'SitetheoryTemplateBundle::shell.html.twig' %}
 
-{# Shell Settings #}
 
-{% set socialStyle = 'reverse' %}
-{% set mobileDrawerDirection = 'mobileDrawerRight' %}
-{% set headerBrightness = 'light' %}
-{% set sidebarBrightness = 'light' %}
-{% set siteMapBrightness = 'light' %}
-{% set footerBrightness = 'light' %}
+{#
+TODO:
+1. After Beta is done, Remove references.
+2. After Kickstarter is done, remove all references.
+3. Customize A/B Wording Tests
+#}
+
+
+
+{#
+A/B Testing: Options
+NOTE: Change default option after testing.
+#}
+{%
+set contentVersionOptions = {
+'a': {
+'title': 'Online Dating Is a Mess',
+'description': 'We saw. We listened. And we began building Launch -- an app that lets people (single or taken) send their friends on better dates. We need your help to make it a reality.'
+},
+'b': {
+'title': 'The Cure for Dating Apps',
+'description': 'Launch is an app for everyone disappointed with the current dating experience (personally or on behalf of friends). We&rsquo;ve been on a listening mission, using people&rsquo;s stories to build something entirely new.'
+}
+}
+%}
+{% set contentVersionRequest = 'a' %}
+{% if environment.request.query.get('t') is not empty and contentVersionOptions[environment.request.query.get('t')] is defined %}
+    {% set contentVersionRequest = environment.request.query.get('t') %}
+{% endif %}
+{% set contentVersion = contentVersionOptions[contentVersionRequest] %}
+
+
+
 
 {# Load Site CSS #}
 
 {% block link %}
     {{ parent() }}
     <link rel="stylesheet" href="{{ asset('bundles/sitetheorytemplatecustom/css/site.css') }}">
+    <link rel="stylesheet" href="{{ asset('bundles/sitetheorytemplatecustom/css/landing.css') }}">
 {% endblock link %}
+
+{% block script %}
+    {{ parent() }}
+    <script type="text/javascript" src="{{ asset('bundles/sitetheorytemplatecustom/js/landing.js') }}"></script>
+    <script type='text/javascript' src=''></script>
+
+{% endblock script %}
+
+
+{% block meta %}
+    {{ parent() }}
+    {# TODO: This is just here temporarily until the base.html.twig give the ability to select the preferred image in the admin #}
+    {# we may need to reload the page here in order to get the new image https://developers.facebook.com/tools/debug/ #}
+    <meta property="og:image" content="//www.launchapp.io/sitetheory/v/1/0/bundles/sitetheorytemplatecustom/images/tempVideo.jpg">
+{% endblock meta %}
+
+
+{% block appClass %}landingFull{% endblock appClass %}
+
+{% block bodyAttributes %}
+    {{ parent() }}
+    data-spy="scroll" data-target="#navMainContainer" data-offset="100" data-contentVersion="{{ contentVersionRequest }}"
+{% endblock bodyAttributes %}
+
 
 {# Remove standard header image #}
 {% block headerImageInsideHeader %}
 {% endblock headerImageInsideHeader %}
 
+{% block pageTitle %}
+{% endblock pageTitle %}
 
+{# Hide sidebar on desktop #}
+{% set bootstrapColumnSidebar = 'visible-xs visible-sm' %}
 
+{# Sidebar is hidden on desktop so main column is full width #}
+{% set bootstrapColumnMain = 'noGridSettings' %}
 
-{# If we want to place page title inside the header image (when the header image is set to display), then we need to
-hide the main page title and this needs to happen before the page title is called inside content #}
-{% block content %}
-    {% if view.viewVersion.settings.disableImage is empty %}
-        {% set pageTitleHidden = true %}
-    {% endif %}
-    {{ parent() }}
-{% endblock content %}
+{# Hide gutter in main column #}
+{% block mainColumnGutter %}
+{% endblock mainColumnGutter %}
 
-{% block headerImageMainColumn %}
-    <div class="headerImageContainer positionAnchor">
-        {{ block('pageTitle') }}
-        {# TODO: make this image dynamic #}
-        {#
-        <div class="headerImage">
-            <img src="{{ asset('bundles/'~environment.site.designVersion.template.shortcut|lower~'/images/emphasis/general/headerImage.jpg') }}" alt="Header Image">
+{# Hide Sidebar Navigation until it's dynamic and necessary #}
+{% block navSection %}
+{% endblock navSection %}
+
+{# Hide Sidebar Login until it's dynamic and necessary #}
+{% block sidebarLogin %}
+{% endblock sidebarLogin %}
+
+{# Put Beta Signup in Sidebar #}
+{% block sidebarExtrasTop %}
+    {% block betaButton %}
+        <div id="betaSignupBtn" class="btn"  data-plugin="AddClass Dim" data-class="active" data-target="#betaSignup" data-event="click" data-trackCategory="CTA" data-trackLabel="beta" data-trackValue="top">
+            Beta Signup
         </div>
-        #}
-    </div>
-{% endblock headerImageMainColumn %}
+    {% endblock betaButton %}
 
-
-{% block siteLogo %}
-    <!-- Site Logo -->
-    <div id="siteLogo">
-        {% block siteLogoImage %}
-            <div id="logoMark">
-                <a href="/">
-                    <img src="{{ asset('bundles/sitetheorytemplatecustom/images/launchLogoMark.png') }}" alt="{{ environment.site.name }} Logo">
-                </a>
+    <div class="borderDashed">
+        {% block mainNavigation %}
+            <div id="navMainContainer" class="navMainContainer">
+                {#
+                <ul class="nav list-inline fontPrimary">
+                    <li class="navMainLink">
+                        <a href="#tier2">
+                            <div class="linkOrnament"></div>
+                            <div class="linkUnderline"></div>
+                            Status Quo
+                        </a>
+                    </li>
+                    <li class="navMainLink">
+                        <a href="#tier3">
+                            <div class="linkOrnament"></div>
+                            <div class="linkUnderline"></div>
+                            Something Different
+                        </a>
+                    </li>
+                    <li class="navMainLink">
+                        <a href="#tier5">
+                            <div class="linkOrnament"></div>
+                            <div class="linkUnderline"></div>
+                            App
+                        </a>
+                    </li>
+                    <li class="navMainLink">
+                        <a href="#tier6">
+                            <div class="linkOrnament"></div>
+                            <div class="linkUnderline"></div>
+                            Benefits
+                        </a>
+                    </li>
+                    <li class="navMainLink">
+                        <a href="#tier7">
+                            <div class="linkOrnament"></div>
+                            <div class="linkUnderline"></div>
+                            Help Us!
+                        </a>
+                    </li>
+                </ul>
+                #}
             </div>
-        {% endblock siteLogoImage %}
-        {% block siteLogoText %}
-            <div id="logoText">
-                <a href="/"><img src="{{ asset('bundles/sitetheorytemplatecustom/images/launchLogoText.png') }}" alt="{{ environment.site.name }}"></a>
-            </div>
-        {% endblock siteLogoText %}
+        {% endblock mainNavigation %}
     </div>
-    <!-- End Site Logo -->
-{% endblock siteLogo %}
+
+{% endblock sidebarExtrasTop %}
 
 
-{# Header elements for retracting header and mobile devices #}
+{# Hide footer site map #}
+{% block footerSiteMap %}
+{% endblock footerSiteMap %}
+
+{# Hide footer #}
+{% block viewFooter %}
+{% endblock viewFooter %}
+
+{# Remove shell vertical content padding class to replace with stream padding #}
+{% set headerStructure = 'emptyAll' %}
+{% set shellContentStructure = 'emptyAll' %}
+
+
+
+
 {% block header1 %}
-    {# Background color in #header1 is hidden on desktop #}
-    {# Chad removed class="matchBootstrapGridPadding" because it was not aligning header edges with body #}
-    <div>
-        <div id="header1" class="clearfix">
-            <div id="logoArea">
-                {{ block('siteLogo') }}
+    <div id="header1" class="clearfix">
+        <div class="clearfix">
+            {{ block('betaButton') }}
+            <div id="logoHeader" class="pull-left">
+                <img src="{{ asset('bundles/sitetheorytemplatecustom/images/launchLogoHeader.png') }}" alt="">
             </div>
-            <div id="betaSignupBtn" class="actionButton fontPrimary"  data-plugin="AddClass Dim" data-class="active" data-target="#betaSignup" data-event="click">
-                <div class="actionButtonHoverMask left">
-                    <div class="actionButtonHover left"></div>
-                </div>
-                <div class="actionButtonHoverMask right">
-                    <div class="actionButtonHover right"></div>
-                </div>
-                Reserve a Spot
-                <div class="actionButtonBorder"></div>
-            </div>
-            {{ block('navMainContainer') }}
+            {{ block('mainNavigation') }}
         </div>
     </div>
 {% endblock header1 %}
 
-{% block siteSlogan %}
-{% endblock siteSlogan %}
 
 
-
-
-{# TODO: remove this override once the core shell block is correct #}
-{% block sidebar %}
-{% endblock sidebar %}
-
-
-{# Add elements to top of sidebar. Hide logo when sidebar becomes mobile drawer #}
-{% block sidebarExtrasTop %}
-    <div id="logoArea" class="backgroundAccentColor hidden-xs hidden-sm">
-        {{ block('siteLogo') }}
-    </div>
-{% endblock sidebarExtrasTop %}
-
-{% block sidebarExtrasBottom %}
-    {{ block('socialMedia') }}
-{% endblock sidebarExtrasBottom %}
-
-
-{# Move main navigation into main column #}
-{% block mainColumnExtras %}
-    {{ block('navMainContainer') }}
-{% endblock mainColumnExtras %}
-
-{# TODO: use the core shell block once that's working correctly. #}
-{% block navSection %}
-    <!-- Dynamic Site Nav Pulled From Header -->
-    <div class="visible-xs-block">
-        {{ block('navMain') }}
-    </div>
-{% endblock navSection %}
-
-{% block memberLogin %}
-{% endblock memberLogin %}
-
+{# TODO: this is not showing up at the moment. We are using a footer above #}
 
 {% block siteContact %}
     <div class="{% block siteContactLabel %}siteContact{% endblock siteContactLabel %}">
@@ -137,30 +188,25 @@ hide the main page title and this needs to happen before the page title is calle
         {% endblock footerSiteName %}
 
         {% block sitePhone %}
-            <span class="phone">
-                <a href="tel://925-330-9447">925-330-9447</a>
-            
+            <span class="phone"><a href="tel://925-330-9447">925-330-9447</a></span>
         {% endblock sitePhone %}
+
         {% block siteEmail %}
-            <span class="email">
-                <a href="mailto:hello@launchapp.io">hello@launchapp.io</a>
-            
+            <span class="email"><a href="mailto:hello@launchapp.io">hello@launchapp.io</a></span>
         {% endblock siteEmail %}
+
         {% block siteStreet %}
-            <span class="address">
-                1330 N. Broadway 200H
-            
+            <span class="address">1330 N. Broadway 200H</span>
         {% endblock siteStreet %}
+
         {% block siteCityStateZip %}
-            <span class="city">
-                Walnut Creek, CA 94596
-            
+            <span class="city">Walnut Creek, CA 94596</span>
         {% endblock siteCityStateZip %}
+
         {% block siteCountry %}
-            <span class="country">
-                United States
-            
+            <span class="country">United States</span>
         {% endblock siteCountry %}
+
     </div>
 {% endblock siteContact %}
 
@@ -186,104 +232,237 @@ hide the main page title and this needs to happen before the page title is calle
     </div>
 {% endblock socialMedia %}
 
-{% block creditText %}
-<div class="creditText">
-    By Sitetheory
-</div>
-{% endblock creditText %}
 
 
-{% block footerSiteMap %}
- <div id="siteMapBackground" class="hidden-sm">
-    <div id="siteMapContainer" class="{{ siteMapStructure|default('siteMaxWidth siteSidePadding') }} {{ siteMapFont|default('fontSecondary') }} {{ siteMapBrightness|default('light') }}">
-
-        {% block siteMapLabel %}
-        {% endblock siteMapLabel %}
-
-        {#
-        <ul id="siteMap" class="list-inline">
-            <li class="siteMapColumn" style="width:19%;">
-                <ul class="list-unstyled">
-                    <li class="siteMapHeader">
-                        <a class="{{ siteMapHeaderFont|default('fontPrimary') }}" href="/Blog">About</a>
-                    </li>
-                    <li>
-                        <a  href="/Blog">Blog</a>
-                    </li>
-                    <li>
-                        <a  href="/Team">Team</a>
-                    </li>
-                </ul>
-            </li>
-            <li class="siteMapColumn" style="width:19%;">
-                <ul class="list-unstyled">
-                    <li class="siteMapHeader">
-                        <a class="{{ siteMapHeaderFont|default('fontPrimary') }}" href="/Privacy">Legal</a>
-                    </li>
-                    <li>
-                        <a  href="/Privacy">Privacy Policy</a>
-                    </li>
-                    <li>
-                        <a  href="/Terms">Terms of Service</a>
-                    </li>
-                </ul>
-            </li>
-        </ul>
-        #}
-    </div>
-</div>
-{% endblock footerSiteMap %}
 
 
 {% block popup %}
     {% block betaSignup %}
-        <div id="betaSignup">
-            <div id="betaSignupContent" class="springIn borderRadiusDefault">
-                <div id="betaSignupClose" class="btnClose" data-plugin="AddClass Dim" data-class="active" data-target="#betaSignup" data-event="click">
-                    <span class="sr-only">Close
+
+        {% set signupId = 'beta' %}
+        {% set signupFormId = 'd0d690e0-feb2-4923-9f8c-661ca4e37707' %}
+        {% set signupListId = '1924932799' %}
+        <div id="{{ signupId }}Signup" class="popup">
+            <div id="{{ signupId }}SignupContent" class="popupContent springIn borderRadiusDefault ctct-embed-signup">
+                <div id="{{ signupId }}SignupClose" class="popupClose btnClose" data-plugin="AddClass Dim" data-class="active" data-target="#{{ signupId }}Signup" data-event="click">
+                    <span class="sr-only">Close</span>
                     {% embed '@SitetheoryTemplatePromoBundle/Resources/public/images/icons/close.svg'%}{%  block id  %}iconClose{% endblock %}{% endembed %}
                 </div>
 
-                <div id="success_message" style="display:none;">
-                    <h2>Thanks</h2>
-                    <div class="note fontSecondary">You rock! We'll let you know when the app is ready.</div>
-                </div>
-                <form data-id="embedded_signup:form" class="form" name="embedded_signup" method="POST" action="https://visitor2.constantcontact.com/api/signup">
+                <form data-id="embedded_signup:form" class="ctct-custom-form Form" name="embedded_signup" method="POST" action="https://visitor2.constantcontact.com/api/signup">
                     <div class="logo">
                         <img src="{{ asset('bundles/sitetheorytemplatecustom/images/launchLogoMark.png') }}" alt="">
                     </div>
-                    <h2 class="betaTitle">Beta Signup</h2>
+                    <h2 class="signupTitle">Beta Signup</h2>
                     <p class="note fontBody">Be among the first to join and help us create an awesome community.</p>
                     <!-- The following code must be included to ensure your sign-up form works properly. -->
-                    <input data-id="ca:input" type="hidden" name="ca" value="a84d2d17-dca3-4f96-b76c-459018f0b788">
-                    <input data-id="list:input" type="hidden" name="list" value="1924932799">
+                    <input data-id="ca:input" type="hidden" name="ca" value="{{ signupFormId }}">
+                    <input data-id="list:input" type="hidden" name="list" value="{{ signupListId }}">
                     <input data-id="source:input" type="hidden" name="source" value="EFD">
                     <input data-id="required:input" type="hidden" name="required" value="list,email">
+                    <input data-id="required:input" type="hidden" name="required" value="list,email,cf_text--3,cf_text--2">
                     <input data-id="url:input" type="hidden" name="url" value="">
+
                     <div class="form-group" data-id="Email Address:p">
-                        <input class="form-control smallLabel fontPrimary" data-id="Email Address:input" type="text" name="email" value="" maxlength="80" placeholder="Email Address">
+                        <label data-id="Email Address:label" data-name="email" class="ctct-form-required"></label>
+                        <input class="form-control smallLabel fontPrimary required" data-id="Email Address:input" type="text" name="email" value="" maxlength="80" placeholder="Email Address">
                     </div>
+
+                    <div class="form-group" data-id="Zip:p">
+                        <label data-id="Zip:label" data-name="cf_text_value--3" class="ctct-form-required"></label>
+                        <input id="{{ signupId }}RegisterZip" class="registerZip form-control smallLabel fontPrimary required" data-id="Zip_value:input" type="text" name="cf_text_value--3" value="" maxlength="10" placeholder="Postal Code" data-ip="{{ environment.request.server.get('HTTP_X_REAL_IP') }}">
+                        <input data-id="Zip_name:input" type="hidden" name="cf_text_name--3" value="zip">
+                        <input data-id="Zip_label:input" type="hidden" name="cf_text_label--3" value="Zip">
+                    </div>
+
+                    <div class="form-group" data-id="Relationship Status:p">
+                        <label data-id="Relationship Status:label" data-name="cf_text_value--2" class="ctct-form-required"></label>
+                        <input id="{{ signupId }}_custom_status_value" class="hide form-control smallLabel fontPrimary required" data-id="Relationship Status_value:input" name="cf_text_value--2" type="text" value="" maxlength="10" placeholder="Relationship Status">
+                        <select  id="{{ signupId }}_custom_status" class="form-control smallLabel fontPrimary required registerCustom">
+                            <option>Status</option>
+                            <option value="1">Single</option>
+                            <option value="2">Taken (matchmaker)</option>
+                        </select>
+                        <input data-id="Relationship Status_name:input" type="hidden" name="cf_text_name--2" value="relationship_status">
+                        <input data-id="Relationship Status_label:input" type="hidden" name="cf_text_label--2" value="Relationship Status">
+                    </div>
+
+                    <div class="form-group" data-id="Gender:p">
+                        <label data-id="Gender:label" data-name="cf_text_value--1"></label>
+                        <input id="custom_gender_value" class="hide form-control smallLabel fontPrimary required" data-id="Gender_value:input" name="cf_text_value--1" type="text" value="" maxlength="10" placeholder="Gender">
+                        <select id="custom_gender" class="form-control smallLabel fontPrimary registerCustom">
+                            <option>Gender</option>
+                            <option value="1">Female</option>
+                            <option value="2">Male</option>
+                            <option value="0">Unlisted</option>
+                        </select>
+                        <input data-id="Gender_name:input" type="hidden" name="cf_text_name--1" value="gender">
+                        <input data-id="Gender_label:input" type="hidden" name="cf_text_label--1" value="Gender">
+                    </div>
+
+                    <div class="form-group" data-id="Age Group:p">
+                        <label data-id="Age Group:label" data-name="cf_text_value--0" class="ctct-form-required"></label>
+                        <input id="{{ signupId }}_custom_age_value" class="hide form-control smallLabel fontPrimary" data-id="Age Group_value:input" name="cf_text_value--0" type="text" value="" maxlength="10" placeholder="Age Group">
+                        <select id="{{ signupId }}_custom_age" class="form-control smallLabel fontPrimary registerCustom">
+                            <option>Age Group</option>
+                            <option value="1">High School</option>
+                            <option value="2">College</option>
+                            <option value="3">Under 30</option>
+                            <option value="4">30-40</option>
+                            <option value="5">40-50</option>
+                            <option value="6">50-60</option>
+                            <option value="7">60+</option>
+                        </select>
+                        <input data-id="Age Group_name:input" type="hidden" name="cf_text_name--0" value="age_group">
+                        <input data-id="Age Group_label:input" type="hidden" name="cf_text_label--0" value="Age Group">
+                    </div>
+
                     <div class="signupAction">
                         <button type="submit" class="fontPrimary bold btn positionAnchor" data-enabled="enabled">
-                            <span class="btnGradient">
-                            <span class="btnText">Sign Up
+                            <span class="btnGradient"></span>
+                            <span class="btnText" data-trackCategory="CTA" data-trackLabel="signup" data-trackValue="beta">Sign Up</span>
                         </button>
                     </div>
 
                     <p class="disclaimer">By submitting this form, you are granting: Launch Social Inc., 1330 N Broadway, Ste 200H, Walnut Creek, California, 94596, United States, permission to email you. You may unsubscribe via the link found at the bottom of every email.</p>
                 </form>
+                <div id="{{ signupId }}success_message" class="success_message hide">
+                    <h2 class="success_message_thanks">Thanks</h2>
+                    <div class="success_message_details note fontSecondary">You rock! We'll let you know when the app is ready.</div>
+                </div>
             </div>
-            <script type='text/javascript'>
-                var localizedErrMap = {};
-                localizedErrMap['required'] = 		'This field is required.';
-                localizedErrMap['ca'] = 			'An unexpected error occurred while attempting to send email.';
-                localizedErrMap['email'] = 			'Please enter your email address in name@email.com format.';
-                localizedErrMap['generic'] = 		'This field is invalid.';
-                localizedErrMap['shared'] = 		'Sorry, we could not complete your sign-up. Please contact us to resolve this.';
-                var postURL = 'https://visitor2.constantcontact.com/api/signup';
-            </script>
-            <script type='text/javascript' src='https://static.ctctcdn.com/h/contacts-embedded-signup-assets/1.0.2/js/signup-form.js'></script>
         </div>
 
     {% endblock betaSignup %}
+
+
+    {% block kickstarterSignup %}
+        {% set signupId = 'kickstarter' %}
+        {% set signupFormId = '75e365d6-bf57-46fa-9ecd-654aa7c55c36' %}
+        {% set signupListId = '1387719498' %}
+        <div id="{{ signupId }}Signup" class="popup">
+            <div id="{{ signupId }}SignupContent" class="popupContent springIn borderRadiusDefault ctct-embed-signup">
+                <div id="{{ signupId }}SignupClose" class="popupClose btnClose" data-plugin="AddClass Dim" data-class="active" data-target="#{{ signupId }}Signup" data-event="click">
+                    <span class="sr-only">Close</span>
+                    {% embed '@SitetheoryTemplatePromoBundle/Resources/public/images/icons/close.svg'%}{%  block id  %}iconClose{% endblock %}{% endembed %}
+                </div>
+
+                <form data-id="embedded_signup:form" class="ctct-custom-form Form" name="embedded_signup" method="POST" action="https://visitor2.constantcontact.com/api/signup">
+                    <div class="logo">
+                        <img src="{{ asset('bundles/sitetheorytemplatecustom/images/launchLogoMark.png') }}" alt="">
+                    </div>
+                    <h2 class="signupTitle">Kickstarter Notify</h2>
+                    <p class="note fontBody">Our campaign isn't quite ready yet (October-ish), but we really need your support. We'll update you when it's ready!</p>
+                    <!-- The following code must be included to ensure your sign-up form works properly. -->
+                    <input data-id="ca:input" type="hidden" name="ca" value="{{ signupFormId }}">
+                    <input data-id="list:input" type="hidden" name="list" value="{{ signupListId }}">
+                    <input data-id="source:input" type="hidden" name="source" value="EFD">
+                    <input data-id="required:input" type="hidden" name="required" value="list,email">
+                    <input data-id="required:input" type="hidden" name="required" value="list,email,cf_text--3,cf_text--2">
+                    <input data-id="url:input" type="hidden" name="url" value="">
+
+                    <div class="form-group" data-id="Email Address:p">
+                        <label data-id="Email Address:label" data-name="email" class="ctct-form-required"></label>
+                        <input class="form-control smallLabel fontPrimary required" data-id="Email Address:input" type="text" name="email" value="" maxlength="80" placeholder="Email Address">
+                    </div>
+
+                    <div class="form-group" data-id="Zip:p">
+                        <label data-id="Zip:label" data-name="cf_text_value--3" class="ctct-form-required"></label>
+                        <input id="{{ signupId }}RegisterZip" class="registerZip form-control smallLabel fontPrimary required" data-id="Zip_value:input" type="text" name="cf_text_value--3" value="" maxlength="10" placeholder="Postal Code" data-ip="{{ environment.request.server.get('HTTP_X_REAL_IP') }}">
+                        <input data-id="Zip_name:input" type="hidden" name="cf_text_name--3" value="zip">
+                        <input data-id="Zip_label:input" type="hidden" name="cf_text_label--3" value="Zip">
+                    </div>
+
+                    <div class="form-group" data-id="Relationship Status:p">
+                        <label data-id="Relationship Status:label" data-name="cf_text_value--2" class="ctct-form-required"></label>
+                        <input id="{{ signupId }}_custom_status_value" class="hide form-control smallLabel fontPrimary required" data-id="Relationship Status_value:input" name="cf_text_value--2" type="text" value="" maxlength="10" placeholder="Relationship Status">
+                        <select  id="{{ signupId }}_custom_status" class="form-control smallLabel fontPrimary required registerCustom">
+                            <option>Status</option>
+                            <option value="1">Single</option>
+                            <option value="2">Taken (matchmaker)</option>
+                        </select>
+                        <input data-id="Relationship Status_name:input" type="hidden" name="cf_text_name--2" value="relationship_status">
+                        <input data-id="Relationship Status_label:input" type="hidden" name="cf_text_label--2" value="Relationship Status">
+                    </div>
+
+                    <div class="form-group" data-id="Gender:p">
+                        <label data-id="Gender:label" data-name="cf_text_value--1"></label>
+                        <input id="{{ signupId }}_custom_gender_value" class="hide form-control smallLabel fontPrimary required" data-id="Gender_value:input" name="cf_text_value--1" type="text" value="" maxlength="10" placeholder="Gender">
+                        <select id="{{ signupId }}_custom_gender" class="form-control smallLabel fontPrimary registerCustom">
+                            <option>Gender</option>
+                            <option value="1">Female</option>
+                            <option value="2">Male</option>
+                            <option value="0">Unlisted</option>
+                        </select>
+                        <input data-id="Gender_name:input" type="hidden" name="cf_text_name--1" value="gender">
+                        <input data-id="Gender_label:input" type="hidden" name="cf_text_label--1" value="Gender">
+                    </div>
+
+                    <div class="form-group" data-id="Age Group:p">
+                        <label data-id="Age Group:label" data-name="cf_text_value--0" class="ctct-form-required"></label>
+                        <input id="{{ signupId }}_custom_age_value" class="hide form-control smallLabel fontPrimary" data-id="Age Group_value:input" name="cf_text_value--0" type="text" value="" maxlength="10" placeholder="Age Group">
+                        <select id="{{ signupId }}_custom_age" class="form-control smallLabel fontPrimary registerCustom">
+                            <option>Age Group</option>
+                            <option value="1">High School</option>
+                            <option value="2">College</option>
+                            <option value="3">Under 30</option>
+                            <option value="4">30-40</option>
+                            <option value="5">40-50</option>
+                            <option value="6">50-60</option>
+                            <option value="7">60+</option>
+                        </select>
+                        <input data-id="Age Group_name:input" type="hidden" name="cf_text_name--0" value="age_group">
+                        <input data-id="Age Group_label:input" type="hidden" name="cf_text_label--0" value="Age Group">
+                    </div>
+
+                    <div class="signupAction">
+                        <button type="submit" class="fontPrimary bold btn positionAnchor" data-enabled="enabled">
+                            <span class="btnGradient"></span>
+                            <span class="btnText" data-trackCategory="CTA" data-trackLabel="signup" data-trackValue="kickstarter">Sign Up</span>
+                        </button>
+                    </div>
+
+                    <p class="disclaimer">By submitting this form, you are granting: Launch Social Inc., 1330 N Broadway, Ste 200H, Walnut Creek, California, 94596, United States, permission to email you. You may unsubscribe via the link found at the bottom of every email.</p>
+                </form>
+                <div id="{{ signupId }}success_message" class="success_message hide">
+                    <h2 class="success_message_thanks">Thanks</h2>
+                    <div class="success_message_details note fontSecondary">You rock! We'll let you know when the Kickstarter campaign is live.</div>
+                </div>
+            </div>
+        </div>
+
+    {% endblock kickstarterSignup %}
+
+    {# TEMPORARY FOOTER #}
+    <div id="tier8" class="backgroundDark landingTier">
+        <div id="tier8background">
+            <div class="siteMaxWidth siteSidePadding shellVerticalPadding">
+
+                <p class="fontPrimary bodyLarge">{# TODO: uncomment when kickstarter is live, and remove when kickstarter is good #}{# Have questions? Please use the <a href="">contact form</a> on our Kickstarter page.For press inquiries, <a href="mailto:jeremy@launchapp.io">jeremy@launchapp.io</a>. #} For general questions or press inquiries contact <a href="mailto:jeremy@launchapp.io">jeremy@launchapp.io</a>.  To discuss investing, <a href="mailto:chad@launchapp.io">chad@launchapp.io</a>.</p>
+            </div>
+        </div>
+    </div>
+
+
+
+    {#
+    {% block appDemoPopup %}
+        <div id="appDemoPopup" class="popup">
+            <div id="appDemoPopupContent" class="popupContent springIn borderRadiusDefault ctct-embed-signup">
+                <div id="appDemoPopupClose" class="popupClose btnClose" data-plugin="AddClass Dim" data-class="active" data-target="#appDemoPopup" data-event="click">
+                    <span class="sr-only">Close</span>
+                    {% embed '@SitetheoryTemplatePromoBundle/Resources/public/images/icons/close.svg'%}{%  block id  %}iconClose{% endblock %}{% endembed %}
+                </div>
+
+                <div class="responsiveDemo">
+                    <iframe width="438" height="930" src="//invis.io/Z28YPP1U7" frameborder="0" allowfullscreen></iframe>
+                </div>
+
+            </div>
+        </div>
+    {% endblock appDemoPopup %}
+    #}
+
 {% endblock popup %}
+
+
