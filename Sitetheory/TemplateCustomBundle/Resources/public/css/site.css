@@ -354,7 +354,7 @@ h4,
     max-width: 130px;
 }
 #headerContainer.retracting.offScreen.offScreenScrollUp #navMainContainer {
-    margin-top: 12px;
+    margin-top: 18px;
 }
 #headerContainer.retracting.offScreen.offScreenScrollUp .navMainLink a {
     font-size: 13px;
