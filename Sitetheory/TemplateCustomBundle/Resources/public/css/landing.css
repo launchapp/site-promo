@@ -499,7 +499,7 @@
 
 #tier5background {
     margin-bottom: 80px;
-    padding: 30px 0 36px 0;
+    padding: 30px 0;
     background: #FAFAFA;
     box-shadow: inset 0 0 2px #CCC;
 }
@@ -516,13 +516,13 @@
 
 
 #appPreview .slideContainer {
-    width: 660px;
+    max-width: 660px;
     margin: 0 auto;
 }
 #appPreview .appScreenshot {
-    width: 380px;
-    padding-right: 130px;
+    max-width: 500px;
     float: left;
+    padding: 0 0 20px 13%;
 }
 #appPreview .appScreenshot img {
     margin: 0 auto;
@@ -531,15 +531,17 @@
 }
 
 #appPreview .centerText {
-    width: 280px;
-    float: left;
-    margin-top: 30%;
+    transform: translateY(-50%);
+    -webkit-transform: translateY(-50%);
+    position: absolute;
+    top: 50%;
+    left: 55%;
     text-align: left;
-    max-width: 280px;
+    max-width: 220px;
 }
 
 #appPreview.carousel {
-    padding-bottom: 50px;
+    padding: 10px 0 30px 0;
 }
 #appPreview .carousel-indicators {
     bottom: 0;
@@ -597,18 +599,19 @@
     background-color: #FCEE27;
 }
 
-@media (max-width:950px) {
-    #appPreview .centerText {
-        left: 60%;
-    }
-}
+
 @media (max-width:800px) {
     #appPreview.carousel {
         padding-bottom: 0;
     }
+    #appPreview .appScreenshot {
+        float: none;
+        margin: 0 auto;
+        max-width: 200px;
+        padding-left: 0;
+    }
     #tier5 .item img {
-        padding-right: 0;
-        max-width: 248px;
+        max-width: 140px;
     }
     #appPreview .centerText {
         position: relative;
