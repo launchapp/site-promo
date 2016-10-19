@@ -47,10 +47,6 @@
         }
 
 
-        // Pause Carousel till enter screen
-        $('#appPreview').carousel('pause');
-
-
         //////////////////////////////////////////////////////////////////
         // CONSTANT CONTACT: included here to avoid loading jquery twice
         //////////////////////////////////////////////////////////////////
