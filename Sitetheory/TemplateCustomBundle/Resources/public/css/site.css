@@ -16,7 +16,6 @@ body, p {
     color: #555;
 }
 
-
 /* LINKS & BUTTONS */
 
 a:link, a:visited, a:active{
@@ -258,11 +257,8 @@ h4,
         padding-right: 10px;
         max-width: 190px;
     }
-    #betaSignupBtn {
-        margin-top: 12px;
-    }
     #navMainContainer {
-        margin-top: 26px;
+        margin-top: 30px;
     }
     .nav .navMainLink a {
         padding-left: 14px;
@@ -339,6 +335,15 @@ h4,
         color: #FFF;
     }
 }
+@media (max-width:600px) {
+    #sidebarToggle {
+        top: 20px;
+    }
+    #logoHeader {
+        margin: 4px 0;
+        max-width: 100px;
+    }
+}
 
 
 
@@ -364,7 +369,12 @@ h4,
     font-size: 13px;
     font-weight: bold;
 }
-
+@media (max-width:600px) {
+    #headerContainer.retracting.offScreen.offScreenScrollUp #logoHeader {
+        margin: 4px 0;
+        max-width: 100px;
+    }
+}
 
 
 

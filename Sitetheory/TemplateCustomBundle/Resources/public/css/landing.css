@@ -1,6 +1,8 @@
 /* SITE BACKGROUND */
 
-
+#app br:last-child {
+    display: none;
+}
 
 #siteBackground {
     background: #FFF;
@@ -389,7 +391,11 @@
         padding: 0;
     }
 }
-
+@media (max-width:480px) {
+    #tier3 .badAppImage {
+        width: 110px;
+    }
+}
 
 /* TIER 4 COMPLETELY DIFFERENT */
 
@@ -498,7 +504,7 @@
 
 
 #tier5background {
-    margin-bottom: 80px;
+    margin-bottom: 30px;
     padding: 30px 0;
     background: #FAFAFA;
     box-shadow: inset 0 0 2px #CCC;
@@ -608,7 +614,7 @@
         padding-left: 0;
     }
     #tier5 .item img {
-        width: 140px;
+        width: 160px;
     }
     #appPreview .centerText {
         position: relative;
@@ -671,6 +677,9 @@
     min-height: 600px;
     background: url('/sitetheory/v/1/0/bundles/sitetheorytemplatecustom/images/tier6Background.jpg') no-repeat;
     background-size: cover;
+}
+#tier6 .siteMaxWidth {
+    max-width: 900px;
 }
 #tier6 h1 {
     margin-bottom: 60px;
@@ -789,6 +798,8 @@
 #tier8background {
     padding: 120px 160px 200px 160px;
     background: url('/sitetheory/v/1/0/bundles/sitetheorytemplatecustom/images/tier8background.png') no-repeat right bottom;
+    /* to fake padding w/o affecting background image */
+    border-bottom: 50px solid #282828;
     background-size: 100%;
 }
 #tier8 .bodyLarge {
