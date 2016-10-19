@@ -190,13 +190,13 @@ set contentVersionOptions = {
                     </div>
                     <div class="borderDashed clearfix">
                         <div id="tier1action" class="pull-right">
+                            <span class="fontPrimary bodyLarge optionalText">Help us build it!</span>
                             {#<a class="btn" href="">Kickstarter Campaign</a>#}
-                            <div class="btn positionAnchor" data-plugin="AddClass Dim" data-class="active" data-target="#kickstarterSignup" data-event="click" data-trackCategory="CTA" data-trackLabel="kickstarter" data-trackValue="top">
-                                <div class="btnText">Kickstarter Campaign</div>
+                            <div class="btn positionAnchor" data-plugin="AddClass Dim" data-class="active" data-target="#kickstarterSignup" data-event="click" >
+                                <div class="btnText" data-trackCategory="CTA" data-trackLabel="kickstarter" data-trackValue="top">Kickstarter Campaign</div>
                                 <div class="btnGradient"></div>
                             </div>
                         </div>
-                        <p class="fontPrimary bodyLarge"><span class="optionalText">Help us build it!</span></p>
                     </div>
                 </div>
         </div>
@@ -357,7 +357,7 @@ set contentVersionOptions = {
                 </div>
                 #}
 
-                <div id="appPreview" class="carousel slide" data-plugin="carousel" data-colminsize="sm" data-group="1" data-groupmobile="1" data-interval="4000">
+                <div id="appPreview" class="carousel slide" data-plugin="carousel" data-colminsize="sm" data-group="1" data-groupmobile="1" data-interval="30000">
 
                     <!-- Optional: Progress Indicators -->
                     <ol class="carousel-indicators">
@@ -372,50 +372,70 @@ set contentVersionOptions = {
                     <!-- Wrapper for Slides -->
                     <div class="carousel-inner" role="listbox">
                         <div class="item active">
-
-                            <img data-spy="#appPreview" data-lazysrc="{{ asset('bundles/sitetheorytemplatecustom/images/app/1signUp-xs.png') }}" src="{{ asset('bundles/sitetheorytemplatecustom/images/app/placeholder.png') }}" alt="#1 Sign Up">
-                            <div class="centerText">
-                                <h2 class="hoverElement fontPrimary">Sign Up</h2>
-                                <p class="smallLabel fontPrimary bold">Sign up with your facebook account.</p>
+                            <div   class="slideContainer clearfix">
+                                <div  class="appScreenshot">
+                                    <img data-spy="#appPreview" data-lazysrc="{{ asset('bundles/sitetheorytemplatecustom/images/app/1signUp-xs.png') }}" src="{{ asset('bundles/sitetheorytemplatecustom/images/app/placeholder.png') }}"  data-ignorevisibility="true" alt="#1 Sign Up">
+                                </div>
+                                <div class="centerText">
+                                    <h2 class="hoverElement fontPrimary">Sign Up</h2>
+                                    <p class="smallLabel fontPrimary bold">Sign up with your Facebook account. We'll never share your data.</p>
+                                </div>
                             </div>
                         </div>
                         <div class="item">
-
-                            <img data-spy="#appPreview" data-lazysrc="{{ asset('bundles/sitetheorytemplatecustom/images/app/2recruit-xs.png') }}" src="{{ asset('bundles/sitetheorytemplatecustom/images/app/placeholder.png') }}" alt="#2 Recruit Launch Crew">
-                            <div class="centerText">
-                                <h2 class="hoverElement fontPrimary">Recruit Launch Crew</h2>
-                                <p class="smallLabel fontPrimary bold">Invite 2 or more of your closest friends (especially non-single matchmakers) to verify &amp; describe you to increase your trust score.</p>
+                            <div   class="slideContainer clearfix">
+                                <div  class="appScreenshot">
+                                    <img data-spy="#appPreview" data-lazysrc="{{ asset('bundles/sitetheorytemplatecustom/images/app/2recruit-xs.png') }}" src="{{ asset('bundles/sitetheorytemplatecustom/images/app/placeholder.png') }}"  data-ignorevisibility="true" alt="#2 Recruit Launch Crew">
+                                </div>
+                                <div class="centerText">
+                                    <h2 class="hoverElement fontPrimary">Recruit Launch Crew</h2>
+                                    <p class="smallLabel fontPrimary bold">Invite 2 or more close friends (single or taken) to verify your account, describe you, and increase your trust score.</p>
+                                </div>
                             </div>
                         </div>
                         <div class="item">
-                            <img data-spy="#appPreview" data-lazysrc="{{ asset('bundles/sitetheorytemplatecustom/images/app/3matchmakerMatches-xs.png') }}" src="{{ asset('bundles/sitetheorytemplatecustom/images/app/placeholder.png') }}" alt="#3 Play and Match">
-                            <div class="centerText">
-                                <h2 class="hoverElement fontPrimary">Play and Match</h2>
-                                <p class="smallLabel fontPrimary bold">Have fun suggesting matches with friends and give helpful insight. Matches suggested by friends have a higher chance of success.</p>
+                            <div   class="slideContainer clearfix">
+                                <div  class="appScreenshot">
+                                    <img data-spy="#appPreview" data-lazysrc="{{ asset('bundles/sitetheorytemplatecustom/images/app/3matchmakerMatches-xs.png') }}" src="{{ asset('bundles/sitetheorytemplatecustom/images/app/placeholder.png') }}"  data-ignorevisibility="true" alt="#3 Play and Match">
+                                </div>
+                                <div class="centerText">
+                                    <h2 class="hoverElement fontPrimary">Play & Match</h2>
+                                    <p class="smallLabel fontPrimary bold">The most successful way for new couples to meet? Via friends. Have fun suggesting matches for people you love.</p>
 
+                                </div>
                             </div>
                         </div>
                         <div class="item">
-                            <img data-spy="#appPreview" data-lazysrc="{{ asset('bundles/sitetheorytemplatecustom/images/app/4reviewMatch-xs.png') }}" src="{{ asset('bundles/sitetheorytemplatecustom/images/app/placeholder.png.png') }}" alt="#4 Review Matches">
-                            <div class="centerText">
-                                <h2 class="hoverElement fontPrimary">Review Matches</h2>
-                                <p class="smallLabel fontPrimary bold">A blurred photo and dynamic profile lets you get to know each other before failing a shallow swipe test. Answer a few playful icebreakers to bring the photo into focus and unlock full chat.</p>
+                            <div   class="slideContainer clearfix">
+                                <div  class="appScreenshot">
+                                    <img data-spy="#appPreview" data-lazysrc="{{ asset('bundles/sitetheorytemplatecustom/images/app/4reviewMatch-xs.png') }}" src="{{ asset('bundles/sitetheorytemplatecustom/images/app/placeholder.png') }}"  data-ignorevisibility="true" alt="#4 Review Matches">
+                                </div>
+                                <div class="centerText">
+                                    <h2 class="hoverElement fontPrimary">Review Matches</h2>
+                                    <p class="smallLabel fontPrimary bold">Awesome profiles empower better decision making. Answer a few playful icebreakers to bring their photo into focus and unlock full chat.</p>
+                                </div>
                             </div>
                         </div>
                         <div class="item">
-                            <img data-spy="#appPreview" data-lazysrc="{{ asset('bundles/sitetheorytemplatecustom/images/app/5meetup-xs.png') }}" src="{{ asset('bundles/sitetheorytemplatecustom/images/app/placeholder.png') }}" alt="#5 Pre-Date Discovery">
-
-                            <div class="centerText">
-                                <h2 class="hoverElement fontPrimary">Pre-Date Discovery</h2>
-                                <p class="smallLabel fontPrimary bold">Each match expires in 48 hours. If you are intrigued, you schedule a pre-date meetup with the click of a button. These are a natural part of the discovery process, zero expectation, just 30 minutes to drink coffee and chat with an interesting local.</p>
+                            <div   class="slideContainer clearfix">
+                                <div  class="appScreenshot">
+                                    <img data-spy="#appPreview" data-lazysrc="{{ asset('bundles/sitetheorytemplatecustom/images/app/5meetup-xs.png') }}" src="{{ asset('bundles/sitetheorytemplatecustom/images/app/placeholder.png') }}"  data-ignorevisibility="true" alt="#5 Pre-Date Discovery">
+                                </div>
+                                <div class="centerText">
+                                    <h2 class="hoverElement fontPrimary">Low-Key Meetups</h2>
+                                    <p class="smallLabel fontPrimary bold">Intrigued? You've got 48 hours to schedule an in person "pre-date" with the click of a button. 45 minutes or less. Zero expectations. Just coffee or drink with an interesting local.</p>
+                                </div>
                             </div>
                         </div>
                         <div class="item">
-                            <img data-spy="#appPreview" data-lazysrc="{{ asset('bundles/sitetheorytemplatecustom/images/app/6followup-xs.png') }}" src="{{ asset('bundles/sitetheorytemplatecustom/images/app/placeholder.png') }}" alt="#6 Follow-Up Response">
-
-                            <div class="centerText">
-                                <h2 class="hoverElement fontPrimary">Follow-Up Response</h2>
-                                <p class="smallLabel fontPrimary bold">A quick follow-up survey lets you choose to connect as friends or report negative behavior (or profile inaccuracies) in a constructive way that also makes everyone accountable to their friends.</p>
+                            <div   class="slideContainer clearfix">
+                                <div  class="appScreenshot">
+                                    <img data-spy="#appPreview" data-lazysrc="{{ asset('bundles/sitetheorytemplatecustom/images/app/6followup-xs.png') }}" src="{{ asset('bundles/sitetheorytemplatecustom/images/app/placeholder.png') }}"  data-ignorevisibility="true" alt="#6 Follow-Up Response">
+                                </div>
+                                <div class="centerText">
+                                    <h2 class="hoverElement fontPrimary">Follow-Up Response</h2>
+                                    <p class="smallLabel fontPrimary bold">A quick follow-up survey lets you connect as friends or report problems in a constructive way that makes everyone accountable to their friends.</p>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -492,8 +512,8 @@ set contentVersionOptions = {
                             {# TODO: re-enable when kickstarter is live #}{#<h4>(One-click signup)</h4>#}
                             <p class="fontPrimary">Love the idea? Give feedback and as little as $1. We&rsquo;re a small team. We need a strong community behind us. Become a founding member and get amazing rewards!  </p>
                             {# <a class="btn" href="">I Want to Help</a> #}
-                            <div class="btn positionAnchor" data-plugin="AddClass Dim" data-class="active" data-target="#kickstarterSignup" data-event="click" data-trackCategory="CTA" data-trackLabel="kickstarter" data-trackValue="footer">
-                                <div class="btnText">I Want to Help</div>
+                            <div class="btn positionAnchor" data-plugin="AddClass Dim" data-class="active" data-target="#kickstarterSignup" data-event="click">
+                                <div class="btnText" data-trackCategory="CTA" data-trackLabel="kickstarter" data-trackValue="footer">I Want to Help</div>
                                 <div class="btnGradient"></div>
                             </div>
                             <br class="visible-xs">
@@ -506,8 +526,8 @@ set contentVersionOptions = {
                             <img id="iconBeta" src="{{ asset('bundles/sitetheorytemplatecustom/images/tier7iconBeta.png') }}" alt="">
                             <h2>Sign up for Beta</h2>
                             <p class="fontPrimary">Not interested in shaping the service? No problem! We&rsquo;ll let you know when the app is ready. Signup takes just 10 seconds (We&rsquo;ll never share or sell your data).</p>
-                            <div class="btn positionAnchor" data-plugin="AddClass Dim" data-class="active" data-target="#betaSignup" data-event="click" data-trackCategory="CTA" data-trackLabel="beta" data-trackValue="footer">
-                                <div class="btnText">Sign Me Up</div>
+                            <div class="btn positionAnchor" data-plugin="AddClass Dim" data-class="active" data-target="#betaSignup" data-event="click">
+                                <div class="btnText" data-trackCategory="CTA" data-trackLabel="beta" data-trackValue="footer">Sign Me Up</div>
                                 <div class="btnGradient"></div>
                             </div>
                         </div>
@@ -626,9 +646,9 @@ set contentVersionOptions = {
                     </div>
 
                     <div class="signupAction">
-                        <button type="submit" class="fontPrimary bold btn positionAnchor" data-enabled="enabled" data-trackCategory="CTA" data-trackLabel="signup" data-trackValue="beta">
+                        <button type="submit" class="fontPrimary bold btn positionAnchor" data-enabled="enabled">
                             <span class="btnGradient"></span>
-                            <span class="btnText">Sign Up</span>
+                            <span class="btnText" data-trackCategory="CTA" data-trackLabel="signup" data-trackValue="beta">Sign Up</span>
                         </button>
                     </div>
 
@@ -724,9 +744,9 @@ set contentVersionOptions = {
                     </div>
 
                     <div class="signupAction">
-                        <button type="submit" class="fontPrimary bold btn positionAnchor" data-enabled="enabled" data-trackCategory="CTA" data-trackLabel="signup" data-trackValue="kickstarter">
+                        <button type="submit" class="fontPrimary bold btn positionAnchor" data-enabled="enabled">
                             <span class="btnGradient"></span>
-                            <span class="btnText">Sign Up</span>
+                            <span class="btnText" data-trackCategory="CTA" data-trackLabel="signup" data-trackValue="kickstarter">Sign Up</span>
                         </button>
                     </div>
 

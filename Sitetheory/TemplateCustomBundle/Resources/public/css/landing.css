@@ -243,6 +243,10 @@
     color: #222;
 }
 
+#tier1action .optionalText {
+    margin-right: 30px;
+}
+
 .responsiveObject {
     position: relative;
     padding-bottom: 52%;
@@ -509,28 +513,38 @@
     padding-bottom: 40px;
     font-size: 15px;
 }
-#tier5 .item img {
+
+
+#appPreview .slideContainer {
+    width: 660px;
     margin: 0 auto;
-    padding-right: 180px;
-    max-width: 448px;
 }
+#appPreview .appScreenshot {
+    width: 380px;
+    padding-right: 130px;
+    float: left;
+}
+#appPreview .appScreenshot img {
+    margin: 0 auto;
+    width: 100%;
+    max-width: 250px;
+}
+
+#appPreview .centerText {
+    width: 280px;
+    float: left;
+    margin-top: 30%;
+    text-align: left;
+    max-width: 280px;
+}
+
 #appPreview.carousel {
     padding-bottom: 50px;
 }
 #appPreview .carousel-indicators {
     bottom: 0;
 }
-#appPreview .centerText {
-    transition: all .2s ease-out;
-    -webkit-transition: all .2s ease-out;
-    position: absolute;
-    top: 55%;
-    left: 58%;
-    transform: translateY(-50%);
-    -webkit-transform: translateY(-50%);
-    text-align: left;
-    max-width: 180px;
-}
+
 #appPreview h2 {
     margin-bottom: 26px;
     font-size: 22px;

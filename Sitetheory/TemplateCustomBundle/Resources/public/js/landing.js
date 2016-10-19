@@ -9,7 +9,7 @@
     Stratus.DOM.ready(function () {
 
         function trackEvent(el) {
-            var trackCategory = el.dataAttr('trackCategory') || 'CTA';
+            var trackCategory = el.dataAttr('trackCategory') || 'unknown';
             var trackLabel = el.dataAttr('trackLabel') || null;
             var trackValue = el.dataAttr('trackValue') || null;
             ga('send', 'event', trackCategory, trackLabel, trackValue);
