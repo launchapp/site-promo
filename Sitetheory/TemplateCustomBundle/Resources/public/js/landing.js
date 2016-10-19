@@ -16,13 +16,13 @@
         }
 
         // Track Version of Page
-        if($('body').dataAttr('contentVersion')) {
+        if ($('body').dataAttr('contentVersion')) {
             ga('send', 'event', 'content', 'version', $('body').dataAttr('contentVersion'));
         }
 
         // Track all registered elements
-        $.each($('[data-trackCategory]'), function(i, el) {
-            $(el).click(function(event) {
+        $.each($('[data-trackCategory]'), function (i, el) {
+            $(el).click(function (event) {
                 trackEvent($(event.target));
             });
         });
@@ -30,22 +30,25 @@
 
         // Get IP and Zip
         var ip = $('.registerZip').first().data('ip');
-        if(ip) {
+        if (ip) {
             $.getJSON('https://ipapi.co/' + ip + '/json', function (data) {
-                if(!data) return false;
+                if (!data) return false;
                 if (data.postal) {
-                    $.each($('.registerZip'), function(i, el) {
+                    $.each($('.registerZip'), function (i, el) {
                         $(el).val(data.postal);
                         $(el).parent().hide();
                     });
                 } else {
-                    $.each($('.registerZip'), function(i, el) {
+                    $.each($('.registerZip'), function (i, el) {
                         $(el).set('value', '0');
                     });
                 }
             });
         }
 
+
+        // Pause Carousel till enter screen
+        $('#appPreview').carousel('pause');
 
 
         //////////////////////////////////////////////////////////////////
@@ -58,11 +61,11 @@
         // Original: https://static.ctctcdn.com/h/contacts-embedded-signup-assets/1.0.2/js/signup-form.js
 
         // Constant Contact Pseudo Select: Transfer Values from Custom Drop Downs to Hidden Fields
-        $.each($('.signupPopup select.registerCustom'), function(i, el) {
-            $(el).on('change', function(event) {
+        $.each($('.signupPopup select.registerCustom'), function (i, el) {
+            $(el).on('change', function (event) {
                 var custom = $(event.target);
                 var inputValue = custom.val();
-                var target = $('#'+custom.attr('id')+'_value ');
+                var target = $('#' + custom.attr('id') + '_value ');
                 target.val(inputValue);
             });
         });
@@ -71,10 +74,10 @@
         var msgErrClass = 'ctct-form-errorMessage';
 
         var localizedErrMap = {};
-        localizedErrMap['required'] = 		'This field is required.';
-        localizedErrMap['ca'] = 			'An unexpected error occurred while attempting to send email.';
-        localizedErrMap['generic'] = 		'This field is invalid.';
-        localizedErrMap['shared'] = 		'Sorry, we could not complete your sign-up. Please contact us to resolve this.';
+        localizedErrMap['required'] = 'This field is required.';
+        localizedErrMap['ca'] = 'An unexpected error occurred while attempting to send email.';
+        localizedErrMap['generic'] = 'This field is invalid.';
+        localizedErrMap['shared'] = 'Sorry, we could not complete your sign-up. Please contact us to resolve this.';
         localizedErrMap['unsubscribed'] = 'Sorry, you were previously unsubscribed from our lists. Please contact us to subscribe again.';
 
         var postURL = 'https://visitor2.constantcontact.com/api/signup';
@@ -84,7 +87,7 @@
 
             var _form = $('[data-id="embedded_signup:form"]');
 
-            _form.submit(function(e) {
+            _form.submit(function (e) {
                 e.preventDefault();
 
                 /*  Generate the serialized payload and hash to map with */
@@ -99,7 +102,7 @@
                 var redirect_url = "";
                 for (i = 0; i < payload_check.length; i++) {
                     var p = payload_check[i].split('=');
-                    if(p[0].lastIndexOf('list_', 0) === 0){
+                    if (p[0].lastIndexOf('list_', 0) === 0) {
                         p[0] = 'list';
                     }
                     payload_check_hash[p[0]] = p[1];
@@ -121,22 +124,22 @@
                     /* See if we have a empty value */
                     if (!item[1] || item[1] === "") {
                         /* Check the field name to see if its custom */
-                        if(item[0].match(/cf_text_value--[\w0-9\-\:\_]*/)) {
+                        if (item[0].match(/cf_text_value--[\w0-9\-\:\_]*/)) {
                             id = item[0].split('--')[1];
                             custom_data_to_clean[id] = true;
-                        } else if(item[0].match(/cf_date_value_day--[\w0-9\-\:\_]*/)) {
+                        } else if (item[0].match(/cf_date_value_day--[\w0-9\-\:\_]*/)) {
                             id = item[0].split('--')[1];
                             if (!custom_data_to_clean[id]) {
                                 custom_data_to_clean[id] = {};
                             }
                             custom_data_to_clean[id]['day'] = true;
-                        } else if(item[0].match(/cf_date_value_month--[\w0-9\-\:\_]*/)) {
+                        } else if (item[0].match(/cf_date_value_month--[\w0-9\-\:\_]*/)) {
                             id = item[0].split('--')[1];
                             if (!custom_data_to_clean[id]) {
                                 custom_data_to_clean[id] = {};
                             }
                             custom_data_to_clean[id]['month'] = true;
-                        } else if(item[0].match(/cf_date_value_year--[\w0-9\-\:\_]*/)) {
+                        } else if (item[0].match(/cf_date_value_year--[\w0-9\-\:\_]*/)) {
                             id = item[0].split('--')[1];
                             if (!custom_data_to_clean[id]) {
                                 custom_data_to_clean[id] = {};
@@ -148,16 +151,18 @@
                     }
                 }
 
-                payload_clean = payload_clean.filter(function(n){ return n !== undefined; });
+                payload_clean = payload_clean.filter(function (n) {
+                    return n !== undefined;
+                });
                 /* Iterate over the flagged ids and scrub the data */
                 for (i in custom_data_to_clean) {
                     /* Loop over the payload and remove the fields that match out scrub needs */
                     for (j = 0; j < payload_clean.length; j++) {
                         item = payload_clean[j];
-                        if(item) {
+                        if (item) {
                             item = item.split('=');
                             /* Match based of field id */
-                            if(item[0].match(new RegExp('.*--' + i, 'i'))) {
+                            if (item[0].match(new RegExp('.*--' + i, 'i'))) {
                                 /* If the value is a bool then we are dealing with text */
                                 if (custom_data_to_clean[i] === true) {
                                     delete payload_clean[j];
@@ -174,30 +179,34 @@
 
                 /* Search for a redirect URL in the payload, and extract the URL. */
                 /* Exclude undefined entries when searching for URL to prevent calling a method on an undefined object */
-                var url_filtered_payload = $.grep(payload_clean.filter(function(n){ return n !== undefined; }),function (n, i) {
-                    return n.substring(0,3) == "url" ? true : false;
+                var url_filtered_payload = $.grep(payload_clean.filter(function (n) {
+                    return n !== undefined;
+                }), function (n, i) {
+                    return n.substring(0, 3) == "url" ? true : false;
                 });
                 /* If there are any matches, this will be greater than zero */
-                if (url_filtered_payload.length > 0)
-                {
+                if (url_filtered_payload.length > 0) {
                     redirect = true;
-                    for (i in url_filtered_payload)
-                    {
+                    for (i in url_filtered_payload) {
                         redirect_url = decodeURIComponent(url_filtered_payload[i].substring(4));
                         break;
                     }
                     /* After storing the redirect URL, remove it from the payload */
-                    payload_clean = payload_clean.filter(function(n){ return n.substring(0,3) !== "url";});
+                    payload_clean = payload_clean.filter(function (n) {
+                        return n.substring(0, 3) !== "url";
+                    });
                 }
 
-                payload_clean = payload_clean.filter(function(n){ return n !== undefined; }).join('&');
+                payload_clean = payload_clean.filter(function (n) {
+                    return n !== undefined;
+                }).join('&');
 
                 $.ajax({
                     type: 'POST',
                     crossDomain: true,
                     url: postURL,
                     data: payload_clean,
-                    error: function(xhr, status, err) {
+                    error: function (xhr, status, err) {
                         json = xhr.responseJSON;
                         if (json) {
                             if (json.offenders) {
@@ -256,19 +265,17 @@
                             _form.prepend(errorSection('shared'));
                         }
                     },
-                    success: function(data, status, xhr) {
+                    success: function (data, status, xhr) {
                         /* If there is no redirect, display success message as usual */
-                        if (redirect === false)
-                        {
+                        if (redirect === false) {
                             $('.ctct-embed-signup button').hide();
                             $('.ctct-embed-signup form').hide();
-                            $.each($('.ctct-embed-signup .success_message'), function(i, el) {
+                            $.each($('.ctct-embed-signup .success_message'), function (i, el) {
                                 $(el).removeClass('hide');
                             });
                         }
                         /* Otherwise, redirect the browser to the specified redirect */
-                        else
-                        {
+                        else {
                             window.location.href = redirect_url;
                         }
                     }
