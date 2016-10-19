@@ -254,9 +254,9 @@ h4,
 
 @media (max-width:1200px) {
     #logoHeader {
-        margin-bottom: -18px;
-        padding-right: 22px;
-        max-width: 210px;
+        margin-top: 2px;
+        padding-right: 10px;
+        max-width: 190px;
     }
     #betaSignupBtn {
         margin-top: 12px;
@@ -291,7 +291,8 @@ h4,
         height: 62px;
     }
     #logoHeader {
-        margin-bottom: -8px;
+        margin-bottom: 4px;
+        max-width: 150px;
     }
     #header #betaSignupBtn {
         display: none;
@@ -349,7 +350,8 @@ h4,
     border-bottom: 1px solid #DDD;
 }
 #headerContainer.retracting.offScreen.offScreenScrollUp #logoHeader {
-    max-width: 150px;
+    margin: 2px 0 -2px 0;
+    max-width: 130px;
 }
 #headerContainer.retracting.offScreen.offScreenScrollUp #navMainContainer {
     margin-top: 12px;
