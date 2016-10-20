@@ -841,6 +841,85 @@ set contentVersionOptions = {
     {% endblock appDemoPopup %}
     #}
 
+    {# MAILCHIMP MAILING LIST: not useable right now because jQuery conflict with our own. Alex planned to add noConflict code. #}
+    {#
+    {% block kickstarterSignup2 %}
+        {% set signupId = 'kickstarter' %}
+        <div id="{{ signupId }}Signup" class="popup">
+            <div id="{{ signupId }}SignupContent" class="popupContent springIn borderRadiusDefault mc_embed_signup">
+                <div id="{{ signupId }}SignupClose" class="popupClose btnClose" data-plugin="AddClass Dim" data-class="active" data-target="#{{ signupId }}Signup" data-event="click">
+                    <span class="sr-only">Close</span>
+                    {% embed '@SitetheoryTemplatePromoBundle/Resources/public/images/icons/close.svg'%}{%  block id  %}iconClose{% endblock %}{% endembed %}
+                </div>
+
+                <form action="//launchapp.us14.list-manage.com/subscribe/post?u=e69bdbd4c8c87ace94b1d5259&amp;id=9187fe8f0a" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
+                    <div class="logo">
+                        <img src="{{ asset('bundles/sitetheorytemplatecustom/images/launchLogoMark.png') }}" alt="">
+                    </div>
+                    <h2 class="signupTitle">Kickstarter Notify</h2>
+                    <p class="note fontBody">Our campaign isn't quite ready yet (October-ish), but we really need your support. We'll update you when it's ready!</p>
+                    <div class="mc-field-group">
+                        <label for="mce-EMAIL">Email Address  <span class="asterisk">*</span>
+                        </label>
+                        <input type="email" value="" name="EMAIL" class="required email" id="mce-EMAIL">
+                    </div>
+
+                    <div class="mc-field-group">
+                        <label for="mce-STATUS">Relationship Status  <span class="asterisk">*</span>
+                        </label>
+                        <select name="STATUS" class="required" id="mce-STATUS">
+                            <option value=""></option>
+                            <option value="Single">Single</option>
+                            <option value="Taken (matchmaker)">Taken (matchmaker)</option>
+
+                        </select>
+                    </div>
+                    <div class="mc-field-group">
+                        <label for="mce-GENDER">Gender </label>
+                        <select name="GENDER" class="" id="mce-GENDER">
+                            <option value=""></option>
+                            <option value="Female">Female</option>
+                            <option value="Male">Male</option>
+                            <option value="Unlisted">Unlisted</option>
+
+                        </select>
+                    </div>
+                    <div class="mc-field-group">
+                        <label for="mce-AGE">Age Group </label>
+                        <select name="AGE" class="" id="mce-AGE">
+                            <option value=""></option>
+                            <option value="High School">High School</option>
+                            <option value="College">College</option>
+                            <option value="Under 30">Under 30</option>
+                            <option value="30-40">30-40</option>
+                            <option value="40-50">40-50</option>
+                            <option value="50-60">50-60</option>
+                            <option value="60+">60+</option>
+
+                        </select>
+                    </div>
+                    <div id="mce-responses" class="clear">
+                        <div class="response" id="mce-error-response" style="display:none"></div>
+                        <div class="response" id="mce-success-response" style="display:none"></div>
+                    </div>    <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
+                    <div style="position: absolute; left: -5000px;" aria-hidden="true"><input type="text" name="b_e69bdbd4c8c87ace94b1d5259_9187fe8f0a" tabindex="-1" value=""></div>
+                    <div class="clear"><input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="button"></div>
+
+                    <p class="disclaimer">By submitting this form, you are granting: Launch Social Inc., 1330 N Broadway, Ste 200H, Walnut Creek, California, 94596, United States, permission to email you. You may unsubscribe via the link found at the bottom of every email.</p>
+                </form>
+                <div id="{{ signupId }}success_message" class="success_message hide">
+                    <h2 class="success_message_thanks">Thanks</h2>
+                    <div class="success_message_details note fontSecondary">You rock! We'll let you know when the Kickstarter campaign is live.</div>
+                </div>
+                <script type='text/javascript' src='//s3.amazonaws.com/downloads.mailchimp.com/js/mc-validate.js'></script><script type='text/javascript'>(function($) {window.fnames = new Array(); window.ftypes = new Array();fnames[0]='EMAIL';ftypes[0]='email';fnames[1]='ZIP';ftypes[1]='zip';fnames[2]='STATUS';ftypes[2]='dropdown';fnames[3]='GENDER';ftypes[3]='dropdown';fnames[4]='AGE';ftypes[4]='dropdown';}(jQuery));var $mcj = jQuery.noConflict(true);</script>
+            </div>
+        </div>
+
+    {% endblock kickstarterSignup2 %}
+    #}
+
+
+
 {% endblock popup %}
 
 
