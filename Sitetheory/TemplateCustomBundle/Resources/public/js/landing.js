@@ -1,11 +1,12 @@
 // Use Require.js or Contextual Scope
 (function (root, factory) {
     if (typeof require === 'function') {
-        require(['stratus', 'jquery', 'underscore'], factory);
+        require(['stratus', 'jquery', 'underscore', 'https://www.youtube.com/player_api'], factory);
     } else {
         factory(root.Stratus, root.$, root._);
     }
 }(this, function (Stratus, $, _) {
+
     Stratus.DOM.ready(function () {
 
         function trackEvent(el) {
@@ -26,6 +27,49 @@
                 trackEvent($(event.target));
             });
         });
+
+
+        // Track YouTube Actions
+        if($('#launchVideo').length) {
+            var player = new YT.Player('launchVideo', {
+                events: {
+                    'onReady': onPlayerReady,
+                    'onStateChange': onPlayerStateChange
+                }
+            });
+            var pauseFlag = false;
+
+            function onPlayerReady(event) {
+                // do nothing, no tracking needed
+            }
+
+            function onPlayerStateChange(event) {
+                var state = player.getPlayerState();
+                var playerTime = parseInt(player.getCurrentTime()/10)*10;
+                // Track Play
+                if (state == 1) {
+                    ga('send', 'event', 'videos', 'play', 'promo');
+                    pauseFlag = true;
+                }
+                // Track Pause
+                if (state == 2 && pauseFlag) {
+                    ga('send', 'event', 'videos', 'pause', 'promo');
+                    ga('send', 'event', 'videos', 'pauseTime', playerTime);
+                    pauseFlag = false;
+                }
+                // Track Finish
+                if (state == 0) {
+                    ga('send', 'event', 'Videos', 'finished', 'promo');
+                }
+            }
+
+            // Track Bounce
+            Stratus.DOM.unload(function () {
+                var playerTime = parseInt(player.getCurrentTime()/10)*10;
+                ga('send', 'event', 'videos', 'bounceTime', playerTime);
+            });
+        }
+
 
 
         // Get IP and Zip

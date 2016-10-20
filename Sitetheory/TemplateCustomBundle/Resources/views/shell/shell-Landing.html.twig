@@ -55,7 +55,11 @@ set contentVersionOptions = {
     {{ parent() }}
     {# TODO: This is just here temporarily until the base.html.twig give the ability to select the preferred image in the admin #}
     {# we may need to reload the page here in order to get the new image https://developers.facebook.com/tools/debug/ #}
-    <meta property="og:image" content="//www.launchapp.io/sitetheory/v/1/0/bundles/sitetheorytemplatecustom/images/tempVideo.jpg">
+    <meta property="og:url" content="https://www.launchapp.io">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="https://www.launchapp.io/sitetheory/v/1/0/bundles/sitetheorytemplatecustom/images/LaunchAppPreview.jpg">
+    <meta property="og:title" content="The Cure for Dating Apps | Launch">
+    <meta property="og:description" content="For everyone who wants a better way to meet people. We’ve listened. We’ve designed something new. Now we need your help.">
 {% endblock meta %}
 
 
@@ -187,7 +191,7 @@ set contentVersionOptions = {
                 </div>
                 <div id="tier1Right" class="pull-left">
                     <div id="tier1video" class="responsiveObject">
-                        <iframe width="700" height="394" src="https://www.youtube.com/embed/R7lmJvOFEIM?rel=0&amp;showinfo=0&amp;modestbranding=1" frameborder="0" allowfullscreen></iframe>
+                        <iframe id="launchVideo" width="700" height="394" src="https://www.youtube.com/embed/IlANPQfnc_M?rel=0&showinfo=0&modestbranding=1&enablejsapi=1" frameborder="0" allowfullscreen></iframe>
                     </div>
                     <div class="borderDashed clearfix">
                         <div id="tier1action" class="pull-right">
@@ -413,7 +417,7 @@ set contentVersionOptions = {
                                 </div>
                                 <div class="centerText">
                                     <h2 class="hoverElement fontPrimary">Review Matches</h2>
-                                    <p class="smallLabel fontPrimary bold">Awesome profiles empower better decision making. Answer a few playful ice-breakers to bring their photo into focus and unlock full chat.</p>
+                                    <p class="smallLabel fontPrimary bold">Awesome profiles empower better decision making. Answer a few playful ice-breakers to bring the photo into focus and unlock full chat.</p>
                                 </div>
                             </div>
                         </div>
