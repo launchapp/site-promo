@@ -100,7 +100,7 @@
         // Original: https://static.ctctcdn.com/h/contacts-embedded-signup-assets/1.0.2/js/signup-form.js
 
         // Constant Contact Pseudo Select: Transfer Values from Custom Drop Downs to Hidden Fields
-        $.each($('.signupPopup select.registerCustom'), function (i, el) {
+        $.each($('.popup select.registerCustom'), function (i, el) {
             $(el).on('change', function (event) {
                 var custom = $(event.target);
                 var inputValue = custom.val();
