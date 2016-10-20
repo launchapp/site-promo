@@ -28,7 +28,6 @@
             });
         });
 
-
         // Track YouTube Actions
         if($('#launchVideo').length) {
             var player = new YT.Player('launchVideo', {
