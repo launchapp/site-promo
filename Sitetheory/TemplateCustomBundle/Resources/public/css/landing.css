@@ -1,9 +1,5 @@
 /* SITE BACKGROUND */
 
-#app br:last-child {
-    display: none;
-}
-
 #siteBackground {
     background: #FFF;
     border-radius: 0;
