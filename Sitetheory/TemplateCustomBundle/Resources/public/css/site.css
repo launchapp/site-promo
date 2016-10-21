@@ -204,7 +204,8 @@ h4,
 /* must include the .nav parent to override scrollspy */
 .nav .navMainLink a {
     position: relative;
-    padding: 0 10px 6px 17px;
+    padding: 0 0 6px 0;
+    margin-left: 30px;
     color: #494949;
     font-weight: bold;
     text-transform: uppercase;
@@ -215,27 +216,14 @@ h4,
     background: none;
 }
 .navMainLink a .linkOrnament {
-    transform: scale(0);
-    -webkit-transform: scale(0);
-    position: absolute;
-    top: 7px;
-    left: 0;
-    width: 7px;
-    height: 7px;
-    background: #FCEE27;
-}
-.navMainLink a:hover .linkOrnament {
-    transition: all .2s ease-out;
-    -webkit-transition: all .2s ease-out;
-    transform: scale(1);
-    -webkit-transform: scale(1);
+    display: none;
 }
 .navMainLink a .linkUnderline {
     transform: scaleX(.2);
     -webkit-transform: scaleX(.2);
     position: absolute;
-    right: 10px;
-    left: 17px;
+    right: 0;
+    left: 0;
     height: 2px;
     background: #FFF;
 }
@@ -260,17 +248,8 @@ h4,
     #navMainContainer {
         margin-top: 30px;
     }
-    .nav .navMainLink a {
-        padding-left: 14px;
-        padding-right: 14px;
-    }
 }
 @media (max-width:1050px) {
-    .navMainLink a .linkOrnament {
-        position: absolute;
-        top: 5px;
-        left: 0;
-    }
     .nav .navMainLink a {
         font-size: 12px;
     }
@@ -309,9 +288,6 @@ h4,
         display: block;
         padding: 0 0 12px 0;
     }
-    #shellSidebar .navMainLink a .linkOrnament {
-        display: none;
-    }
     #shellSidebar .navMainLink a .linkUnderline {
         transform-origin: left center;
         -webkit-transform-origin: left center;
@@ -323,7 +299,8 @@ h4,
         background: #666;
     }
     .nav .navMainLink a {
-        padding: 0 0 6px 0;
+        display: table;
+        margin-left: 0;
         font-weight: 400;
         font-size: 13px;
         color: #999;
