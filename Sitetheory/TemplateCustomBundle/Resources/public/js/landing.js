@@ -327,7 +327,7 @@
             return '<div class="' + msgErrClass + '">' + localizedErrMap[errorType] + '</div>';
         }
 
-        main(jQuery);
+        main($);
 
 
     });
