@@ -255,7 +255,7 @@ h4,
     }
 }
 @media (max-width:991px) {
-    #sidebarToggle {
+    .sidebarToggle  {
         top: 32px;
         right: 40px;
     }
@@ -310,7 +310,7 @@ h4,
     }
 }
 @media (max-width:600px) {
-    #sidebarToggle {
+    .sidebarToggle  {
         top: 20px;
     }
     #logoHeader {
@@ -348,7 +348,7 @@ h4,
     #headerRetracting #betaSignupBtn {
         display: none;
     }
-    #headerRetracting #sidebarToggle {
+    #headerRetracting .sidebarToggle  {
         top: 20px;
     }
 }
