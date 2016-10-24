@@ -174,7 +174,7 @@ h4,
 #header {
     padding: 10px 40px;
 }
-#betaSignupBtn {
+.btn.betaSignupBtn {
     float: right;
     margin-top: 22px;
     padding: 10px 20px;
@@ -184,9 +184,10 @@ h4,
     background: #FE7C57;
     border: 2px solid #FE7C57;
 }
-#betaSignupBtn:hover {
+.btn.betaSignupBtn:hover {
     color: #222;
     background: none;
+    border: 2px solid #FE7C57;
 }
 #logoHeader {
     margin-top: 8px;
@@ -266,15 +267,14 @@ h4,
         margin-bottom: 4px;
         max-width: 150px;
     }
-    #header #betaSignupBtn {
-        display: none;
+    .btn.betaSignupBtn {
+        margin: 10px 52px 0 0;
     }
-    #betaSignupBtn {
-        float: none;
-        margin-bottom: 20px;
-    }
-    #betaSignupBtn:hover {
+    .btn.betaSignupBtn:hover {
         color: #FE7C57;
+    }
+    #shellSidebar .btn.betaSignupBtn {
+        float: none !important;
     }
     #shellSidebar .borderDashed {
         margin-top: 20px;
@@ -315,10 +315,31 @@ h4,
     }
     #logoHeader {
         margin: 4px 0;
-        max-width: 100px;
+        max-width: 150px;
+    }
+    .btn.betaSignupBtn {
+        margin: 5px 46px 0 0;
+        padding: 6px 12px 7px 12px;
+        font-size: 12px;
     }
 }
-
+@media (max-width:480px) {
+    .sidebarToggle  {
+        right: 26px;
+    }
+    #header {
+        padding: 10px 26px;
+    }
+    #logoHeader {
+        margin: 4px 0;
+        max-width: 120px;
+    }
+    .btn.betaSignupBtn {
+        margin: 5px 42px 0 0;
+        padding: 6px 8px 7px 8px;
+        font-size: 12px;
+    }
+}
 
 
 
@@ -339,15 +360,12 @@ h4,
 #headerRetracting .navMainLink a {
     font-size: 13px;
 }
-#headerRetracting #betaSignupBtn {
+#headerRetracting .betaSignupBtn {
     margin-top: 7px;
     font-size: 13px;
     font-weight: bold;
 }
 @media (max-width:991px) {
-    #headerRetracting #betaSignupBtn {
-        display: none;
-    }
     #headerRetracting .sidebarToggle  {
         top: 20px;
     }
@@ -559,22 +577,29 @@ h4,
 }
 .popup .logo img {
     margin: 0 auto;
-    width: 80px;
+    width: 60px;
 }
 .popupContent h2 {
-    margin-bottom: 26px;
+    margin: 10px 0 10px 0;
     font-family: 'Roboto Condensed', sans-serif;
     text-transform: uppercase;
     font-weight: bold;
     font-size: 24px;
+    text-align: center;
 }
 .popup .note {
     color: #888;
     margin-bottom: 26px;
 }
+.popup h4 {
+    margin: 30px 0 12px 0;
+    letter-spacing: 0;
+}
+.popup .form-group {
+    margin-bottom: 8px;
+}
 .popup .form-control {
-    height: 50px;
-    text-align: center;
+    height: 40px;
     font-size: 15px;
     letter-spacing: .02em;
     color: #333;
@@ -699,4 +724,49 @@ body.dim #app {
 #contentArticle-35558 {
     margin: 60px 0;
     text-align: center;
+}
+
+/* Sharing */
+
+#sharingIsCaring ul li {
+    margin: 0 9px;
+}
+#sharingIsCaring .btn {
+    width: 58px;
+    height: 54px;
+    position: relative;
+    text-align: center;
+    background: #999999;
+    border: none;
+}
+#sharingIsCaring .btn .btnGradientLight {
+    opacity: .2;
+}
+#sharingIsCaring .btn:hover .btnGradientLight {
+    opacity: 1;
+}
+#sharingIsCaring .btn svg {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin: -17px 0 0 -17px;
+    width: 34px;
+    height: 34px;
+}
+#sharingIsCaring .btn svg g {
+    fill: #FFF;
+}
+#sharingIsCaring .btn:hover {
+    -webkit-box-shadow: 0 0 4px rgba(0,0,0,.2);
+    -moz-box-shadow: 0 0 4px rgba(0,0,0,.2);
+    box-shadow: 0 0 4px rgba(0,0,0,.2);
+}
+#sharingIsCaring .btn.facebook:hover {
+    background: #44698E;
+}
+#sharingIsCaring .btn.twitter:hover {
+    background: #44808E;
+}
+#sharingIsCaring .btn.google:hover {
+    background: #558D41;
 }

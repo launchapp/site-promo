@@ -114,7 +114,7 @@ set contentVersionOptions = {
 {# Put Beta Signup in Sidebar #}
 {% block sidebarExtrasTop %}
     {% block betaButton %}
-        <div id="betaSignupBtn" class="btn"  data-plugin="AddClass Dim" data-class="active" data-target="#betaSignup" data-event="click" data-trackCategory="CTA" data-trackLabel="beta" data-trackValue="top">
+        <div class="btn betaSignupBtn"  data-plugin="AddClass Dim" data-class="active" data-target="#betaSignup" data-event="click" data-trackCategory="CTA" data-trackLabel="beta" data-trackValue="top">
             Beta Signup
         </div>
     {% endblock betaButton %}
@@ -203,6 +203,22 @@ set contentVersionOptions = {
                     <h1>{{ contentVersion.title|raw }}</h1>
                     <div class="borderDashed">
                         <p class="fontPrimary">{{ contentVersion.description|raw }}</p>
+                        <div id="sharingIsCaring">
+                            <h4>Sharing is Caring!</h4>
+                            <ul class="list-inline">
+                                <li><a class="btn facebook" href="">
+                                        <div class="btnGradientLight"></div>
+                                            {% embed '@SitetheoryCoreBundle/Resources/public/images/icons/social/facebook.svg' %}{% block id %}useFacebookIcon{% endblock %}{% endembed %}
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="btn twitter" href="">
+                                        <div class="btnGradientLight"></div>
+                                        {% embed '@SitetheoryCoreBundle/Resources/public/images/icons/social/twitter.svg' %}{% block id %}useTwitterIcon{% endblock %}{% endembed %}
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
                 <div id="tier1Right" class="pull-left">
@@ -659,7 +675,7 @@ set contentVersionOptions = {
                         <img src="{{ asset('bundles/sitetheorytemplatecustom/images/launchLogoMark.png') }}" alt="">
                     </div>
                     <h2 class="signupTitle">Beta Signup</h2>
-                    <p class="note fontBody">Be among the first to join and help us create an awesome community.</p>
+                    <p class="note fontPrimary">We'll let you know when it's ready!</p>
                     <!-- The following code must be included to ensure your sign-up form works properly. -->
                     <input data-id="ca:input" type="hidden" name="ca" value="{{ signupFormId }}">
                     <input data-id="list:input" type="hidden" name="list" value="{{ signupListId }}">
@@ -675,7 +691,7 @@ set contentVersionOptions = {
 
                     <div class="form-group" data-id="Zip:p">
                         <label data-id="Zip:label" data-name="cf_text_value--3" class="ctct-form-required"></label>
-                        <input id="{{ signupId }}RegisterZip" class="registerZip form-control smallLabel fontPrimary required" data-id="Zip_value:input" type="text" name="cf_text_value--3" value="" maxlength="10" placeholder="Postal Code" data-ip="{{ environment.request.server.get('HTTP_X_REAL_IP') }}">
+                        <input id="{{ signupId }}RegisterZip" class="registerZip form-control smallLabel fontPrimary required" data-id="Zip_value:input" type="text" name="cf_text_value--3" value="" maxlength="10" placeholder="Zip Code" data-ip="{{ environment.request.server.get('HTTP_X_REAL_IP') }}">
                         <input data-id="Zip_name:input" type="hidden" name="cf_text_name--3" value="zip">
                         <input data-id="Zip_label:input" type="hidden" name="cf_text_label--3" value="Zip">
                     </div>
@@ -692,6 +708,7 @@ set contentVersionOptions = {
                         <input data-id="Relationship Status_label:input" type="hidden" name="cf_text_label--2" value="Relationship Status">
                     </div>
 
+                    <h4>Optional (and Helpful!)</h4>
                     <div class="form-group" data-id="Gender:p">
                         <label data-id="Gender:label" data-name="cf_text_value--1"></label>
                         <input id="custom_gender_value" class="hide form-control smallLabel fontPrimary required" data-id="Gender_value:input" name="cf_text_value--1" type="text" value="" maxlength="10" placeholder="Gender">
