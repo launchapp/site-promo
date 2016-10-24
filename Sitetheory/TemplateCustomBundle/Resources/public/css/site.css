@@ -761,12 +761,12 @@ body.dim #app {
     -moz-box-shadow: 0 0 4px rgba(0,0,0,.2);
     box-shadow: 0 0 4px rgba(0,0,0,.2);
 }
-#sharingIsCaring .btn.facebook:hover {
+#sharingIsCaring .btn.shareFacebook:hover {
     background: #44698E;
 }
-#sharingIsCaring .btn.twitter:hover {
+#sharingIsCaring .btn.shareTwitter:hover {
     background: #44808E;
 }
-#sharingIsCaring .btn.google:hover {
+#sharingIsCaring .btn.shareGoogle:hover {
     background: #558D41;
 }

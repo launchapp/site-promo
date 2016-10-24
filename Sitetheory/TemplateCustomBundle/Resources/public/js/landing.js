@@ -135,10 +135,7 @@
                 var payload_check_hash = {};
                 /* Populate the hash with values */
                 var i, j;
-                var field, fnames, fname;
                 /* Handle the option to redirect */
-                var redirect = false;
-                var redirect_url = "";
                 for (i = 0; i < payload_check.length; i++) {
                     var p = payload_check[i].split('=');
                     if (p[0].lastIndexOf('list_', 0) === 0) {
@@ -152,7 +149,6 @@
                 _form.find('.ctct-flagged').removeClass('ctct-flagged');
 
                 /* This is the ONLY client side validation */
-                var isError = false;
 
                 /* Clean custom fields if needed */
                 var payload_clean = payload.split('&');
@@ -217,25 +213,6 @@
                 }
 
                 /* Search for a redirect URL in the payload, and extract the URL. */
-                /* Exclude undefined entries when searching for URL to prevent calling a method on an undefined object */
-                var url_filtered_payload = $.grep(payload_clean.filter(function (n) {
-                    return n !== undefined;
-                }), function (n, i) {
-                    return n.substring(0, 3) == "url" ? true : false;
-                });
-                /* If there are any matches, this will be greater than zero */
-                if (url_filtered_payload.length > 0) {
-                    redirect = true;
-                    for (i in url_filtered_payload) {
-                        redirect_url = decodeURIComponent(url_filtered_payload[i].substring(4));
-                        break;
-                    }
-                    /* After storing the redirect URL, remove it from the payload */
-                    payload_clean = payload_clean.filter(function (n) {
-                        return n.substring(0, 3) !== "url";
-                    });
-                }
-
                 payload_clean = payload_clean.filter(function (n) {
                     return n !== undefined;
                 }).join('&');
@@ -305,18 +282,12 @@
                         }
                     },
                     success: function (data, status, xhr) {
-                        /* If there is no redirect, display success message as usual */
-                        if (redirect === false) {
-                            $('.ctct-embed-signup button').hide();
-                            $('.ctct-embed-signup form').hide();
-                            $.each($('.ctct-embed-signup .success_message'), function (i, el) {
-                                $(el).removeClass('hide');
-                            });
-                        }
-                        /* Otherwise, redirect the browser to the specified redirect */
-                        else {
-                            window.location.href = redirect_url;
-                        }
+
+                        $('.ctct-embed-signup button').hide();
+                        $('.ctct-embed-signup form').hide();
+                        $.each($('.ctct-embed-signup .success_message'), function (i, el) {
+                            $(el).removeClass('hide');
+                        });
                     }
                 });
                 return false;

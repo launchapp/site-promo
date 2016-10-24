@@ -180,6 +180,28 @@ set contentVersionOptions = {
 {% set shellContentStructure = 'emptyAll' %}
 
 
+{# SHARE BUTTONS #}
+{% set shareClick = "javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=400,width=400');return false;" %}
+{% set shareUrl="https://www.launchapp.io" %}
+{% set shareMessage="Together%2C%20we%20can%20change%20dating.%20I%E2%80%99m%20in.%20Are%20you%3F" %}
+{% block shareButtons %}
+    <div id="sharingIsCaring">
+        <h4>Sharing is Caring!</h4>
+        <ul class="list-inline">
+            <li><a class="btn shareFacebook shareIcons" href="http://www.facebook.com/sharer/sharer.php?u={{ shareUrl }}" onclick="{{ shareClick }}">
+                    <div class="btnGradientLight"></div>
+                    {% embed '@SitetheoryCoreBundle/Resources/public/images/icons/social/facebook.svg' %}{% block id %}useFacebookIcon{% endblock %}{% endembed %}
+                </a>
+            </li>
+            <li>
+                <a class="btn shareTwitter shareIcons" href="http://twitter.com/intent/tweet?via=launchdating&text={{ shareMessage }}%20{{ shareUrl }}" onclick="{{ shareClick }}">
+                    <div class="btnGradientLight"></div>
+                    {% embed '@SitetheoryCoreBundle/Resources/public/images/icons/social/twitter.svg' %}{% block id %}useTwitterIcon{% endblock %}{% endembed %}
+                </a>
+            </li>
+        </ul>
+    </div>
+{% endblock shareButtons %}
 
 
 {% block header1 %}
@@ -203,22 +225,6 @@ set contentVersionOptions = {
                     <h1>{{ contentVersion.title|raw }}</h1>
                     <div class="borderDashed">
                         <p class="fontPrimary">{{ contentVersion.description|raw }}</p>
-                        <div id="sharingIsCaring">
-                            <h4>Sharing is Caring!</h4>
-                            <ul class="list-inline">
-                                <li><a class="btn facebook" href="">
-                                        <div class="btnGradientLight"></div>
-                                            {% embed '@SitetheoryCoreBundle/Resources/public/images/icons/social/facebook.svg' %}{% block id %}useFacebookIcon{% endblock %}{% endembed %}
-                                    </a>
-                                </li>
-                                <li>
-                                    <a class="btn twitter" href="">
-                                        <div class="btnGradientLight"></div>
-                                        {% embed '@SitetheoryCoreBundle/Resources/public/images/icons/social/twitter.svg' %}{% block id %}useTwitterIcon{% endblock %}{% endembed %}
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
                     </div>
                 </div>
                 <div id="tier1Right" class="pull-left">
@@ -691,7 +697,7 @@ set contentVersionOptions = {
 
                     <div class="form-group" data-id="Zip:p">
                         <label data-id="Zip:label" data-name="cf_text_value--3" class="ctct-form-required"></label>
-                        <input id="{{ signupId }}RegisterZip" class="registerZip form-control smallLabel fontPrimary required" data-id="Zip_value:input" type="text" name="cf_text_value--3" value="" maxlength="10" placeholder="Zip Code" data-ip="{{ environment.request.server.get('HTTP_X_REAL_IP') }}">
+                        <input id="{{ signupId }}RegisterZip" class="registerZip form-control smallLabel fontPrimary required" data-id="Zip_value:input" type="text" name="cf_text_value--3" value="" maxlength="10" placeholder="Postal Code" data-ip="{{ environment.ip }}">
                         <input data-id="Zip_name:input" type="hidden" name="cf_text_name--3" value="zip">
                         <input data-id="Zip_label:input" type="hidden" name="cf_text_label--3" value="Zip">
                     </div>
@@ -748,9 +754,12 @@ set contentVersionOptions = {
 
                     <p class="disclaimer">By submitting this form, you are granting: Launch Social Inc., 1330 N Broadway, Ste 200H, Walnut Creek, California, 94596, United States, permission to email you. You may unsubscribe via the link found at the bottom of every email.</p>
                 </form>
-                <div id="{{ signupId }}success_message" class="success_message hide">
+                <div id="{{ signupId }}_success_message" class="success_message hide">
                     <h2 class="success_message_thanks">Thanks</h2>
                     <div class="success_message_details note fontSecondary">You rock! We'll let you know when the app is ready.</div>
+                    <div class="success_message_sharing">
+                        {{ block('shareButtons') }}
+                    </div>
                 </div>
             </div>
         </div>
@@ -790,7 +799,7 @@ set contentVersionOptions = {
 
                     <div class="form-group" data-id="Zip:p">
                         <label data-id="Zip:label" data-name="cf_text_value--3" class="ctct-form-required"></label>
-                        <input id="{{ signupId }}RegisterZip" class="registerZip form-control smallLabel fontPrimary required" data-id="Zip_value:input" type="text" name="cf_text_value--3" value="" maxlength="10" placeholder="Postal Code" data-ip="{{ environment.request.server.get('HTTP_X_REAL_IP') }}">
+                        <input id="{{ signupId }}RegisterZip" class="registerZip form-control smallLabel fontPrimary required" data-id="Zip_value:input" type="text" name="cf_text_value--3" value="" maxlength="10" placeholder="Postal Code" data-ip="{{ environment.ip }}">
                         <input data-id="Zip_name:input" type="hidden" name="cf_text_name--3" value="zip">
                         <input data-id="Zip_label:input" type="hidden" name="cf_text_label--3" value="Zip">
                     </div>
@@ -846,9 +855,12 @@ set contentVersionOptions = {
 
                     <p class="disclaimer">By submitting this form, you are granting: Launch Social Inc., 1330 N Broadway, Ste 200H, Walnut Creek, California, 94596, United States, permission to email you. You may unsubscribe via the link found at the bottom of every email.</p>
                 </form>
-                <div id="{{ signupId }}success_message" class="success_message hide">
+                <div id="{{ signupId }}_success_message" class="success_message hide">
                     <h2 class="success_message_thanks">Thanks</h2>
                     <div class="success_message_details note fontSecondary">You rock! We'll let you know when the Kickstarter campaign is live.</div>
+                    <div class="success_message_sharing">
+                        {{ block('shareButtons') }}
+                    </div>
                 </div>
             </div>
         </div>
