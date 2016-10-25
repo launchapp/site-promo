@@ -656,7 +656,7 @@ h4,
 /**
 CONSTANT CONTACT FORM OVERWRITE
 */
-.popup .ctct-form-errorMessage {
+.popup .form-error {
     color: #f47c5b;
 }
 .popup .is-error {
@@ -665,6 +665,7 @@ CONSTANT CONTACT FORM OVERWRITE
 .popup .form-control.required {
     border: 1px solid #f4df02;
 }
+.signupForm
 
 /* On Form Success */
 /*
