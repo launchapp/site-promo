@@ -67,7 +67,7 @@ TODO:
 {# Put Beta Signup in Sidebar #}
 {% block sidebarExtrasTop %}
     {% block betaButton %}
-        <div class="btn betaSignupBtn"  data-plugin="AddClass Dim" data-class="active" data-target="#betaSignup" data-event="click" data-trackCategory="CTA" data-trackLabel="beta" data-trackValue="top">
+        <div class="btn betaSignupBtn"  data-plugin="AddClass Dim" data-class="active" data-target="#betaPopup" data-event="click" data-trackCategory="CTA" data-trackLabel="beta" data-trackValue="top">
             Beta Signup
         </div>
     {% endblock betaButton %}
@@ -224,109 +224,99 @@ TODO:
 
 
 
+{# REUSABLE FORM BLOCK #}
+{% block mailChimpSignup %}
+    <div class="mailChimpSignup">
+        <form data-user="{{ signupUser }}" data-id="{{ signupListId }}">
+            <div class="logo">
+                <img src="{{ asset('bundles/sitetheorytemplatecustom/images/launchLogoMark.png') }}" alt="">
+            </div>
+            <h2 class="signupTitle">{{ signupTitle|default("Notification Signup") }}</h2>
+            <p class="note fontBody">{{ signupText|default("We'll let you know when it's ready!") }}</p>
+
+            <div class="form-group">
+                <input type="email" value="" name="EMAIL" class="required email form-control smallLabel fontPrimary" id="mce-EMAIL" placeholder="Email Address">
+            </div>
+
+            <div class="form-group">
+                <input type="text" value="" name="ZIP" class="required email form-control smallLabel fontPrimary registerZip" id="mce-ZIP" maxlength="10" placeholder="Postal Code" data-ip="{{ environment.ip }}">
+            </div>
+
+            <div class="form-group">
+                <select name="STATUS" class="required form-control smallLabel fontPrimary" id="mce-STATUS">
+                    <option value="">Status</option>
+                    <option value="Single">Single</option>
+                    <option value="Taken (matchmaker)">Taken (matchmaker)</option>
+                </select>
+            </div>
+
+            <h4>Optional (and Helpful!)</h4>
+
+            <div class="form-group">
+                <select name="GENDER" class="form-control smallLabel fontPrimary" id="mce-GENDER">
+                    <option value="">Gender</option>
+                    <option value="Female">Female</option>
+                    <option value="Male">Male</option>
+                    <option value="Unlisted">Unlisted</option>
+
+                </select>
+            </div>
+            <div class="form-group">
+                <select name="AGE" class="form-control smallLabel fontPrimary" id="mce-AGE">
+                    <option value="">Age Group</option>
+                    <option value="High School">High School</option>
+                    <option value="College">College</option>
+                    <option value="Under 30">Under 30</option>
+                    <option value="30-39">30-39</option>
+                    <option value="40-49">40-49</option>
+                    <option value="50-59">50-59</option>
+                    <option value="60+">60+</option>
+                </select>
+            </div>
+
+            <div class="signupAction">
+                <button type="submit" class="submit btn fontPrimary bold btn positionAnchor" data-enabled="enabled">
+                    <span class="btnGradient"></span>
+                    <span class="btnText" data-trackCategory="CTA" data-trackLabel="signup" data-trackValue="{{ signupId }}">Sign Up</span>
+                </button>
+            </div>
+
+            <p class="disclaimer">By submitting this form, you are granting: Launch Social Inc., 1330 N Broadway, Ste 200H, Walnut Creek, California, 94596, United States, permission to email you. You may unsubscribe via the link found at the bottom of every email.</p>
+        </form>
+
+        <div id="{{ signupId }}success_message" class="success_message hide">
+            <h2 class="success_message_thanks">Thanks</h2>
+            <div class="success_message_details note fontSecondary">You rock! We'll let you know when the Kickstarter campaign is live.<br><br>Check your email to confirm and complete signup.</div>
+            <div class="success_message_sharing">
+                {{ block('shareButtons') }}
+            </div>
+        </div>
+    </div>
+{% endblock mailChimpSignup %}
+
 
 {% block popup %}
     {% block betaSignup %}
 
         {% set signupId = 'beta' %}
-        {% set signupFormId = 'd0d690e0-feb2-4923-9f8c-661ca4e37707' %}
-        {% set signupListId = '1924932799' %}
-        <div id="{{ signupId }}Signup" class="popup">
-            <div id="{{ signupId }}SignupContent" class="popupContent springIn borderRadiusDefault ctct-embed-signup">
-                <div id="{{ signupId }}SignupClose" class="popupClose btnClose" data-plugin="AddClass Dim" data-class="active" data-target="#{{ signupId }}Signup" data-event="click">
+        {% set signupTitle = 'Beta Signup' %}
+        {% set signupText = "We'll let you know when it's ready!" %}
+        {% set signupUser = 'e69bdbd4c8c87ace94b1d5259' %}
+        {% set signupListId = '9fb53f81a4' %}
+        <div id="{{ signupId }}Popup" class="popup">
+            <div id="{{ signupId }}PopupContent" class="popupContent springIn borderRadiusDefault">
+                <div id="{{ signupId }}PopupClose" class="popupClose btnClose" data-plugin="AddClass Dim" data-class="active" data-target="#{{ signupId }}Popup" data-event="click">
                     <span class="sr-only">Close</span>
                     {% embed '@SitetheoryTemplatePromoBundle/Resources/public/images/icons/close.svg'%}{%  block id  %}iconClose{% endblock %}{% endembed %}
                 </div>
 
-                <form data-id="embedded_signup:form" class="ctct-custom-form Form" name="embedded_signup" method="POST" action="https://visitor2.constantcontact.com/api/signup">
-                    <div class="logo">
-                        <img src="{{ asset('bundles/sitetheorytemplatecustom/images/launchLogoMark.png') }}" alt="">
-                    </div>
-                    <h2 class="signupTitle">Beta Signup</h2>
-                    <p class="note fontPrimary">We'll let you know when it's ready!</p>
-                    <!-- The following code must be included to ensure your sign-up form works properly. -->
-                    <input data-id="ca:input" type="hidden" name="ca" value="{{ signupFormId }}">
-                    <input data-id="list:input" type="hidden" name="list" value="{{ signupListId }}">
-                    <input data-id="source:input" type="hidden" name="source" value="EFD">
-                    <input data-id="required:input" type="hidden" name="required" value="list,email">
-                    <input data-id="required:input" type="hidden" name="required" value="list,email,cf_text--3,cf_text--2">
-                    <input data-id="url:input" type="hidden" name="url" value="">
+                {{ block('mailChimpSignup') }}
 
-                    <div class="form-group" data-id="Email Address:p">
-                        <label data-id="Email Address:label" data-name="email" class="ctct-form-required"></label>
-                        <input class="form-control smallLabel fontPrimary required" data-id="Email Address:input" type="text" name="email" value="" maxlength="80" placeholder="Email Address">
-                    </div>
-
-                    <div class="form-group" data-id="Zip:p">
-                        <label data-id="Zip:label" data-name="cf_text_value--3" class="ctct-form-required"></label>
-                        <input id="{{ signupId }}RegisterZip" class="registerZip form-control smallLabel fontPrimary required" data-id="Zip_value:input" type="text" name="cf_text_value--3" value="" maxlength="10" placeholder="Postal Code" data-ip="{{ environment.ip }}">
-                        <input data-id="Zip_name:input" type="hidden" name="cf_text_name--3" value="zip">
-                        <input data-id="Zip_label:input" type="hidden" name="cf_text_label--3" value="Zip">
-                    </div>
-
-                    <div class="form-group" data-id="Relationship Status:p">
-                        <label data-id="Relationship Status:label" data-name="cf_text_value--2" class="ctct-form-required"></label>
-                        <input id="{{ signupId }}_custom_status_value" class="hide form-control smallLabel fontPrimary required" data-id="Relationship Status_value:input" name="cf_text_value--2" type="text" value="" maxlength="10" placeholder="Relationship Status">
-                        <select  id="{{ signupId }}_custom_status" class="form-control smallLabel fontPrimary required registerCustom">
-                            <option>Status</option>
-                            <option value="1">Single</option>
-                            <option value="2">Taken (matchmaker)</option>
-                        </select>
-                        <input data-id="Relationship Status_name:input" type="hidden" name="cf_text_name--2" value="relationship_status">
-                        <input data-id="Relationship Status_label:input" type="hidden" name="cf_text_label--2" value="Relationship Status">
-                    </div>
-
-                    <h4>Optional (and Helpful!)</h4>
-                    <div class="form-group" data-id="Gender:p">
-                        <label data-id="Gender:label" data-name="cf_text_value--1"></label>
-                        <input id="custom_gender_value" class="hide form-control smallLabel fontPrimary required" data-id="Gender_value:input" name="cf_text_value--1" type="text" value="" maxlength="10" placeholder="Gender">
-                        <select id="custom_gender" class="form-control smallLabel fontPrimary registerCustom">
-                            <option>Gender</option>
-                            <option value="1">Female</option>
-                            <option value="2">Male</option>
-                            <option value="0">Unlisted</option>
-                        </select>
-                        <input data-id="Gender_name:input" type="hidden" name="cf_text_name--1" value="gender">
-                        <input data-id="Gender_label:input" type="hidden" name="cf_text_label--1" value="Gender">
-                    </div>
-
-                    <div class="form-group" data-id="Age Group:p">
-                        <label data-id="Age Group:label" data-name="cf_text_value--0" class="ctct-form-required"></label>
-                        <input id="{{ signupId }}_custom_age_value" class="hide form-control smallLabel fontPrimary" data-id="Age Group_value:input" name="cf_text_value--0" type="text" value="" maxlength="10" placeholder="Age Group">
-                        <select id="{{ signupId }}_custom_age" class="form-control smallLabel fontPrimary registerCustom">
-                            <option>Age Group</option>
-                            <option value="1">High School</option>
-                            <option value="2">College</option>
-                            <option value="3">Under 30</option>
-                            <option value="4">30-40</option>
-                            <option value="5">40-50</option>
-                            <option value="6">50-60</option>
-                            <option value="7">60+</option>
-                        </select>
-                        <input data-id="Age Group_name:input" type="hidden" name="cf_text_name--0" value="age_group">
-                        <input data-id="Age Group_label:input" type="hidden" name="cf_text_label--0" value="Age Group">
-                    </div>
-
-                    <div class="signupAction">
-                        <button type="submit" class="fontPrimary bold btn positionAnchor" data-enabled="enabled">
-                            <span class="btnGradient"></span>
-                            <span class="btnText" data-trackCategory="CTA" data-trackLabel="signup" data-trackValue="beta">Sign Up</span>
-                        </button>
-                    </div>
-
-                    <p class="disclaimer">By submitting this form, you are granting: Launch Social Inc., 1330 N Broadway, Ste 200H, Walnut Creek, California, 94596, United States, permission to email you. You may unsubscribe via the link found at the bottom of every email.</p>
-                </form>
-                <div id="{{ signupId }}_success_message" class="success_message hide">
-                    <h2 class="success_message_thanks">Thanks</h2>
-                    <div class="success_message_details note fontSecondary">You rock! We'll let you know when the app is ready.</div>
-                    <div class="success_message_sharing">
-                        {{ block('shareButtons') }}
-                    </div>
-                </div>
             </div>
         </div>
 
     {% endblock betaSignup %}
+
 
 {% endblock popup %}
 
