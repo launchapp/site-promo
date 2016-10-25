@@ -2,52 +2,11 @@
 
 
 {#
+GOAL: make a basic presskit page like http://dopresskit.com
 TODO:
-1. After Beta is done, Remove references.
-2. After Kickstarter is done, remove all references.
-3. Customize A/B Wording Tests
+1.Add Header Image
+2. Add Sidebar links (these are better than the standard shell header for a page like this
 #}
-
-
-
-{#
-A/B Testing: Options
-NOTE: Change default option after testing.
-
-Alternatives:
-
-Online Dating Is a Mess
-We saw. We listened. And we began building Launch &mdash; an app that lets people (single or taken) send their friends on better dates. Help make it a reality.
-
-
-The Cure for Dating Apps
-Launch is an app for everyone disappointed with the current dating experience (personally or on behalf of friends). We&rsquo;ve been on a listening mission, using people&rsquo;s stories to build something entirely new.
-
-
-#}
-{%
-set contentVersionOptions = {
-'a': {
-'title': 'Happiness Shouldn&rsquo;t Be So Hard',
-'description': 'Online dating kinda’ sucks. So we designed something new. And now we need your help.'
-},
-'b': {
-'title': 'The Cure for Dating Apps',
-'description': 'Only 7% of singles make a meaningful connection online each year. Ready to change that?'
-},
-'c': {
-'title': 'Dating apps kinda&rsquo; suck.',
-'description': 'Someone you love is using one and hating it. They deserve better. Let&rsquo;s give it to them.'
-}
-}
-%}
-{% set contentVersionRequest = 'a' %}
-{% if environment.request.query.get('t') is not empty and contentVersionOptions[environment.request.query.get('t')] is defined %}
-    {% set contentVersionRequest = environment.request.query.get('t') %}
-{% endif %}
-{% set contentVersion = contentVersionOptions[contentVersionRequest] %}
-
-
 
 
 {# Load Site CSS #}
@@ -55,43 +14,38 @@ set contentVersionOptions = {
 {% block link %}
     {{ parent() }}
     <link rel="stylesheet" href="{{ asset('bundles/sitetheorytemplatecustom/css/site.css') }}">
-    <link rel="stylesheet" href="{{ asset('bundles/sitetheorytemplatecustom/css/landing.css') }}">
+    <link rel="stylesheet" href="{{ asset('bundles/sitetheorytemplatecustom/css/press.css') }}">
 {% endblock link %}
 
 {% block script %}
     {{ parent() }}
     <script type="text/javascript" src="{{ asset('bundles/sitetheorytemplatecustom/js/landing.js') }}"></script>
-    <script type='text/javascript' src=''></script>
-
 {% endblock script %}
 
 
+{# TODO: This is just here temporarily until the base.html.twig give the ability to select the preferred image in the admin #}
+{# we may need to reload the page here in order to get the new image https://developers.facebook.com/tools/debug/ #}
+{#
 {% block meta %}
     {{ parent() }}
-    {# TODO: This is just here temporarily until the base.html.twig give the ability to select the preferred image in the admin #}
-    {# we may need to reload the page here in order to get the new image https://developers.facebook.com/tools/debug/ #}
-    <meta property="og:url" content="https://www.launchapp.io">
+    <meta property="og:url" content="https://www.launchapp.io/Press">
     <meta property="og:type" content="website">
     <meta property="og:image" content="https://www.launchapp.io/sitetheory/v/1/0/bundles/sitetheorytemplatecustom/images/app/LaunchAppPreview.jpg">
-    <meta property="og:title" content="The Cure for Dating Apps | Launch">
-    <meta property="og:description" content="Online dating kinda sucks. So we designed something new. And now we need your help.">
+    <meta property="og:title" content="Press Kit | Launch">
+    <meta property="og:description" content="Online dating kinda sucks. learn how Launch is different and why people should care.">
 {% endblock meta %}
+#}
 
-
-{% block appClass %}landingFull{% endblock appClass %}
 
 {% block bodyAttributes %}
     {{ parent() }}
-    data-spy="scroll" data-target="#navMainContainer" data-offset="100" data-contentVersion="{{ contentVersionRequest }}"
+    data-spy="scroll" data-target="#navMainContainer" data-offset="100"
 {% endblock bodyAttributes %}
 
 
 {# Remove standard header image #}
 {% block headerImageInsideHeader %}
 {% endblock headerImageInsideHeader %}
-
-{% block pageTitle %}
-{% endblock pageTitle %}
 
 {# Hide sidebar on desktop #}
 {% set bootstrapColumnSidebar = 'visible-xs visible-sm' %}
@@ -103,67 +57,62 @@ set contentVersionOptions = {
 {% block mainColumnGutter %}
 {% endblock mainColumnGutter %}
 
-{# Hide Sidebar Navigation until it's dynamic and necessary #}
-{% block navSection %}
-{% endblock navSection %}
-
 {# Hide Sidebar Login until it's dynamic and necessary #}
 {% block sidebarLogin %}
 {% endblock sidebarLogin %}
 
+
+
+
 {# Put Beta Signup in Sidebar #}
 {% block sidebarExtrasTop %}
     {% block betaButton %}
-        <div id="betaSignupBtn" class="btn"  data-plugin="AddClass Dim" data-class="active" data-target="#betaSignup" data-event="click" data-trackCategory="CTA" data-trackLabel="beta" data-trackValue="top">
+        <div class="btn betaSignupBtn"  data-plugin="AddClass Dim" data-class="active" data-target="#betaSignup" data-event="click" data-trackCategory="CTA" data-trackLabel="beta" data-trackValue="top">
             Beta Signup
         </div>
     {% endblock betaButton %}
 
     <div class="borderDashed">
         {% block mainNavigation %}
+            {#
             <div id="navMainContainer" class="navMainContainer">
                 <ul class="nav list-inline fontPrimary">
                     <li class="navMainLink">
-                        <a href="#tier2">
+                        <a href="#sectionAbout">
                             <div class="linkOrnament"></div>
                             <div class="linkUnderline"></div>
-                            Status Quo
+                            What Is Launch?
                         </a>
                     </li>
                     <li class="navMainLink">
-                        <a href="#tier3">
+                        <a href="#sectionDifferent">
                             <div class="linkOrnament"></div>
                             <div class="linkUnderline"></div>
-                            Something Different
+                            What Makes Launch Different?
                         </a>
                     </li>
                     <li class="navMainLink">
-                        <a href="#tier5">
+                        <a href="#sectionResources">
                             <div class="linkOrnament"></div>
                             <div class="linkUnderline"></div>
-                            App
-                        </a>
-                    </li>
-                    <li class="navMainLink">
-                        <a href="#tier6">
-                            <div class="linkOrnament"></div>
-                            <div class="linkUnderline"></div>
-                            Benefits
-                        </a>
-                    </li>
-                    <li class="navMainLink">
-                        <a href="#tier7">
-                            <div class="linkOrnament"></div>
-                            <div class="linkUnderline"></div>
-                            Help Us!
+                            Download Resources
                         </a>
                     </li>
                 </ul>
             </div>
+            #}
         {% endblock mainNavigation %}
     </div>
-
 {% endblock sidebarExtrasTop %}
+
+
+
+{% block navSection %}
+{% endblock navSection %}
+
+{% block sectionName %}
+{% endblock sectionName %}
+
 
 
 {# Hide footer site map #}
@@ -185,9 +134,21 @@ set contentVersionOptions = {
 {% set shareUrl="https://www.launchapp.io" %}
 {% set shareMessage="Together%2C%20we%20can%20change%20dating.%20I%E2%80%99m%20in.%20Are%20you%3F" %}
 {% block shareButtons %}
-    <div class="success_message_share">
-        <a id="shareTwitter" class="shareIcons" href="http://www.facebook.com/sharer/sharer.php?u={{ shareUrl }}&title={{ shareMessage }}" onclick="{{ shareClick }}"><img></a>
-        <a id="shareTwitter" class="shareIcons" href="http://twitter.com/intent/tweet?text={{ shareMessage }}%20{{ shareUrl }}&via=launchdating" onclick="{{ shareClick }}"><img></a>
+    <div id="sharingIsCaring">
+        <h4>Sharing is Caring!</h4>
+        <ul class="list-inline">
+            <li><a class="btn shareFacebook shareIcons" href="http://www.facebook.com/sharer/sharer.php?u={{ shareUrl }}" onclick="{{ shareClick }}">
+                    <div class="btnGradientLight"></div>
+                    {% embed '@SitetheoryCoreBundle/Resources/public/images/icons/social/facebook.svg' %}{% block id %}useFacebookIcon{% endblock %}{% endembed %}
+                </a>
+            </li>
+            <li>
+                <a class="btn shareTwitter shareIcons" href="http://twitter.com/intent/tweet?via=launchdating&text={{ shareMessage }}%20{{ shareUrl }}" onclick="{{ shareClick }}">
+                    <div class="btnGradientLight"></div>
+                    {% embed '@SitetheoryCoreBundle/Resources/public/images/icons/social/twitter.svg' %}{% block id %}useTwitterIcon{% endblock %}{% endembed %}
+                </a>
+            </li>
+        </ul>
     </div>
 {% endblock shareButtons %}
 
@@ -204,397 +165,9 @@ set contentVersionOptions = {
     </div>
 {% endblock header1 %}
 
-{% block content %}
-
-    {# TIER 1 VIDEO #}
-    <div id="tier1" class="landingTier siteMaxWidth siteSidePadding shellVerticalPadding">
-        <div class="clearfix">
-            <div id="tier1Left" class="pull-left">
-                <h1>{{ contentVersion.title|raw }}</h1>
-                <div class="borderDashed">
-                    <p class="fontPrimary">{{ contentVersion.description|raw }}</p>
-                </div>
-            </div>
-            <div id="tier1Right" class="pull-left">
-                <div id="tier1video" class="responsiveObject">
-                    <iframe id="launchVideo" width="700" height="394" src="https://www.youtube.com/embed/IlANPQfnc_M?rel=0&showinfo=0&modestbranding=1&enablejsapi=1" frameborder="0" allowfullscreen></iframe>
-                </div>
-                <div class="borderDashed clearfix">
-                    <div id="tier1action" class="pull-right">
-                        <span class="fontPrimary bodyLarge optionalText">Help us build it!</span>
-                        {#<a class="btn" href="">Kickstarter Campaign</a>#}
-                        <div class="btn positionAnchor" data-plugin="AddClass Dim" data-class="active" data-target="#kickstarterSignup" data-event="click" >
-                            <div class="btnText" data-trackCategory="CTA" data-trackLabel="kickstarter" data-trackValue="top">Kickstarter Campaign</div>
-                            <div class="btnGradient"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    {# TIER 2 BROKEN STATUS QUO #}
-    <div id="tier2" class="landingTier">
-        <div class="siteMaxWidth siteSidePadding shellVerticalPadding">
-            <h1>A Broken <br class="visible-xs">Status Quo</h1>
-            <div class="borderDashedLight">
-                <p class="fontPrimary bodyLarge">80% of singles won't get even one online date this year &mdash; because existing apps were built to make life easier for people who already like online dating.
-                    <br>
-                    <br>
-                    We&rsquo;re building something for everyone else.</p>
-            </div>
-        </div>
-    </div>
-
-    {# TIER 3 BS #}
-    <div id="tier3" class="landingTier backgroundDark fontPrimary">
-        <div class="siteMaxWidth siteSidePadding shellVerticalPadding">
-            <h3>with less of</h3>
-            <h1>What People Hate</h1>
-            <div class="row">
-                <div class="col-xs-6 clearfix">
-                    <div class="badAppImage pull-left">
-                        <img src="{{ asset('bundles/sitetheorytemplatecustom/images/badMatch1.png') }}" alt="">
-                    </div>
-                    <p class="pull-left">Dishonest Profiles</p>
-                </div>
-                <div class="col-xs-6 rightCol clearfix">
-                    <div class="badAppImage pull-right">
-                        <img src="{{ asset('bundles/sitetheorytemplatecustom/images/badMatch4.png') }}" alt="">
-                    </div>
-                    <p class="pull-right">Lazy &amp; Aggressive Messaging</p>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-xs-6 clearfix">
-                    <div class="borderDashed">
-                        <div class="badAppImage pull-left">
-                            <img src="{{ asset('bundles/sitetheorytemplatecustom/images/badMatch2.png') }}" alt="">
-                        </div>
-                        <p class="pull-left">Creeps &amp; Players</p>
-                    </div>
-                </div>
-                <div class="col-xs-6 rightCol clearfix">
-                    <div class="borderDashed">
-                        <div class="badAppImage pull-right">
-                            <img src="{{ asset('bundles/sitetheorytemplatecustom/images/badMatch5.png') }}" alt="">
-                        </div>
-                        <p class="pull-right">Bots/Fake Users</p>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-xs-6 clearfix">
-                    <div class="borderDashed">
-                        <div class="badAppImage pull-left">
-                            <img src="{{ asset('bundles/sitetheorytemplatecustom/images/badMatch3.png') }}" alt="">
-                        </div>
-                        <p class="pull-left">Shallow Matches</p>
-                    </div>
-                </div>
-                <div class="col-xs-6 rightCol clearfix">
-                    <div class="borderDashed">
-                        <div class="badAppImage pull-right">
-                            <img src="{{ asset('bundles/sitetheorytemplatecustom/images/badMatch6.png') }}" alt="">
-                        </div>
-                        <p class="pull-right">Interaction Anxiety</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    {# TIER 4 COMPLETELY DIFFERENT #}
-    <div id="tier4" class="landingTier fontPrimary">
-        <div class="siteMaxWidth siteSidePadding shellVerticalPadding">
-            <h3>Let's Build Something</h3>
-            <h1>COMPLETELY DIFFERENT</h1>
-            <p id="tier4intro" class="bodyLarge">Online dating made it easier for relationship-seekers to connect, but only from a lonely, anonymous space &mdash; which encourages really bad behavior.<br><br>
-
-                We have a simple formula to change that:
-            </p>
-            <h3 id="formula" class="borderDashed">
-                <div class="borderDashed bottom">Make dating social again</div>
-            </h3>
-        </div>
-
-        <div id="tier4chart">
-            <div class="midline"></div>
-            <div class="siteMaxWidth siteSidePadding shellVerticalPadding">
-                <div id="tier4logo">
-                    <img src="{{ asset('bundles/sitetheorytemplatecustom/images/tier4logo.png') }}" alt="">
-                </div>
-
-                <div class="clearfix">
-                    <div class="chartCol left">
-                        <div id="chartItemOne" class="chartContent">
-                            <div class="chartIcon">
-                                <img src="{{ asset('bundles/sitetheorytemplatecustom/images/tier4spacemen1.png') }}" alt="">
-                            </div>
-                            <h3>Friend Verification</h3>
-                            <p>Friends verify every dater&rsquo;s identity and relationship status, then add fun facts and striking insights to their profiles.</p>
-                        </div>
-                    </div>
-                    <div class="chartCol right">
-                        <div class="chartContent">
-                            <div class="chartIcon">
-                                <img src="{{ asset('bundles/sitetheorytemplatecustom/images/tier4spacemen2.png') }}" alt="">
-                            </div>
-                            <h3>Fun &amp; R.E.S.P.E.C.T.</h3>
-                            <p>All daters held accountable by their friends for their online and offline behavior. Only real people. Only respectful interactions. (But never boring!)</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="clearfix">
-                    <div class="chartCol left">
-                        <div class="chartContent">
-                            <div class="chartIcon">
-                                <img src="{{ asset('bundles/sitetheorytemplatecustom/images/tier4spacemen3.png') }}" alt="">
-                            </div>
-                            <h3>Crowdsourced Intuition</h3>
-                            <p>Friends (single or taken) use their intuition and experience to suggest great matches for their single friends.</p>
-                        </div>
-                    </div>
-                    <div class="chartCol right">
-                        <div class="chartContent">
-                            <div class="chartIcon">
-                                <img src="{{ asset('bundles/sitetheorytemplatecustom/images/tier4spacemen4.png') }}" alt="">
-                            </div>
-                            <h3>Squad Support</h3>
-                            <p>We let friends share their experiences with each other to get advice, laugh it off, or dance with excitement.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="siteMaxWidth siteSidePadding shellVerticalPadding">
-            <p id="tier4summary" class="bodyLarge">If you love the hit-and-run hookup culture, you won&rsquo;t find it here. Only good people, lowkey meetups, playful interactions, and sparks flying everywhere. </p>
-        </div>
-    </div>
-
-    {# TIER 5 APP SNEAK PEEK #}
-
-    <div id="tier5" class="landingTier">
-        <h1>App Sneak Peek</h1>
-        {# TODO: remove when kickstarter is complete #}
-        <p id="appDemoNote" class="fontPrimary siteSidePadding">An interactive demo will be available to all Kickstarter backers.</p>
-
-        <div id="tier5background">
-            <div class="siteMaxWidth siteSidePadding">
-                {#
-                <div id="appDemoBtn" class="btn"  data-plugin="AddClass Dim" data-class="active" data-target="#appDemoPopup" data-event="click" data-trackCategory="interest" data-trackLabel="appDemo">
-                    See Demo
-                </div>
-                #}
-
-                <div id="appPreview" class="carousel slide" data-plugin="carousel" data-colminsize="sm" data-groupmobile="1" data-interval="8000">
-
-                    <!-- Optional: Progress Indicators -->
-                    <ol class="carousel-indicators">
-                        <li data-target="#appPreview" data-slide-to="0" class="active"></li>
-                        <li data-target="#appPreview" data-slide-to="1"></li>
-                        <li data-target="#appPreview" data-slide-to="2"></li>
-                        <li data-target="#appPreview" data-slide-to="3"></li>
-                        <li data-target="#appPreview" data-slide-to="4"></li>
-                        <li data-target="#appPreview" data-slide-to="5"></li>
-                    </ol>
-
-                    <!-- Wrapper for Slides -->
-                    <div class="carousel-inner" role="listbox">
-                        <div class="item active">
-                            <div   class="slideContainer clearfix">
-                                <div  class="appScreenshot">
-                                    <img data-spy="#appPreview" data-src="{{ asset('bundles/sitetheorytemplatecustom/images/app/1signUp-xs.png') }}" src="{{ asset('bundles/sitetheorytemplatecustom/images/app/1signUp-xs.png') }}"  data-ignorevisibility="true" alt="Sign Up">
-                                </div>
-                                <div class="centerText">
-                                    <h2 class="hoverElement fontPrimary">Sign Up</h2>
-                                    <p class="smallLabel fontPrimary bold">Sign up with your Facebook account. Don't worry, it's private.</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div   class="slideContainer clearfix">
-                                <div  class="appScreenshot">
-                                    <img data-spy="#appPreview" data-src="{{ asset('bundles/sitetheorytemplatecustom/images/app/2recruit-xs.png') }}" src="{{ asset('bundles/sitetheorytemplatecustom/images/app/2recruit-xs.png') }}"  data-ignorevisibility="true" alt="Recruit Launch Crew">
-                                </div>
-                                <div class="centerText">
-                                    <h2 class="hoverElement fontPrimary">Recruit Launch Crew</h2>
-                                    <p class="smallLabel fontPrimary bold">Invite two or more close friends (single or taken) to verify your account, describe you, and increase your trust score.</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div   class="slideContainer clearfix">
-                                <div  class="appScreenshot">
-                                    <img data-spy="#appPreview" data-src="{{ asset('bundles/sitetheorytemplatecustom/images/app/3matchmakerMatches-xs.png') }}" src="{{ asset('bundles/sitetheorytemplatecustom/images/app/3matchmakerMatches-xs.png') }}"  data-ignorevisibility="true" alt="Play and Match">
-                                </div>
-                                <div class="centerText">
-                                    <h2 class="hoverElement fontPrimary">Play & Match</h2>
-                                    <p class="smallLabel fontPrimary bold">The most successful way for new couples to meet? Via friends. Have fun suggesting matches for people you love.</p>
-
-                                </div>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div   class="slideContainer clearfix">
-                                <div  class="appScreenshot">
-                                    <img data-spy="#appPreview" data-src="{{ asset('bundles/sitetheorytemplatecustom/images/app/4reviewMatch-xs.png') }}" src="{{ asset('bundles/sitetheorytemplatecustom/images/app/4reviewMatch-xs.png') }}"  data-ignorevisibility="true" alt="Review Matches">
-                                </div>
-                                <div class="centerText">
-                                    <h2 class="hoverElement fontPrimary">Review Matches</h2>
-                                    <p class="smallLabel fontPrimary bold">Awesome profiles empower better decision making. Answer a few playful ice-breakers to bring the photo into focus and unlock full chat.</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div   class="slideContainer clearfix">
-                                <div  class="appScreenshot">
-                                    <img data-spy="#appPreview" data-src="{{ asset('bundles/sitetheorytemplatecustom/images/app/5meetup-xs.png') }}" src="{{ asset('bundles/sitetheorytemplatecustom/images/app/5meetup-xs.png') }}"  data-ignorevisibility="true" alt="Low-Key Meetups">
-                                </div>
-                                <div class="centerText">
-                                    <h2 class="hoverElement fontPrimary">Low-Key Meetups</h2>
-                                    <p class="smallLabel fontPrimary bold">Intrigued? You've got 48 hours to schedule a meetup with just one click. 45 minutes or less. Zero expectations. Just coffee or drink with an interesting local.</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div   class="slideContainer clearfix">
-                                <div  class="appScreenshot">
-                                    <img data-spy="#appPreview" data-src="{{ asset('bundles/sitetheorytemplatecustom/images/app/6followup-xs.png') }}" src="{{ asset('bundles/sitetheorytemplatecustom/images/app/6followup-xs.png') }}"  data-ignorevisibility="true" alt="Next Steps">
-                                </div>
-                                <div class="centerText">
-                                    <h2 class="hoverElement fontPrimary">Next Steps</h2>
-                                    <p class="smallLabel fontPrimary bold">A quick follow-up survey lets you connect as friends or report problems in a constructive way that makes everyone accountable to their friends.</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Controls -->
-                    <div class="carouselControls">
-                        <a class="left carousel-control" href="#appPreview" role="button" data-slide="prev" data-scroll="false">
-                            <img src="{{ asset('bundles/sitetheorytemplatecustom/images/carouselBack.png') }}" alt="">
-                            <span class="sr-only">Previous</span>
-                        </a>
-                        <a class="right carousel-control" href="#appPreview" role="button" data-slide="next" data-scroll="false">
-                            <img src="{{ asset('bundles/sitetheorytemplatecustom/images/carouselForward.png') }}" alt="">
-                            <span class="sr-only">Next</span>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    {# TIER 6 BENEFITS #}
-    <div id="tier6" class="landingTier">
-        <div id="tier6background">
-            <div class="siteMaxWidth siteSidePadding shellVerticalPadding">
-                <h1>Benefits</h1>
-                <div id="tier6content" class="fontPrimary">
-                    <div class="row">
-                        <div class="col-sm-5 leftCol">
-                            <div id="benefitOne" class="benefitItem">
-                                <h3>Honest &amp; Interesting Profiles </h3>
-                                <p>Every profile is verified by friends, and improved as you and your friends respond to fun micro-questions that collect over time. Fewer lies. Less stress. More originality.</p>
-                            </div>
-                            <div id="benefitTwo" class="benefitItem">
-                                <h3>Quality Matches</h3>
-                                <p>The best technology can&rsquo;t create love. But it can help. We use our special AI to learn who you really are and what you really want. We then turn the matches over to you and your friends to apply human intuition.</p>
-                            </div>
-                            <div id="benefitThree" class="benefitItem">
-                                <h3>Gradual Reveals</h3>
-                                <p>Many great relationships would never have passed the two-second swipe test. To encourage slower judgment, every match photo starts blurred. But don&rsquo;t worry, you can bring their picture into focus by exchanging a few playful ice-breakers.</p>
-                            </div>
-                        </div>
-                        <div class="col-sm-5 col-sm-offset-2 rightCol">
-                            <div id="benefitFour" class="benefitItem">
-                                <h3>Better Members</h3>
-                                <p>Players, creeps, and cheaters won&rsquo;t be as attracted to a community that requires close friends to vouch for them. </p>
-                            </div>
-                            <div id="benefitFive" class="benefitItem">
-                                <h3>Enjoyable Messaging</h3>
-                                <p>Use our optional &ldquo;Conversation Starters&rdquo; to showcase personality and spark conversations. We also make it painless to block (and educate) anyone who isn&rsquo;t being respectful.</p>
-                            </div>
-                            <div id="benefitSix" class="benefitItem">
-                                <h3>Natural Low-Key Encounters</h3>
-                                <p>We encourage users to treat the first meetup like a &ldquo;pre-date&rdquo;. No more than 45 minutes. Just one coffee or drink. No fancy preparation. First impressions like we make them in day-to-day life, free from anxiety and expectations. </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    {# TIER 7 CTA #}
-    <div id="tier7" class="landingTier">
-        <div class="siteMaxWidth siteSidePadding shellVerticalPadding">
-            <h1>Help Create the Future</h1>
-            <p class="fontPrimary bodyLarge">We can't do this without you.</p>
-            <div id="tier7content">
-                <div class="borderDashedVertical"></div>
-                <div class="row borderDashed">
-                    <div class="col-sm-5 leftCol">
-                        <div id="helpOne" class="helpItem">
-                            <img id="iconKickstarter" src="{{ asset('bundles/sitetheorytemplatecustom/images/tier7iconKickstarter.png') }}" alt="">
-                            <h2>Kickstarter!</h2>
-                            {# TODO: re-enable when kickstarter is live #}{#<h4>(One-click signup)</h4>#}
-                            <p class="fontPrimary">Love the idea? Give feedback and as little as $1. We&rsquo;re a small team. We need a strong community behind us. Become a founding member and get amazing rewards!  </p>
-                            {# <a class="btn" href="">I Want to Help</a> #}
-                            <div class="btn positionAnchor" data-plugin="AddClass Dim" data-class="active" data-target="#kickstarterSignup" data-event="click">
-                                <div class="btnText" data-trackCategory="CTA" data-trackLabel="kickstarter" data-trackValue="footer">I Want to Help</div>
-                                <div class="btnGradient"></div>
-                            </div>
-                            <br class="visible-xs">
-                            <br class="visible-xs">
-                        </div>
-                    </div>
-                    <div class="col-sm-5 col-sm-offset-2 rightCol">
-                        <div class="borderDashed visible-xs">&nbsp;</div>
-                        <div id="helpTwo" class="helpItem">
-                            <img id="iconBeta" src="{{ asset('bundles/sitetheorytemplatecustom/images/tier7iconBeta.png') }}" alt="">
-                            <h2>Sign up for Beta</h2>
-                            <p class="fontPrimary">Not interested in shaping the service? No problem! We&rsquo;ll let you know when the app is ready. Signup takes just 10 seconds (we&rsquo;ll never share or sell your data).</p>
-                            <div class="btn positionAnchor" data-plugin="AddClass Dim" data-class="active" data-target="#betaSignup" data-event="click">
-                                <div class="btnText" data-trackCategory="CTA" data-trackLabel="beta" data-trackValue="footer">Sign Me Up</div>
-                                <div class="btnGradient"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    {# TIER 8 CONTACT #}
-    <div id="tier8" class="backgroundDark landingTier">
-        <div id="tier8background">
-            <div class="siteMaxWidth siteSidePadding shellVerticalPadding">
-
-                <p class="fontPrimary bodyLarge">{# TODO: uncomment when kickstarter is live, and remove when kickstarter is good #}{# Have questions? Please use the <a href="">contact form</a> on our Kickstarter page.For press inquiries, <a href="mailto:jeremy@launchapp.io">jeremy@launchapp.io</a>. #} For general questions or press inquiries contact <a href="mailto:jeremy@launchapp.io">jeremy@launchapp.io</a>.  To discuss investing, <a href="mailto:chad@launchapp.io">chad@launchapp.io</a>.</p>
-            </div>
-        </div>
-    </div>
-
-    {#
-    <div id="footer" class="clearfix fontPrimary">
-        <div class="siteMaxWidth siteSidePadding">
-            <div class="footerPhone pull-right">
-                {{ block('sitePhone') }}
-            </div>
-            <div class="footerEmail">
-                {{ block('siteEmail') }}
-            </div>
-        </div>
-    </div>
-    #}
-
-{% endblock content %}
 
 {# TODO: this is not showing up at the moment. We are using a footer above #}
-
+{#
 {% block siteContact %}
     <div class="{% block siteContactLabel %}siteContact{% endblock siteContactLabel %}">
 
@@ -624,8 +197,9 @@ set contentVersionOptions = {
 
     </div>
 {% endblock siteContact %}
+#}
 
-
+{#
 {% block socialMedia %}
     <div class="socialMedia {{ socialStyle|default('basicStyle') }}">
         <ul class="list-inline">
@@ -646,7 +220,7 @@ set contentVersionOptions = {
         </ul>
     </div>
 {% endblock socialMedia %}
-
+#}
 
 
 
@@ -669,7 +243,7 @@ set contentVersionOptions = {
                         <img src="{{ asset('bundles/sitetheorytemplatecustom/images/launchLogoMark.png') }}" alt="">
                     </div>
                     <h2 class="signupTitle">Beta Signup</h2>
-                    <p class="note fontBody">Be among the first to join and help us create an awesome community.</p>
+                    <p class="note fontPrimary">We'll let you know when it's ready!</p>
                     <!-- The following code must be included to ensure your sign-up form works properly. -->
                     <input data-id="ca:input" type="hidden" name="ca" value="{{ signupFormId }}">
                     <input data-id="list:input" type="hidden" name="list" value="{{ signupListId }}">
@@ -702,6 +276,7 @@ set contentVersionOptions = {
                         <input data-id="Relationship Status_label:input" type="hidden" name="cf_text_label--2" value="Relationship Status">
                     </div>
 
+                    <h4>Optional (and Helpful!)</h4>
                     <div class="form-group" data-id="Gender:p">
                         <label data-id="Gender:label" data-name="cf_text_value--1"></label>
                         <input id="custom_gender_value" class="hide form-control smallLabel fontPrimary required" data-id="Gender_value:input" name="cf_text_value--1" type="text" value="" maxlength="10" placeholder="Gender">
@@ -741,13 +316,11 @@ set contentVersionOptions = {
 
                     <p class="disclaimer">By submitting this form, you are granting: Launch Social Inc., 1330 N Broadway, Ste 200H, Walnut Creek, California, 94596, United States, permission to email you. You may unsubscribe via the link found at the bottom of every email.</p>
                 </form>
-                <div id="{{ signupId }}success_message" class="success_message hide">
+                <div id="{{ signupId }}_success_message" class="success_message hide">
                     <h2 class="success_message_thanks">Thanks</h2>
                     <div class="success_message_details note fontSecondary">You rock! We'll let you know when the app is ready.</div>
-                    <div class="success_message_share">
-                        <iframe id="shareFacebook" class="shareIcons" src="https://www.facebook.com/plugins/share_button.php?href=https%3A%2F%2Fwww.launchapp.io&layout=button&size=large&mobile_iframe=true&appId=317038628670351&width=73&height=28" width="73" height="28" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true"></iframe>
-                        <a id="shareTwitter" class="shareIcons" href="https://twitter.com/share" class="twitter-share-button" data-size="large" data-text="I love this new @launchdating app. Magic happens when friends get involved!" data-url="https://www.launchapp.io" data-show-count="false">Tweet</a><script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
-                        <a id="shareReddit" class="shareIcons" href="//www.reddit.com/submit" onclick="window.location = '//www.reddit.com/submit?url=' + encodeURIComponent(window.location); return false"> <img src="//www.redditstatic.com/spreddit7.gif" alt="submit to reddit" border="0" /> </a>
+                    <div class="success_message_sharing">
+                        {{ block('shareButtons') }}
                     </div>
                 </div>
             </div>
@@ -759,93 +332,6 @@ set contentVersionOptions = {
 
 
 
-
-{# Put Beta Signup in Sidebar #}
-{% block sidebarExtrasTop %}
-    {% block betaButton %}
-        <div id="betaSignupBtn" class="btn"  data-plugin="AddClass Dim" data-class="active" data-target="#betaSignup" data-event="click" data-trackCategory="CTA" data-trackLabel="beta" data-trackValue="top">
-            Beta Signup
-        </div>
-    {% endblock betaButton %}
-
-    <div class="borderDashed">
-        {% block mainNavigation %}
-            <div id="navMainContainer" class="navMainContainer">
-                {#
-                <ul class="nav list-inline fontPrimary">
-                    <li class="navMainLink">
-                        <a href="#tier2">
-                            <div class="linkOrnament"></div>
-                            <div class="linkUnderline"></div>
-                            Status Quo
-                        </a>
-                    </li>
-                    <li class="navMainLink">
-                        <a href="#tier3">
-                            <div class="linkOrnament"></div>
-                            <div class="linkUnderline"></div>
-                            Something Different
-                        </a>
-                    </li>
-                    <li class="navMainLink">
-                        <a href="#tier5">
-                            <div class="linkOrnament"></div>
-                            <div class="linkUnderline"></div>
-                            App
-                        </a>
-                    </li>
-                    <li class="navMainLink">
-                        <a href="#tier6">
-                            <div class="linkOrnament"></div>
-                            <div class="linkUnderline"></div>
-                            Benefits
-                        </a>
-                    </li>
-                    <li class="navMainLink">
-                        <a href="#tier7">
-                            <div class="linkOrnament"></div>
-                            <div class="linkUnderline"></div>
-                            Help Us!
-                        </a>
-                    </li>
-                </ul>
-                #}
-            </div>
-        {% endblock mainNavigation %}
-    </div>
-
-{% endblock sidebarExtrasTop %}
-
-{# TODO: this is not showing up at the moment. We are using a footer above #}
-{% block siteContact %}
-    <div class="{% block siteContactLabel %}siteContact{% endblock siteContactLabel %}">
-
-        {% block footerSiteName %}
-            Launch Social Inc.
-        {% endblock footerSiteName %}
-
-        {% block sitePhone %}
-            <span class="phone"><a href="tel://925-330-9447">925-330-9447</a></span>
-        {% endblock sitePhone %}
-
-        {% block siteEmail %}
-            <span class="email"><a href="mailto:hello@launchapp.io">hello@launchapp.io</a></span>
-        {% endblock siteEmail %}
-
-        {% block siteStreet %}
-            <span class="address">1330 N. Broadway 200H</span>
-        {% endblock siteStreet %}
-
-        {% block siteCityStateZip %}
-            <span class="city">Walnut Creek, CA 94596</span>
-        {% endblock siteCityStateZip %}
-
-        {% block siteCountry %}
-            <span class="country">United States</span>
-        {% endblock siteCountry %}
-
-    </div>
-{% endblock siteContact %}
 
 
 

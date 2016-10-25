@@ -1,0 +1,86 @@
+{% extends view.templates.shell %}
+
+{% block meta %}
+    {{ parent() }}
+    {# TODO: This is just here temporarily until the base.html.twig give the ability to select the preferred image in the admin #}
+    {# we may need to reload the page here in order to get the new image https://developers.facebook.com/tools/debug/ #}
+    <meta property="og:url" content="https://www.launchapp.io/Press">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="https://www.launchapp.io/sitetheory/v/1/0/bundles/sitetheorytemplatecustom/images/app/LaunchAppPreview.jpg">
+    <meta property="og:title" content="Press Kit | Launch">
+    <meta property="og:description" content="Online dating kinda sucks. learn how Launch is different and why people should care.">
+{% endblock meta %}
+
+
+{% block navSection %}
+    <ul class="nav list-unstyled fontPrimary">
+        <li class="visible-xs-block visible-sm-block" data-level="1">
+            <a href="#sectionAbout" class="navSideLink fontSecondary">
+                What Is Launch?
+            </a>
+        </li>
+        <li class="visible-xs-block visible-sm-block" data-level="1">
+            <a href="#sectionDifferent" class="navSideLink fontSecondary">
+                How is Launch Different?
+            </a>
+        </li>
+        <li class="visible-xs-block visible-sm-block" data-level="1">
+            <a href="#sectionResources" class="navSideLink fontSecondary">
+                Download Resources
+            </a>
+        </li>
+    </ul>
+{% endblock navSection %}
+
+{% block sectionName %}
+    <h2 class="sectionName {{ sectionNameFont|default('fontPrimary') }}">Press Kit</h2>
+{% endblock sectionName %}
+
+
+
+{% block contentType %}
+    {% block content %}
+
+        {# SECTION ABOUT #}
+        <div id="sectionAbout" class="sectionTier siteMaxWidth siteSidePadding shellVerticalPadding">
+            <h2>What is Launch?</h2>
+            <div>Proin eget tortor risus. Curabitur arcu erat, accumsan id imperdiet et, porttitor at sem. Curabitur non nulla sit amet nisl tempus convallis quis ac lectus. Pellentesque in ipsum id orci porta dapibus. Curabitur arcu erat, accumsan id imperdiet et, porttitor at sem. Nulla quis lorem ut libero malesuada feugiat. Nulla porttitor accumsan tincidunt. Pellentesque in ipsum id orci porta dapibus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum ac diam sit amet quam vehicula elementum sed sit amet dui. </div>
+        </div>
+
+        {# SECTION ABOUT #}
+        <div id="sectionDifferent" class="sectionTier siteMaxWidth siteSidePadding shellVerticalPadding">
+            <h2>How is Launch Different?</h2>
+            <div>Proin eget tortor risus. Curabitur arcu erat, accumsan id imperdiet et, porttitor at sem. Curabitur non nulla sit amet nisl tempus convallis quis ac lectus. Pellentesque in ipsum id orci porta dapibus. Curabitur arcu erat, accumsan id imperdiet et, porttitor at sem. Nulla quis lorem ut libero malesuada feugiat. Nulla porttitor accumsan tincidunt. Pellentesque in ipsum id orci porta dapibus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum ac diam sit amet quam vehicula elementum sed sit amet dui.</div>
+        </div>
+
+        {# SECTION ABOUT #}
+        <div id="sectionResources" class="sectionTier siteMaxWidth siteSidePadding shellVerticalPadding">
+            <h2>Download Resources</h2>
+            <div>Proin eget tortor risus. Curabitur arcu erat, accumsan id imperdiet et, porttitor at sem. Curabitur non nulla sit amet nisl tempus convallis quis ac lectus. Pellentesque in ipsum id orci porta dapibus. Curabitur arcu erat, accumsan id imperdiet et, porttitor at sem. Nulla quis lorem ut libero malesuada feugiat. Nulla porttitor accumsan tincidunt. Pellentesque in ipsum id orci porta dapibus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum ac diam sit amet quam vehicula elementum sed sit amet dui.</div>
+        </div>
+
+        {# TIER 8 CONTACT #}
+        <div id="sectionDarkFooter" class="backgroundDark landingTier">
+            <div id="sectionDarkFooterBackground">
+                <div class="siteMaxWidth siteSidePadding shellVerticalPadding">
+
+                    <p class="fontPrimary bodyLarge">{# TODO: uncomment when kickstarter is live, and remove when kickstarter is good #}{# Have questions? Please use the <a href="">contact form</a> on our Kickstarter page.For press inquiries, <a href="mailto:jeremy@launchapp.io">jeremy@launchapp.io</a>. #} For general questions or press inquiries contact <a href="mailto:jeremy@launchapp.io">jeremy@launchapp.io</a>.  To discuss investing, <a href="mailto:chad@launchapp.io">chad@launchapp.io</a>.</p>
+                </div>
+            </div>
+        </div>
+
+        {#
+        <div id="footer" class="clearfix fontPrimary">
+            <div class="siteMaxWidth siteSidePadding">
+                <div class="footerPhone pull-right">
+                    {{ block('sitePhone') }}
+                </div>
+                <div class="footerEmail">
+                    {{ block('siteEmail') }}
+                </div>
+            </div>
+        </div>
+        #}
+
+    {% endblock content %}
+{% endblock contentType %}
