@@ -665,7 +665,9 @@ CONSTANT CONTACT FORM OVERWRITE
 .popup .form-control.required {
     border: 1px solid #f4df02;
 }
-.signupForm
+.form-status-sending {
+    opacity: 0.5
+}
 
 /* On Form Success */
 /*

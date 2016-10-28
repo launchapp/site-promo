@@ -110,6 +110,12 @@
 
         function send($form) {
 
+            // Add Loading Status
+            var btnSubmit = $form.find('.signupAction .btnText');
+            if(!btnSubmit.dataAttr('text')) btnSubmit.dataAttr('text', btnSubmit.text());
+            toggleSubmitButton(btnSubmit, 'off')
+
+
             var payload = makePayload($form);
             var meta = {
                 'method': 'new'
@@ -123,10 +129,24 @@
                         $(el).removeClass('hide');
                     });
                 }
+                toggleSubmitButton(btnSubmit, 'on')
             }, function () {
                 errorResult($form);
+                toggleSubmitButton(btnSubmit, 'on')
             });
 
+        }
+
+        function toggleSubmitButton(btnSubmit, status) {
+            if(status == 'off') {
+                btnSubmit.addClass('form-status-sending');
+                btnSubmit.text('Sending...');
+                btnSubmit.prop('disabled', true);
+            } else {
+                btnSubmit.removeClass('form-status-sending');
+                btnSubmit.text(btnSubmit.dataAttr('text'));
+                btnSubmit.prop('disabled', true);
+            }
         }
 
         function errorResult($form, message) {
