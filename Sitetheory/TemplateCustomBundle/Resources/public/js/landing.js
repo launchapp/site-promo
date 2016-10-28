@@ -91,9 +91,9 @@
 
 
         /**
-         * MailChimp Submission
+         * REGISTRATION
          */
-        var formClass = 'mailChimpSignup';
+        var formClass = 'registrationForm';
 
         // Support Multiple Forms inside an element of this class name
         var forms = $('.'+formClass+' form');
@@ -101,39 +101,42 @@
             $.each(forms, function(i, el) {
                 $(el).submit(function (event) {
                     if (event) event.preventDefault();
-                    // validate_input() is a validation function I wrote, you'll have to substitute this with your own.
                     if (validate_input($(el))) {
-                        register($(el));
+                        send($(el));
                     }
                 });
             });
         }
 
-        function register($form) {
-            $.ajax({
-                type: 'get',
-                url: '//launchapp.us14.list-manage.com/subscribe/post-json?u='+$form.data('user')+'&id='+$form.data('id')+'&c=?',
-                data: $form.serialize(),
-                cache: false,
-                dataType: 'json',
-                contentType: "application/json; charset=utf-8",
-                error: function(err) {
-                    $form.prepend('<div class="form-error">Oops, there was a problem connecting ;( <br>Email us at <a href="mailto:help@launchapp.io">help@launchapp.io</a> and we will add you manually.</div>');
-                    ga('send', 'event', 'error', 'form', $form.find('input[name="EMAIL"]').val());
-                },
-                success: function(data) {
-                    if (data.result != "success") {
-                        $form.prepend('<div class="form-error">Oops, there was a problem ;( <br>'+data.msg+'<br>Email us at <a href="mailto:help@launchapp.io">help@launchapp.io</a> for more help.</div>');
-                        ga('send', 'event', 'error', 'form', $form.find('input[name="EMAIL"]').val());
-                    } else {
-                        $form.hide();
-                        $.each($form.parent().find('.success_message'), function (i, el) {
-                            $(el).removeClass('hide');
-                        });
-                    }
+        function send($form) {
+
+            var payload = makePayload($form);
+            var meta = {
+                'method': 'new'
+            };
+            Stratus.Internals.Api('User', meta, payload).done(function (response) {
+                if (response.meta.status[0].code != "SUCCESS") {
+                    errorResult($form, 'Oops, there was a problem ;( <br><br>'+response.meta.status[0].message);
+                } else {
+                    $form.hide();
+                    $.each($form.parent().find('.success_message'), function (i, el) {
+                        $(el).removeClass('hide');
+                    });
                 }
+            }, function () {
+                errorResult($form);
             });
+
         }
+
+        function errorResult($form, message) {
+            if(!message) {
+                message = 'Oops, there was a problem ;(';
+            }
+            $form.prepend('<div class="form-error">'+message+' <br><br>Email us at <a href="mailto:help@launchapp.io">help@launchapp.io</a> and we will add you manually.</div>');
+            ga('send', 'event', 'error', 'form', $form.find('input[name="email"]').val());
+        }
+
 
         function validate_email(email) {
             var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
@@ -153,7 +156,7 @@
                     if(!$(el).val()) {
                         elError = 'Please provide a valid value.';
                     }
-                    if($(el).attr('name')=='EMAIL') {
+                    if($(el).attr('name')=='email') {
                         var emailValid = validate_email($(el).val());
                         if(!emailValid) {
                             elError = 'Please provide a valid email address.';
@@ -167,6 +170,25 @@
                 }
             });
             return results;
+        }
+
+        // Customize Payload for this unique form
+        function makePayload($form) {
+            var dataObject = $form.serializeArray();
+            var data = {};
+            $.each(dataObject, function(i, el) {
+                data[el.name] = el.value;
+            });
+            var payload = {
+                'email': data.email,
+                'profile': {
+                    'gender': data.gender,
+                    'relationshipStatus': data.relationshipStatus,
+                    'zip': data.zip,
+                    'ageGroup': data.ageGroup
+                }
+            };
+            return payload;
         }
 
 

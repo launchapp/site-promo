@@ -657,11 +657,8 @@ set contentVersionOptions = {
     </div>
 {% endblock socialMedia %}
 
-
-
-{# REUSABLE FORM BLOCK #}
-{% block mailChimpSignup %}
-    <div class="mailChimpSignup">
+{% block registrationForm %}
+    <div class="registrationForm">
         <form data-user="{{ signupUser }}" data-id="{{ signupListId }}">
             <div class="logo">
                 <img src="{{ asset('bundles/sitetheorytemplatecustom/images/launchLogoMark.png') }}" alt="">
@@ -670,42 +667,42 @@ set contentVersionOptions = {
             <p class="note fontBody">{{ signupText|default("We'll let you know when it's ready!") }}</p>
 
             <div class="form-group">
-                <input type="email" value="" name="EMAIL" class="required email form-control smallLabel fontPrimary" id="mce-EMAIL" placeholder="Email Address">
+                <input type="email" value="" name="email" class="required email form-control smallLabel fontPrimary" placeholder="Email Address">
             </div>
 
             <div class="form-group">
-                <input type="text" value="" name="ZIP" class="required email form-control smallLabel fontPrimary registerZip" id="mce-ZIP" maxlength="10" placeholder="Postal Code" data-ip="{{ environment.ip }}">
+                <input type="text" value="" name="zip" class="required email form-control smallLabel fontPrimary registerZip" maxlength="10" placeholder="Postal Code" data-ip="{{ environment.ip }}">
             </div>
 
             <div class="form-group">
-                <select name="STATUS" class="required form-control smallLabel fontPrimary" id="mce-STATUS">
+                <select name="relationshipStatus" class="required form-control smallLabel fontPrimary">
                     <option value="">Status</option>
-                    <option value="Single">Single</option>
-                    <option value="Taken (matchmaker)">Taken (matchmaker)</option>
+                    <option value="1">Single</option>
+                    <option value="2">Taken (matchmaker)</option>
                 </select>
             </div>
 
             <h4>Optional (and Helpful!)</h4>
 
             <div class="form-group">
-                <select name="GENDER" class="form-control smallLabel fontPrimary" id="mce-GENDER">
+                <select name="gender" class="form-control smallLabel fontPrimary">
                     <option value="">Gender</option>
-                    <option value="Female">Female</option>
-                    <option value="Male">Male</option>
-                    <option value="Unlisted">Unlisted</option>
+                    <option value="1">Female</option>
+                    <option value="2">Male</option>
+                    <option value="0">Unlisted</option>
 
                 </select>
             </div>
             <div class="form-group">
-                <select name="AGE" class="form-control smallLabel fontPrimary" id="mce-AGE">
+                <select name="ageGroup" class="form-control smallLabel fontPrimary">
                     <option value="">Age Group</option>
-                    <option value="High School">High School</option>
-                    <option value="College">College</option>
-                    <option value="Under 30">Under 30</option>
-                    <option value="30-39">30-39</option>
-                    <option value="40-49">40-49</option>
-                    <option value="50-59">50-59</option>
-                    <option value="60+">60+</option>
+                    <option value="1">High School</option>
+                    <option value="2">College</option>
+                    <option value="3">Under 30</option>
+                    <option value="4">30-39</option>
+                    <option value="5">40-49</option>
+                    <option value="6">50-59</option>
+                    <option value="7">60+</option>
                 </select>
             </div>
 
@@ -721,13 +718,13 @@ set contentVersionOptions = {
 
         <div id="{{ signupId }}success_message" class="success_message hide">
             <h2 class="success_message_thanks">Thanks</h2>
-            <div class="success_message_details note fontSecondary">You rock! We'll let you know when the Kickstarter campaign is live.<br><br>Check your email to confirm and complete signup.</div>
+            <div class="success_message_details note fontSecondary">You rock! We'll let you know when the Kickstarter campaign is live.</div>
             <div class="success_message_sharing">
                 {{ block('shareButtons') }}
             </div>
         </div>
     </div>
-{% endblock mailChimpSignup %}
+{% endblock registrationForm %}
 
 
 {% block popup %}
@@ -745,7 +742,7 @@ set contentVersionOptions = {
                     {% embed '@SitetheoryTemplatePromoBundle/Resources/public/images/icons/close.svg'%}{%  block id  %}iconClose{% endblock %}{% endembed %}
                 </div>
 
-                {{ block('mailChimpSignup') }}
+                {{ block('registrationForm') }}
 
             </div>
         </div>
@@ -766,7 +763,7 @@ set contentVersionOptions = {
                     {% embed '@SitetheoryTemplatePromoBundle/Resources/public/images/icons/close.svg'%}{%  block id  %}iconClose{% endblock %}{% endembed %}
                 </div>
 
-                {{ block('mailChimpSignup') }}
+                {{ block('registrationForm') }}
 
             </div>
         </div>
