@@ -719,7 +719,7 @@ set contentVersionOptions = {
 
         <div id="{{ signupId }}success_message" class="success_message hide">
             <h2 class="success_message_thanks">Thanks</h2>
-            <div class="success_message_details note fontSecondary">You rock! We'll let you know when the Kickstarter campaign is live.</div>
+            <div class="success_message_details note fontSecondary">{{ signupSuccess }}</div>
             <div class="success_message_sharing">
                 {{ block('shareButtons') }}
             </div>
@@ -734,6 +734,7 @@ set contentVersionOptions = {
         {% set signupId = 'beta' %}
         {% set signupTitle = 'Beta Signup' %}
         {% set signupText = "We'll let you know when it's ready!" %}
+        {% set signupSuccess = "You rock! We'll let you know when the app is ready." %}
         {% set signupListId = '1' %}
         <div id="{{ signupId }}Popup" class="popup">
             <div id="{{ signupId }}PopupContent" class="popupContent springIn borderRadiusDefault">
@@ -752,6 +753,7 @@ set contentVersionOptions = {
     {% block kickstarterSignup %}
         {% set signupId = 'kickstarter' %}
         {% set signupTitle = 'Kickstarter Signup' %}
+        {% set signupSuccess = "You rock! We'll let you know when the Kickstarter campaign is live." %}
         {% set signupText = "Our campaign isn't quite ready yet (October-ish), but we really need your support. We'll update you when it's ready!" %}
         {% set signupListId = '2' %}
 
