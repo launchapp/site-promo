@@ -121,8 +121,14 @@
                 'method': 'new'
             };
             Stratus.Internals.Api('User', meta, payload).done(function (response) {
-                if (response.meta.status[0].code != "SUCCESS") {
-                    errorResult($form, 'Oops, there was a problem ;( <br><br>'+response.meta.status[0].message);
+                var success = false;
+                var statusMessage = [];
+                $.each(response.meta.status, function(i, el) {
+                    if(el.code === 'SUCCESS') success = true;
+                    statusMessage.push(el.message);
+                });
+                if (!success) {
+                    errorResult($form, 'Oops, there was a problem ;( <br><br>'+statusMessage.join('<br><br>'));
                 } else {
                     $form.hide();
                     $.each($form.parent().find('.success_message'), function (i, el) {
@@ -206,7 +212,7 @@
                     'relationshipStatus': data.relationshipStatus,
                     'zip': data.zip,
                     'ageGroup': data.ageGroup,
-                    'mailingList': data.listId
+                    'mailLists': [parseInt(data.listId)]
                 }
             };
             return payload;
