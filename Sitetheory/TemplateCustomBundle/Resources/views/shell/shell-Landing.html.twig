@@ -659,7 +659,8 @@ set contentVersionOptions = {
 
 {% block registrationForm %}
     <div class="registrationForm">
-        <form data-user="{{ signupUser }}" data-id="{{ signupListId }}">
+        <form>
+            <input type="hidden" name="listId" value="{{ signupListId }}">
             <div class="logo">
                 <img src="{{ asset('bundles/sitetheorytemplatecustom/images/launchLogoMark.png') }}" alt="">
             </div>
@@ -733,8 +734,7 @@ set contentVersionOptions = {
         {% set signupId = 'beta' %}
         {% set signupTitle = 'Beta Signup' %}
         {% set signupText = "We'll let you know when it's ready!" %}
-        {% set signupUser = 'e69bdbd4c8c87ace94b1d5259' %}
-        {% set signupListId = '9fb53f81a4' %}
+        {% set signupListId = '1' %}
         <div id="{{ signupId }}Popup" class="popup">
             <div id="{{ signupId }}PopupContent" class="popupContent springIn borderRadiusDefault">
                 <div id="{{ signupId }}PopupClose" class="popupClose btnClose" data-plugin="AddClass Dim" data-class="active" data-target="#{{ signupId }}Popup" data-event="click">
@@ -753,8 +753,7 @@ set contentVersionOptions = {
         {% set signupId = 'kickstarter' %}
         {% set signupTitle = 'Kickstarter Signup' %}
         {% set signupText = "Our campaign isn't quite ready yet (October-ish), but we really need your support. We'll update you when it's ready!" %}
-        {% set signupUser = 'e69bdbd4c8c87ace94b1d5259' %}
-        {% set signupListId = '9187fe8f0a' %}
+        {% set signupListId = '2' %}
 
         <div id="{{ signupId }}Popup" class="popup">
             <div id="{{ signupId }}PopupContent" class="popupContent springIn borderRadiusDefault">

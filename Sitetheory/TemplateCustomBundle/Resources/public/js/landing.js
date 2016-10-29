@@ -205,7 +205,8 @@
                     'gender': data.gender,
                     'relationshipStatus': data.relationshipStatus,
                     'zip': data.zip,
-                    'ageGroup': data.ageGroup
+                    'ageGroup': data.ageGroup,
+                    'mailingList': data.listId
                 }
             };
             return payload;
