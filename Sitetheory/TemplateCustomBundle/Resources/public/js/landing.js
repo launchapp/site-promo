@@ -6,7 +6,6 @@
         factory(root.Stratus, root.$, root._);
     }
 }(this, function (Stratus, $, _) {
-
     Stratus.DOM.ready(function () {
 
         function trackEvent(el) {
@@ -30,7 +29,7 @@
 
         // Track YouTube Actions
         if($('#launchVideo').length) {
-            var player = new YT.Player('launchVideo', {
+            var player = new window.YT.Player('launchVideo', {
                 events: {
                     'onReady': onPlayerReady,
                     'onStateChange': onPlayerStateChange
@@ -74,7 +73,7 @@
         // Get IP and Zip
         var ip = $('.registerZip').first().data('ip');
         if (ip.length > 0) {
-            $.getJSON('https://ipapi.co/' + ip + '/json', function (data) {
+            $.getJSON('https://ipapi.co/' + ip + '/json/', function (data) {
                 if (!data) return false;
                 if (data.postal) {
                     $.each($('.registerZip'), function (i, el) {
