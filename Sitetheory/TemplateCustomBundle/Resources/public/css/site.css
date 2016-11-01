@@ -524,6 +524,7 @@ h4,
 
 /* POPUP SIGNUP FORMS */
 .popup {
+    display: none;
     transition: transform .2s ease-out;
     -webkit-transition: transform .2s ease-out;
     transform: scale(.4);
@@ -532,13 +533,14 @@ h4,
     z-index: 1001;
     top: 0px;
     left: 0px;
+    right: 0px;
+    bottom: 0px;
     opacity: 0;
-    width: 100%;
-    max-height: 100%;
     overflow: scroll;
     text-align: center;
 }
 .popup.active {
+    display: block;
     transform: scale(1);
     -webkit-transform: scale(1);
     opacity: 1;
@@ -706,8 +708,16 @@ by randomly adding style="display: none;" on the #success_message so we use a di
 }
 @media (max-width: 600px) {
     .popupContent {
-        width: 300px;
+        margin: 0;
+        width: 100%;
         padding: 30px;
+    }
+    .popup .disclaimer {
+        transform: none;
+        -webkit-transform: none;
+        position: relative;
+        width: auto;
+        margin-top: 40px;
     }
 }
 
