@@ -654,7 +654,7 @@ h4,
 
 
 /**
-CONSTANT CONTACT FORM OVERWRITE
+FORM OVERWRITE
 */
 .popup .form-error {
     color: #f47c5b;
@@ -667,6 +667,9 @@ CONSTANT CONTACT FORM OVERWRITE
 }
 .form-status-sending {
     opacity: 0.5
+}
+.formFields[disabled] {
+    display: none;
 }
 
 /* On Form Success */

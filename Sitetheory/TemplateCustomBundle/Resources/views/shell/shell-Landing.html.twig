@@ -660,61 +660,69 @@ set contentVersionOptions = {
 {% block registrationForm %}
     <div class="registrationForm">
         <form>
-            <input type="hidden" name="listId" value="{{ signupListId }}">
             <div class="logo">
                 <img src="{{ asset('bundles/sitetheorytemplatecustom/images/launchLogoMark.png') }}" alt="">
             </div>
             <h2 class="signupTitle">{{ signupTitle|default("Notification Signup") }}</h2>
-            <p class="note fontBody">{{ signupText|default("We'll let you know when it's ready!") }}</p>
-
-            <div class="form-group">
-                <input type="email" value="" name="email" class="required email form-control smallLabel fontPrimary" placeholder="Email Address">
+            <div class="formLoadingError">
+                <h3 class="">Loading Error ;(</h3>
+                <p>There was an error that prevented our form from loading. Please refresh the page, or email hello@launchapp.io so we can manually add you to the list.</p>
             </div>
+            {# Fields are disabled by default UNLESS javascript enables them #}
+            <fieldset class="formFields" disabled>
+                <input type="hidden" name="listId" value="{{ signupListId }}">
 
-            <div class="form-group">
-                <input type="text" value="" name="zip" class="required email form-control smallLabel fontPrimary registerZip" maxlength="10" placeholder="Postal Code" data-ip="{{ environment.ip }}">
-            </div>
+                <p class="note fontBody">{{ signupText|default("We'll let you know when it's ready!") }}</p>
 
-            <div class="form-group">
-                <select name="relationshipStatus" class="required form-control smallLabel fontPrimary">
-                    <option value="">Status</option>
-                    <option value="1">Single</option>
-                    <option value="2">Partnered (matchmaker)</option>
-                </select>
-            </div>
+                <div class="form-group">
+                    <input type="email" value="" name="email" class="required email form-control smallLabel fontPrimary" placeholder="Email Address">
+                </div>
 
-            <h4>Optional (and Helpful!)</h4>
+                <div class="form-group">
+                    <input type="text" value="" name="zip" class="required email form-control smallLabel fontPrimary registerZip" maxlength="10" placeholder="Postal Code" data-ip="{{ environment.ip }}">
+                </div>
 
-            <div class="form-group">
-                <select name="gender" class="form-control smallLabel fontPrimary">
-                    <option value="">Gender</option>
-                    <option value="1">Female</option>
-                    <option value="2">Male</option>
-                    <option value="0">Unlisted</option>
+                <div class="form-group">
+                    <select name="relationshipStatus" class="required form-control smallLabel fontPrimary">
+                        <option value="">Status</option>
+                        <option value="1">Single</option>
+                        <option value="2">Partnered (matchmaker)</option>
+                    </select>
+                </div>
 
-                </select>
-            </div>
-            <div class="form-group">
-                <select name="ageGroup" class="form-control smallLabel fontPrimary">
-                    <option value="">Age Group</option>
-                    <option value="1">High School</option>
-                    <option value="2">College</option>
-                    <option value="3">Under 30</option>
-                    <option value="4">30-39</option>
-                    <option value="5">40-49</option>
-                    <option value="6">50-59</option>
-                    <option value="7">60+</option>
-                </select>
-            </div>
+                <h4>Optional (and Helpful!)</h4>
 
-            <div class="signupAction">
-                <button type="submit" class="submit btn fontPrimary bold btn positionAnchor" data-enabled="enabled">
-                    <span class="btnGradient"></span>
-                    <span class="btnText" data-trackCategory="CTA" data-trackLabel="signup" data-trackValue="{{ signupId }}">Sign Up</span>
-                </button>
-            </div>
+                <div class="form-group">
+                    <select name="gender" class="form-control smallLabel fontPrimary">
+                        <option value="">Gender</option>
+                        <option value="1">Female</option>
+                        <option value="2">Male</option>
+                        <option value="0">Unlisted</option>
 
-            <p class="disclaimer">By submitting this form, you are granting: Launch Social Inc., 1330 N Broadway, Ste 200H, Walnut Creek, California, 94596, United States, permission to email you. You may unsubscribe via the link found at the bottom of every email.</p>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <select name="ageGroup" class="form-control smallLabel fontPrimary">
+                        <option value="">Age Group</option>
+                        <option value="1">High School</option>
+                        <option value="2">College</option>
+                        <option value="3">Under 30</option>
+                        <option value="4">30-39</option>
+                        <option value="5">40-49</option>
+                        <option value="6">50-59</option>
+                        <option value="7">60+</option>
+                    </select>
+                </div>
+
+                <div class="signupAction">
+                    <button type="submit" class="submit btn fontPrimary bold btn positionAnchor" disabled>
+                        <span class="btnGradient"></span>
+                        <span class="btnText" data-trackCategory="CTA" data-trackLabel="signup" data-trackValue="{{ signupId }}">Sign Up</span>
+                    </button>
+                </div>
+
+                <p class="disclaimer">By submitting this form, you are granting: Launch Social Inc., 1330 N Broadway, Ste 200H, Walnut Creek, California, 94596, United States, permission to email you. You may unsubscribe via the link found at the bottom of every email.</p>
+            </fieldset>
         </form>
 
         <div id="{{ signupId }}success_message" class="success_message hide">

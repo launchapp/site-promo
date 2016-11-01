@@ -98,6 +98,15 @@
         var forms = $('.'+formClass+' form');
         if ( forms.length > 0 ) {
             $.each(forms, function(i, el) {
+
+                // If Javascript is Working...
+                // Hide Error Saying JS isn't working
+                $(el).find('.formLoadingError').hide();
+                // Enable Form
+                $(el).find('.formFields').attr('disabled', false);
+                $(el).find('.formFields').show();
+                // Enable Form Submit Button
+                $(el).find('button').attr('disabled', false);
                 $(el).submit(function (event) {
                     if (event) event.preventDefault();
                     if (validate_input($(el))) {
