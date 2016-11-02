@@ -10,6 +10,7 @@ TODO: remove kickstarter referenceS once we link out.
 /* BODY */
 
 body {
+    position: relative;
     background: #FFF;
 }
 body, p {
@@ -261,7 +262,7 @@ h4,
         right: 40px;
     }
     #header {
-        height: 62px;
+        min-height: 62px;
     }
     #logoHeader {
         margin-bottom: 4px;
@@ -523,12 +524,23 @@ h4,
 }
 
 /* POPUP SIGNUP FORMS */
+/* TODO: this can be removed once the live server has the latest files from plugins.css */
+body.dim {
+    overflow: hidden;
+    position: fixed;
+}
+
 .popup {
     display: none;
     transition: transform .2s ease-out;
     -webkit-transition: transform .2s ease-out;
     transform: scale(.4);
     -webkit-transform: scale(.4);
+    /*
+    NOTE: iOS screws up the touch locations of elements that are fixed, when the background scrolls, changing this to
+    absolute fixed the problem, but unfortunately allows the whole popup to scroll (necessary in case the popup doesn't fit
+    on the screen). The solution we found was to turn off scrolling on the body when the dim is on. This is preferred if it works.
+    */
     position: fixed;
     z-index: 1001;
     top: 0px;
@@ -720,6 +732,7 @@ by randomly adding style="display: none;" on the #success_message so we use a di
         margin-top: 40px;
     }
 }
+
 
 
 /**
