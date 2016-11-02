@@ -66,12 +66,28 @@ set contentVersionOptions = {
         // Use Require.js or Contextual Scope
         (function (root, factory) {
             if (typeof require === 'function') {
-                require(['stratus', 'jquery', 'underscore'], factory);
+                require(['stratus', 'jquery', 'underscore', 'backbone'], factory);
             } else {
-                factory(root.Stratus, root.$, root._);
+                factory(root.Stratus, root.$, root._, root.Backbone);
             }
-        }(this, function (Stratus, $, _) {
+        }(this, function (Stratus, $, _, Backbone) {
             Stratus.DOM.ready(function () {
+
+
+                // Check Audience: default to "single"
+                Stratus.Routers.ShowAudience = Backbone.Router.extend({
+                    routes: {
+                        'show/:id': 'setAudience'
+                    },
+                    initialize: function (options) {
+                        this.setAudience(options.default)
+                    },
+                    setAudience: function (id) {
+                        $('body').attr('data-show', id);
+                    }
+                });
+                var showAudience = new Stratus.Routers.ShowAudience({"default":"single"});
+
 
                 function trackEvent(el) {
                     var trackCategory = el.dataAttr('trackCategory') || 'unknown';
@@ -323,7 +339,7 @@ set contentVersionOptions = {
     <meta property="og:description" content="Online dating kinda sucks. So we designed something new. And now we need your help.">
 {% endblock meta %}
 
-
+{# Default to Single Audience #}
 {% block appClass %}landingFull{% endblock appClass %}
 
 {% block bodyAttributes %}
@@ -464,32 +480,61 @@ set contentVersionOptions = {
 
 {% block content %}
 
+    <div id="selectAudience">
+        <h2>
+            Speak
+
+            <div class="toggleWidget">
+                <div class="toggleSlider">
+                    <a href="#show/partnered" data-scroll="false" class="currentSingle toggleOption" data-plugin="AddClass" data-class="audiencePartnered" data-target="#app" data-event="click" data-trackCategory="CTA" data-trackLabel="audience" data-trackValue="partnered">
+                        {# We display their current option, clicking switches to the other #}
+                        <span class="toggleText">Single</span>
+                        <span class="toggleHandle"></span>
+                    </a>
+                    <a href="#show/single" data-scroll="false" class="currentPartnered toggleOption" data-plugin="AddClass" data-class="audienceSingle" data-target="#app" data-event="click" data-trackCategory="CTA" data-trackLabel="audience" data-trackValue="single">
+                        {# We display their current option, clicking switches to the other #}
+                        <span class="toggleText">Matchmaker</span>
+                        <span class="toggleHandle"></span>
+                    </a>
+
+                </div>
+            </div>
+
+            to Me
+        </h2>
+
+        <div>This app was built for <strong><span class="showPartnered">matchmakers</span><span class="showSingle">hip singles</span></strong> like you.</div>
+    </div>
+
     {# TIER 1 VIDEO #}
     <div id="tier1" class="landingTier siteMaxWidth siteSidePadding shellVerticalPadding">
         <div class="clearfix">
-                <div id="tier1Left" class="pull-left">
-                    <h1>{{ contentVersion.title|raw }}</h1>
-                    <div class="borderDashed">
-                        <p class="fontPrimary">{{ contentVersion.description|raw }}</p>
-                    </div>
+            <div id="tier1Left" class="pull-left">
+                <h1>{{ contentVersion.title|raw }}</h1>
+                <div class="borderDashed">
+                    <p class="fontPrimary">{{ contentVersion.description|raw }}</p>
                 </div>
-                <div id="tier1Right" class="pull-left">
-                    <div id="tier1video" class="responsiveObject">
-                        <iframe id="launchVideo" width="700" height="394" src="https://www.youtube.com/embed/IlANPQfnc_M?rel=0&showinfo=0&modestbranding=1&enablejsapi=1" frameborder="0" allowfullscreen></iframe>
-                    </div>
-                    <div class="borderDashed clearfix">
-                        <div id="tier1action" class="pull-right">
-                            <span class="fontPrimary bodyLarge optionalText">Help us build it!</span>
-                            {#<a class="btn" href="">Kickstarter Campaign</a>#}
-                            <div class="btn positionAnchor" data-plugin="AddClass Dim" data-class="active" data-target="#kickstarterPopup" data-event="click" >
-                                <div class="btnText" data-trackCategory="CTA" data-trackLabel="kickstarter" data-trackValue="top">Kickstarter Campaign</div>
-                                <div class="btnGradient"></div>
-                            </div>
+            </div>
+            <div id="tier1Right" class="pull-left">
+                <div id="tier1video" class="responsiveObject">
+                    <iframe id="launchVideo" width="700" height="394" src="https://www.youtube.com/embed/IlANPQfnc_M?rel=0&showinfo=0&modestbranding=1&enablejsapi=1" frameborder="0" allowfullscreen></iframe>
+                </div>
+                <div class="borderDashed clearfix">
+                    <div id="tier1action" class="pull-right">
+                        <span class="fontPrimary bodyLarge optionalText">Help us build it!</span>
+                        {#<a class="btn" href="">Kickstarter Campaign</a>#}
+                        <div class="btn positionAnchor" data-plugin="AddClass Dim" data-class="active" data-target="#kickstarterPopup" data-event="click" >
+                            <div class="btnText" data-trackCategory="CTA" data-trackLabel="kickstarter" data-trackValue="top">Kickstarter Campaign</div>
+                            <div class="btnGradient"></div>
                         </div>
                     </div>
                 </div>
+            </div>
         </div>
+
+
     </div>
+
 
     {# TIER 2 BROKEN STATUS QUO #}
     <div id="tier2" class="landingTier">

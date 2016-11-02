@@ -799,3 +799,89 @@ body.dim #app {
 #sharingIsCaring .btn.shareGoogle:hover {
     background: #558D41;
 }
+
+
+
+/* SHOW FOR AUDIENCE: single, partnered (default hidden until we know) */
+.showSingle, .showPartnered {
+    display: none;
+}
+[data-show="single"] .showSingle {
+    display: initial;
+}
+[data-show="single"] .showPartnered {
+    display: none;
+}
+[data-show="partnered"] .showPartnered {
+    display: initial;
+}
+[data-show="partnered"] .showSingle {
+    display: none;
+}
+
+/* Toggle */
+#selectAudience {
+    text-align: center;
+}
+.toggleWidget {
+    display: inline-block;
+    position: relative;
+    overflow: hidden;
+    width: 250px;
+    border: 1px solid #bcbcbc;
+    height: 40px;
+    background-color: #CCC;
+}
+.toggleSlider {
+    position: absolute;
+    width: 200%;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    transition: left .35s;
+        -webkit-transition: left .35s;
+}
+.toggleHandle {
+    display: inline-block;
+    height: 100%;
+    width: 25px;
+    background-color: #CCC;
+    border: 1px solid #999;
+}
+.toggleOption {
+    display: block;
+    position: absolute;
+    width: 50%;
+    top: 0;
+    bottom: 0;
+    margin: 0;
+    color: #333 !important;
+    text-align: center;
+}
+.currentSingle {
+    left: 0;
+    right: 50%;
+    background-color: #b7e0ff;
+}
+.currentSingle .toggleHandle {
+    float: right;
+    border-radius: 4px 0 0 4px;
+    border-right: 0;
+}
+.currentPartnered {
+    right: 0;
+    left: 50%;
+    background-color: #edd8a6;
+}
+.currentPartnered .toggleHandle {
+    float: left;
+    border-radius: 0 4px 4px 0;
+    border-left: 0;
+}
+
+[data-show="single"] .toggleSlider {
+    left: 0;
+}
+[data-show="partnered"] .toggleSlider {
+    left: -100%;
+}
