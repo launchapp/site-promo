@@ -29,7 +29,7 @@ Launch is an app for everyone disappointed with the current dating experience (p
 set contentVersionOptions = {
     'a': {
         'title': 'Happiness Shouldn&rsquo;t Be So Hard',
-        'description': 'Online dating kinda’ sucks. So we designed something new. And now we need your help.'
+        'description': 'Online dating kinda&rsquo; sucks. So we designed something new. And now we need your help.'
         },
     'b': {
         'title': 'The Cure for Dating Apps',
@@ -38,10 +38,26 @@ set contentVersionOptions = {
     'c': {
         'title': 'Dating apps kinda&rsquo; suck.',
         'description': 'Someone you love is using one and hating it. They deserve better. Let&rsquo;s give it to them.'
+        },
+    'd': {
+        'title': 'Dating Apps Suck',
+        'description': 'It&rsquo;s 2016. Online dating shouldn&rsquo;t be this bad still. It&rsquo;s time to fix it. You in?'
+        },
+    'e': {
+        'title': 'Dating Apps Suck',
+        'description': 'Someone you love is using one and hating it. They deserve better. Let&rsquo;s give it to them.'
+        },
+    'f': {
+        'title': 'Ready for Happiness?',
+        'description': 'Online dating sucks. So we designed something new. And now we need your help.'
+        },
+    'g': {
+        'title': 'Help Spread Happiness',
+        'description': 'Be a friend. Send people you care about on better dates.'
         }
-    }
+}
 %}
-{% set contentVersionRequest = 'a' %}
+{% set contentVersionRequest = 'b' %}
 {% if environment.request.query.get('t') is not empty and contentVersionOptions[environment.request.query.get('t')] is defined %}
     {% set contentVersionRequest = environment.request.query.get('t') %}
 {% endif %}
@@ -479,7 +495,7 @@ set contentVersionOptions = {
 {% endblock header1 %}
 
 {% block content %}
-
+    {#
     <div id="selectAudience">
         <h2>
             Speak
@@ -487,12 +503,10 @@ set contentVersionOptions = {
             <div class="toggleWidget">
                 <div class="toggleSlider">
                     <a href="#show/partnered" data-scroll="false" class="currentSingle toggleOption" data-plugin="AddClass" data-class="audiencePartnered" data-target="#app" data-event="click" data-trackCategory="CTA" data-trackLabel="audience" data-trackValue="partnered">
-                        {# We display their current option, clicking switches to the other #}
                         <span class="toggleText">Single</span>
                         <span class="toggleHandle"></span>
                     </a>
                     <a href="#show/single" data-scroll="false" class="currentPartnered toggleOption" data-plugin="AddClass" data-class="audienceSingle" data-target="#app" data-event="click" data-trackCategory="CTA" data-trackLabel="audience" data-trackValue="single">
-                        {# We display their current option, clicking switches to the other #}
                         <span class="toggleText">Matchmaker</span>
                         <span class="toggleHandle"></span>
                     </a>
@@ -505,6 +519,7 @@ set contentVersionOptions = {
 
         <div>This app was built for <strong><span class="showPartnered">matchmakers</span><span class="showSingle">hip singles</span></strong> like you.</div>
     </div>
+    #}
 
     {# TIER 1 VIDEO #}
     <div id="tier1" class="landingTier siteMaxWidth siteSidePadding shellVerticalPadding">
