@@ -108,9 +108,9 @@ set contentVersionOptions = {
 
                 function trackEvent(el) {
                     var trackCategory = el.dataAttr('trackCategory') || 'unknown';
+                    var trackAction = el.dataAttr('trackAction') || null;
                     var trackLabel = el.dataAttr('trackLabel') || null;
-                    var trackValue = el.dataAttr('trackValue') || null;
-                    ga('send', 'event', trackCategory, trackLabel, trackValue);
+                    ga('send', 'event', trackCategory, trackAction, trackLabel);
                 }
 
                 // Track Version of Page
@@ -404,7 +404,7 @@ set contentVersionOptions = {
 {# Put Beta Signup in Sidebar #}
 {% block sidebarExtrasTop %}
     {% block betaButton %}
-        <div class="btn betaSignupBtn"  data-plugin="AddClass Dim" data-class="active" data-target="#betaPopup" data-event="click" data-trackCategory="CTA" data-trackLabel="beta" data-trackValue="top">
+        <div class="btn betaSignupBtn"  data-plugin="AddClass Dim" data-class="active" data-target="#betaPopup" data-event="click" data-trackCategory="CTA" data-trackAction="beta" data-trackLabel="top">
             Beta Signup
         </div>
     {% endblock betaButton %}
@@ -514,11 +514,11 @@ set contentVersionOptions = {
 
             <div class="toggleWidget">
                 <div class="toggleSlider">
-                    <a href="#show/partnered" data-scroll="false" class="currentSingle toggleOption" data-plugin="AddClass" data-class="audiencePartnered" data-target="#app" data-event="click" data-trackCategory="CTA" data-trackLabel="audience" data-trackValue="partnered">
+                    <a href="#show/partnered" data-scroll="false" class="currentSingle toggleOption" data-plugin="AddClass" data-class="audiencePartnered" data-target="#app" data-event="click" data-trackCategory="CTA" data-trackAction="audience" data-trackLabel="partnered">
                         <span class="toggleText">Single</span>
                         <span class="toggleHandle"></span>
                     </a>
-                    <a href="#show/single" data-scroll="false" class="currentPartnered toggleOption" data-plugin="AddClass" data-class="audienceSingle" data-target="#app" data-event="click" data-trackCategory="CTA" data-trackLabel="audience" data-trackValue="single">
+                    <a href="#show/single" data-scroll="false" class="currentPartnered toggleOption" data-plugin="AddClass" data-class="audienceSingle" data-target="#app" data-event="click" data-trackCategory="CTA" data-trackAction="audience" data-trackLabel="single">
                         <span class="toggleText">Matchmaker</span>
                         <span class="toggleHandle"></span>
                     </a>
@@ -551,7 +551,7 @@ set contentVersionOptions = {
                         <span class="fontPrimary bodyLarge optionalText">Help us build it!</span>
                         {#<a class="btn" href="">Kickstarter Campaign</a>#}
                         <div class="btn positionAnchor" data-plugin="AddClass Dim" data-class="active" data-target="#kickstarterPopup" data-event="click" >
-                            <div class="btnText" data-trackCategory="CTA" data-trackLabel="kickstarter" data-trackValue="top">Kickstarter Campaign</div>
+                            <div class="btnText" data-trackCategory="CTA" data-trackAction="kickstarter" data-trackLabel="top">Kickstarter Campaign</div>
                             <div class="btnGradient"></div>
                         </div>
                     </div>
@@ -713,7 +713,7 @@ set contentVersionOptions = {
         <div id="tier5background">
             <div class="siteMaxWidth siteSidePadding">
                 {#
-                <div id="appDemoBtn" class="btn"  data-plugin="AddClass Dim" data-class="active" data-target="#appDemoPopup" data-event="click" data-trackCategory="interest" data-trackLabel="appDemo">
+                <div id="appDemoBtn" class="btn"  data-plugin="AddClass Dim" data-class="active" data-target="#appDemoPopup" data-event="click" data-trackCategory="interest" data-trackAction="appDemo">
                     See Demo
                 </div>
                 #}
@@ -874,7 +874,7 @@ set contentVersionOptions = {
                             <p class="fontPrimary">Love the idea? Give feedback and as little as $1. We&rsquo;re a small team. We need a strong community behind us. Become a founding member and get amazing rewards!  </p>
                             {# <a class="btn" href="">I Want to Help</a> #}
                             <div class="btn positionAnchor" data-plugin="AddClass Dim" data-class="active" data-target="#kickstarterPopup" data-event="click">
-                                <div class="btnText" data-trackCategory="CTA" data-trackLabel="kickstarter" data-trackValue="footer">I Want to Help</div>
+                                <div class="btnText" data-trackCategory="CTA" data-trackAction="kickstarter" data-trackLabel="footer">I Want to Help</div>
                                 <div class="btnGradient"></div>
                             </div>
                             <br class="visible-xs">
@@ -888,7 +888,7 @@ set contentVersionOptions = {
                             <h2>Sign up for Beta</h2>
                             <p class="fontPrimary">Not interested in shaping the service? No problem! We&rsquo;ll let you know when the app is ready. Signup takes just 10 seconds (we&rsquo;ll never share or sell your data).</p>
                             <div class="btn positionAnchor" data-plugin="AddClass Dim" data-class="active" data-target="#betaPopup" data-event="click">
-                                <div class="btnText" data-trackCategory="CTA" data-trackLabel="beta" data-trackValue="footer">Sign Me Up</div>
+                                <div class="btnText" data-trackCategory="CTA" data-trackAction="beta" data-trackLabel="footer">Sign Me Up</div>
                                 <div class="btnGradient"></div>
                             </div>
                         </div>
@@ -1037,7 +1037,7 @@ set contentVersionOptions = {
                 <div class="signupAction">
                     <button type="submit" class="submit btn fontPrimary bold btn positionAnchor" disabled>
                         <span class="btnGradient"></span>
-                        <span class="btnText" data-trackCategory="CTA" data-trackLabel="signup" data-trackValue="{{ signupId }}">Sign Up</span>
+                        <span class="btnText" data-trackCategory="CTA" data-trackAction="signup" data-trackLabel="{{ signupId }}">Sign Up</span>
                     </button>
                 </div>
 
