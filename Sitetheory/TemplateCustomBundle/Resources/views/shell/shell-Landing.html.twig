@@ -342,17 +342,6 @@ set contentVersionOptions = {
         }));
     </script>
 
-    <!-- Twitter universal website tag code -->
-    <script>
-        !function(e,t,n,s,u,a){e.twq||(s=e.twq=function(){s.exe?s.exe.apply(s,arguments):s.queue.push(arguments);
-        },s.version='1.1',s.queue=[],u=t.createElement(n),u.async=!0,u.src='//static.ads-twitter.com/uwt.js',
-                a=t.getElementsByTagName(n)[0],a.parentNode.insertBefore(u,a))}(window,document,'script');
-        // Insert Twitter Pixel ID and Standard Event data below
-        twq('init','nvotj');
-        twq('track','PageView');
-    </script>
-    <!-- End Twitter universal website tag code -->
-
 {% endblock script %}
 
 
@@ -991,7 +980,6 @@ set contentVersionOptions = {
             {# Fields are disabled by default UNLESS javascript enables them #}
             <fieldset class="formFields" disabled>
                 <input type="hidden" name="listId" value="{{ signupListId }}">
-
                 <p class="note fontBody">{{ signupText|default("We'll let you know when it's ready!") }}</p>
 
                 <div class="form-group">
