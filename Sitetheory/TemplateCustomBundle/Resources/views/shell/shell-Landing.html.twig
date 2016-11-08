@@ -126,17 +126,26 @@ set contentVersionOptions = {
                 });
 
                 // Get IP and Zip
-                var ip = $('.registerZip').first().data('ip');
+                var ip = $('input[name="zip"]').first().data('ip');
                 if (ip.length > 0) {
                     $.getJSON('https://ipapi.co/' + ip + '/json/', function (data) {
                         if (!data) return false;
                         if (data.postal) {
-                            $.each($('.registerZip'), function (i, el) {
+                            $.each($('input[name="zip"]'), function (i, el) {
                                 $(el).val(data.postal);
                                 $(el).parent().hide();
                             });
+                            $.each($('input[name="lat"]'), function (i, el) {
+                                $(el).val(data.latitude);
+                            });
+                            $.each($('input[name="lng"]'), function (i, el) {
+                                $(el).val(data.longitude);
+                            });
+                            $.each($('input[name="timezone"]'), function (i, el) {
+                                $(el).val(data.timezone);
+                            });
                         } else {
-                            $.each($('.registerZip'), function (i, el) {
+                            $.each($('input[name="zip"]'), function (i, el) {
                                 $(el).set('value', '0');
                             });
                         }
@@ -275,6 +284,9 @@ set contentVersionOptions = {
                             'relationshipStatus': data.relationshipStatus,
                             'zip': data.zip,
                             'ageGroup': data.ageGroup,
+                            'lat': data.lat,
+                            'lng': data.lng,
+                            'timezone': data.timezone,
                             'mailLists': [parseInt(data.listId)]
                         }
                     };
@@ -980,6 +992,10 @@ set contentVersionOptions = {
             {# Fields are disabled by default UNLESS javascript enables them #}
             <fieldset class="formFields" disabled>
                 <input type="hidden" name="listId" value="{{ signupListId }}">
+                <input type="hidden" name="lat">
+                <input type="hidden" name="lng">
+                <input type="hidden" name="timezone">
+
                 <p class="note fontBody">{{ signupText|default("We'll let you know when it's ready!") }}</p>
 
                 <div class="form-group">
@@ -987,7 +1003,7 @@ set contentVersionOptions = {
                 </div>
 
                 <div class="form-group">
-                    <input type="text" value="" name="zip" class="required email form-control smallLabel fontPrimary registerZip" maxlength="10" placeholder="Postal Code" data-ip="{{ environment.ip }}">
+                    <input type="text" value="" name="zip" class="required email form-control smallLabel fontPrimary" maxlength="10" placeholder="Postal Code" data-ip="{{ environment.ip }}">
                 </div>
 
                 <div class="form-group">
