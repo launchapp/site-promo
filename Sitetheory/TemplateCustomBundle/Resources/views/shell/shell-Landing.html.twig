@@ -79,6 +79,7 @@ set contentVersionOptions = {
 
     {# <script type="text/javascript" src="{{ asset('bundles/sitetheorytemplatecustom/js/landing.js') }}"></script> #}
     {# This script is in the HTML now (instead of landing.js) just to be sure that it loads (and isn't delayed) #}
+    {# TODO: make this native JS without JQuery #}
     <script>
         // Use Require.js or Contextual Scope
         (function (root, factory) {
@@ -91,7 +92,9 @@ set contentVersionOptions = {
             Stratus.DOM.ready(function () {
 
 
-                // Check Audience: default to "single"
+                /**
+                 * Check Audience: default to "single"
+                 */
                 Stratus.Routers.ShowAudience = Backbone.Router.extend({
                     routes: {
                         'show/:id': 'setAudience'
@@ -106,6 +109,9 @@ set contentVersionOptions = {
                 var showAudience = new Stratus.Routers.ShowAudience({"default":"single"});
 
 
+                /**
+                 * Track Events
+                 */
                 function trackEvent(el) {
                     var trackCategory = el.dataAttr('trackCategory') || 'unknown';
                     var trackAction = el.dataAttr('trackAction') || null;
@@ -125,44 +131,57 @@ set contentVersionOptions = {
                     });
                 });
 
-                // Get IP and Zip
-                var ip = $('input[name="zip"]').first().data('ip');
-                if (ip.length > 0) {
-                    $.getJSON('https://ipapi.co/' + ip + '/json/', function (data) {
-                        if (!data) return false;
-                        if (data.postal) {
-                            $.each($('input[name="zip"]'), function (i, el) {
-                                $(el).val(data.postal);
-                                $(el).parent().hide();
-                            });
-                            $.each($('input[name="lat"]'), function (i, el) {
-                                $(el).val(data.latitude);
-                            });
-                            $.each($('input[name="lng"]'), function (i, el) {
-                                $(el).val(data.longitude);
-                            });
-                            $.each($('input[name="timezone"]'), function (i, el) {
-                                $(el).val(data.timezone);
-                            });
-                        } else {
-                            $.each($('input[name="zip"]'), function (i, el) {
-                                $(el).set('value', '0');
-                            });
-                        }
-                    });
-                }
+
+
 
 
                 /**
                  * REGISTRATION
                  */
                 var formClass = 'registrationForm';
+                var $forms = $('.'+formClass+' form');
+
+                /**
+                 * Record Geolocation in Registration
+                 */
+                var setLat = function() {
+                    if (Stratus.Environment.has('lat')) {
+                        $forms.find('input[name="lat"]').each(function (i, el) {
+                            $(el).val(Stratus.Environment.get('lat'));
+                        });
+                    }
+                };
+                var setLng = function() {
+                    if (Stratus.Environment.has('lng')) {
+                        $forms.find('input[name="lng"]').each(function (i, el) {
+                            $(el).val(Stratus.Environment.get('lng'));
+                        });
+                    }
+                };
+                var setTimezone = function() {
+                    if (Stratus.Environment.has('timezone')) {
+                        $forms.find('input[name="timezone"]').each(function (i, el) {
+                            $(el).val(Stratus.Environment.get('timezone'));
+                        });
+                    }
+                };
+                var setPostalCode = function() {
+                    if (Stratus.Environment.has('postalCode')) {
+                        $forms.find('input[name="zip"]').each(function (i, el) {
+                            $(el).val(Stratus.Environment.get('postalCode'));
+                            $(el).parent().hide();
+                        });
+                    }
+                };
+                Stratus.Environment.on('change:lat', setLat); setLat();
+                Stratus.Environment.on('change:lng', setLng); setLng();
+                Stratus.Environment.on('change:timezone', setTimezone); setTimezone();
+                Stratus.Environment.on('change:postalCode', setPostalCode); setPostalCode();
+
 
                 // Support Multiple Forms inside an element of this class name
-                var forms = $('.'+formClass+' form');
-                if ( forms.length > 0 ) {
-                    $.each(forms, function(i, el) {
-
+                if ( $forms.length > 0 ) {
+                    $forms.each(function(i, el) {
                         // If Javascript is Working...
                         // Hide Error Saying JS isn't working
                         $(el).find('.formLoadingError').hide();
@@ -508,7 +527,7 @@ set contentVersionOptions = {
 {% endblock header1 %}
 
 {% block content %}
-    {#
+
     <div id="selectAudience">
         <h2>
             Speak
@@ -532,7 +551,7 @@ set contentVersionOptions = {
 
         <div>This app was built for <strong><span class="showPartnered">matchmakers</span><span class="showSingle">hip singles</span></strong> like you.</div>
     </div>
-    #}
+
 
     {# TIER 1 VIDEO #}
     <div id="tier1" class="landingTier siteMaxWidth siteSidePadding shellVerticalPadding">
@@ -992,10 +1011,9 @@ set contentVersionOptions = {
             {# Fields are disabled by default UNLESS javascript enables them #}
             <fieldset class="formFields" disabled>
                 <input type="hidden" name="listId" value="{{ signupListId }}">
-                <input type="hidden" name="lat">
-                <input type="hidden" name="lng">
-                <input type="hidden" name="timezone">
-
+                <input type="hidden" name="lat" value="{{ environment.lat }}">
+                <input type="hidden" name="lng" value="{{ environment.lng }}">
+                <input type="hidden" name="timezone" value="{{ environment.timezone }}">
                 <p class="note fontBody">{{ signupText|default("We'll let you know when it's ready!") }}</p>
 
                 <div class="form-group">
@@ -1003,7 +1021,7 @@ set contentVersionOptions = {
                 </div>
 
                 <div class="form-group">
-                    <input type="text" value="" name="zip" class="required email form-control smallLabel fontPrimary" maxlength="10" placeholder="Postal Code" data-ip="{{ environment.ip }}">
+                    <input type="text" value="" name="zip" class="required email form-control smallLabel fontPrimary" maxlength="10" placeholder="Postal Code">
                 </div>
 
                 <div class="form-group">
