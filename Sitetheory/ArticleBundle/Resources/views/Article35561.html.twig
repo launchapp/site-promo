@@ -11,6 +11,11 @@
     <meta property="og:description" content="Online dating kinda sucks. learn how Launch is different and why people should care.">
 {% endblock meta %}
 
+{% block link %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('bundles/sitetheorytemplatecustom/css/landing.css') }}">
+    <link rel="stylesheet" href="{{ asset('bundles/sitetheorytemplatecustom/css/press.css') }}">
+{% endblock link %}
 
 {% block navSection %}
     <ul class="nav list-unstyled fontPrimary">
@@ -41,22 +46,168 @@
 {% block contentType %}
     {% block content %}
 
-        {# SECTION ABOUT #}
-        <div id="sectionAbout" class="sectionTier siteMaxWidth siteSidePadding shellVerticalPadding">
-            <h2>What is Launch?</h2>
-            <div>Proin eget tortor risus. Curabitur arcu erat, accumsan id imperdiet et, porttitor at sem. Curabitur non nulla sit amet nisl tempus convallis quis ac lectus. Pellentesque in ipsum id orci porta dapibus. Curabitur arcu erat, accumsan id imperdiet et, porttitor at sem. Nulla quis lorem ut libero malesuada feugiat. Nulla porttitor accumsan tincidunt. Pellentesque in ipsum id orci porta dapibus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum ac diam sit amet quam vehicula elementum sed sit amet dui. </div>
-        </div>
 
-        {# SECTION ABOUT #}
-        <div id="sectionDifferent" class="sectionTier siteMaxWidth siteSidePadding shellVerticalPadding">
-            <h2>How is Launch Different?</h2>
-            <div>Proin eget tortor risus. Curabitur arcu erat, accumsan id imperdiet et, porttitor at sem. Curabitur non nulla sit amet nisl tempus convallis quis ac lectus. Pellentesque in ipsum id orci porta dapibus. Curabitur arcu erat, accumsan id imperdiet et, porttitor at sem. Nulla quis lorem ut libero malesuada feugiat. Nulla porttitor accumsan tincidunt. Pellentesque in ipsum id orci porta dapibus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum ac diam sit amet quam vehicula elementum sed sit amet dui.</div>
-        </div>
+        <div id="tierPitch" class="landingTier siteMaxWidth siteSidePadding shellVerticalPadding">
 
-        {# SECTION ABOUT #}
-        <div id="sectionResources" class="sectionTier siteMaxWidth siteSidePadding shellVerticalPadding">
-            <h2>Download Resources</h2>
-            <div>Proin eget tortor risus. Curabitur arcu erat, accumsan id imperdiet et, porttitor at sem. Curabitur non nulla sit amet nisl tempus convallis quis ac lectus. Pellentesque in ipsum id orci porta dapibus. Curabitur arcu erat, accumsan id imperdiet et, porttitor at sem. Nulla quis lorem ut libero malesuada feugiat. Nulla porttitor accumsan tincidunt. Pellentesque in ipsum id orci porta dapibus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum ac diam sit amet quam vehicula elementum sed sit amet dui.</div>
+            <h1>One Sentence Pitch</h1>
+
+            <div id="logo"><img src="{{ asset('bundles/sitetheorytemplatecustom/images/tier4logo.png') }}" alt=""></div>
+
+            <p class="fontPrimary bodyLarge">Startup gives middle finger to dating app industry;
+            decides to build something that users won’t hate with the fire of 1,000 suns;
+            launches unconventional crowdfunding campaign to prove concept.</p>
+
+
+
+
+        </div>
+        <div id="tierNutshell" class="landingTier">
+            <div class="siteMaxWidth siteSidePadding shellVerticalPadding">
+                <h1>In a Nutshell</h1>
+
+                <div class="fontPrimary borderDashedLight">
+                    <p>Everyone wants to be in love. Yet over 100 million adult Americans say they’re still looking.</p>
+
+
+                    <p>Dating apps mostly suck. Only 7% of singles make a meaningful connection that way each year.</p>
+
+
+                    <p>Launch makes it easier for everyone to find their someone.</p>
+
+
+                    <p>We let friends (partnered or single) send their friends on better dates.</p>
+
+
+                    <p>It’s like online dating, but safer, more playful, less awful, and with far better outcomes.</p>
+                </div>
+            </div>
+        </div>
+        <div id="tierDoing" class="landingTier siteMaxWidth siteSidePadding shellVerticalPadding">
+
+
+            <h2>What We’re Doing Right Now:</h2>
+
+
+            Our product has been shaped by hundreds of stories from daters and their friends.
+
+
+            Now we’re taking our designs to a larger audience for their input.
+
+
+            We think people want something new (and actually good).
+
+
+            So we’re going to ask a bunch of them on Kickstarter to give us $1.
+
+
+            If they love it, we’ll finish the app. If they hate it, we’re moving to Canada.
+
+
+
+
+            <h3>Things We Care About:</h3>
+
+
+            Our mission is simple: make dating better.
+
+
+            <h3>Why do we care?</h3>
+
+
+            Good relationships are the best predictor of human health and happiness.
+            We want people to be healthier and happier.
+            Most of us struggle to create new relationships once we become adults.
+            There are sensible, scientific ways to make it easier.
+
+
+            We’re just connecting the dots (and throwing out the old, terrible template).
+
+
+            We really have just two driving values:
+
+
+            We think dating could do without lying, shallowness, sexism, and infidelity.
+            We think companies should be really good at listening and giving back.
+
+
+    </div>
+    <div  id="tierReference" class="landingTier siteMaxWidth siteSidePadding shellVerticalPadding">
+
+
+            <h2>Quick Reference Details:</h2>
+
+
+            Website: launchapp.io
+            Press Contact: jeremy@launchapp.io
+            Founding Date: July 21, 2016
+            facebook.com/launchdating
+            twitter.com/launchdating
+            instagram.com/launchdating
+
+
+
+
+            <h2>Founders:</h2>
+
+
+            Chadwick Meyer (Tech, Operations) chadwick@launchap.io
+            Daniela Meyer (Design) daniela@launchapp.io
+            Jeremy Arnold (Press, Community) jeremy.arnold@launchapp.io
+
+
+            Daniela and Chadwick have been married for 14 years. They’ve co-founded three lively children as well as several successful businesses in the San Francisco Bay Area. Chad manages technical development and Daniela makes everything look beautiful.
+            Jeremy, our resident Canadian, helps by listening to people's stories. He also adds marketing and analysis input, along with considerable sarcastic commentary.
+            Reference projects include:
+
+
+            Gutensite
+            Park Circa
+
+
+    </div>
+    <div id="tierScreens" class="landingTier siteMaxWidth siteSidePadding shellVerticalPadding">
+
+            <h2>High-Res Images:</h2>
+
+
+            [screencaps of the app from IGG]
+
+
+    </div>
+    <div id="tierTestimonials" class="landingTier siteMaxWidth siteSidePadding shellVerticalPadding">
+
+
+            <h2>Testimonials:</h2>
+
+
+            Let’s start with how people talk about the existing options (we asked a lot of people).
+
+
+            Our favorite:
+
+
+            “This isn’t the game I want to play. But I feel like it’s the only game so I should try to make it work for me.”
+
+
+            That was from a young, whip-smart, attractive woman going for a PhD. This should be easy for her.
+
+
+            “Dating as a millennial sometimes feels like a competition to see who can care the least.”
+
+
+            That one came from a 28 year-old. Friendly, bright, beautiful -- but jaded. And not alone in that.
+
+
+            When we showed people what we’ve been working on?
+
+
+            “This is how real life works. Singles don't live in a bubble and OFTEN rely on close family and friends to give them input about their dating prospects. That's just part of our healthy social make-up. You've got a good thing here. I hope it catches on!!”  (Nora, 41)
+
+
+            What she said.
+
+
+
         </div>
 
         {# TIER 8 CONTACT #}
@@ -68,6 +219,7 @@
                 </div>
             </div>
         </div>
+
 
         {#
         <div id="footer" class="clearfix fontPrimary">
