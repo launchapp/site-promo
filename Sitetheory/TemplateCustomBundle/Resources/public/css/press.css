@@ -1,21 +1,26 @@
+/* GENERAL */
+
+#pressPage p {
+    font-size: 15px;
+}
+#pressPage .siteMaxWidth {
+    max-width: 900px;
+}
+
 /* TIER PITCH */
 
 #tierPitch h1 {
     position: relative;
     z-index: 1;
 }
-#tierPitch #logo img {
-    position: relative;
-    z-index: 0;
-}
-#tierPitch #logo img {
-    margin: -75px 0 30px;
-    max-width: 260px;
-}
 #tierPitch .bodyLarge {
+    margin: 0 auto 50px auto;
+    max-width: 900px;
     font-weight: 300;
+    font-size: 22px;
 }
-.borderDashed {
+.borderDashed,
+.borderDashedLight {
     margin-top: 50px;
     padding-top: 50px;
 }
@@ -24,8 +29,12 @@
 /* TIER NUTSHELL */
 
 #tierNutshell {
-    background: url('/sitetheory/v/1/0/bundles/sitetheorytemplatecustom/images/tier2Background.jpg') no-repeat center center;
+    background: url('/sitetheory/v/1/0/bundles/sitetheorytemplatecustom/images/tier6Background.jpg') no-repeat;
     background-size: cover;
+}
+#tierNutshell #logo img {
+    margin: -75px 0 0 0;
+    max-width: 260px;
 }
 #tierNutshell .siteMaxWidth {
     max-width: 1040px;
@@ -34,14 +43,106 @@
     margin-top: 45px;
     padding-top: 45px;
 }
-#tierNutshell h1,
-#tierNutshell p {
+#tierNutshellBody {
+    margin: 55px auto 90px auto;
+}
+#tierNutshell h1 {
+    margin-top: 55px;
     color: #FFF;
 }
 #tierNutshell P {
+    max-width: 600px;
+    margin: 0 auto 25px auto;
     font-size: 18px;
+    color: #FFF;
+}
+#tierNutshell p:last-child {
+    color: #FCEE27;
 }
 
+
+/* TIER DOING */
+
+#tierDoing h1 {
+    margin-bottom: 100px;
+}
+#tierDoing #iconKickstarter {
+    margin: -105px auto 50px auto;
+}
+#tierDoing p {
+    margin-bottom: 26px;
+}
+
+
+/* TIER MISSION */
+
+#tierMissionBackground {
+    padding: 20px 0;
+    background: url('/sitetheory/v/1/0/bundles/sitetheorytemplatecustom/images/tier2Background.jpg') no-repeat center center;
+    background-size: cover;
+}
+#tierMissionBackground .borderDashedLight {
+    margin-top: 30px;
+    padding-top: 30px;
+}
+#tierMissionBody .borderDashed {
+    padding-top: 26px;
+}
+#tierMission h1 {
+    color: #FFF;
+}
+#tierMission p {
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 550px;
+}
+#tierMissionBackground p {
+    font-size: 28px;
+    font-weight: 300;
+    color: #FFF;
+}
+#tierMission .borderDashedLight.bottom {
+    padding: 0;
+}
+#tierMission h3 {
+    font-size: 18px;
+    color: #0E0E0E;
+}
+#tierMission .spacemanBullet {
+    margin: 4px 0 10px;
+    text-align: center;
+}
+#tierMission .spacemanBullet img {
+    width: 100px;
+}
+
+
+/* TIER SCREENS */
+
+
+#tierScreens h1 {
+    color: #FFF;
+}
+#tierScreens .appScreen {
+    margin: 0 auto 45px auto;
+    max-width: 450px;
+    text-align: left;
+}
+#tierScreens .appScreen img {
+    float: left;
+    margin-right: 26px;
+    max-width: 200px;
+}
+#tierScreens h2 {
+    margin: 110px 0 26px 0;
+    font-weight: 700;
+    font-size: 22px;
+    color: #BBB;
+}
+#tierScreens p {
+    font-size: 16px;
+    color: #7F7F7F;
+}
 
 
 

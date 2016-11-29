@@ -1,5 +1,5 @@
 /* LOAD FONTS */
-@import '//fonts.googleapis.com/css?family=Fjalla+One|Roboto|Roboto+Slab:300,400,700';
+@import '//fonts.googleapis.com/css?family=Fjalla+One|Roboto:400,700|Roboto+Slab:300,400,700';
 
 /*
 TODO: remove betaSignup when complete
@@ -123,8 +123,6 @@ h3,
 h4,
 .fontPrimary,
 .fontPrimary p,
-.fontSecondary,
-.fontSecondary p,
 .fontBody,
 .fontBody p,
 .pullout,
@@ -132,7 +130,10 @@ h4,
 .moduleContainer h2 {
     font-family: 'Roboto Slab', serif;
 }
-
+.fontSecondary,
+.fontSecondary p {
+    font-family: 'Roboto', serif;
+}
 .fontBody,
 .fontBody p {
     font-weight: 300;
