@@ -17,7 +17,60 @@
     <link rel="stylesheet" href="{{ asset('bundles/sitetheorytemplatecustom/css/press.css') }}">
 {% endblock link %}
 
-{% block navSection %}
+{% block header1 %}
+    <div id="header1" class="clearfix">
+        <div class="clearfix">
+            <div id="logoHeader" class="pull-left">
+                <img src="{{ asset('bundles/sitetheorytemplatecustom/images/tier4logo.png') }}" alt="">
+            </div>
+            <h1>LAUNCH PRESS KIT</h1>
+            <div id="navMainContainer" class="navMainContainer pull-right">
+                <ul class="nav list-inline fontPrimary">
+                    <li class="navMainLink">
+                        <a href="#tierNutshell">
+                            Nutshell
+                            <div class="linkUnderline"></div>
+                        </a>
+                    </li>
+                    <li class="navMainLink">
+                        <a href="#tierMission">
+                            Mission
+                            <div class="linkUnderline"></div>
+                        </a>
+                    </li>
+                    <li class="navMainLink">
+                        <a href="#tierDoing">
+                            Status
+                            <div class="linkUnderline"></div>
+                        </a>
+                    </li>
+                    <li class="navMainLink">
+                        <a href="#tierScreens">
+                            App
+                            <div class="linkUnderline"></div>
+                        </a>
+                    </li>
+                    <li class="navMainLink">
+                        <a href="#tierTestimonials">
+                            Testimonials
+                            <div class="linkUnderline"></div>
+                        </a>
+                    </li>
+                    <li class="navMainLink">
+                        <a href="#tierReference">
+                            Info
+                            <div class="linkUnderline"></div>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+{% endblock header1 %}
+
+
+{#
+{% block sectionNavigation %}
     <ul class="nav list-unstyled fontPrimary">
         <li class="visible-xs-block visible-sm-block" data-level="1">
             <a href="#sectionAbout" class="navSideLink fontSecondary">
@@ -35,13 +88,12 @@
             </a>
         </li>
     </ul>
-{% endblock navSection %}
+{% endblock sectionNavigation %}
 
 {% block sectionName %}
     <h2 class="sectionName {{ sectionNameFont|default('fontPrimary') }}">Press Kit</h2>
 {% endblock sectionName %}
-
-
+#}
 
 {% block contentType %}
     {% block content %}
@@ -53,12 +105,9 @@
 
                 <h1>One Sentence Pitch</h1>
 
-                <p class="fontPrimary bodyLarge borderDashed">Startup gives middle finger to dating app industry;<br>
-                decides to build something that users won’t hate with the fire of 1,000 suns;<br>
+                <p class="fontPrimary bodyLarge borderDashed">Startup gives middle finger to dating app industry;
+                decides to build something that users won’t hate with the fire of 1,000 suns;
                 launches unconventional crowdfunding campaign to prove concept.</p>
-
-
-
 
             </div>
 

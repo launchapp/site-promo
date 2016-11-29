@@ -10,7 +10,42 @@
 #pressPage .siteMaxWidth {
     max-width: 900px;
 }
+#header1 img {
+    max-width: 65px;
+}
+#header1 h1 {
+    transform: translateY(-50%);
+    -webkit-transform: translateY(-50%);
+    position: absolute;
+    top: 50%;
+    left: 124px;
+    margin: 0;
+    font-size: 28px;
+    letter-spacing: .001em;
+}
+#headerRetracting #header1 h1 {
+    left: 100px;
+}
+#headerRetracting #header1 img {
+    max-width: 44px;
+}
 
+@media (max-width:600px) {
+    #header1 img {
+        max-width: 45px;
+    }
+    #header1 h1 {
+        left: 94px;
+        font-size: 22px;
+    }
+    #headerRetracting #header1 h1 {
+        left: 80px;
+    }
+    #headerRetracting #header1 img {
+        max-width: 34px;
+    }
+
+}
 /* TIER PITCH */
 
 #tierPitch h1 {
@@ -64,6 +99,12 @@
     color: #FCEE27;
 }
 
+@media (max-width:600px) {
+    #tierNutshell #logo img {
+        margin: -75px 0 0 0;
+        max-width: 160px;
+    }
+}
 
 /* TIER DOING */
 
@@ -148,7 +189,14 @@
     font-size: 16px;
     color: #7F7F7F;
 }
-
+@media (max-width:600px) {
+    #tierScreens .appScreen img {
+        max-width: 120px;
+    }
+    #tierScreens h2 {
+        margin: 0 0 26px 0;
+    }
+}
 
 /* TIER TESTIMONIALS */
 
@@ -177,9 +225,18 @@
 }
 #tierTestimonials #quotePeople img {
     margin-top: 50px;
-    max-width: 574px;
+    max-width: 100%;
 }
 
+@media (max-width:600px) {
+    #tierTestimonialsBody h4,
+    #tierTestimonialsBody p {
+        padding: 0 8%;
+    }
+    #tierTestimonials #quotePeople img {
+        margin-top: 0;
+    }
+}
 
 
 /* TIER REFERENCE */
