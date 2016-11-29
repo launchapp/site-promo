@@ -3,6 +3,10 @@
 #pressPage p {
     font-size: 15px;
 }
+#pressPage p.bodyLarge {
+    font-weight: 300;
+    font-size: 22px;
+}
 #pressPage .siteMaxWidth {
     max-width: 900px;
 }
@@ -139,11 +143,63 @@
     font-size: 22px;
     color: #BBB;
 }
+
 #tierScreens p {
     font-size: 16px;
     color: #7F7F7F;
 }
 
+
+/* TIER TESTIMONIALS */
+
+#tierTestimonialsBody h4,
+#tierTestimonialsBody p {
+    margin: 45px 0;
+    padding: 0 14%;
+}
+#tierTestimonialsBody h4 {
+    line-height: 1.5;
+}
+#tierTestimonialsBody p {
+    font-size: 14px;
+}
+#tierTestimonialsBody h4:first-of-type {
+    margin: 0;
+}
+#tierTestimonials #quotations {
+    margin: 0 0 -22px 0;
+}
+#tierTestimonials .borderDashed.ornament {
+    margin: 0 auto;
+    padding: 0;
+    width: 104px;
+    height: 1px;
+}
+#tierTestimonials #quotePeople img {
+    margin-top: 50px;
+    max-width: 574px;
+}
+
+
+
+/* TIER REFERENCE */
+
+#tierReference {
+    background: #F7F7F7;
+}
+#tierReference #friendCircle img {
+    margin: 40px 0 -40px;
+    max-width: 240px;
+}
+
+
+/* Tier Founders */
+
+#tierFounders p {
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 600px;
+}
 
 
 
@@ -151,17 +207,17 @@
 
 #sectionDarkFooterbackground {
     padding: 120px 160px 200px 160px;
-    background: url('/sitetheory/v/1/0/bundles/sitetheorytemplatecustom/images/sectionDarkFooterbackground.png') no-repeat right bottom;
+    background: url('/sitetheory/v/1/0/bundles/sitetheorytemplatecustom/images/tier8background.png') no-repeat right bottom;
     /* to fake padding w/o affecting background image */
     border-bottom: 50px solid #282828;
     background-size: 100%;
 }
-#sectionDarkFooter .bodyLarge {
-    font-size: 20px;
+#sectionDarkFooter p {
+    font-size: 16px;
     font-weight: 300;
     color: #888;
 }
-#sectionDarkFooter .bodyLarge a {
+#sectionDarkFooter p a {
     font-weight: bold;
 }
 @media (max-width: 768px) {
