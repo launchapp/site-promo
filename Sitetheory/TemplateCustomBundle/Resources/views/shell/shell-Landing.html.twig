@@ -211,7 +211,7 @@ set contentVersionOptions = {
                     var meta = {
                         'method': 'new'
                     };
-                    Stratus.Internals.Api('User', meta, payload).done(function (response) {
+                    Stratus.Internals.Api('User', meta, payload).then(function (response) {
                         var success = false;
                         var statusMessage = [];
                         $.each(response.meta.status, function(i, el) {
