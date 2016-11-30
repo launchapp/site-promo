@@ -571,12 +571,11 @@ set contentVersionOptions = {
                 <div class="borderDashed clearfix">
                     <div id="tier1action" class="pull-right">
                         <span class="fontPrimary bodyLarge optionalText">Help us build it!</span>
-                        <a class="btn" href="https://www.indiegogo.com/projects/launch-because-dating-apps-mostly-suck-app-friends" target="_blank">Indiegogo Campaign</a>
-                        {#<div class="btn positionAnchor" data-plugin="AddClass Dim" data-class="active" data-target="#kickstarterPopup" data-event="click" >
+                        {#<a class="btn" href="https://www.indiegogo.com/projects/launch-because-dating-apps-mostly-suck-app-friends" target="_blank">Indiegogo Campaign</a>#}
+                        <div class="btn positionAnchor" data-plugin="AddClass Dim" data-class="active" data-target="#kickstarterPopup" data-event="click" >
                             <div class="btnText" data-trackCategory="CTA" data-trackAction="kickstarter" data-trackLabel="top">Kickstarter Campaign</div>
                             <div class="btnGradient"></div>
                         </div>
-                        #}
                     </div>
                 </div>
             </div>
@@ -731,7 +730,7 @@ set contentVersionOptions = {
     <div id="tier5" class="landingTier">
         <h1>App Sneak Peek</h1>
         {# TODO: remove when kickstarter is complete #}
-        <p id="appDemoNote" class="fontPrimary siteSidePadding">An interactive demo will be available to all Indigogo backers.</p>
+        <p id="appDemoNote" class="fontPrimary siteSidePadding">An interactive demo will be available to all Kickstarter backers.</p>
 
         <div id="tier5background">
             <div class="siteMaxWidth siteSidePadding">
@@ -891,18 +890,17 @@ set contentVersionOptions = {
                 <div class="row borderDashed">
                     <div class="col-sm-5 leftCol">
                         <div id="helpOne" class="helpItem">
-                            {# <img id="iconKickstarter" src="{{ asset('bundles/sitetheorytemplatecustom/images/tier7iconKickstarter.png') }}" alt=""> #}
-                            <img id="iconKickstarter" src="{{ asset('bundles/sitetheorytemplatecustom/images/tier7iconIGG.png') }}" alt="">
-                            <h2>Indiegogo!</h2>
+                            <img id="iconKickstarter" src="{{ asset('bundles/sitetheorytemplatecustom/images/tier7iconKickstarter.png') }}" alt="">
+                            {#<img id="iconKickstarter" src="{{ asset('bundles/sitetheorytemplatecustom/images/tier7iconIGG.png') }}" alt="">#}
+                            <h2>Kickstarter!</h2>
 
                             {# TODO: re-enable when kickstarter is live #}{#<h4>(One-click signup)</h4>#}
                             <p class="fontPrimary">Love the idea? Give feedback and $1 to make it happen. We&rsquo;re a small team. We need a strong community behind us. Become a founding member and get amazing rewards!  </p>
-                            <a class="btn" href="https://www.indiegogo.com/projects/launch-because-dating-apps-mostly-suck-app-friends" target="_blank">I Want to Help</a>
-                            {#<div class="btn positionAnchor" data-plugin="AddClass Dim" data-class="active" data-target="#kickstarterPopup" data-event="click">
+                            {#<a class="btn" href="https://www.indiegogo.com/projects/launch-because-dating-apps-mostly-suck-app-friends" target="_blank">I Want to Help</a>#}
+                            <div class="btn positionAnchor" data-plugin="AddClass Dim" data-class="active" data-target="#kickstarterPopup" data-event="click">
                                 <div class="btnText" data-trackCategory="CTA" data-trackAction="kickstarter" data-trackLabel="footer">I Want to Help</div>
                                 <div class="btnGradient"></div>
                             </div>
-                            #}
                             <br class="visible-xs">
                             <br class="visible-xs">
                         </div>
@@ -1106,12 +1104,12 @@ set contentVersionOptions = {
 
     {% endblock betaSignup %}
 
-    {#
+
     {% block kickstarterSignup %}
         {% set signupId = 'kickstarter' %}
         {% set signupTitle = 'Kickstarter Signup' %}
         {% set signupSuccess = "You rock! We'll let you know when the Kickstarter campaign is live." %}
-        {% set signupText = "Our campaign isn't quite ready yet (early november), but we really need your support. We'll update you when it's ready!" %}
+        {% set signupText = "Our campaign will be ready Dec 7. We need your support so we'll update you when it's ready!" %}
         {% set signupListId = '2' %}
 
         <div id="{{ signupId }}Popup" class="popup">
@@ -1127,7 +1125,7 @@ set contentVersionOptions = {
         </div>
 
     {% endblock kickstarterSignup %}
-    #}
+
 
 {% endblock popup %}
 
