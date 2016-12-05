@@ -1,7 +1,9 @@
 {% extends view.templates.shell %}
 
 {% block meta %}
+
     {{ parent() }}
+
     {# TODO: This is just here temporarily until the base.html.twig give the ability to select the preferred image in the admin #}
     {# we may need to reload the page here in order to get the new image https://developers.facebook.com/tools/debug/ #}
     <meta property="og:url" content="https://www.launchapp.io/Press">
