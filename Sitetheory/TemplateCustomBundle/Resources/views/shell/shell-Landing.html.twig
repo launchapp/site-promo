@@ -404,10 +404,8 @@ set contentVersionOptions = {
 {% endblock pageTitle %}
 
 {# Hide sidebar on desktop #}
-{% set bootstrapColumnSidebar = 'visible-xs visible-sm' %}
-
-{# Sidebar is hidden on desktop so main column is full width #}
-{% set bootstrapColumnMain = 'noGridSettings' %}
+{% set bootstrapColumnSidebar = 'hide-gt-xs' %}
+{% set bootstrapColumnMain = 'flex=100' %}
 
 {# Hide gutter in main column #}
 {% block mainColumnGutter %}
