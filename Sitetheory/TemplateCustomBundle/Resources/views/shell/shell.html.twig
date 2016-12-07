@@ -14,7 +14,6 @@ TODO:
 {% block link %}
     {{ parent() }}
     <link rel="stylesheet" href="{{ asset('bundles/sitetheorytemplatecustom/css/site.css') }}">
-    <link rel="stylesheet" href="{{ asset('bundles/sitetheorytemplatecustom/css/press.css') }}">
 {% endblock link %}
 
 {% block script %}
@@ -119,11 +118,6 @@ TODO:
 {# Hide footer #}
 {% block viewFooter %}
 {% endblock viewFooter %}
-
-{# Remove shell vertical content padding class to replace with stream padding #}
-{% set headerStructure = 'emptyAll' %}
-{% set headerRetractingStructure = 'emptyAll' %}
-{% set shellContentStructure = 'emptyAll' %}
 
 
 {# SHARE BUTTONS #}
