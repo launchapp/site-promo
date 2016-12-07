@@ -886,3 +886,9 @@ body.dim #app {
 [data-show="partnered"] .toggleSlider {
     left: -100%;
 }
+
+
+#TermsConditions .note {
+    font-size: 13px;
+    font-style: italic;
+}
