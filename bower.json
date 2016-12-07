@@ -1,0 +1,22 @@
+{
+  "name": "launch-site-promo",
+  "homepage": "https://github.com/launchapp/site-promo",
+  "authors": [
+    "chadwickmeyer <chadwick@gutensite.com>",
+    "danielameyer <daniela@gutensite.com>",
+    "alexgurrola <alex@gutensite.com>"
+  ],
+  "description": "",
+  "main": "",
+  "license": "PRIVATE",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "stratus": "*"
+  }
+}
