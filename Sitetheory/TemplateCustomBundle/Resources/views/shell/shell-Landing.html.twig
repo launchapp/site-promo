@@ -430,7 +430,7 @@ set contentVersionOptions = {
     <div class="borderDashed">
     {% block mainNavigation %}
         <div id="navMainContainer" class="navMainContainer">
-            <ul class="nav list-inline fontPrimary">
+            <ul class="nav listInline fontPrimary">
                 <li class="navMainLink">
                     <a href="#tier2">
                         <div class="linkOrnament"></div>
@@ -495,7 +495,7 @@ set contentVersionOptions = {
 {% block shareButtons %}
     <div id="sharingIsCaring">
         <h4>Sharing is Caring!</h4>
-        <ul class="list-inline">
+        <ul class="listInline">
             <li><a class="btn shareFacebook shareIcons" href="http://www.facebook.com/sharer/sharer.php?u={{ shareUrl }}" onclick="{{ shareClick }}">
                     <div class="btnGradientLight"></div>
                     {% embed '@SitetheoryCoreBundle/Resources/public/images/icons/social/facebook.svg' %}{% block id %}useFacebookIcon{% endblock %}{% endembed %}
@@ -586,7 +586,7 @@ set contentVersionOptions = {
     {# TIER 2 BROKEN STATUS QUO #}
     <div id="tier2" class="landingTier">
         <div class="siteMaxWidth siteSidePadding shellVerticalPadding">
-            <h1>A Broken <br class="visible-xs">Status Quo</h1>
+            <h1>A Broken <br hide-xs>Status Quo</h1>
             <div class="borderDashedLight">
                 <p class="fontPrimary bodyLarge">80% of singles won't get even one online date this year &mdash; because existing apps were built to make life easier for people who already like online dating.
                     <br>
@@ -899,12 +899,12 @@ set contentVersionOptions = {
                                 <div class="btnText" data-trackCategory="CTA" data-trackAction="kickstarter" data-trackLabel="footer">I Want to Help</div>
                                 <div class="btnGradient"></div>
                             </div>
-                            <br class="visible-xs">
-                            <br class="visible-xs">
+                            <br hide-xs>
+                            <br hide-xs>
                         </div>
                     </div>
                     <div class="col-sm-5 col-sm-offset-2 rightCol">
-                        <div class="borderDashed visible-xs">&nbsp;</div>
+                        <div  hide-xs class="borderDashed">&nbsp;</div>
                         <div id="helpTwo" class="helpItem">
                             <img id="iconBeta" src="{{ asset('bundles/sitetheorytemplatecustom/images/tier7iconBeta.png') }}" alt="">
                             <h2>Sign up for Beta</h2>
@@ -980,7 +980,7 @@ set contentVersionOptions = {
 
 {% block socialMedia %}
     <div class="socialMedia {{ socialStyle|default('basicStyle') }}">
-        <ul class="list-inline">
+        <ul class="listInline">
             <li class="facebook">
                 <a href="https://www.facebook.com/launchdating" target="_blank">
                     {% embed '@SitetheoryCoreBundle/Resources/public/images/icons/social/facebook.svg' %}{% block id %}footerFacebookIcon{% endblock %}{% endembed %}

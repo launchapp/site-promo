@@ -292,7 +292,7 @@ TODO:
         {% block mainNavigation %}
             {#
             <div id="navMainContainer" class="navMainContainer">
-                <ul class="nav list-inline fontPrimary">
+                <ul class="nav listInline fontPrimary">
                     <li class="navMainLink">
                         <a href="#sectionAbout">
                             <div class="linkOrnament"></div>
@@ -347,7 +347,7 @@ TODO:
 {% block shareButtons %}
     <div id="sharingIsCaring">
         <h4>Sharing is Caring!</h4>
-        <ul class="list-inline">
+        <ul class="listInline">
             <li><a class="btn shareFacebook shareIcons" href="http://www.facebook.com/sharer/sharer.php?u={{ shareUrl }}" onclick="{{ shareClick }}">
                     <div class="btnGradientLight"></div>
                     {% embed '@SitetheoryCoreBundle/Resources/public/images/icons/social/facebook.svg' %}{% block id %}useFacebookIcon{% endblock %}{% endembed %}
@@ -413,7 +413,7 @@ TODO:
 #}
 {% block socialMedia %}
     <div class="socialMedia {{ socialStyle|default('basicStyle') }}">
-        <ul class="list-inline">
+        <ul class="listInline">
             <li class="facebook">
                 <a href="https://www.facebook.com/launchdating" target="_blank">
                     {% embed '@SitetheoryCoreBundle/Resources/public/images/icons/social/facebook.svg' %}{% block id %}footerFacebookIcon{% endblock %}{% endembed %}
