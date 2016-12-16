@@ -257,7 +257,7 @@ h4,
         font-size: 12px;
     }
 }
-@media (max-width:991px) {
+@media (max-width:959px) {
     .sidebarToggle  {
         top: 32px;
         right: 40px;
@@ -367,7 +367,7 @@ h4,
     font-size: 13px;
     font-weight: bold;
 }
-@media (max-width:991px) {
+@media (max-width:959px) {
     #headerRetracting .sidebarToggle  {
         top: 20px;
     }
