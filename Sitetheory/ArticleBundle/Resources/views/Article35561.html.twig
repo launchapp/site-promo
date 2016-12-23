@@ -154,7 +154,7 @@
                     <div class="siteMaxWidth siteSidePadding shellVerticalPadding">
                         <h1>Our Mission</h1>
                         <div class="fontPrimary borderDashedLight">
-                            <p>Make Dating Better</p>
+                            <p>Reimagine Dating with an App that Works for Everyone</p>
                         </div>
                         <div class="borderDashedLight bottom">&nbsp;</div>
                     </div>
@@ -200,42 +200,107 @@
                     <h1>App Sneak Peak</h1>
                     <div class="borderDashed">
 
-                        <div class="appScreen clearfix">
-                            <img src="{{ asset('bundles/sitetheorytemplatecustom/images/app/1signUp-m.png') }}" alt="">
-                            <h2 class="hoverElement fontPrimary">One-click registraton</h2>
-                            <p class="fontSecondary">Sign up with your Facebook account. (Don’t worry, it’s 100% private.)</p>
-                        </div>
+                        <div id="appPreview" class="carousel slide" data-plugin="carousel" data-colminsize="sm" data-groupmobile="1" data-interval="8000">
 
-                        <div class="appScreen clearfix">
-                            <img src="{{ asset('bundles/sitetheorytemplatecustom/images/app/2recruit-m.png') }}" alt="">
-                            <h2 class="hoverElement fontPrimary">Singles recruit a Launch Crew</h2>
-                            <p class="fontSecondary">Singles invite two or more close friends (single or partnered) to verify their account, describe them, and increase their trust score.</p>
-                        </div>
+                            <!-- Optional: Progress Indicators -->
+                            <ol class="carousel-indicators">
+                                <li data-target="#appPreview" data-slide-to="0" class="active"></li>
+                                <li data-target="#appPreview" data-slide-to="1"></li>
+                                <li data-target="#appPreview" data-slide-to="2"></li>
+                                <li data-target="#appPreview" data-slide-to="3"></li>
+                                <li data-target="#appPreview" data-slide-to="4"></li>
+                                <li data-target="#appPreview" data-slide-to="5"></li>
+                            </ol>
 
-                        <div class="appScreen clearfix">
-                            <img src="{{ asset('bundles/sitetheorytemplatecustom/images/app/3matchmakerMatches-m.png') }}" alt="">
-                            <h2 class="hoverElement fontPrimary">Launch Crew suggests matches</h2>
-                            <p class="fontSecondary">Crews use their insights to review and suggest matches for their single friends to consider.</p>
-                        </div>
+                            <!-- Wrapper for Slides -->
+                            <div class="carousel-inner" role="listbox">
+                                <div class="item active">
+                                    <div   class="slideContainer clearfix">
+                                        <div  class="appScreenshot">
+                                            <img data-spy="#appPreview" data-src="lazy" src="{{ asset('bundles/sitetheorytemplatecustom/images/app/1signUp-xs.png') }}"  data-ignorevisibility="true" alt="One-click Registration">
+                                        </div>
+                                        <div class="centerText">
+                                            <h2 class="hoverElement fontPrimary">One-click registraton</h2>
+                                            <p class="smallLabel fontPrimary bold">Sign up with your Facebook account. (Don’t worry, it’s 100% private.)</p>
+                                        </div>
+                                    </div>
+                                </div>
 
-                        <div class="appScreen clearfix">
-                            <img src="{{ asset('bundles/sitetheorytemplatecustom/images/app/4reviewMatch-m.png') }}" alt="">
-                            <h2 class="hoverElement fontPrimary">Singles review their matches</h2>
-                            <p class="fontSecondary">First, they read through an honest and non-cliche profile that gives them a lot of real insight. Then they can choose to answer a few playful ice-breakers to bring the photo into focus and unlock full chat.</p>
-                        </div>
+                                <div class="item">
+                                    <div   class="slideContainer clearfix">
+                                        <div  class="appScreenshot">
+                                            <img data-spy="#appPreview" data-src="lazy" src="{{ asset('bundles/sitetheorytemplatecustom/images/app/2recruit-xs.png') }}"  data-ignorevisibility="true" alt="Singles Recruit a Launch Crew">
+                                        </div>
+                                        <div class="centerText">
+                                            <h2 class="hoverElement fontPrimary">Singles recruit a Launch Crew</h2>
+                                            <p class="smallLabel fontPrimary bold">Singles invite two or more close friends (single or partnered) to verify their account, describe them, and increase their trust score.</p>
+                                        </div>
+                                    </div>
+                                </div>
 
-                        <div class="appScreen clearfix">
-                            <img src="{{ asset('bundles/sitetheorytemplatecustom/images/app/5meetup-m.png') }}" alt="">
-                            <h2 class="hoverElement fontPrimary">Matches schedule a low-key meetup</h2>
-                            <p class="fontSecondary">Initial talk goes well? Matches have 48 hours to schedule a meetup of no more than 45 minutes. Zero expectations. Just one coffee or drink with an interesting local they know they can trust.</p>
-                        </div>
+                                <div class="item">
+                                    <div   class="slideContainer clearfix">
+                                        <div  class="appScreenshot">
+                                            <img data-spy="#appPreview" data-src="lazy" src="{{ asset('bundles/sitetheorytemplatecustom/images/app/3matchmakerMatches-xs.png') }}"  data-ignorevisibility="true" alt="Launch Crew Suggests Matches">
+                                        </div>
+                                        <div class="centerText">
+                                            <h2 class="hoverElement fontPrimary">Launch Crew suggests matches</h2>
+                                            <p class="smallLabel fontPrimary bold">Crews use their insights to review and suggest matches for their single friends to consider.</p>
+                                        </div>
+                                    </div>
+                                </div>
 
-                        <div class="appScreen clearfix">
-                            <img src="{{ asset('bundles/sitetheorytemplatecustom/images/app/6followup-m.png') }}" alt="">
-                            <h2 class="hoverElement fontPrimary">Matches leave friendly reviews</h2>
-                            <p class="fontSecondary">A quick follow-up survey lets matches connect as friends, pass with positive feedback, or report problems in a constructive way.</p>
-                        </div>
+                                <div class="item">
+                                    <div   class="slideContainer clearfix">
+                                        <div  class="appScreenshot">
+                                            <img data-spy="#appPreview" data-src="lazy" src="{{ asset('bundles/sitetheorytemplatecustom/images/app/4reviewMatch-xs.png') }}"  data-ignorevisibility="true" alt="Singles review their matches">
+                                        </div>
+                                        <div class="centerText">
+                                            <h2 class="hoverElement fontPrimary">Singles review their matches</h2>
+                                            <p class="smallLabel fontPrimary bold">First, they read through an honest and non-cliche profile that gives them a lot of real insight. Then they can choose to answer a few playful ice-breakers to bring the photo into focus and unlock full chat.</p>
+                                        </div>
+                                    </div>
+                                </div>
 
+                                <div class="item">
+                                    <div   class="slideContainer clearfix">
+                                        <div  class="appScreenshot">
+                                            <img data-spy="#appPreview" data-src="lazy" src="{{ asset('bundles/sitetheorytemplatecustom/images/app/5meetup-xs.png') }}"  data-ignorevisibility="true" alt="Singles review their matches">
+                                        </div>
+                                        <div class="centerText">
+                                            <h2 class="hoverElement fontPrimary">Matches schedule a low-key meetup</h2>
+                                            <p class="smallLabel fontPrimary bold">Initial talk goes well? Matches have 48 hours to schedule a meetup of no more than 45 minutes. Zero expectations. Just one coffee or drink with an interesting local they know they can trust.</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="item">
+                                    <div   class="slideContainer clearfix">
+                                        <div  class="appScreenshot">
+                                            <img data-spy="#appPreview" data-src="lazy" src="{{ asset('bundles/sitetheorytemplatecustom/images/app/6followup-xs.png') }}"  data-ignorevisibility="true" alt="Matches leave friendly reviews">
+                                        </div>
+                                        <div class="centerText">
+                                            <h2 class="hoverElement fontPrimary">Matches schedule a low-key meetup</h2>
+                                            <p class="smallLabel fontPrimary bold">A quick follow-up survey lets matches connect as friends, pass with positive feedback, or report problems in a constructive way.</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <!-- Controls -->
+                            <div class="carouselControls">
+                                <a class="left carousel-control" href="#appPreview" role="button" data-slide="prev" data-scroll="false">
+                                    <img src="{{ asset('bundles/sitetheorytemplatecustom/images/carouselBack.png') }}" alt="">
+                                    <span class="sr-only">Previous</span>
+                                </a>
+                                <a class="right carousel-control" href="#appPreview" role="button" data-slide="next" data-scroll="false">
+                                    <img src="{{ asset('bundles/sitetheorytemplatecustom/images/carouselForward.png') }}" alt="">
+                                    <span class="sr-only">Next</span>
+                                </a>
+                            </div>
+
+                        </div>
                     </div>
                 </div>
             </div>
