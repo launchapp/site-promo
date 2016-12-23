@@ -529,7 +529,6 @@
 
 /* TIER 7 CTA */
 
-
 #tier7 .bodyLarge {
     font-size: 26px;
     font-weight: 300;
@@ -545,7 +544,9 @@
     left: 50%;
     width: 1px;
 }
-#tier7 .helpItem {
+
+/* TEMP: without KS only the beta logo should be negative */
+#tier7 #helpTwo .helpItem {
     margin-top: -80px;
 }
 #iconKickstarter {
@@ -572,7 +573,10 @@
     margin-top: 26px;
 }
 
+
+
 @media (max-width: 768px) {
+
     #tier7 .borderDashedVertical {
         display: none;
     }
