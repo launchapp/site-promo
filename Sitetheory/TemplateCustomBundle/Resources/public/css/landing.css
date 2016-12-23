@@ -545,10 +545,20 @@
     width: 1px;
 }
 
-/* TEMP: without KS only the beta logo should be negative */
-#tier7 #helpTwo .helpItem {
+/* TEMP (12/23/16): without KS only the beta logo should be negative */
+#tier7 #helpOne {
     margin-top: -80px;
 }
+#tier7 #helpOne .fontPrimary {
+    font-size: 22px;
+}
+#tier7 #helpTwo {
+    margin-top: 40px;
+}
+
+
+
+
 #iconKickstarter {
     width: 125px;
 }
@@ -568,6 +578,9 @@
 #tier7 p {
     margin-top: 35px;
     font-size: 15px;
+}
+#tier7 .disclaimer {
+    font-size: 11px;
 }
 #tier7 .btn {
     margin-top: 26px;

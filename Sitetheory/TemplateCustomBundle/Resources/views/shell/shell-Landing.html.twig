@@ -892,20 +892,30 @@ set contentVersionOptions = {
                 <div class="borderDashedVertical"></div>
                 <div class="row borderDashed">
                     <div class="col-sm-5 leftCol">
-                        <div id="helpOne" class="helpItem">
-                            <p class="fontPrimary">Apps are easy to build, but it's the people that make a community work. When enough dreamers like you get sick of the status quo, and say they want this, it will happen. Please do your part and leave us your email so we can notify you when the beta is ready in your area. There is no risk, give it a shot.</p>
+                        <div id="helpOne">
+
+                            <img id="iconBeta" src="{{ asset('bundles/sitetheorytemplatecustom/images/tier7iconBeta.png') }}" alt="">
+                            <h2>Sign up for Beta</h2>
+                            <p class="fontPrimary">Apps are easy to build, but it's the people that make a community work. When enough good people like you want to create something better, we can make it happen.</p>
+                            <p class="fontPrimary">Please join us so we can notify you when the beta is ready in your area. There's no risk, give it a shot!</p>
+
                         </div>
                     </div>
                     <div class="col-sm-5 col-sm-offset-2 rightCol">
                         <div class="borderDashed hide-gt-xs">&nbsp;</div>
-                        <div id="helpTwo" class="helpItem">
-                            <img id="iconBeta" src="{{ asset('bundles/sitetheorytemplatecustom/images/tier7iconBeta.png') }}" alt="">
-                            <h2>Sign up for Beta</h2>
-                            <p class="fontPrimary">We&rsquo;ll let you know when the app is ready in your area. Signup takes just 10 seconds (we&rsquo;ll never share or sell your data).</p>
-                            <div class="btn positionAnchor" data-plugin="AddClass Dim" data-class="active" data-target="#betaPopup" data-event="click">
-                                <div class="btnText" data-trackCategory="CTA" data-trackAction="beta" data-trackLabel="footer">Sign Me Up</div>
-                                <div class="btnGradient"></div>
-                            </div>
+                        <div id="helpTwo">
+
+                            {% set hideLogo = true %}
+                            {% set hideTitle = true %}
+                            {% set hideText = true %}
+                            {% set signupId = 'betaFooter' %}
+                            {% set signupTitle = '' %}
+                            {% set signupText = '' %}
+                            {% set signupSuccess = "You rock! We'll let you know when the app is ready." %}
+                            {% set signupListId = '1' %}
+
+                            {{ block('registrationForm') }}
+
                         </div>
                     </div>
                 </div>
@@ -1034,10 +1044,14 @@ set contentVersionOptions = {
 {% block registrationForm %}
     <div class="registrationForm">
         <form>
-            <div class="logo">
-                <img src="{{ asset('bundles/sitetheorytemplatecustom/images/launchLogoMark.png') }}" alt="">
-            </div>
-            <h2 class="signupTitle">{{ signupTitle|default("Notification Signup") }}</h2>
+            {% if hideLogo is not defined or hideLogo is empty %}
+                <div class="logo">
+                    <img src="{{ asset('bundles/sitetheorytemplatecustom/images/launchLogoMark.png') }}" alt="">
+                </div>
+            {% endif %}
+            {% if hideTitle is not defined or hideTitle is empty %}
+                <h2 class="signupTitle">{{ signupTitle|default("Notification Signup") }}</h2>
+            {% endif %}
             <div class="formLoadingError">
                 <h3 class="">Loading Error ;(</h3>
                 <p>There was an error that prevented our form from loading. Please refresh the page, or email hello@launchapp.io so we can manually add you to the list.</p>
@@ -1048,8 +1062,10 @@ set contentVersionOptions = {
                 <input type="hidden" name="lat" value="{{ environment.lat }}">
                 <input type="hidden" name="lng" value="{{ environment.lng }}">
                 <input type="hidden" name="timezone" value="{{ environment.timezone }}">
-                <p class="note fontBody">{{ signupText|default("We'll let you know when it's ready!") }}</p>
 
+                {% if hideText is not defined or hideText is empty %}
+                    <p class="note fontBody">{{ signupText|default("We'll let you know when it's ready!") }}</p>
+                {% endif %}
                 <div class="form-group">
                     <input type="email" value="" name="email" class="required email form-control smallLabel fontPrimary" placeholder="Email Address">
                 </div>
