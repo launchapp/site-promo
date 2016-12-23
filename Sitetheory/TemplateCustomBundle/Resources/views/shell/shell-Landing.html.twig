@@ -567,17 +567,18 @@ set contentVersionOptions = {
                 <div id="tier1video" class="responsiveObject">
                     <iframe id="launchVideo" width="700" height="394" src="https://www.youtube.com/embed/IlANPQfnc_M?rel=0&showinfo=0&modestbranding=1&enablejsapi=1" frameborder="0" allowfullscreen></iframe>
                 </div>
+                {#
                 <div class="borderDashed clearfix">
                     <div id="tier1action" class="pull-right">
                         <span class="fontPrimary bodyLarge optionalText">Help us build it!</span>
                         <a class="btn" href="https://www.kickstarter.com/projects/launch/dating-apps-suck-you-can-change-that-for-1" target="_blank">Kickstarter Campaign</a>
-                        {#<div class="btn positionAnchor" data-plugin="AddClass Dim" data-class="active" data-target="#kickstarterPopup" data-event="click" >
+                        <!-- div class="btn positionAnchor" data-plugin="AddClass Dim" data-class="active" data-target="#kickstarterPopup" data-event="click" >
                             <div class="btnText" data-trackCategory="CTA" data-trackAction="kickstarter" data-trackLabel="top">Kickstarter Campaign</div>
                             <div class="btnGradient"></div>
-                        </div>
-                        #}
+                        </div-->
                     </div>
                 </div>
+                #}
             </div>
         </div>
 
@@ -881,6 +882,7 @@ set contentVersionOptions = {
     </div>
 
     {# TIER 7 CTA #}
+    {#
     <div id="tier7" class="landingTier">
         <div class="siteMaxWidth siteSidePadding shellVerticalPadding">
             <h1>Help Create the Future</h1>
@@ -891,19 +893,10 @@ set contentVersionOptions = {
                     <div class="col-sm-5 leftCol">
                         <div id="helpOne" class="helpItem">
                             <img id="iconKickstarter" src="{{ asset('bundles/sitetheorytemplatecustom/images/tier7iconKickstarter.png') }}" alt="">
-                            {#<img id="iconKickstarter" src="{{ asset('bundles/sitetheorytemplatecustom/images/tier7iconIGG.png') }}" alt="">#}
                             <h2>Kickstarter!</h2>
 
-                            {# TODO: re-enable when kickstarter is live #}{#<h4>(One-click signup)</h4>#}
                             <p class="fontPrimary">Love the idea? Give feedback and $1 to make it happen. We&rsquo;re a small team. We need a strong community behind us. Become a founding member and get amazing rewards!  </p>
                             <a class="btn" href="https://www.kickstarter.com/projects/launch/dating-apps-suck-you-can-change-that-for-1" target="_blank">I Want to Help</a>
-
-                            {#
-                            <div class="btn positionAnchor" data-plugin="AddClass Dim" data-class="active" data-target="#kickstarterPopup" data-event="click">
-                                <div class="btnText" data-trackCategory="CTA" data-trackAction="kickstarter" data-trackLabel="footer">I Want to Help</div>
-                                <div class="btnGradient"></div>
-                            </div>
-                            #}
                             <br class="visible-xs">
                             <br class="visible-xs">
                         </div>
@@ -924,13 +917,14 @@ set contentVersionOptions = {
             </div>
         </div>
     </div>
+    #}
 
     {# TIER 8 CONTACT #}
     <div id="tier8" class="backgroundDark landingTier">
         <div id="tier8background">
             <div class="siteMaxWidth siteSidePadding shellVerticalPadding">
 
-                <p class="fontPrimary bodyLarge">Have questions? Please use the <a href="https://www.kickstarter.com/projects/launch/dating-apps-suck-you-can-change-that-for-1" target="_blank">contact form</a> on our Kickstarter page. For press inquiries, <a href="mailto:jeremy@launchapp.io">jeremy@launchapp.io</a>. #} For general questions or press inquiries view our <a href="/Press">press page</a> and contact <a href="mailto:jeremy@launchapp.io">jeremy@launchapp.io</a>.  To discuss investing, <a href="mailto:chad@launchapp.io">chad@launchapp.io</a>.</p>
+                <p class="fontPrimary bodyLarge">Have questions? Please use the <a href="https://www.kickstarter.com/projects/launch/dating-apps-suck-you-can-change-that-for-1" target="_blank">contact form</a> on our Kickstarter page. For press inquiries, <a href="mailto:jeremy@launchapp.io">jeremy@launchapp.io</a>. For general questions or press inquiries view our <a href="/Press">press page</a> and contact <a href="mailto:jeremy@launchapp.io">jeremy@launchapp.io</a>.  To discuss investing, <a href="mailto:chad@launchapp.io">chad@launchapp.io</a>.</p>
             </div>
         </div>
     </div>
