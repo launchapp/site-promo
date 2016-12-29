@@ -14,7 +14,7 @@ TODO:
 {% block link %}
     {{ parent() }}
 
-    {# TODO: remove once we don't use bootstrap! #}
+    {# TODO: remove once we no longer use boostrap in carousel and forms. bootstrap has been removed everywhere else.  #}
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/css/bootstrap{{ minified }}.css">
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/css/bootstrap-theme{{ minified }}.css">
 
@@ -373,7 +373,7 @@ TODO:
     <div id="header1" class="clearfix">
         <div class="clearfix">
             {{ block('betaButton') }}
-            <div id="logoHeader" class="pull-left">
+            <div id="logoHeader" class="pullLeft">
                 <a href="/">
                     <img src="{{ asset('bundles/sitetheorytemplatecustom/images/launchLogoHeader.png') }}" alt="">
                 </a>

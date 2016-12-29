@@ -6,6 +6,7 @@ TODO:
 1. After Beta is done, Remove references.
 2. After Kickstarter is done, remove all references.
 3. Customize A/B Wording Tests
+4. Change Bootstrap carousel and form over to angular and remove boostrap css which is only used for those two elements.
 #}
 
 
@@ -69,10 +70,14 @@ set contentVersionOptions = {
 {# Load Site CSS #}
 
 {% block link %}
-    {{ parent() }}
-    {# TODO: remove once we don't use bootstrap! #}
+
+
+    {# TODO: remove bootstrap! Temporarily including bootstap for carousel and form on both landing and press pages #}
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/css/bootstrap{{ minified }}.css">
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/css/bootstrap-theme{{ minified }}.css">
+
+
+    {{ parent() }}
 
     <link rel="stylesheet" href="{{ asset('bundles/sitetheorytemplatecustom/css/site.css') }}">
     <link rel="stylesheet" href="{{ asset('bundles/sitetheorytemplatecustom/css/landing.css') }}">
@@ -521,7 +526,7 @@ set contentVersionOptions = {
     <div id="header1" class="clearfix">
         <div class="clearfix">
             {{ block('betaButton') }}
-            <div id="logoHeader" class="pull-left">
+            <div id="logoHeader" class="pullLeft">
                 <img src="{{ asset('bundles/sitetheorytemplatecustom/images/launchLogoHeader.png') }}" alt="">
             </div>
             {{ block('mainNavigation') }}
@@ -561,19 +566,19 @@ set contentVersionOptions = {
     {# TIER 1 VIDEO #}
     <div id="tier1" class="landingTier siteMaxWidth siteSidePadding shellVerticalPadding">
         <div class="clearfix">
-            <div id="tier1Left" class="pull-left">
+            <div id="tier1Left" class="pullLeft">
                 <h1>{{ contentVersion.title|raw }}</h1>
                 <div class="borderDashed">
                     <p class="fontPrimary">{{ contentVersion.description|raw }}</p>
                 </div>
             </div>
-            <div id="tier1Right" class="pull-left">
+            <div id="tier1Right" class="pullLeft">
                 <div id="tier1video" class="responsiveObject">
                     <iframe id="launchVideo" width="700" height="394" src="https://www.youtube.com/embed/y2R_vqOBHnw?rel=0&showinfo=0&modestbranding=1&enablejsapi=1" frameborder="0" allowfullscreen></iframe>
                 </div>
                 {#
                 <div class="borderDashed clearfix">
-                    <div id="tier1action" class="pull-right">
+                    <div id="tier1action" class="pullRight">
                         <span class="fontPrimary bodyLarge optionalText">Help us build it!</span>
                         <a class="btn" href="https://www.kickstarter.com/projects/launch/dating-apps-suck-you-can-change-that-for-1" target="_blank">Kickstarter Campaign</a>
                         <!-- div class="btn positionAnchor" data-plugin="AddClass Dim" data-class="active" data-target="#kickstarterPopup" data-event="click" >
@@ -608,53 +613,49 @@ set contentVersionOptions = {
         <div class="siteMaxWidth siteSidePadding shellVerticalPadding">
             <h3>with less of</h3>
             <h1>What People Hate</h1>
-            <div class="row">
-                <div class="col-xs-6 clearfix">
-                    <div class="badAppImage pull-left">
+            <div layout="row" layout-wrap>
+                <div flex="100" flex-gt-xs="50" class="clearfix">
+                    <div class="badAppImage pullLeft">
                         <img src="{{ asset('bundles/sitetheorytemplatecustom/images/badMatch1.png') }}" alt="">
                     </div>
-                    <p class="pull-left">Dishonest Profiles</p>
+                    <p class="pullLeft">Dishonest Profiles</p>
                 </div>
-                <div class="col-xs-6 rightCol clearfix">
-                    <div class="badAppImage pull-right">
+                <div flex="100" flex-gt-xs="50" class="rightCol clearfix">
+                    <div class="badAppImage pullRight">
                         <img src="{{ asset('bundles/sitetheorytemplatecustom/images/badMatch4.png') }}" alt="">
                     </div>
-                    <p class="pull-right">Lazy &amp; Aggressive Messaging</p>
+                    <p class="pullRight">Lazy &amp; Aggressive Messaging</p>
                 </div>
-            </div>
-            <div class="row">
-                <div class="col-xs-6 clearfix">
+                <div flex="100" flex-gt-xs="50" class="clearfix">
                     <div class="borderDashed">
-                        <div class="badAppImage pull-left">
+                        <div class="badAppImage pullLeft">
                             <img src="{{ asset('bundles/sitetheorytemplatecustom/images/badMatch2.png') }}" alt="">
                         </div>
-                        <p class="pull-left">Creeps &amp; Players</p>
+                        <p class="pullLeft">Creeps &amp; Players</p>
                     </div>
                 </div>
-                <div class="col-xs-6 rightCol clearfix">
+                <div flex="100" flex-gt-xs="50" class="rightCol clearfix">
                     <div class="borderDashed">
-                        <div class="badAppImage pull-right">
+                        <div class="badAppImage pullRight">
                             <img src="{{ asset('bundles/sitetheorytemplatecustom/images/badMatch5.png') }}" alt="">
                         </div>
-                        <p class="pull-right">Bots/Fake Users</p>
+                        <p class="pullRight">Bots/Fake Users</p>
                     </div>
                 </div>
-            </div>
-            <div class="row">
-                <div class="col-xs-6 clearfix">
+                <div flex="100" flex-gt-xs="50" class="clearfix">
                     <div class="borderDashed">
-                        <div class="badAppImage pull-left">
+                        <div class="badAppImage pullLeft">
                             <img src="{{ asset('bundles/sitetheorytemplatecustom/images/badMatch3.png') }}" alt="">
                         </div>
-                        <p class="pull-left">Shallow Matches</p>
+                        <p class="pullLeft">Shallow Matches</p>
                     </div>
                 </div>
-                <div class="col-xs-6 rightCol clearfix">
+                <div flex="100" flex-gt-xs="50" class="rightCol clearfix">
                     <div class="borderDashed">
-                        <div class="badAppImage pull-right">
+                        <div class="badAppImage pullRight">
                             <img src="{{ asset('bundles/sitetheorytemplatecustom/images/badMatch6.png') }}" alt="">
                         </div>
-                        <p class="pull-right">Interaction Anxiety</p>
+                        <p class="pullRight">Interaction Anxiety</p>
                     </div>
                 </div>
             </div>
@@ -850,8 +851,8 @@ set contentVersionOptions = {
             <div class="siteMaxWidth siteSidePadding shellVerticalPadding">
                 <h1>Benefits</h1>
                 <div id="tier6content" class="fontPrimary">
-                    <div class="row">
-                        <div class="col-sm-5 leftCol">
+                    <div layout="row" layout-wrap>
+                        <div flex="100" flex-gt-xs="40" class="leftCol">
                             <div id="benefitOne" class="benefitItem">
                                 <h3>Honest &amp; Interesting Profiles </h3>
                                 <p>Every profile is verified by friends, and improved as you and your friends respond to fun micro-questions that collect over time. Fewer lies. Less stress. More originality.</p>
@@ -865,7 +866,8 @@ set contentVersionOptions = {
                                 <p>Many great relationships would never have passed the two-second swipe test. To encourage slower judgment, every match photo starts blurred. But don&rsquo;t worry, you can bring their picture into focus by exchanging a few playful ice-breakers.</p>
                             </div>
                         </div>
-                        <div class="col-sm-5 col-sm-offset-2 rightCol">
+                        <div flex="100" flex-gt-xs="20"></div>
+                        <div flex="100" flex-gt-xs="40" class="rightCol">
                             <div id="benefitFour" class="benefitItem">
                                 <h3>Better Members</h3>
                                 <p>Players, creeps, and cheaters won&rsquo;t be as attracted to a community that requires close friends to vouch for them. </p>
@@ -894,8 +896,8 @@ set contentVersionOptions = {
             <p class="fontPrimary bodyLarge">We can't do this without you. Literally.</p>
             <div id="tier7content">
                 <div class="borderDashedVertical"></div>
-                <div class="row borderDashed">
-                    <div class="col-sm-5 leftCol">
+                <div layout="row" layout-wrap class="borderDashed">
+                    <div flex="100" flex-gt-xs="45" class="leftCol">
                         <div id="helpOne">
 
                             <img id="iconBeta" src="{{ asset('bundles/sitetheorytemplatecustom/images/tier7iconBeta.png') }}" alt="">
@@ -905,7 +907,8 @@ set contentVersionOptions = {
 
                         </div>
                     </div>
-                    <div class="col-sm-5 col-sm-offset-2 rightCol">
+                    <div flex="100" flex-gt-xs="10"></div>
+                    <div flex="100" flex-gt-xs="45" class="rightCol">
                         <div class="borderDashed hide-gt-xs">&nbsp;</div>
                         <div id="helpTwo">
 
@@ -979,7 +982,7 @@ set contentVersionOptions = {
     {#
     <div id="footer" class="clearfix fontPrimary">
         <div class="siteMaxWidth siteSidePadding">
-            <div class="footerPhone pull-right">
+            <div class="footerPhone pullRight">
                 {{ block('sitePhone') }}
             </div>
             <div class="footerEmail">
