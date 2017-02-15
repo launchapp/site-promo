@@ -68,7 +68,7 @@
 /* TIER NUTSHELL */
 
 #tierNutshell {
-    background: url('/sitetheory/v/1/0/bundles/sitetheorytemplatecustom/images/tier6Background.jpg') no-repeat;
+    background: url('/assets/1/0/bundles/sitetheorytemplatecustom/images/tier6Background.jpg') no-repeat;
     background-size: cover;
 }
 #tierNutshell #logo img {
@@ -123,7 +123,7 @@
 
 #tierMissionBackground {
     padding: 20px 0;
-    background: url('/sitetheory/v/1/0/bundles/sitetheorytemplatecustom/images/tier2Background.jpg') no-repeat center center;
+    background: url('/assets/1/0/bundles/sitetheorytemplatecustom/images/tier2Background.jpg') no-repeat center center;
     background-size: cover;
 }
 #tierMissionBackground .borderDashedLight {
@@ -276,7 +276,7 @@
 
 #sectionDarkFooterbackground {
     padding: 120px 160px 200px 160px;
-    background: url('/sitetheory/v/1/0/bundles/sitetheorytemplatecustom/images/tier8background.png') no-repeat right bottom;
+    background: url('/assets/1/0/bundles/sitetheorytemplatecustom/images/tier8background.png') no-repeat right bottom;
     /* to fake padding w/o affecting background image */
     border-bottom: 50px solid #282828;
     background-size: 100%;

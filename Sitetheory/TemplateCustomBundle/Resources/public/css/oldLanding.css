@@ -358,17 +358,17 @@ h4,
 .borderDashed {
     margin-top: 20px;
     padding-top: 20px;
-    background: url('/sitetheory/v/1/0/bundles/sitetheorytemplatecustom/images/borderDashed.png') repeat-x;
+    background: url('/assets/1/0/bundles/sitetheorytemplatecustom/images/borderDashed.png') repeat-x;
     background-size: 6px;
 }
 .borderDashedLight {
     margin-top: 20px;
     padding-top: 20px;
-    background: url('/sitetheory/v/1/0/bundles/sitetheorytemplatecustom/images/borderDashedLight.png') repeat-x;
+    background: url('/assets/1/0/bundles/sitetheorytemplatecustom/images/borderDashedLight.png') repeat-x;
     background-size: 6px;
 }
 .borderDashedVertical {
-    background: url('/sitetheory/v/1/0/bundles/sitetheorytemplatecustom/images/borderDashedVertical.png') repeat-y;
+    background: url('/assets/1/0/bundles/sitetheorytemplatecustom/images/borderDashedVertical.png') repeat-y;
     background-size: 1px;
 }
 
@@ -1146,7 +1146,7 @@ body.dim #app {
 /* TIER 2 BROKEN STATUS QUO */
 
 #tier2 {
-    background: url('/sitetheory/v/1/0/bundles/sitetheorytemplatecustom/images/tier2Background.jpg') no-repeat center center;
+    background: url('/assets/1/0/bundles/sitetheorytemplatecustom/images/tier2Background.jpg') no-repeat center center;
     background-size: cover;
 }
 #tier2 .siteMaxWidth {
@@ -1241,7 +1241,7 @@ body.dim #app {
 }
 #tier4chart {
     position: relative;
-    background: url('/sitetheory/v/1/0/bundles/sitetheorytemplatecustom/images/tier4Background.jpg') no-repeat center center;
+    background: url('/assets/1/0/bundles/sitetheorytemplatecustom/images/tier4Background.jpg') no-repeat center center;
     background-size: cover;
 }
 #tier4chart h3 {
@@ -1280,14 +1280,14 @@ body.dim #app {
     margin-right: -6px;
     padding-right: 215px;
     min-height: 220px;
-    background: url('/sitetheory/v/1/0/bundles/sitetheorytemplatecustom/images/tier4connectLeft.png') no-repeat right 70px;
+    background: url('/assets/1/0/bundles/sitetheorytemplatecustom/images/tier4connectLeft.png') no-repeat right 70px;
     background-size: 215px;
 }
 #tier4  .chartCol.right .chartContent {
     float: right;
     margin: 0 0 0 -4px;
     padding: 26px 0 0 191px;
-    background: url('/sitetheory/v/1/0/bundles/sitetheorytemplatecustom/images/tier4connectRight.png') no-repeat left 96px;
+    background: url('/assets/1/0/bundles/sitetheorytemplatecustom/images/tier4connectRight.png') no-repeat left 96px;
     background-size: 191px;
 }
 @media (max-width: 800px) {
@@ -1337,7 +1337,7 @@ body.dim #app {
 
 #tier6 {
     min-height: 600px;
-    background: url('/sitetheory/v/1/0/bundles/sitetheorytemplatecustom/images/tier6Background.jpg') no-repeat;
+    background: url('/assets/1/0/bundles/sitetheorytemplatecustom/images/tier6Background.jpg') no-repeat;
     background-size: cover;
 }
 #tier6 h1 {
@@ -1365,22 +1365,22 @@ body.dim #app {
     background-size: 40px;
 }
 #tier6 #benefitOne {
-    background-image: url('/sitetheory/v/1/0/bundles/sitetheorytemplatecustom/images/tier6iconProfile.png');
+    background-image: url('/assets/1/0/bundles/sitetheorytemplatecustom/images/tier6iconProfile.png');
 }
 #tier6 #benefitTwo {
-    background-image: url('/sitetheory/v/1/0/bundles/sitetheorytemplatecustom/images/tier6iconMatches.png');;
+    background-image: url('/assets/1/0/bundles/sitetheorytemplatecustom/images/tier6iconMatches.png');;
 }
 #tier6 #benefitThree {
-    background-image: url('/sitetheory/v/1/0/bundles/sitetheorytemplatecustom/images/tier6iconReveals.png');
+    background-image: url('/assets/1/0/bundles/sitetheorytemplatecustom/images/tier6iconReveals.png');
 }
 #tier6 #benefitFour {
-    background-image: url('/sitetheory/v/1/0/bundles/sitetheorytemplatecustom/images/tier6iconMembers.png');
+    background-image: url('/assets/1/0/bundles/sitetheorytemplatecustom/images/tier6iconMembers.png');
 }
 #tier6 #benefitFive {
-    background-image: url('/sitetheory/v/1/0/bundles/sitetheorytemplatecustom/images/tier6iconMessage.png');
+    background-image: url('/assets/1/0/bundles/sitetheorytemplatecustom/images/tier6iconMessage.png');
 }
 #tier6 #benefitSix {
-    background-image: url('/sitetheory/v/1/0/bundles/sitetheorytemplatecustom/images/tier6iconMeetup.png');
+    background-image: url('/assets/1/0/bundles/sitetheorytemplatecustom/images/tier6iconMeetup.png');
 }
 
 
@@ -1459,7 +1459,7 @@ body.dim #app {
 
 #tier8background {
     padding: 120px 160px 200px 160px;
-    background: url('/sitetheory/v/1/0/bundles/sitetheorytemplatecustom/images/tier8background.png') no-repeat right bottom;
+    background: url('/assets/1/0/bundles/sitetheorytemplatecustom/images/tier8background.png') no-repeat right bottom;
     background-size: 100%;
 }
 #tier8 .bodyLarge {

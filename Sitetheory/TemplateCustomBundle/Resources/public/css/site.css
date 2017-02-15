@@ -386,17 +386,17 @@ h4,
 .borderDashed {
     margin-top: 20px;
     padding-top: 20px;
-    background: url('/sitetheory/v/1/0/bundles/sitetheorytemplatecustom/images/borderDashed.png') repeat-x;
+    background: url('/assets/1/0/bundles/sitetheorytemplatecustom/images/borderDashed.png') repeat-x;
     background-size: 6px;
 }
 .borderDashedLight {
     margin-top: 20px;
     padding-top: 20px;
-    background: url('/sitetheory/v/1/0/bundles/sitetheorytemplatecustom/images/borderDashedLight.png') repeat-x;
+    background: url('/assets/1/0/bundles/sitetheorytemplatecustom/images/borderDashedLight.png') repeat-x;
     background-size: 6px;
 }
 .borderDashedVertical {
-    background: url('/sitetheory/v/1/0/bundles/sitetheorytemplatecustom/images/borderDashedVertical.png') repeat-y;
+    background: url('/assets/1/0/bundles/sitetheorytemplatecustom/images/borderDashedVertical.png') repeat-y;
     background-size: 1px;
 }
 

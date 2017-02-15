@@ -79,8 +79,8 @@ set contentVersionOptions = {
 
     {{ parent() }}
 
-    <link rel="stylesheet" href="{{ asset('bundles/sitetheorytemplatecustom/css/site.css') }}">
-    <link rel="stylesheet" href="{{ asset('bundles/sitetheorytemplatecustom/css/landing.css') }}">
+    <link rel="stylesheet" href="{{ asset('bundles/sitetheorytemplatecustom/css/site'~ minified ~'.css') }}">
+    <link rel="stylesheet" href="{{ asset('bundles/sitetheorytemplatecustom/css/landing'~ minified ~'.css') }}">
 {% endblock link %}
 
 {% block script %}
@@ -389,9 +389,9 @@ set contentVersionOptions = {
     {{ parent() }}
     {# TODO: This is just here temporarily until the base.html.twig give the ability to select the preferred image in the admin #}
     {# we may need to reload the page here in order to get the new image https://developers.facebook.com/tools/debug/ #}
-    <meta property="og:url" content="https://www.launchapp.io">
+    <meta property="og:url" content="https://launchapp.io">
     <meta property="og:type" content="website">
-    <meta property="og:image" content="https://www.launchapp.io/sitetheory/v/1/0/bundles/sitetheorytemplatecustom/images/app/LaunchAppPreview.jpg">
+    <meta property="og:image" content="https://launchapp.io/assets/1/0/bundles/sitetheorytemplatecustom/images/app/LaunchAppPreview.jpg">
     <meta property="og:title" content="The Cure for Dating Apps | Launch">
     <meta property="og:description" content="Online dating kinda sucks. So we designed something new. And now we need your help.">
 {% endblock meta %}
