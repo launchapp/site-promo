@@ -258,6 +258,9 @@ h4,
     }
 }
 @media (max-width:959px) {
+    #sidebarToggleContainer.siteSidePadding {
+        padding: 0;
+    }
     .sidebarToggle  {
         top: 32px;
         right: 40px;

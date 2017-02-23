@@ -286,7 +286,7 @@ TODO:
 
 
 {# Put Beta Signup in Sidebar #}
-{% block sidebarExtrasTop %}
+{% block sidebarContent %}
     {% block betaButton %}
         <div class="btn betaSignupBtn"  data-plugin="AddClass Dim" data-class="active" data-target="#betaPopup" data-event="click" data-trackCategory="CTA" data-trackLabel="beta" data-trackValue="top">
             Beta Signup
@@ -295,36 +295,10 @@ TODO:
 
     <div class="borderDashed">
         {% block mainNavigation %}
-            {#
-            <div id="navMainContainer" class="navMainContainer">
-                <ul class="nav listInline fontPrimary">
-                    <li class="navMainLink">
-                        <a href="#sectionAbout">
-                            <div class="linkOrnament"></div>
-                            <div class="linkUnderline"></div>
-                            What Is Launch?
-                        </a>
-                    </li>
-                    <li class="navMainLink">
-                        <a href="#sectionDifferent">
-                            <div class="linkOrnament"></div>
-                            <div class="linkUnderline"></div>
-                            What Makes Launch Different?
-                        </a>
-                    </li>
-                    <li class="navMainLink">
-                        <a href="#sectionResources">
-                            <div class="linkOrnament"></div>
-                            <div class="linkUnderline"></div>
-                            Download Resources
-                        </a>
-                    </li>
-                </ul>
-            </div>
-            #}
         {% endblock mainNavigation %}
     </div>
-{% endblock sidebarExtrasTop %}
+    {{ parent() }}
+{% endblock sidebarContent %}
 
 
 
@@ -381,7 +355,7 @@ TODO:
             {{ block('mainNavigation') }}
         </div>
     </div>
-{% endblock header1 %}
+{% endblock headerContent %}
 
 
 {# TODO: this is not showing up at the moment. We are using a footer above #}
@@ -539,7 +513,6 @@ TODO:
         </div>
 
     {% endblock betaSignup %}
-
 
 {% endblock popup %}
 

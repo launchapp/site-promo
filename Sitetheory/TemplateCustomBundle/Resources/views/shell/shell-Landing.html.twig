@@ -429,7 +429,7 @@ set contentVersionOptions = {
 {% endblock sidebarLogin %}
 
 {# Put Beta Signup in Sidebar #}
-{% block sidebarExtrasTop %}
+{% block sidebarContent %}
     {% block betaButton %}
         <div class="btn betaSignupBtn"  data-plugin="AddClass Dim" data-class="active" data-target="#betaPopup" data-event="click" data-trackCategory="CTA" data-trackAction="beta" data-trackLabel="top">
             Beta Signup
@@ -480,7 +480,8 @@ set contentVersionOptions = {
     {% endblock mainNavigation %}
     </div>
 
-{% endblock sidebarExtrasTop %}
+    {{ parent() }}
+{% endblock sidebarContent %}
 
 
 {# Hide footer site map #}
@@ -491,10 +492,10 @@ set contentVersionOptions = {
 {% block viewFooter %}
 {% endblock viewFooter %}
 
-{# Remove shell vertical content padding class to replace with stream padding #}
-{% set headerStructure = 'emptyAll' %}
-{% set headerRetractingStructure = 'emptyAll' %}
-{% set shellContentStructure = 'emptyAll' %}
+{# Remove shell vertical content padding class and side padding classes to replace with stream padding #}
+{% set headerStructure = '' %}
+{% set headerRetractingStructure = '' %}
+{% set shellContentStructure = '' %}
 
 
 
@@ -522,7 +523,7 @@ set contentVersionOptions = {
 {% endblock shareButtons %}
 
 
-{% block header1 %}
+{% block headerContent %}
     <div id="header1" class="clearfix">
         <div class="clearfix">
             {{ block('betaButton') }}
@@ -532,7 +533,7 @@ set contentVersionOptions = {
             {{ block('mainNavigation') }}
         </div>
     </div>
-{% endblock header1 %}
+{% endblock headerContent %}
 
 {% block content %}
 
