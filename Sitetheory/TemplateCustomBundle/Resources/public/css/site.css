@@ -167,11 +167,9 @@ h4,
 /* HEADER */
 
 #headerBackground {
-    background: rgba(255,255,255,.96);
-}
-#headerContainer {
-    border-bottom: 1px solid #DDD;
     box-shadow: 0 0 4px #DDD;
+    border-bottom: 1px solid #DDD;
+    background: rgba(255,255,255,.96);
 }
 #header {
     padding: 10px 40px;
