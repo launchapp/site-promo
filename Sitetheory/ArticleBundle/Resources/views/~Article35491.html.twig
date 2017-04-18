@@ -21,7 +21,7 @@
 
 {% block body %}
     {# the appClass allows us to add a class to the whole page, from any extending template, to target CSS in creative ways #}
-    <div id="app" class="{% block appClass %}{% endblock appClass %}{{ mobileDrawerDirection|default('') }} {{ streamClass|default('noStreamClass') }}{% if view.viewVersion.settings.disableImage is empty %} headerImageTrue{% endif %}">
+    <div id="app" class="{% block appClass %}{% endblock appClass %}{{ mobileDrawerDirection|default('') }} {{ streamClass|default('noStreamClass') }}{% if content.version.disableImage is empty %} headerImageTrue{% endif %}">
 
         <!-- Main -->
         {% block main %}
