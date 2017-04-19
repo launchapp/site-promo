@@ -86,8 +86,6 @@ set contentVersionOptions = {
 {% block script %}
     {{ parent() }}
 
-    {# <script type="text/javascript" src="{{ asset('bundles/sitetheorytemplatecustom/js/landing.js') }}"></script> #}
-    {# This script is in the HTML now (instead of landing.js) just to be sure that it loads (and isn't delayed) #}
     {# TODO: make this native JS without JQuery #}
     <script>
         // Use Require.js or Contextual Scope
@@ -122,15 +120,15 @@ set contentVersionOptions = {
                  * Track Events
                  */
                 function trackEvent(el) {
-                    var trackCategory = el.dataAttr('trackCategory') || 'unknown';
-                    var trackAction = el.dataAttr('trackAction') || null;
-                    var trackLabel = el.dataAttr('trackLabel') || null;
+                    var trackCategory = el.data('trackCategory') || 'unknown';
+                    var trackAction = el.data('trackAction') || null;
+                    var trackLabel = el.data('trackLabel') || null;
                     ga('send', 'event', trackCategory, trackAction, trackLabel);
                 }
 
                 // Track Version of Page
-                if ($('body').dataAttr('contentVersion')) {
-                    ga('send', 'event', 'content', 'version', $('body').dataAttr('contentVersion'));
+                if ($('body').data('contentVersion')) {
+                    ga('send', 'event', 'content', 'version', $('body').data('contentVersion'));
                 }
 
                 // Track all registered elements
@@ -212,7 +210,7 @@ set contentVersionOptions = {
 
                     // Add Loading Status
                     var btnSubmit = $form.find('.signupAction .btnText');
-                    if(!btnSubmit.dataAttr('text')) btnSubmit.dataAttr('text', btnSubmit.text());
+                    if(!btnSubmit.data('text')) btnSubmit.data('text', btnSubmit.text());
                     toggleSubmitButton(btnSubmit, 'off')
 
 
@@ -250,7 +248,7 @@ set contentVersionOptions = {
                         btnSubmit.prop('disabled', true);
                     } else {
                         btnSubmit.removeClass('form-status-sending');
-                        btnSubmit.text(btnSubmit.dataAttr('text'));
+                        btnSubmit.text(btnSubmit.data('text'));
                         btnSubmit.prop('disabled', true);
                     }
                 }
