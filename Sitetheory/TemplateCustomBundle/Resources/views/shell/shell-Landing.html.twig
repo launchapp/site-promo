@@ -26,38 +26,36 @@ Launch is an app for everyone disappointed with the current dating experience (p
 
 
 #}
-{%
-set contentVersionOptions = {
+{% set contentVersionOptions = {
     'a': {
         'title': 'Happiness Shouldn&rsquo;t Be So Hard',
         'description': 'Online dating kinda&rsquo; sucks. So we designed something new. And now we need your help.'
-        },
+    },
     'b': {
         'title': 'The Cure for Dating Apps',
         'description': 'Only 7% of singles make a meaningful connection online each year. Ready to change that?'
-        },
+    },
     'c': {
         'title': 'Dating Apps Kinda&rsquo; Suck',
         'description': 'Someone you love is using one and hating it. They deserve better. Let&rsquo;s give it to them.'
-        },
+    },
     'd': {
         'title': 'Dating Apps Suck',
         'description': 'It&rsquo;s 2016. Online dating shouldn&rsquo;t be this bad still. It&rsquo;s time to fix it. You in?'
-        },
+    },
     'e': {
         'title': 'Dating Apps Suck',
         'description': 'Someone you love is using one and hating it. They deserve better. Let&rsquo;s give it to them.'
-        },
+    },
     'f': {
         'title': 'Ready for Happiness?',
         'description': 'Online dating sucks. So we designed something new. And now we need your help.'
-        },
+    },
     'g': {
         'title': 'Help Spread Happiness',
         'description': 'Be a friend. Send people you care about on better dates.'
-        }
-}
-%}
+    }
+} %}
 {% set contentVersionRequest = 'b' %}
 {% if environment.request.query.get('t') is not empty and contentVersionOptions[environment.request.query.get('t')] is defined %}
     {% set contentVersionRequest = environment.request.query.get('t') %}
@@ -71,10 +69,11 @@ set contentVersionOptions = {
 
 {% block link %}
 
-
     {# TODO: remove bootstrap! Temporarily including bootstap for carousel and form on both landing and press pages #}
-    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/css/bootstrap{{ minified }}.css">
-    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/css/bootstrap-theme{{ minified }}.css">
+    <link rel="stylesheet"
+          href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/css/bootstrap{{ minified }}.css">
+    <link rel="stylesheet"
+          href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/css/bootstrap-theme{{ minified }}.css">
 
 
     {{ parent() }}
@@ -88,296 +87,296 @@ set contentVersionOptions = {
 
     {# TODO: make this native JS without JQuery #}
     <script>
-        // Use Require.js or Contextual Scope
-        (function (root, factory) {
-            if (typeof require === 'function') {
-                require(['stratus', 'jquery', 'underscore', 'backbone'], factory);
-            } else {
-                factory(root.Stratus, root.$, root._, root.Backbone);
+      // Use Require.js or Contextual Scope
+      (function (root, factory) {
+        if (typeof require === 'function') {
+          require(['stratus', 'jquery', 'underscore', 'backbone'], factory);
+        } else {
+          factory(root.Stratus, root.$, root._, root.Backbone);
+        }
+      }(this, function (Stratus, $, _, Backbone) {
+        Stratus.DOM.ready(function () {
+
+
+          /**
+           * Check Audience: default to "single"
+           */
+          Stratus.Routers.ShowAudience = Backbone.Router.extend({
+            routes: {
+              'show/:id': 'setAudience'
+            },
+            initialize: function (options) {
+              this.setAudience(options.default)
+            },
+            setAudience: function (id) {
+              $('body').attr('data-show', id);
             }
-        }(this, function (Stratus, $, _, Backbone) {
-            Stratus.DOM.ready(function () {
+          });
+          var showAudience = new Stratus.Routers.ShowAudience({ "default": "single" });
 
 
-                /**
-                 * Check Audience: default to "single"
-                 */
-                Stratus.Routers.ShowAudience = Backbone.Router.extend({
-                    routes: {
-                        'show/:id': 'setAudience'
-                    },
-                    initialize: function (options) {
-                        this.setAudience(options.default)
-                    },
-                    setAudience: function (id) {
-                        $('body').attr('data-show', id);
-                    }
-                });
-                var showAudience = new Stratus.Routers.ShowAudience({"default":"single"});
+          /**
+           * Track Events
+           */
+          function trackEvent(el) {
+            var trackCategory = el.data('trackCategory') || 'unknown';
+            var trackAction = el.data('trackAction') || null;
+            var trackLabel = el.data('trackLabel') || null;
+            ga('send', 'event', trackCategory, trackAction, trackLabel);
+          }
 
+          // Track Version of Page
+          if ($('body').data('contentVersion')) {
+            ga('send', 'event', 'content', 'version', $('body').data('contentVersion'));
+          }
 
-                /**
-                 * Track Events
-                 */
-                function trackEvent(el) {
-                    var trackCategory = el.data('trackCategory') || 'unknown';
-                    var trackAction = el.data('trackAction') || null;
-                    var trackLabel = el.data('trackLabel') || null;
-                    ga('send', 'event', trackCategory, trackAction, trackLabel);
-                }
-
-                // Track Version of Page
-                if ($('body').data('contentVersion')) {
-                    ga('send', 'event', 'content', 'version', $('body').data('contentVersion'));
-                }
-
-                // Track all registered elements
-                $.each($('[data-trackCategory]'), function (i, el) {
-                    $(el).click(function (event) {
-                        trackEvent($(event.target));
-                    });
-                });
-
-
-
-
-
-                /**
-                 * REGISTRATION
-                 */
-                var formClass = 'registrationForm';
-                var $forms = $('.'+formClass+' form');
-
-                /**
-                 * Record Geolocation in Registration
-                 */
-                var setLat = function() {
-                    if (Stratus.Environment.has('lat')) {
-                        $forms.find('input[name="lat"]').each(function (i, el) {
-                            $(el).val(Stratus.Environment.get('lat'));
-                        });
-                    }
-                };
-                var setLng = function() {
-                    if (Stratus.Environment.has('lng')) {
-                        $forms.find('input[name="lng"]').each(function (i, el) {
-                            $(el).val(Stratus.Environment.get('lng'));
-                        });
-                    }
-                };
-                var setTimezone = function() {
-                    if (Stratus.Environment.has('timezone')) {
-                        $forms.find('input[name="timezone"]').each(function (i, el) {
-                            $(el).val(Stratus.Environment.get('timezone'));
-                        });
-                    }
-                };
-                var setPostalCode = function() {
-                    if (Stratus.Environment.has('postalCode')) {
-                        $forms.find('input[name="zip"]').each(function (i, el) {
-                            $(el).val(Stratus.Environment.get('postalCode'));
-                            $(el).parent().hide();
-                        });
-                    }
-                };
-                Stratus.Environment.on('change:lat', setLat); setLat();
-                Stratus.Environment.on('change:lng', setLng); setLng();
-                Stratus.Environment.on('change:timezone', setTimezone); setTimezone();
-                Stratus.Environment.on('change:postalCode', setPostalCode); setPostalCode();
-
-
-                // Support Multiple Forms inside an element of this class name
-                if ( $forms.length > 0 ) {
-                    $forms.each(function(i, el) {
-                        // If Javascript is Working...
-                        // Hide Error Saying JS isn't working
-                        $(el).find('.formLoadingError').hide();
-                        // Enable Form
-                        $(el).find('.formFields').attr('disabled', false);
-                        $(el).find('.formFields').show();
-                        // Enable Form Submit Button
-                        $(el).find('button').attr('disabled', false);
-                        $(el).submit(function (event) {
-                            if (event) event.preventDefault();
-                            if (validate_input($(el))) {
-                                send($(el));
-                            }
-                        });
-                    });
-                }
-
-                function send($form) {
-
-                    // Add Loading Status
-                    var btnSubmit = $form.find('.signupAction .btnText');
-                    if(!btnSubmit.data('text')) btnSubmit.data('text', btnSubmit.text());
-                    toggleSubmitButton(btnSubmit, 'off')
-
-
-                    var payload = makePayload($form);
-                    var meta = {
-                        'method': 'new'
-                    };
-                    Stratus.Internals.Api('User', meta, payload).then(function (response) {
-                        var success = false;
-                        var statusMessage = [];
-                        $.each(response.meta.status, function(i, el) {
-                            if(el.code === 'SUCCESS') success = true;
-                            statusMessage.push(el.message);
-                        });
-                        if (!success) {
-                            errorResult($form, 'Oops, there was a problem ;( <br><br>'+statusMessage.join('<br><br>'));
-                        } else {
-                            $form.hide();
-                            $.each($form.parent().find('.success_message'), function (i, el) {
-                                $(el).removeClass('hide');
-                            });
-                        }
-                        toggleSubmitButton(btnSubmit, 'on')
-                    }, function () {
-                        errorResult($form);
-                        toggleSubmitButton(btnSubmit, 'on')
-                    });
-
-                }
-
-                function toggleSubmitButton(btnSubmit, status) {
-                    if(status == 'off') {
-                        btnSubmit.addClass('form-status-sending');
-                        btnSubmit.text('Sending...');
-                        btnSubmit.prop('disabled', true);
-                    } else {
-                        btnSubmit.removeClass('form-status-sending');
-                        btnSubmit.text(btnSubmit.data('text'));
-                        btnSubmit.prop('disabled', true);
-                    }
-                }
-
-                function errorResult($form, message) {
-                    if(!message) {
-                        message = 'Oops, there was a problem ;(';
-                    }
-                    $form.prepend('<div class="form-error">'+message+' <br><br>Email us at <a href="mailto:help@launchapp.io">help@launchapp.io</a> and we will add you manually.</div>');
-                    ga('send', 'event', 'error', 'form', $form.find('input[name="email"]').val());
-                }
-
-
-                function validate_email(email) {
-                    var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-                    return re.test(email);
-                }
-
-                function validate_input($form) {
-                    var inputs = $form.find('.form-control');
-                    // remove all errors
-                    var errors = $form.find('.form-error');
-                    errors.remove();
-                    var results = true;
-                    $.each(inputs, function(i, el) {
-                        $(el).removeClass('is-error');
-                        if($(el).hasClass('required')) {
-                            var elError = null;
-                            if(!$(el).val()) {
-                                elError = 'Please provide a valid value.';
-                            }
-                            if($(el).attr('name')=='email') {
-                                var emailValid = validate_email($(el).val());
-                                if(!emailValid) {
-                                    elError = 'Please provide a valid email address.';
-                                }
-                            }
-                            if(elError) {
-                                results = false;
-                                $(el).addClass('is-error');
-                                $(el).before('<div class="form-error">'+elError+'</div>');
-                            }
-                        }
-                    });
-                    return results;
-                }
-
-                // Customize Payload for this unique form
-                function makePayload($form) {
-                    var dataObject = $form.serializeArray();
-                    var data = {};
-                    $.each(dataObject, function(i, el) {
-                        data[el.name] = el.value;
-                    });
-                    var payload = {
-                        'email': data.email,
-                        'profile': {
-                            'gender': data.gender,
-                            'relationshipStatus': data.relationshipStatus,
-                            'zip': data.zip,
-                            'ageGroup': data.ageGroup,
-                            'lat': data.lat,
-                            'lng': data.lng,
-                            'timezone': data.timezone,
-                            'mailLists': [parseInt(data.listId)]
-                        }
-                    };
-                    return payload;
-                }
-
-
-
+          // Track all registered elements
+          $.each($('[data-trackCategory]'), function (i, el) {
+            $(el).click(function (event) {
+              trackEvent($(event.target));
             });
-        }));
+          });
 
 
-        // Separate Require for Youtube, so that it doesn't slow down the other javascript on the page
-        (function (root, factory) {
-            if (typeof require === 'function') {
-                require(['stratus', 'jquery', 'https://www.youtube.com/player_api'], factory);
-            } else {
-                factory(root.Stratus, root.$);
+          /**
+           * REGISTRATION
+           */
+          var formClass = 'registrationForm';
+          var $forms = $('.' + formClass + ' form');
+
+          /**
+           * Record Geolocation in Registration
+           */
+          var setLat = function () {
+            if (Stratus.Environment.has('lat')) {
+              $forms.find('input[name="lat"]').each(function (i, el) {
+                $(el).val(Stratus.Environment.get('lat'));
+              });
             }
-        }(this, function (Stratus, $) {
-            Stratus.DOM.ready(function () {
+          };
+          var setLng = function () {
+            if (Stratus.Environment.has('lng')) {
+              $forms.find('input[name="lng"]').each(function (i, el) {
+                $(el).val(Stratus.Environment.get('lng'));
+              });
+            }
+          };
+          var setTimezone = function () {
+            if (Stratus.Environment.has('timezone')) {
+              $forms.find('input[name="timezone"]').each(function (i, el) {
+                $(el).val(Stratus.Environment.get('timezone'));
+              });
+            }
+          };
+          var setPostalCode = function () {
+            if (Stratus.Environment.has('postalCode')) {
+              $forms.find('input[name="zip"]').each(function (i, el) {
+                $(el).val(Stratus.Environment.get('postalCode'));
+                $(el).parent().hide();
+              });
+            }
+          };
+          Stratus.Environment.on('change:lat', setLat);
+          setLat();
+          Stratus.Environment.on('change:lng', setLng);
+          setLng();
+          Stratus.Environment.on('change:timezone', setTimezone);
+          setTimezone();
+          Stratus.Environment.on('change:postalCode', setPostalCode);
+          setPostalCode();
 
-                // Track YouTube Actions
-                if($('#launchVideo').length) {
-                    var player = new window.YT.Player('launchVideo', {
-                        events: {
-                            'onReady': onPlayerReady,
-                            'onStateChange': onPlayerStateChange
-                        }
-                    });
-                    var pauseFlag = false;
 
-                    function onPlayerReady(event) {
-                        // do nothing, no tracking needed
-                    }
-
-                    function onPlayerStateChange(event) {
-                        var state = player.getPlayerState();
-                        var playerTime = parseInt(player.getCurrentTime()/10)*10;
-                        // Track Play
-                        if (state == 1) {
-                            ga('send', 'event', 'videos', 'play', 'promo');
-                            pauseFlag = true;
-                        }
-                        // Track Pause
-                        if (state == 2 && pauseFlag) {
-                            ga('send', 'event', 'videos', 'pause', 'promo');
-                            ga('send', 'event', 'videos', 'pauseTime', playerTime);
-                            pauseFlag = false;
-                        }
-                        // Track Finish
-                        if (state == 0) {
-                            ga('send', 'event', 'Videos', 'finished', 'promo');
-                        }
-                    }
-
-                    // Track Bounce
-                    Stratus.DOM.unload(function () {
-                        var playerTime = parseInt(player.getCurrentTime()/10)*10;
-                        ga('send', 'event', 'videos', 'bounceTime', playerTime);
-                    });
+          // Support Multiple Forms inside an element of this class name
+          if ($forms.length > 0) {
+            $forms.each(function (i, el) {
+              // If Javascript is Working...
+              // Hide Error Saying JS isn't working
+              $(el).find('.formLoadingError').hide();
+              // Enable Form
+              $(el).find('.formFields').attr('disabled', false);
+              $(el).find('.formFields').show();
+              // Enable Form Submit Button
+              $(el).find('button').attr('disabled', false);
+              $(el).submit(function (event) {
+                if (event) event.preventDefault();
+                if (validate_input($(el))) {
+                  send($(el));
                 }
-
+              });
             });
-        }));
+          }
+
+          function send($form) {
+
+            // Add Loading Status
+            var btnSubmit = $form.find('.signupAction .btnText');
+            if (!btnSubmit.data('text')) btnSubmit.data('text', btnSubmit.text());
+            toggleSubmitButton(btnSubmit, 'off')
+
+
+            var payload = makePayload($form);
+            var meta = {
+              'method': 'new'
+            };
+            Stratus.Internals.Api('User', meta, payload).then(function (response) {
+              var success = false;
+              var statusMessage = [];
+              $.each(response.meta.status, function (i, el) {
+                if (el.code === 'SUCCESS') success = true;
+                statusMessage.push(el.message);
+              });
+              if (!success) {
+                errorResult($form, 'Oops, there was a problem ;( <br><br>' + statusMessage.join('<br><br>'));
+              } else {
+                $form.hide();
+                $.each($form.parent().find('.success_message'), function (i, el) {
+                  $(el).removeClass('hide');
+                });
+              }
+              toggleSubmitButton(btnSubmit, 'on')
+            }, function () {
+              errorResult($form);
+              toggleSubmitButton(btnSubmit, 'on')
+            });
+
+          }
+
+          function toggleSubmitButton(btnSubmit, status) {
+            if (status == 'off') {
+              btnSubmit.addClass('form-status-sending');
+              btnSubmit.text('Sending...');
+              btnSubmit.prop('disabled', true);
+            } else {
+              btnSubmit.removeClass('form-status-sending');
+              btnSubmit.text(btnSubmit.data('text'));
+              btnSubmit.prop('disabled', true);
+            }
+          }
+
+          function errorResult($form, message) {
+            if (!message) {
+              message = 'Oops, there was a problem ;(';
+            }
+            $form.prepend('<div class="form-error">' + message + ' <br><br>Email us at <a href="mailto:help@launchapp.io">help@launchapp.io</a> and we will add you manually.</div>');
+            ga('send', 'event', 'error', 'form', $form.find('input[name="email"]').val());
+          }
+
+
+          function validate_email(email) {
+            var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+            return re.test(email);
+          }
+
+          function validate_input($form) {
+            var inputs = $form.find('.form-control');
+            // remove all errors
+            var errors = $form.find('.form-error');
+            errors.remove();
+            var results = true;
+            $.each(inputs, function (i, el) {
+              $(el).removeClass('is-error');
+              if ($(el).hasClass('required')) {
+                var elError = null;
+                if (!$(el).val()) {
+                  elError = 'Please provide a valid value.';
+                }
+                if ($(el).attr('name') == 'email') {
+                  var emailValid = validate_email($(el).val());
+                  if (!emailValid) {
+                    elError = 'Please provide a valid email address.';
+                  }
+                }
+                if (elError) {
+                  results = false;
+                  $(el).addClass('is-error');
+                  $(el).before('<div class="form-error">' + elError + '</div>');
+                }
+              }
+            });
+            return results;
+          }
+
+          // Customize Payload for this unique form
+          function makePayload($form) {
+            var dataObject = $form.serializeArray();
+            var data = {};
+            $.each(dataObject, function (i, el) {
+              data[el.name] = el.value;
+            });
+            var payload = {
+              'email': data.email,
+              'profile': {
+                'gender': data.gender,
+                'relationshipStatus': data.relationshipStatus,
+                'zip': data.zip,
+                'ageGroup': data.ageGroup,
+                'lat': data.lat,
+                'lng': data.lng,
+                'timezone': data.timezone,
+                'mailLists': [parseInt(data.listId)]
+              }
+            };
+            return payload;
+          }
+
+
+        });
+      }));
+
+
+      // Separate Require for Youtube, so that it doesn't slow down the other javascript on the page
+      (function (root, factory) {
+        if (typeof require === 'function') {
+          require(['stratus', 'jquery', 'https://www.youtube.com/player_api'], factory);
+        } else {
+          factory(root.Stratus, root.$);
+        }
+      }(this, function (Stratus, $) {
+        Stratus.DOM.ready(function () {
+
+          // Track YouTube Actions
+          if ($('#launchVideo').length) {
+            var player = new window.YT.Player('launchVideo', {
+              events: {
+                'onReady': onPlayerReady,
+                'onStateChange': onPlayerStateChange
+              }
+            });
+            var pauseFlag = false;
+
+            function onPlayerReady(event) {
+              // do nothing, no tracking needed
+            }
+
+            function onPlayerStateChange(event) {
+              var state = player.getPlayerState();
+              var playerTime = parseInt(player.getCurrentTime() / 10) * 10;
+              // Track Play
+              if (state == 1) {
+                ga('send', 'event', 'videos', 'play', 'promo');
+                pauseFlag = true;
+              }
+              // Track Pause
+              if (state == 2 && pauseFlag) {
+                ga('send', 'event', 'videos', 'pause', 'promo');
+                ga('send', 'event', 'videos', 'pauseTime', playerTime);
+                pauseFlag = false;
+              }
+              // Track Finish
+              if (state == 0) {
+                ga('send', 'event', 'Videos', 'finished', 'promo');
+              }
+            }
+
+            // Track Bounce
+            Stratus.DOM.unload(function () {
+              var playerTime = parseInt(player.getCurrentTime() / 10) * 10;
+              ga('send', 'event', 'videos', 'bounceTime', playerTime);
+            });
+          }
+
+        });
+      }));
     </script>
 
 {% endblock script %}
@@ -389,9 +388,11 @@ set contentVersionOptions = {
     {# we may need to reload the page here in order to get the new image https://developers.facebook.com/tools/debug/ #}
     <meta property="og:url" content="https://launchapp.io">
     <meta property="og:type" content="website">
-    <meta property="og:image" content="https://launchapp.io/assets/1/0/bundles/sitetheorytemplatecustom/images/app/LaunchAppPreview.jpg">
+    <meta property="og:image"
+          content="https://launchapp.io/assets/1/0/bundles/sitetheorytemplatecustom/images/app/LaunchAppPreview.jpg">
     <meta property="og:title" content="The Cure for Dating Apps | Launch">
-    <meta property="og:description" content="Online dating kinda sucks. So we designed something new. And now we need your help.">
+    <meta property="og:description"
+          content="Online dating kinda sucks. So we designed something new. And now we need your help.">
 {% endblock meta %}
 
 {# Default to Single Audience #}
@@ -429,53 +430,54 @@ set contentVersionOptions = {
 {# Put Beta Signup in Sidebar #}
 {% block sidebarContent %}
     {% block betaButton %}
-        <div class="btn betaSignupBtn"  data-plugin="AddClass Dim" data-class="active" data-target="#betaPopup" data-event="click" data-trackCategory="CTA" data-trackAction="beta" data-trackLabel="top">
+        <div class="btn betaSignupBtn" data-plugin="AddClass Dim" data-class="active" data-target="#betaPopup"
+             data-event="click" data-trackCategory="CTA" data-trackAction="beta" data-trackLabel="top">
             Beta Signup
         </div>
     {% endblock betaButton %}
 
     <div class="borderDashed">
-    {% block mainNavigation %}
-        <div id="navMainContainer" class="navMainContainer">
-            <ul class="nav listInline fontPrimary">
-                <li class="navMainLink">
-                    <a href="#tier2">
-                        <div class="linkOrnament"></div>
-                        <div class="linkUnderline"></div>
-                        Status Quo
-                    </a>
-                </li>
-                <li class="navMainLink">
-                    <a href="#tier3">
-                        <div class="linkOrnament"></div>
-                        <div class="linkUnderline"></div>
-                        Something Different
-                    </a>
-                </li>
-                <li class="navMainLink">
-                    <a href="#tier5">
-                        <div class="linkOrnament"></div>
-                        <div class="linkUnderline"></div>
-                        App
-                    </a>
-                </li>
-                <li class="navMainLink">
-                    <a href="#tier6">
-                        <div class="linkOrnament"></div>
-                        <div class="linkUnderline"></div>
-                        Benefits
-                    </a>
-                </li>
-                <li class="navMainLink">
-                    <a href="#tier7">
-                        <div class="linkOrnament"></div>
-                        <div class="linkUnderline"></div>
-                        Help Us!
-                    </a>
-                </li>
-            </ul>
-        </div>
-    {% endblock mainNavigation %}
+        {% block mainNavigation %}
+            <div id="navMainContainer" class="navMainContainer">
+                <ul class="nav listInline fontPrimary">
+                    <li class="navMainLink">
+                        <a href="#tier2">
+                            <div class="linkOrnament"></div>
+                            <div class="linkUnderline"></div>
+                            Status Quo
+                        </a>
+                    </li>
+                    <li class="navMainLink">
+                        <a href="#tier3">
+                            <div class="linkOrnament"></div>
+                            <div class="linkUnderline"></div>
+                            Something Different
+                        </a>
+                    </li>
+                    <li class="navMainLink">
+                        <a href="#tier5">
+                            <div class="linkOrnament"></div>
+                            <div class="linkUnderline"></div>
+                            App
+                        </a>
+                    </li>
+                    <li class="navMainLink">
+                        <a href="#tier6">
+                            <div class="linkOrnament"></div>
+                            <div class="linkUnderline"></div>
+                            Benefits
+                        </a>
+                    </li>
+                    <li class="navMainLink">
+                        <a href="#tier7">
+                            <div class="linkOrnament"></div>
+                            <div class="linkUnderline"></div>
+                            Help Us!
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        {% endblock mainNavigation %}
     </div>
 
     {{ parent() }}
@@ -505,13 +507,16 @@ set contentVersionOptions = {
     <div id="sharingIsCaring">
         <h4>Sharing is Caring!</h4>
         <ul class="listInline">
-            <li><a class="btn shareFacebook shareIcons" href="http://www.facebook.com/sharer/sharer.php?u={{ shareUrl }}" onclick="{{ shareClick }}">
+            <li><a class="btn shareFacebook shareIcons"
+                   href="http://www.facebook.com/sharer/sharer.php?u={{ shareUrl }}" onclick="{{ shareClick }}">
                     <div class="btnGradientLight"></div>
                     {% embed '@SitetheoryCoreBundle/Resources/public/images/icons/social/facebook.svg' %}{% block id %}useFacebookIcon{% endblock %}{% endembed %}
                 </a>
             </li>
             <li>
-                <a class="btn shareTwitter shareIcons" href="http://twitter.com/intent/tweet?via=launchdating&text={{ shareMessage }}%20{{ shareUrl }}" onclick="{{ shareClick }}">
+                <a class="btn shareTwitter shareIcons"
+                   href="http://twitter.com/intent/tweet?via=launchdating&text={{ shareMessage }}%20{{ shareUrl }}"
+                   onclick="{{ shareClick }}">
                     <div class="btnGradientLight"></div>
                     {% embed '@SitetheoryCoreBundle/Resources/public/images/icons/social/twitter.svg' %}{% block id %}useTwitterIcon{% endblock %}{% endembed %}
                 </a>
@@ -573,7 +578,9 @@ set contentVersionOptions = {
             </div>
             <div id="tier1Right" class="pullLeft">
                 <div id="tier1video" class="responsiveObject">
-                    <iframe id="launchVideo" width="700" height="394" src="https://www.youtube.com/embed/y2R_vqOBHnw?rel=0&showinfo=0&modestbranding=1&enablejsapi=1" frameborder="0" allowfullscreen></iframe>
+                    <iframe id="launchVideo" width="700" height="394"
+                            src="https://www.youtube.com/embed/y2R_vqOBHnw?rel=0&showinfo=0&modestbranding=1&enablejsapi=1"
+                            frameborder="0" allowfullscreen></iframe>
                 </div>
                 {#
                 <div class="borderDashed clearfix">
@@ -599,7 +606,8 @@ set contentVersionOptions = {
         <div class="siteMaxWidth siteSidePadding shellVerticalPadding">
             <h1>A Broken <br hide-xs>Status Quo</h1>
             <div class="borderDashedLight">
-                <p class="fontPrimary bodyLarge">80% of singles won't get even one online date this year &mdash; because existing apps were built to make life easier for people who already like online dating.
+                <p class="fontPrimary bodyLarge">80% of singles won't get even one online date this year &mdash; because
+                    existing apps were built to make life easier for people who already like online dating.
                     <br>
                     <br>
                     We&rsquo;re building something for everyone else.</p>
@@ -666,7 +674,8 @@ set contentVersionOptions = {
         <div class="siteMaxWidth siteSidePadding shellVerticalPadding">
             <h3>Let's Build Something</h3>
             <h1>COMPLETELY DIFFERENT</h1>
-            <p id="tier4intro" class="bodyLarge">Online dating made it easier for relationship-seekers to connect, but only from a lonely, anonymous space &mdash; which encourages really bad behavior.<br><br>
+            <p id="tier4intro" class="bodyLarge">Online dating made it easier for relationship-seekers to connect, but
+                only from a lonely, anonymous space &mdash; which encourages really bad behavior.<br><br>
 
                 We have a simple formula to change that:
             </p>
@@ -686,19 +695,23 @@ set contentVersionOptions = {
                     <div class="chartCol left">
                         <div id="chartItemOne" class="chartContent">
                             <div class="chartIcon">
-                                <img src="{{ asset('bundles/sitetheorytemplatecustom/images/tier4spacemen1.png') }}" alt="">
+                                <img src="{{ asset('bundles/sitetheorytemplatecustom/images/tier4spacemen1.png') }}"
+                                     alt="">
                             </div>
                             <h3>Friend Verification</h3>
-                            <p>Friends verify every dater&rsquo;s identity and relationship status, then add fun facts and striking insights to their profiles.</p>
+                            <p>Friends verify every dater&rsquo;s identity and relationship status, then add fun facts
+                                and striking insights to their profiles.</p>
                         </div>
                     </div>
                     <div class="chartCol right">
                         <div class="chartContent">
                             <div class="chartIcon">
-                                <img src="{{ asset('bundles/sitetheorytemplatecustom/images/tier4spacemen2.png') }}" alt="">
+                                <img src="{{ asset('bundles/sitetheorytemplatecustom/images/tier4spacemen2.png') }}"
+                                     alt="">
                             </div>
                             <h3>Fun &amp; R.E.S.P.E.C.T.</h3>
-                            <p>All daters held accountable by their friends for their online and offline behavior. Only real people. Only respectful interactions. (But never boring!)</p>
+                            <p>All daters held accountable by their friends for their online and offline behavior. Only
+                                real people. Only respectful interactions. (But never boring!)</p>
                         </div>
                     </div>
                 </div>
@@ -706,19 +719,23 @@ set contentVersionOptions = {
                     <div class="chartCol left">
                         <div class="chartContent">
                             <div class="chartIcon">
-                                <img src="{{ asset('bundles/sitetheorytemplatecustom/images/tier4spacemen3.png') }}" alt="">
+                                <img src="{{ asset('bundles/sitetheorytemplatecustom/images/tier4spacemen3.png') }}"
+                                     alt="">
                             </div>
                             <h3>Crowdsourced Intuition</h3>
-                            <p>Friends (single or taken) use their intuition and experience to suggest great matches for their single friends.</p>
+                            <p>Friends (single or taken) use their intuition and experience to suggest great matches for
+                                their single friends.</p>
                         </div>
                     </div>
                     <div class="chartCol right">
                         <div class="chartContent">
                             <div class="chartIcon">
-                                <img src="{{ asset('bundles/sitetheorytemplatecustom/images/tier4spacemen4.png') }}" alt="">
+                                <img src="{{ asset('bundles/sitetheorytemplatecustom/images/tier4spacemen4.png') }}"
+                                     alt="">
                             </div>
                             <h3>Squad Support</h3>
-                            <p>We let friends share their experiences with each other to get advice, laugh it off, or dance with excitement.
+                            <p>We let friends share their experiences with each other to get advice, laugh it off, or
+                                dance with excitement.
                             </p>
                         </div>
                     </div>
@@ -726,7 +743,8 @@ set contentVersionOptions = {
             </div>
         </div>
         <div class="siteMaxWidth siteSidePadding shellVerticalPadding">
-            <p id="tier4summary" class="bodyLarge">If you love the hit-and-run hookup culture, you won&rsquo;t find it here. Only good people, lowkey meetups, playful interactions, and sparks flying everywhere. </p>
+            <p id="tier4summary" class="bodyLarge">If you love the hit-and-run hookup culture, you won&rsquo;t find it
+                here. Only good people, lowkey meetups, playful interactions, and sparks flying everywhere. </p>
         </div>
     </div>
 
@@ -735,7 +753,8 @@ set contentVersionOptions = {
     <div id="tier5" class="landingTier">
         <h1>App Sneak Peek</h1>
         {# TODO: remove when kickstarter is complete #}
-        <p id="appDemoNote" class="fontPrimary siteSidePadding">An interactive demo is available to all Kickstarter backers.</p>
+        <p id="appDemoNote" class="fontPrimary siteSidePadding">An interactive demo is available to all Kickstarter
+            backers.</p>
 
         <div id="tier5background">
             <div class="siteMaxWidth siteSidePadding">
@@ -745,7 +764,8 @@ set contentVersionOptions = {
                 </div>
                 #}
 
-                <div id="appPreview" class="carousel slide" data-plugin="carousel" data-colminsize="sm" data-groupmobile="1" data-interval="8000">
+                <div id="appPreview" class="carousel slide" data-plugin="carousel" data-colminsize="sm"
+                     data-groupmobile="1" data-interval="8000">
 
                     <!-- Optional: Progress Indicators -->
                     <ol class="carousel-indicators">
@@ -760,69 +780,90 @@ set contentVersionOptions = {
                     <!-- Wrapper for Slides -->
                     <div class="carousel-inner" role="listbox">
                         <div class="item active">
-                            <div   class="slideContainer clearfix">
-                                <div  class="appScreenshot">
-                                    <img data-spy="#appPreview" data-plugin="Lazy" src="{{ asset('bundles/sitetheorytemplatecustom/images/app/1signUp-xs.png') }}"  data-ignorevisibility="true" alt="Sign Up">
+                            <div class="slideContainer clearfix">
+                                <div class="appScreenshot">
+                                    <img data-spy="#appPreview" data-plugin="Lazy"
+                                         src="{{ asset('bundles/sitetheorytemplatecustom/images/app/1signUp-xs.png') }}"
+                                         data-ignorevisibility="true" alt="Sign Up">
                                 </div>
                                 <div class="centerText">
                                     <h2 class="hoverElement fontPrimary">Sign Up</h2>
-                                    <p class="smallLabel fontPrimary bold">Sign up with your Facebook account. Don't worry, it's private.</p>
+                                    <p class="smallLabel fontPrimary bold">Sign up with your Facebook account. Don't
+                                        worry, it's private.</p>
                                 </div>
                             </div>
                         </div>
                         <div class="item">
-                            <div   class="slideContainer clearfix">
-                                <div  class="appScreenshot">
-                                    <img data-spy="#appPreview" data-plugin="Lazy" src="{{ asset('bundles/sitetheorytemplatecustom/images/app/2recruit-xs.png') }}"  data-ignorevisibility="true" alt="Recruit Launch Crew">
+                            <div class="slideContainer clearfix">
+                                <div class="appScreenshot">
+                                    <img data-spy="#appPreview" data-plugin="Lazy"
+                                         src="{{ asset('bundles/sitetheorytemplatecustom/images/app/2recruit-xs.png') }}"
+                                         data-ignorevisibility="true" alt="Recruit Launch Crew">
                                 </div>
                                 <div class="centerText">
                                     <h2 class="hoverElement fontPrimary">Recruit Launch Crew</h2>
-                                    <p class="smallLabel fontPrimary bold">Invite two or more close friends (single or taken) to verify your account, describe you, and increase your trust score.</p>
+                                    <p class="smallLabel fontPrimary bold">Invite two or more close friends (single or
+                                        taken) to verify your account, describe you, and increase your trust score.</p>
                                 </div>
                             </div>
                         </div>
                         <div class="item">
-                            <div   class="slideContainer clearfix">
-                                <div  class="appScreenshot">
-                                    <img data-spy="#appPreview" data-plugin="Lazy" src="{{ asset('bundles/sitetheorytemplatecustom/images/app/3matchmakerMatches-xs.png') }}"  data-ignorevisibility="true" alt="Play and Match">
+                            <div class="slideContainer clearfix">
+                                <div class="appScreenshot">
+                                    <img data-spy="#appPreview" data-plugin="Lazy"
+                                         src="{{ asset('bundles/sitetheorytemplatecustom/images/app/3matchmakerMatches-xs.png') }}"
+                                         data-ignorevisibility="true" alt="Play and Match">
                                 </div>
                                 <div class="centerText">
                                     <h2 class="hoverElement fontPrimary">Play & Match</h2>
-                                    <p class="smallLabel fontPrimary bold">The most successful way for new couples to meet? Via friends. Have fun suggesting matches for people you love.</p>
+                                    <p class="smallLabel fontPrimary bold">The most successful way for new couples to
+                                        meet? Via friends. Have fun suggesting matches for people you love.</p>
 
                                 </div>
                             </div>
                         </div>
                         <div class="item">
-                            <div   class="slideContainer clearfix">
-                                <div  class="appScreenshot">
-                                    <img data-spy="#appPreview" data-plugin="Lazy" src="{{ asset('bundles/sitetheorytemplatecustom/images/app/4reviewMatch-xs.png') }}"  data-ignorevisibility="true" alt="Review Matches">
+                            <div class="slideContainer clearfix">
+                                <div class="appScreenshot">
+                                    <img data-spy="#appPreview" data-plugin="Lazy"
+                                         src="{{ asset('bundles/sitetheorytemplatecustom/images/app/4reviewMatch-xs.png') }}"
+                                         data-ignorevisibility="true" alt="Review Matches">
                                 </div>
                                 <div class="centerText">
                                     <h2 class="hoverElement fontPrimary">Review Matches</h2>
-                                    <p class="smallLabel fontPrimary bold">Awesome profiles empower better decision making. Answer a few playful ice-breakers to bring the photo into focus and unlock full chat.</p>
+                                    <p class="smallLabel fontPrimary bold">Awesome profiles empower better decision
+                                        making. Answer a few playful ice-breakers to bring the photo into focus and
+                                        unlock full chat.</p>
                                 </div>
                             </div>
                         </div>
                         <div class="item">
-                            <div   class="slideContainer clearfix">
-                                <div  class="appScreenshot">
-                                    <img data-spy="#appPreview" data-plugin="Lazy" src="{{ asset('bundles/sitetheorytemplatecustom/images/app/5meetup-xs.png') }}"  data-ignorevisibility="true" alt="Low-Key Meetups">
+                            <div class="slideContainer clearfix">
+                                <div class="appScreenshot">
+                                    <img data-spy="#appPreview" data-plugin="Lazy"
+                                         src="{{ asset('bundles/sitetheorytemplatecustom/images/app/5meetup-xs.png') }}"
+                                         data-ignorevisibility="true" alt="Low-Key Meetups">
                                 </div>
                                 <div class="centerText">
                                     <h2 class="hoverElement fontPrimary">Low-Key Meetups</h2>
-                                    <p class="smallLabel fontPrimary bold">Intrigued? You've got 48 hours to schedule a meetup with just one click. 45 minutes or less. Zero expectations. Just coffee or drink with an interesting local.</p>
+                                    <p class="smallLabel fontPrimary bold">Intrigued? You've got 48 hours to schedule a
+                                        meetup with just one click. 45 minutes or less. Zero expectations. Just coffee
+                                        or drink with an interesting local.</p>
                                 </div>
                             </div>
                         </div>
                         <div class="item">
-                            <div   class="slideContainer clearfix">
-                                <div  class="appScreenshot">
-                                    <img data-spy="#appPreview" data-plugin="Lazy" src="{{ asset('bundles/sitetheorytemplatecustom/images/app/6followup-xs.png') }}"  data-ignorevisibility="true" alt="Next Steps">
+                            <div class="slideContainer clearfix">
+                                <div class="appScreenshot">
+                                    <img data-spy="#appPreview" data-plugin="Lazy"
+                                         src="{{ asset('bundles/sitetheorytemplatecustom/images/app/6followup-xs.png') }}"
+                                         data-ignorevisibility="true" alt="Next Steps">
                                 </div>
                                 <div class="centerText">
                                     <h2 class="hoverElement fontPrimary">Next Steps</h2>
-                                    <p class="smallLabel fontPrimary bold">A quick follow-up survey lets you connect as friends or report problems in a constructive way that makes everyone accountable to their friends.</p>
+                                    <p class="smallLabel fontPrimary bold">A quick follow-up survey lets you connect as
+                                        friends or report problems in a constructive way that makes everyone accountable
+                                        to their friends.</p>
                                 </div>
                             </div>
                         </div>
@@ -830,12 +871,15 @@ set contentVersionOptions = {
 
                     <!-- Controls -->
                     <div class="carouselControls">
-                        <a class="left carousel-control" href="#appPreview" role="button" data-slide="prev" data-scroll="false">
+                        <a class="left carousel-control" href="#appPreview" role="button" data-slide="prev"
+                           data-scroll="false">
                             <img src="{{ asset('bundles/sitetheorytemplatecustom/images/carouselBack.png') }}" alt="">
                             <span class="sr-only">Previous</span>
                         </a>
-                        <a class="right carousel-control" href="#appPreview" role="button" data-slide="next" data-scroll="false">
-                            <img src="{{ asset('bundles/sitetheorytemplatecustom/images/carouselForward.png') }}" alt="">
+                        <a class="right carousel-control" href="#appPreview" role="button" data-slide="next"
+                           data-scroll="false">
+                            <img src="{{ asset('bundles/sitetheorytemplatecustom/images/carouselForward.png') }}"
+                                 alt="">
                             <span class="sr-only">Next</span>
                         </a>
                     </div>
@@ -854,30 +898,41 @@ set contentVersionOptions = {
                         <div flex="100" flex-gt-xs="40" class="leftCol">
                             <div id="benefitOne" class="benefitItem">
                                 <h3>Honest &amp; Interesting Profiles </h3>
-                                <p>Every profile is verified by friends, and improved as you and your friends respond to fun micro-questions that collect over time. Fewer lies. Less stress. More originality.</p>
+                                <p>Every profile is verified by friends, and improved as you and your friends respond to
+                                    fun micro-questions that collect over time. Fewer lies. Less stress. More
+                                    originality.</p>
                             </div>
                             <div id="benefitTwo" class="benefitItem">
                                 <h3>Quality Matches</h3>
-                                <p>The best technology can&rsquo;t create love. But it can help. We use our special AI to learn who you really are and what you really want. We then turn the matches over to you and your friends to apply human intuition.</p>
+                                <p>The best technology can&rsquo;t create love. But it can help. We use our special AI
+                                    to learn who you really are and what you really want. We then turn the matches over
+                                    to you and your friends to apply human intuition.</p>
                             </div>
                             <div id="benefitThree" class="benefitItem">
                                 <h3>Gradual Reveals</h3>
-                                <p>Many great relationships would never have passed the two-second swipe test. To encourage slower judgment, every match photo starts blurred. But don&rsquo;t worry, you can bring their picture into focus by exchanging a few playful ice-breakers.</p>
+                                <p>Many great relationships would never have passed the two-second swipe test. To
+                                    encourage slower judgment, every match photo starts blurred. But don&rsquo;t worry,
+                                    you can bring their picture into focus by exchanging a few playful ice-breakers.</p>
                             </div>
                         </div>
                         <div flex="100" flex-gt-xs="20"></div>
                         <div flex="100" flex-gt-xs="40" class="rightCol">
                             <div id="benefitFour" class="benefitItem">
                                 <h3>Better Members</h3>
-                                <p>Players, creeps, and cheaters won&rsquo;t be as attracted to a community that requires close friends to vouch for them. </p>
+                                <p>Players, creeps, and cheaters won&rsquo;t be as attracted to a community that
+                                    requires close friends to vouch for them. </p>
                             </div>
                             <div id="benefitFive" class="benefitItem">
                                 <h3>Enjoyable Messaging</h3>
-                                <p>Use our optional &ldquo;Conversation Starters&rdquo; to showcase personality and spark conversations. We also make it painless to block (and educate) anyone who isn&rsquo;t being respectful.</p>
+                                <p>Use our optional &ldquo;Conversation Starters&rdquo; to showcase personality and
+                                    spark conversations. We also make it painless to block (and educate) anyone who isn&rsquo;t
+                                    being respectful.</p>
                             </div>
                             <div id="benefitSix" class="benefitItem">
                                 <h3>Natural Low-Key Encounters</h3>
-                                <p>We encourage users to treat the first meetup like a &ldquo;pre-date&rdquo;. No more than 45 minutes. Just one coffee or drink. No fancy preparation. First impressions like we make them in day-to-day life, free from anxiety and expectations. </p>
+                                <p>We encourage users to treat the first meetup like a &ldquo;pre-date&rdquo;. No more
+                                    than 45 minutes. Just one coffee or drink. No fancy preparation. First impressions
+                                    like we make them in day-to-day life, free from anxiety and expectations. </p>
                             </div>
                         </div>
                     </div>
@@ -899,10 +954,14 @@ set contentVersionOptions = {
                     <div flex="100" flex-gt-xs="45" class="leftCol">
                         <div id="helpOne">
 
-                            <img id="iconBeta" src="{{ asset('bundles/sitetheorytemplatecustom/images/tier7iconBeta.png') }}" alt="">
+                            <img id="iconBeta"
+                                 src="{{ asset('bundles/sitetheorytemplatecustom/images/tier7iconBeta.png') }}" alt="">
                             <h2>Sign up for Beta</h2>
-                            <p class="fontPrimary">Apps are easy to build, but it's the people that make a community work. When enough good people like you want to create something better, we can make it happen.</p>
-                            <p class="fontPrimary">Please join us so we can notify you when the beta is ready in your area. There's no risk, give it a shot!</p>
+                            <p class="fontPrimary">Apps are easy to build, but it's the people that make a community
+                                work. When enough good people like you want to create something better, we can make it
+                                happen.</p>
+                            <p class="fontPrimary">Please join us so we can notify you when the beta is ready in your
+                                area. There's no risk, give it a shot!</p>
 
                         </div>
                     </div>
@@ -931,7 +990,7 @@ set contentVersionOptions = {
 
 
     {# TIER 7 CTA: ORIGINAL WITH KICKSTARTER #}
-    {#
+    {# #
     <div id="tier7" class="landingTier">
         <div class="siteMaxWidth siteSidePadding shellVerticalPadding">
             <h1>Help Create the Future</h1>
@@ -941,11 +1000,17 @@ set contentVersionOptions = {
                 <div class="row borderDashed">
                     <div class="col-sm-5 leftCol">
                         <div id="helpOne" class="helpItem">
-                            <img id="iconKickstarter" src="{{ asset('bundles/sitetheorytemplatecustom/images/tier7iconKickstarter.png') }}" alt="">
+                            <img id="iconKickstarter"
+                                 src="{{ asset('bundles/sitetheorytemplatecustom/images/tier7iconKickstarter.png') }}"
+                                 alt="">
                             <h2>Kickstarter!</h2>
 
-                            <p class="fontPrimary">Love the idea? Give feedback and $1 to make it happen. We&rsquo;re a small team. We need a strong community behind us. Become a founding member and get amazing rewards!  </p>
-                            <a class="btn" href="https://www.kickstarter.com/projects/launch/dating-apps-suck-you-can-change-that-for-1" target="_blank">I Want to Help</a>
+                            <p class="fontPrimary">Love the idea? Give feedback and $1 to make it happen. We&rsquo;re a
+                                small team. We need a strong community behind us. Become a founding member and get
+                                amazing rewards! </p>
+                            <a class="btn"
+                               href="https://www.kickstarter.com/projects/launch/dating-apps-suck-you-can-change-that-for-1"
+                               target="_blank">I Want to Help</a>
                             <br class="visible-xs">
                             <br class="visible-xs">
                         </div>
@@ -953,11 +1018,17 @@ set contentVersionOptions = {
                     <div class="col-sm-5 col-sm-offset-2 rightCol">
                         <div class="borderDashed hide-gt-xs">&nbsp;</div>
                         <div id="helpTwo" class="helpItem">
-                            <img id="iconBeta" src="{{ asset('bundles/sitetheorytemplatecustom/images/tier7iconBeta.png') }}" alt="">
+                            <img id="iconBeta"
+                                 src="{{ asset('bundles/sitetheorytemplatecustom/images/tier7iconBeta.png') }}" alt="">
                             <h2>Sign up for Beta</h2>
-                            <p class="fontPrimary">Not interested in shaping the service? No problem! We&rsquo;ll let you know when the app is ready. Signup takes just 10 seconds (we&rsquo;ll never share or sell your data).</p>
-                            <div class="btn positionAnchor" data-plugin="AddClass Dim" data-class="active" data-target="#betaPopup" data-event="click">
-                                <div class="btnText" data-trackCategory="CTA" data-trackAction="beta" data-trackLabel="footer">Sign Me Up</div>
+                            <p class="fontPrimary">Not interested in shaping the service? No problem! We&rsquo;ll let
+                                you know when the app is ready. Signup takes just 10 seconds (we&rsquo;ll never share or
+                                sell your data).</p>
+                            <div class="btn positionAnchor" data-plugin="AddClass Dim" data-class="active"
+                                 data-target="#betaPopup" data-event="click">
+                                <div class="btnText" data-trackCategory="CTA" data-trackAction="beta"
+                                     data-trackLabel="footer">Sign Me Up
+                                </div>
                                 <div class="btnGradient"></div>
                             </div>
                         </div>
@@ -966,19 +1037,22 @@ set contentVersionOptions = {
             </div>
         </div>
     </div>
-    #}
+    {# #}
 
     {# TIER 8 CONTACT #}
     <div id="tier8" class="backgroundDark landingTier">
         <div id="tier8background">
             <div class="siteMaxWidth siteSidePadding shellVerticalPadding">
 
-                <p class="fontPrimary bodyLarge">{# Have questions? Please use the <a href="https://www.kickstarter.com/projects/launch/dating-apps-suck-you-can-change-that-for-1" target="_blank">contact form</a> on our Kickstarter page.#} For general questions or press inquiries view our <a href="/Press">press page</a> and contact <a href="mailto:jeremy@launchapp.io">jeremy@launchapp.io</a>. To discuss investing, <a href="mailto:chad@launchapp.io">chad@launchapp.io</a>.</p>
+                <p class="fontPrimary bodyLarge">{# Have questions? Please use the <a href="https://www.kickstarter.com/projects/launch/dating-apps-suck-you-can-change-that-for-1" target="_blank">contact form</a> on our Kickstarter page.#}
+                    For general questions or press inquiries view our <a href="/Press">press page</a> and contact <a
+                            href="mailto:jeremy@launchapp.io">jeremy@launchapp.io</a>. To discuss investing, <a
+                            href="mailto:chad@launchapp.io">chad@launchapp.io</a>.</p>
             </div>
         </div>
     </div>
 
-    {#
+    {# #
     <div id="footer" class="clearfix fontPrimary">
         <div class="siteMaxWidth siteSidePadding">
             <div class="footerPhone pullRight">
@@ -989,7 +1063,7 @@ set contentVersionOptions = {
             </div>
         </div>
     </div>
-    #}
+    {# #}
 
 {% endblock content %}
 
@@ -1060,7 +1134,8 @@ set contentVersionOptions = {
             {% endif %}
             <div class="formLoadingError">
                 <h3 class="">Loading Error ;(</h3>
-                <p>There was an error that prevented our form from loading. Please refresh the page, or email hello@launchapp.io so we can manually add you to the list.</p>
+                <p>There was an error that prevented our form from loading. Please refresh the page, or email
+                    hello@launchapp.io so we can manually add you to the list.</p>
             </div>
             {# Fields are disabled by default UNLESS javascript enables them #}
             <fieldset class="formFields" disabled>
@@ -1073,11 +1148,13 @@ set contentVersionOptions = {
                     <p class="note fontBody">{{ signupText|default("We'll let you know when it's ready!") }}</p>
                 {% endif %}
                 <div class="form-group">
-                    <input type="email" value="" name="email" class="required email form-control smallLabel fontPrimary" placeholder="Email Address">
+                    <input type="email" value="" name="email" class="required email form-control smallLabel fontPrimary"
+                           placeholder="Email Address">
                 </div>
 
                 <div class="form-group">
-                    <input type="text" value="" name="zip" class="required email form-control smallLabel fontPrimary" maxlength="10" placeholder="Postal Code">
+                    <input type="text" value="" name="zip" class="required email form-control smallLabel fontPrimary"
+                           maxlength="10" placeholder="Postal Code">
                 </div>
 
                 <div class="form-group">
@@ -1115,11 +1192,14 @@ set contentVersionOptions = {
                 <div class="signupAction">
                     <button type="submit" class="submit btn fontPrimary bold btn positionAnchor" disabled>
                         <span class="btnGradient"></span>
-                        <span class="btnText" data-trackCategory="CTA" data-trackAction="signup" data-trackLabel="{{ signupId }}">Sign Up</span>
+                        <span class="btnText" data-trackCategory="CTA" data-trackAction="signup"
+                              data-trackLabel="{{ signupId }}">Sign Up</span>
                     </button>
                 </div>
 
-                <p class="disclaimer">By submitting this form, you are granting: Launch Social Inc., 1330 N Broadway, Ste 200H, Walnut Creek, California, 94596, United States, permission to email you. You may unsubscribe via the link found at the bottom of every email.</p>
+                <p class="disclaimer">By submitting this form, you are granting: Launch Social Inc., 1330 N Broadway,
+                    Ste 200H, Walnut Creek, California, 94596, United States, permission to email you. You may
+                    unsubscribe via the link found at the bottom of every email.</p>
             </fieldset>
         </form>
 
@@ -1144,9 +1224,10 @@ set contentVersionOptions = {
         {% set signupListId = '1' %}
         <div id="{{ signupId }}Popup" class="popup">
             <div id="{{ signupId }}PopupContent" class="popupContent springIn borderRadiusDefault">
-                <div id="{{ signupId }}PopupClose" class="popupClose btnClose" data-plugin="AddClass Dim" data-class="active" data-target="#{{ signupId }}Popup" data-event="click">
+                <div id="{{ signupId }}PopupClose" class="popupClose btnClose" data-plugin="AddClass Dim"
+                     data-class="active" data-target="#{{ signupId }}Popup" data-event="click">
                     <span class="sr-only">Close</span>
-                    {% embed '@SitetheoryTemplateCustomBundle/Resources/public/images/icons/close.svg'%}{%  block id  %}iconClose{% endblock %}{% endembed %}
+                    {% embed '@SitetheoryTemplateCustomBundle/Resources/public/images/icons/close.svg' %}{% block id %}iconClose{% endblock %}{% endembed %}
                 </div>
 
                 {{ block('registrationForm') }}
@@ -1156,7 +1237,7 @@ set contentVersionOptions = {
 
     {% endblock betaSignup %}
 
-{#
+    {# #
     {% block kickstarterSignup %}
         {% set signupId = 'kickstarter' %}
         {% set signupTitle = 'Kickstarter Signup' %}
@@ -1166,9 +1247,10 @@ set contentVersionOptions = {
 
         <div id="{{ signupId }}Popup" class="popup">
             <div id="{{ signupId }}PopupContent" class="popupContent springIn borderRadiusDefault">
-                <div id="{{ signupId }}PopupClose" class="popupClose btnClose" data-plugin="AddClass Dim" data-class="active" data-target="#{{ signupId }}Popup" data-event="click">
+                <div id="{{ signupId }}PopupClose" class="popupClose btnClose" data-plugin="AddClass Dim"
+                     data-class="active" data-target="#{{ signupId }}Popup" data-event="click">
                     <span class="sr-only">Close</span>
-                    {% embed '@SitetheoryTemplatePromoBundle/Resources/public/images/icons/close.svg'%}{%  block id  %}iconClose{% endblock %}{% endembed %}
+                    {% embed '@SitetheoryTemplatePromoBundle/Resources/public/images/icons/close.svg' %}{% block id %}iconClose{% endblock %}{% endembed %}
                 </div>
 
                 {{ block('registrationForm') }}
@@ -1177,7 +1259,7 @@ set contentVersionOptions = {
         </div>
 
     {% endblock kickstarterSignup %}
-#}
+    {# #}
 
 {% endblock popup %}
 
